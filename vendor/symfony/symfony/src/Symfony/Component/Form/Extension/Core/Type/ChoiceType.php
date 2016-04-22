@@ -357,6 +357,21 @@ class ChoiceType extends AbstractType
         return 'choice';
     }
 
+    private static function flipRecursive($choices, &$output = array())
+    {
+        foreach ($choices as $key => $value) {
+            if (is_array($value)) {
+                $output[$key] = array();
+                self::flipRecursive($value, $output[$key]);
+                continue;
+            }
+
+            $output[$value] = $key;
+        }
+
+        return $output;
+    }
+
     /**
      * Adds the sub fields for an expanded choice field.
      *
@@ -432,7 +447,9 @@ class ChoiceType extends AbstractType
         // If no explicit grouping information is given, use the structural
         // information from the "choices" option for creating groups
         if (!$options['group_by'] && $options['choices']) {
-            $options['group_by'] = $options['choices'];
+            $options['group_by'] = !$options['choices_as_values']
+                ? self::flipRecursive($options['choices'])
+                : $options['choices'];
         }
 
         return $this->choiceListFactory->createView(

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Exchange" table="exchange">
+    <id name="exchangeId" type="integer" column="exchange_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="exchangeRequestid" type="integer" column="exchange_requestId" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeMittenteid" type="integer" column="exchange_mittenteId" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeDestinatarioid" type="integer" column="exchange_destinatarioId" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeProvvigione" type="boolean" column="exchange_provvigione" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeStatus" type="string" column="exchange_status" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="exchangeDate" type="datetime" column="exchange_date" nullable="true"/>
+    <field name="exchangeStatusDate" type="datetime" column="exchange_status_date" nullable="true"/>
+    <field name="exchangeComment" type="text" column="exchange_comment" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="exchangeFilterid" type="integer" column="exchange_filterId" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeCreateAppaltoCliente" type="boolean" column="exchange_create_appalto_cliente" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeAssignDestinatario" type="boolean" column="exchange_assign_destinatario" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeEtravelerid" type="smallint" column="exchange_etravelerId" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="exchangeType" type="string" column="exchange_type" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

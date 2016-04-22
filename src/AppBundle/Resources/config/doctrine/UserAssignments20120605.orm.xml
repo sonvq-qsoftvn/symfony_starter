@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\UserAssignments20120605" table="user_assignments_20120605">
+    <id name="userId" type="integer" column="user_id"/>
+    <id name="lingua" type="string" column="lingua" length="10"/>
+    <field name="nReassigned" type="integer" column="n_reassigned" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="lastReassignedDate" type="datetime" column="last_reassigned_date" nullable="false"/>
+  </entity>
+</doctrine-mapping>

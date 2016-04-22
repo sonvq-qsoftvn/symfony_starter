@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ModuloVololinea" table="modulo_vololinea">
+    <indexes>
+      <index name="id_viaggio" columns="id_viaggio"/>
+      <index name="tipoDocumento" columns="tipoDocumento"/>
+      <index name="data" columns="data"/>
+      <index name="statusAves" columns="statusAves"/>
+      <index name="booking_stato" columns="booking_stato"/>
+    </indexes>
+    <id name="idModulo" type="integer" column="id_modulo">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idViaggio" type="integer" column="id_viaggio" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="data" type="datetime" column="data" nullable="true">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="codpromotore" type="integer" column="codPromotore" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="codpromotorecreazione" type="integer" column="codPromotoreCreazione" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="titolo" type="string" column="titolo" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nota" type="text" column="nota" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipodocumento" type="boolean" column="tipoDocumento" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="numprenotazione" type="string" column="numPrenotazione" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="datain" type="datetime" column="dataIN" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="dataout" type="datetime" column="dataOUT" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="partenzaaereoporto" type="string" column="partenzaAereoporto" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="compagnia" type="string" column="compagnia" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="partenza" type="string" column="partenza" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="destinazione" type="string" column="destinazione" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="localita" type="string" column="localita" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nominativocarta" type="string" column="nominativoCarta" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipobiglietto" type="string" column="tipoBiglietto" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="indirizzobigliettocartaceo" type="text" column="indirizzoBigliettoCartaceo" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="npartecipanti" type="boolean" column="nPartecipanti" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="partecipanti" type="text" column="partecipanti" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="erroriviaggio" type="string" column="erroriViaggio" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="totale" type="decimal" column="totale" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="scontoagenzia" type="decimal" column="scontoAgenzia" precision="6" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="agencyfee" type="boolean" column="agencyfee" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="spesecorriere" type="decimal" column="speseCorriere" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="pagamento" type="string" column="pagamento" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="statopagamento" type="string" column="statoPagamento" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="modoPagamento" type="integer" column="modo_pagamento" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="incassoPagamento" type="string" column="incasso_pagamento" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="notemodulo" type="text" column="noteModulo" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datamodifica" type="datetime" column="dataModifica" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="codpromotoremodifica" type="integer" column="codPromotoreModifica" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="commissionelorda" type="decimal" column="commissioneLorda" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="commissionecarta" type="decimal" column="commissioneCarta" precision="6" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="commissioneaggiuntiva" type="decimal" column="commissioneAggiuntiva" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="commissionenetta" type="decimal" column="commissioneNetta" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="iva" type="decimal" column="iva" precision="6" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="codpromotoreiva" type="integer" column="codPromotoreIVA" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="codiceaves" type="string" column="codiceAves" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codiceavesFornitori" type="string" column="codiceAves_fornitori" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="statusaves" type="boolean" column="statusAves" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bookingStato" type="boolean" column="booking_stato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bookingCodpromotorestato" type="integer" column="booking_codPromotoreStato" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bookingCodpromotorelavorazione" type="integer" column="booking_codPromotoreLavorazione" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bookingLetto" type="boolean" column="booking_letto" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="datainvio" type="datetime" column="dataInvio" nullable="true"/>
+    <field name="ecLetto" type="boolean" column="ec_letto" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

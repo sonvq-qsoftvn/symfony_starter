@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Offertefax" table="offertefax">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="destinazione" type="string" column="destinazione" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataPartenza1" type="date" column="data_partenza1" nullable="true"/>
+    <field name="dataPartenza2" type="date" column="data_partenza2" nullable="true"/>
+    <field name="dataPartenza3" type="date" column="data_partenza3" nullable="true"/>
+    <field name="dataPartenza4" type="date" column="data_partenza4" nullable="true"/>
+    <field name="dataPartenza5" type="date" column="data_partenza5" nullable="true"/>
+    <field name="dataPartenza6" type="date" column="data_partenza6" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza7" type="date" column="data_partenza7" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza8" type="date" column="data_partenza8" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza9" type="date" column="data_partenza9" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza10" type="date" column="data_partenza10" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza11" type="date" column="data_partenza11" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza12" type="date" column="data_partenza12" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza13" type="date" column="data_partenza13" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza14" type="date" column="data_partenza14" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza15" type="date" column="data_partenza15" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza16" type="date" column="data_partenza16" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza17" type="date" column="data_partenza17" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza18" type="date" column="data_partenza18" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza19" type="date" column="data_partenza19" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="dataPartenza20" type="date" column="data_partenza20" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="cittaPartenza1" type="string" column="citta_partenza1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza2" type="string" column="citta_partenza2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza3" type="string" column="citta_partenza3" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza4" type="string" column="citta_partenza4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza5" type="string" column="citta_partenza5" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza6" type="string" column="citta_partenza6" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza7" type="string" column="citta_partenza7" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza8" type="string" column="citta_partenza8" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza9" type="string" column="citta_partenza9" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza10" type="string" column="citta_partenza10" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoOfferta" type="string" column="tipo_offerta" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prezzoDa" type="smallint" column="prezzo_da" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prezzoA" type="smallint" column="prezzo_a" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tour" type="string" column="tour" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataScadenza" type="date" column="data_scadenza" nullable="true"/>
+    <field name="dataInserimento" type="datetime" column="data_inserimento" nullable="true"/>
+    <field name="dataModifica" type="datetime" column="data_modifica" nullable="true">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="migliore" type="string" column="migliore" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img1" type="string" column="img1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img2" type="string" column="img2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img3" type="string" column="img3" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="durata" type="string" column="durata" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomeInserimento" type="string" column="nome_inserimento" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="modificato" type="string" column="modificato" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="agenti" type="string" column="agenti" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">false</option>
+      </options>
+    </field>
+    <field name="dalal" type="string" column="dalal" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

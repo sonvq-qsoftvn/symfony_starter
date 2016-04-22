@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\BackofficeToRelProv" table="backoffice_to_rel_prov">
+    <indexes>
+      <index name="ToID" columns="ToID"/>
+      <index name="ProvvigioneID" columns="ProvvigioneID"/>
+    </indexes>
+    <id name="toid" type="integer" column="ToID"/>
+    <id name="provvigioneid" type="integer" column="ProvvigioneID"/>
+    <field name="provvigionenote" type="string" column="ProvvigioneNote" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

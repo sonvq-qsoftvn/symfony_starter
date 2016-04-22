@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">D:\wamp\www\symfony3\my_project\app</parameter>
+    <parameter key="kernel.root_dir">D:\wamp\www\symfony3\symfony3\app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">D:\wamp\www\symfony3\my_project\var\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">D:\wamp\www\symfony3\my_project\var\logs</parameter>
+    <parameter key="kernel.cache_dir">D:\wamp\www\symfony3\symfony3\var\cache\dev</parameter>
+    <parameter key="kernel.logs_dir">D:\wamp\www\symfony3\symfony3\var\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -23,20 +23,36 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
-    <parameter key="database_host">127.0.0.1</parameter>
     <parameter key="database_port">null</parameter>
-    <parameter key="database_name">symfony</parameter>
-    <parameter key="database_user">root</parameter>
-    <parameter key="database_password">null</parameter>
+    <parameter key="database_host_agenti">localhost</parameter>
+    <parameter key="database_name_agenti">vacanzev_agenti</parameter>
+    <parameter key="database_user_agenti">root</parameter>
+    <parameter key="database_password_agenti"></parameter>
+    <parameter key="database_host_romano">localhost</parameter>
+    <parameter key="database_name_romano">vacanzev_romano1_eu</parameter>
+    <parameter key="database_user_romano">root</parameter>
+    <parameter key="database_password_romano"></parameter>
+    <parameter key="database_host_idetus">localhost</parameter>
+    <parameter key="database_name_idetus">vacanzev_idetus_eu</parameter>
+    <parameter key="database_user_idetus">root</parameter>
+    <parameter key="database_password_idetus"></parameter>
+    <parameter key="database_host_etticket">localhost</parameter>
+    <parameter key="database_name_etticket">vacanzev_etticket</parameter>
+    <parameter key="database_user_etticket">root</parameter>
+    <parameter key="database_password_etticket"></parameter>
+    <parameter key="database_host_listanozze">localhost</parameter>
+    <parameter key="database_name_listanozze">listanozze_new</parameter>
+    <parameter key="database_user_listanozze">root</parameter>
+    <parameter key="database_password_listanozze"></parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
-    <parameter key="secret">007a323aa0df869534da4a461cc1029c0370b3d5</parameter>
+    <parameter key="secret">1931596e546917c71ac5a1f06f1aae8db5281818</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
-    <parameter key="kernel.secret">007a323aa0df869534da4a461cc1029c0370b3d5</parameter>
+    <parameter key="kernel.secret">1931596e546917c71ac5a1f06f1aae8db5281818</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.trusted_proxies" type="collection"/>
@@ -46,7 +62,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">D:\wamp\www\symfony3\my_project\app/../var/sessions/dev</parameter>
+    <parameter key="session.save_path">D:\wamp\www\symfony3\symfony3\app/../var/sessions/dev</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
@@ -59,7 +75,7 @@
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:D:\wamp\www\symfony3\my_project\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:D:\wamp\www\symfony3\symfony3\var\cache\dev/profiler</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
@@ -71,12 +87,12 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">D:\wamp\www\symfony3\my_project\app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">D:\wamp\www\symfony3\symfony3\app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">D:\wamp\www\symfony3\my_project\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">D:\wamp\www\symfony3\symfony3\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
     <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
@@ -96,7 +112,6 @@
     <parameter key="monolog.handler.console.class">Symfony\Bridge\Monolog\Handler\ConsoleHandler</parameter>
     <parameter key="monolog.handler.group.class">Monolog\Handler\GroupHandler</parameter>
     <parameter key="monolog.handler.buffer.class">Monolog\Handler\BufferHandler</parameter>
-    <parameter key="monolog.handler.deduplication.class">Monolog\Handler\DeduplicationHandler</parameter>
     <parameter key="monolog.handler.rotating_file.class">Monolog\Handler\RotatingFileHandler</parameter>
     <parameter key="monolog.handler.syslog.class">Monolog\Handler\SyslogHandler</parameter>
     <parameter key="monolog.handler.syslogudp.class">Monolog\Handler\SyslogUdpHandler</parameter>
@@ -131,7 +146,6 @@
     <parameter key="monolog.mongo.client.class">MongoClient</parameter>
     <parameter key="monolog.handler.elasticsearch.class">Monolog\Handler\ElasticSearchHandler</parameter>
     <parameter key="monolog.elastica.client.class">Elastica\Client</parameter>
-    <parameter key="monolog.use_microseconds">true</parameter>
     <parameter key="monolog.swift_mailer.handlers" type="collection"/>
     <parameter key="monolog.handlers_to_channels" type="collection">
       <parameter key="monolog.handler.console" type="collection">
@@ -172,7 +186,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">D:\wamp\www\symfony3\my_project\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">D:\wamp\www\symfony3\symfony3\var\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -236,14 +250,22 @@
     <parameter key="doctrine.dbal.events.oracle_session_init.class">Doctrine\DBAL\Event\Listeners\OracleSessionInit</parameter>
     <parameter key="doctrine.class">Doctrine\Bundle\DoctrineBundle\Registry</parameter>
     <parameter key="doctrine.entity_managers" type="collection">
-      <parameter key="default">doctrine.orm.default_entity_manager</parameter>
+      <parameter key="idetus">doctrine.orm.idetus_entity_manager</parameter>
+      <parameter key="agenti">doctrine.orm.agenti_entity_manager</parameter>
+      <parameter key="romano">doctrine.orm.romano_entity_manager</parameter>
+      <parameter key="etticket">doctrine.orm.etticket_entity_manager</parameter>
+      <parameter key="listanozze">doctrine.orm.listanozze_entity_manager</parameter>
     </parameter>
-    <parameter key="doctrine.default_entity_manager">default</parameter>
+    <parameter key="doctrine.default_entity_manager">idetus</parameter>
     <parameter key="doctrine.dbal.connection_factory.types" type="collection"/>
     <parameter key="doctrine.connections" type="collection">
-      <parameter key="default">doctrine.dbal.default_connection</parameter>
+      <parameter key="agenti">doctrine.dbal.agenti_connection</parameter>
+      <parameter key="romano">doctrine.dbal.romano_connection</parameter>
+      <parameter key="idetus">doctrine.dbal.idetus_connection</parameter>
+      <parameter key="etticket">doctrine.dbal.etticket_connection</parameter>
+      <parameter key="listanozze">doctrine.dbal.listanozze_connection</parameter>
     </parameter>
-    <parameter key="doctrine.default_connection">default</parameter>
+    <parameter key="doctrine.default_connection">idetus</parameter>
     <parameter key="doctrine.orm.configuration.class">Doctrine\ORM\Configuration</parameter>
     <parameter key="doctrine.orm.entity_manager.class">Doctrine\ORM\EntityManager</parameter>
     <parameter key="doctrine.orm.manager_configurator.class">Doctrine\Bundle\DoctrineBundle\ManagerConfigurator</parameter>
@@ -290,7 +312,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">D:\wamp\www\symfony3\my_project\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -409,7 +431,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>D:\wamp\www\symfony3\my_project\app/Resources</argument>
+                <argument>D:\wamp\www\symfony3\symfony3\app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
@@ -436,7 +458,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>D:\wamp\www\symfony3\my_project\app/Resources</argument>
+                <argument>D:\wamp\www\symfony3\symfony3\app/Resources</argument>
               </service>
             </argument>
             <argument type="collection"/>
@@ -449,7 +471,7 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>D:\wamp\www\symfony3\my_project\app</argument>
+                <argument>D:\wamp\www\symfony3\symfony3\app</argument>
                 <argument type="collection"/>
               </service>
             </argument>
@@ -471,16 +493,15 @@
     </service>
     <service id="service_container" synthetic="true">
       <autowiring-type>Symfony\Component\DependencyInjection\ContainerInterface</autowiring-type>
-      <autowiring-type>Symfony\Component\DependencyInjection\Container</autowiring-type>
     </service>
     <service id="kernel" synthetic="true"/>
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>D:\wamp\www\symfony3\my_project\app/Resources</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
-      <argument>007a323aa0df869534da4a461cc1029c0370b3d5</argument>
+      <argument>1931596e546917c71ac5a1f06f1aae8db5281818</argument>
     </service>
     <service id="config_cache_factory" class="Symfony\Component\Config\ResourceCheckerConfigCacheFactory">
       <argument type="collection">
@@ -592,7 +613,7 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">D:\wamp\www\symfony3\my_project\var\cache\dev/translations</argument>
+        <argument key="cache_dir">D:\wamp\www\symfony3\symfony3\var\cache\dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
       <argument type="collection"/>
@@ -1052,7 +1073,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>D:\wamp\www\symfony3\my_project\var\cache\dev</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev</argument>
     </service>
     <service id="validator" class="Symfony\Component\Validator\Validator\ValidatorInterface">
       <factory service="validator.builder" method="getValidator"/>
@@ -1082,7 +1103,7 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
+          <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1114,7 +1135,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:D:\wamp\www\symfony3\my_project\var\cache\dev/profiler</argument>
+          <argument>file:D:\wamp\www\symfony3\symfony3\var\cache\dev/profiler</argument>
         </service>
       </argument>
       <argument type="service" id="monolog.logger.profiler" on-invalid="null"/>
@@ -1198,8 +1219,24 @@
             <tag name="data_collector" template="@Doctrine/Collector/db.html.twig" id="db" priority="250"/>
             <argument type="service" id="doctrine"/>
             <call method="addLogger">
-              <argument>default</argument>
-              <argument type="service" id="doctrine.dbal.logger.profiling.default"/>
+              <argument>agenti</argument>
+              <argument type="service" id="doctrine.dbal.logger.profiling.agenti"/>
+            </call>
+            <call method="addLogger">
+              <argument>romano</argument>
+              <argument type="service" id="doctrine.dbal.logger.profiling.romano"/>
+            </call>
+            <call method="addLogger">
+              <argument>idetus</argument>
+              <argument type="service" id="doctrine.dbal.logger.profiling.idetus"/>
+            </call>
+            <call method="addLogger">
+              <argument>etticket</argument>
+              <argument type="service" id="doctrine.dbal.logger.profiling.etticket"/>
+            </call>
+            <call method="addLogger">
+              <argument>listanozze</argument>
+              <argument type="service" id="doctrine.dbal.logger.profiling.listanozze"/>
             </call>
           </service>
         </argument>
@@ -1493,7 +1530,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5716e43d9693d0.27214052</argument>
+            <argument>5719d97049aa14.50633411</argument>
           </service>
         </argument>
       </argument>
@@ -1622,7 +1659,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5716e43d9693d0.27214052</argument>
+            <argument>5719d97049aa14.50633411</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -1668,7 +1705,7 @@
           <argument>form_div_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">filename</argument>
-        <argument key="cache">D:\wamp\www\symfony3\my_project\var\cache\dev/twig</argument>
+        <argument key="cache">D:\wamp\www\symfony3\symfony3\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -1728,7 +1765,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>D:\wamp\www\symfony3\my_project\app</argument>
+            <argument>D:\wamp\www\symfony3\symfony3\app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -1879,7 +1916,7 @@
       <argument>twig.controller.exception:showAction</argument>
     </service>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>D:\wamp\www\symfony3\my_project\var\logs/dev.log</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\var\logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -1902,29 +1939,42 @@
     <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger">
       <tag name="swiftmailer.default.plugin"/>
     </service>
+    <service id="doctrine.dbal.logger" class="Symfony\Bridge\Doctrine\Logger\DbalLogger" public="false">
+      <tag name="monolog.logger" channel="doctrine"/>
+      <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
+      <argument type="service" id="debug.stopwatch" on-invalid="null"/>
+    </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
       <argument type="collection"/>
     </service>
     <service id="doctrine" class="Doctrine\Bundle\DoctrineBundle\Registry">
       <argument type="service" id="service_container"/>
       <argument type="collection">
-        <argument key="default">doctrine.dbal.default_connection</argument>
+        <argument key="agenti">doctrine.dbal.agenti_connection</argument>
+        <argument key="romano">doctrine.dbal.romano_connection</argument>
+        <argument key="idetus">doctrine.dbal.idetus_connection</argument>
+        <argument key="etticket">doctrine.dbal.etticket_connection</argument>
+        <argument key="listanozze">doctrine.dbal.listanozze_connection</argument>
       </argument>
       <argument type="collection">
-        <argument key="default">doctrine.orm.default_entity_manager</argument>
+        <argument key="idetus">doctrine.orm.idetus_entity_manager</argument>
+        <argument key="agenti">doctrine.orm.agenti_entity_manager</argument>
+        <argument key="romano">doctrine.orm.romano_entity_manager</argument>
+        <argument key="etticket">doctrine.orm.etticket_entity_manager</argument>
+        <argument key="listanozze">doctrine.orm.listanozze_entity_manager</argument>
       </argument>
-      <argument>default</argument>
-      <argument>default</argument>
+      <argument>idetus</argument>
+      <argument>idetus</argument>
     </service>
-    <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
-    <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection">
+    <service id="doctrine.dbal.logger.profiling.agenti" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
+    <service id="doctrine.dbal.agenti_connection" class="Doctrine\DBAL\Connection">
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
-        <argument key="host">127.0.0.1</argument>
+        <argument key="host">localhost</argument>
         <argument key="port">null</argument>
-        <argument key="dbname">symfony</argument>
+        <argument key="dbname">vacanzev_agenti</argument>
         <argument key="user">root</argument>
-        <argument key="password">null</argument>
+        <argument key="password"></argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
@@ -1935,16 +1985,10 @@
             <argument type="service">
               <service class="Doctrine\DBAL\Logging\LoggerChain" public="false">
                 <call method="addLogger">
-                  <argument type="service">
-                    <service class="Symfony\Bridge\Doctrine\Logger\DbalLogger" public="false">
-                      <tag name="monolog.logger" channel="doctrine"/>
-                      <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
-                      <argument type="service" id="debug.stopwatch" on-invalid="null"/>
-                    </service>
-                  </argument>
+                  <argument type="service" id="doctrine.dbal.logger"/>
                 </call>
                 <call method="addLogger">
-                  <argument type="service" id="doctrine.dbal.logger.profiling.default"/>
+                  <argument type="service" id="doctrine.dbal.logger.profiling.agenti"/>
                 </call>
               </service>
             </argument>
@@ -1958,11 +2002,328 @@
             <argument type="collection">
               <argument>loadClassMetadata</argument>
             </argument>
-            <argument type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
+            <argument type="service" id="doctrine.orm.etticket_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.agenti_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.idetus_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.romano_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.listanozze_listeners.attach_entity_listeners"/>
           </call>
         </service>
       </argument>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+        <argument key="set">string</argument>
+        <argument key="varbinary">string</argument>
+        <argument key="tinyblob">text</argument>
+      </argument>
+      <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
+    </service>
+    <service id="doctrine.dbal.logger.profiling.romano" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
+    <service id="doctrine.dbal.romano_connection" class="Doctrine\DBAL\Connection">
+      <argument type="collection">
+        <argument key="driver">pdo_mysql</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="dbname">vacanzev_romano1_eu</argument>
+        <argument key="user">root</argument>
+        <argument key="password"></argument>
+        <argument key="charset">UTF8</argument>
+        <argument key="driverOptions" type="collection"/>
+        <argument key="defaultTableOptions" type="collection"/>
+      </argument>
+      <argument type="service">
+        <service class="Doctrine\DBAL\Configuration" public="false">
+          <call method="setSQLLogger">
+            <argument type="service">
+              <service class="Doctrine\DBAL\Logging\LoggerChain" public="false">
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger"/>
+                </call>
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger.profiling.romano"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
+          <argument type="service" id="service_container"/>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.etticket_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.agenti_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.idetus_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.romano_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.listanozze_listeners.attach_entity_listeners"/>
+          </call>
+        </service>
+      </argument>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+        <argument key="set">string</argument>
+        <argument key="varbinary">string</argument>
+        <argument key="tinyblob">text</argument>
+      </argument>
+      <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
+    </service>
+    <service id="doctrine.dbal.logger.profiling.idetus" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
+    <service id="doctrine.dbal.idetus_connection" class="Doctrine\DBAL\Connection">
+      <argument type="collection">
+        <argument key="driver">pdo_mysql</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="dbname">vacanzev_idetus_eu</argument>
+        <argument key="user">root</argument>
+        <argument key="password"></argument>
+        <argument key="charset">UTF8</argument>
+        <argument key="driverOptions" type="collection"/>
+        <argument key="defaultTableOptions" type="collection"/>
+      </argument>
+      <argument type="service">
+        <service class="Doctrine\DBAL\Configuration" public="false">
+          <call method="setSQLLogger">
+            <argument type="service">
+              <service class="Doctrine\DBAL\Logging\LoggerChain" public="false">
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger"/>
+                </call>
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger.profiling.idetus"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
+          <argument type="service" id="service_container"/>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.etticket_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.agenti_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.idetus_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.romano_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.listanozze_listeners.attach_entity_listeners"/>
+          </call>
+        </service>
+      </argument>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+        <argument key="set">string</argument>
+        <argument key="varbinary">string</argument>
+        <argument key="tinyblob">text</argument>
+      </argument>
+      <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
+    </service>
+    <service id="doctrine.dbal.logger.profiling.etticket" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
+    <service id="doctrine.dbal.etticket_connection" class="Doctrine\DBAL\Connection">
+      <argument type="collection">
+        <argument key="driver">pdo_mysql</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="dbname">vacanzev_etticket</argument>
+        <argument key="user">root</argument>
+        <argument key="password"></argument>
+        <argument key="charset">UTF8</argument>
+        <argument key="driverOptions" type="collection"/>
+        <argument key="defaultTableOptions" type="collection"/>
+      </argument>
+      <argument type="service">
+        <service class="Doctrine\DBAL\Configuration" public="false">
+          <call method="setSQLLogger">
+            <argument type="service">
+              <service class="Doctrine\DBAL\Logging\LoggerChain" public="false">
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger"/>
+                </call>
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger.profiling.etticket"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
+          <argument type="service" id="service_container"/>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.etticket_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.agenti_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.idetus_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.romano_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.listanozze_listeners.attach_entity_listeners"/>
+          </call>
+        </service>
+      </argument>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+        <argument key="set">string</argument>
+        <argument key="varbinary">string</argument>
+        <argument key="tinyblob">text</argument>
+      </argument>
+      <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
+    </service>
+    <service id="doctrine.dbal.logger.profiling.listanozze" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
+    <service id="doctrine.dbal.listanozze_connection" class="Doctrine\DBAL\Connection">
+      <argument type="collection">
+        <argument key="driver">pdo_mysql</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="dbname">listanozze_new</argument>
+        <argument key="user">root</argument>
+        <argument key="password"></argument>
+        <argument key="charset">UTF8</argument>
+        <argument key="driverOptions" type="collection"/>
+        <argument key="defaultTableOptions" type="collection"/>
+      </argument>
+      <argument type="service">
+        <service class="Doctrine\DBAL\Configuration" public="false">
+          <call method="setSQLLogger">
+            <argument type="service">
+              <service class="Doctrine\DBAL\Logging\LoggerChain" public="false">
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger"/>
+                </call>
+                <call method="addLogger">
+                  <argument type="service" id="doctrine.dbal.logger.profiling.listanozze"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
+          <argument type="service" id="service_container"/>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.etticket_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.agenti_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.idetus_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.romano_listeners.attach_entity_listeners"/>
+          </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.listanozze_listeners.attach_entity_listeners"/>
+          </call>
+        </service>
+      </argument>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+        <argument key="set">string</argument>
+        <argument key="varbinary">string</argument>
+        <argument key="tinyblob">text</argument>
+      </argument>
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
     </service>
     <service id="form.type_guesser.doctrine" class="Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser">
@@ -1981,52 +2342,70 @@
       <tag name="validator.initializer"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
+    <service id="doctrine.orm.naming_strategy.default" class="Doctrine\ORM\Mapping\DefaultNamingStrategy" public="false"/>
+    <service id="doctrine.orm.quote_strategy.default" class="Doctrine\ORM\Mapping\DefaultQuoteStrategy" public="false"/>
+    <service id="doctrine_cache.providers.doctrine.orm.idetus_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8</argument>
+        <argument>sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
       </call>
     </service>
-    <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
+    <service id="doctrine_cache.providers.doctrine.orm.idetus_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8</argument>
+        <argument>sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
       </call>
     </service>
-    <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
+    <service id="doctrine_cache.providers.doctrine.orm.idetus_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8</argument>
+        <argument>sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
       </call>
     </service>
-    <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
-    <service id="doctrine.orm.default_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+    <service id="doctrine.orm.idetus_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
+    <service id="doctrine.orm.idetus_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
       <tag name="doctrine.event_listener" event="loadClassMetadata"/>
     </service>
-    <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
+    <service id="doctrine.orm.idetus_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="Doctrine\ORM\EntityManager">
-      <argument type="service" id="doctrine.dbal.default_connection"/>
+    <service id="doctrine.orm.idetus_entity_manager" class="Doctrine\ORM\EntityManager">
+      <argument type="service" id="doctrine.dbal.idetus_connection"/>
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
           </call>
           <call method="setMetadataCacheImpl">
-            <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.idetus_metadata_cache"/>
           </call>
           <call method="setQueryCacheImpl">
-            <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.idetus_query_cache"/>
           </call>
           <call method="setResultCacheImpl">
-            <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.idetus_result_cache"/>
           </call>
           <call method="setMetadataDriverImpl">
             <argument type="service">
-              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false"/>
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\wamp\www\symfony3\symfony3\src\AppBundle\Resources\config\doctrine">AppBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>D:\wamp\www\symfony3\my_project\var\cache\dev/doctrine/orm/Proxies</argument>
+            <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -2041,22 +2420,374 @@
             <argument>Doctrine\ORM\EntityRepository</argument>
           </call>
           <call method="setNamingStrategy">
-            <argument type="service">
-              <service class="Doctrine\ORM\Mapping\UnderscoreNamingStrategy" public="false"/>
-            </argument>
+            <argument type="service" id="doctrine.orm.naming_strategy.default"/>
           </call>
           <call method="setQuoteStrategy">
-            <argument type="service">
-              <service class="Doctrine\ORM\Mapping\DefaultQuoteStrategy" public="false"/>
-            </argument>
+            <argument type="service" id="doctrine.orm.quote_strategy.default"/>
           </call>
           <call method="setEntityListenerResolver">
-            <argument type="service" id="doctrine.orm.default_entity_listener_resolver"/>
+            <argument type="service" id="doctrine.orm.idetus_entity_listener_resolver"/>
           </call>
         </service>
       </argument>
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
-      <configurator service="doctrine.orm.default_manager_configurator" method="configure"/>
+      <configurator service="doctrine.orm.idetus_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.agenti_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.agenti_result_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.agenti_query_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine.orm.agenti_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
+    <service id="doctrine.orm.agenti_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
+    </service>
+    <service id="doctrine.orm.agenti_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
+      <argument type="collection"/>
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine.orm.agenti_entity_manager" class="Doctrine\ORM\EntityManager">
+      <argument type="service" id="doctrine.dbal.agenti_connection"/>
+      <argument type="service">
+        <service class="Doctrine\ORM\Configuration" public="false">
+          <call method="setEntityNamespaces">
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
+          </call>
+          <call method="setMetadataCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.agenti_metadata_cache"/>
+          </call>
+          <call method="setQueryCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.agenti_query_cache"/>
+          </call>
+          <call method="setResultCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.agenti_result_cache"/>
+          </call>
+          <call method="setMetadataDriverImpl">
+            <argument type="service">
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\wamp\www\symfony3\symfony3\src\AppBundle\Resources\config\doctrine">AppBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="setProxyDir">
+            <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</argument>
+          </call>
+          <call method="setProxyNamespace">
+            <argument>Proxies</argument>
+          </call>
+          <call method="setAutoGenerateProxyClasses">
+            <argument>true</argument>
+          </call>
+          <call method="setClassMetadataFactoryName">
+            <argument>Doctrine\ORM\Mapping\ClassMetadataFactory</argument>
+          </call>
+          <call method="setDefaultRepositoryClassName">
+            <argument>Doctrine\ORM\EntityRepository</argument>
+          </call>
+          <call method="setNamingStrategy">
+            <argument type="service" id="doctrine.orm.naming_strategy.default"/>
+          </call>
+          <call method="setQuoteStrategy">
+            <argument type="service" id="doctrine.orm.quote_strategy.default"/>
+          </call>
+          <call method="setEntityListenerResolver">
+            <argument type="service" id="doctrine.orm.agenti_entity_listener_resolver"/>
+          </call>
+        </service>
+      </argument>
+      <factory class="Doctrine\ORM\EntityManager" method="create"/>
+      <configurator service="doctrine.orm.agenti_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.romano_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.romano_result_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.romano_query_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine.orm.romano_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
+    <service id="doctrine.orm.romano_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
+    </service>
+    <service id="doctrine.orm.romano_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
+      <argument type="collection"/>
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine.orm.romano_entity_manager" class="Doctrine\ORM\EntityManager">
+      <argument type="service" id="doctrine.dbal.romano_connection"/>
+      <argument type="service">
+        <service class="Doctrine\ORM\Configuration" public="false">
+          <call method="setEntityNamespaces">
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
+          </call>
+          <call method="setMetadataCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.romano_metadata_cache"/>
+          </call>
+          <call method="setQueryCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.romano_query_cache"/>
+          </call>
+          <call method="setResultCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.romano_result_cache"/>
+          </call>
+          <call method="setMetadataDriverImpl">
+            <argument type="service">
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\wamp\www\symfony3\symfony3\src\AppBundle\Resources\config\doctrine">AppBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="setProxyDir">
+            <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</argument>
+          </call>
+          <call method="setProxyNamespace">
+            <argument>Proxies</argument>
+          </call>
+          <call method="setAutoGenerateProxyClasses">
+            <argument>true</argument>
+          </call>
+          <call method="setClassMetadataFactoryName">
+            <argument>Doctrine\ORM\Mapping\ClassMetadataFactory</argument>
+          </call>
+          <call method="setDefaultRepositoryClassName">
+            <argument>Doctrine\ORM\EntityRepository</argument>
+          </call>
+          <call method="setNamingStrategy">
+            <argument type="service" id="doctrine.orm.naming_strategy.default"/>
+          </call>
+          <call method="setQuoteStrategy">
+            <argument type="service" id="doctrine.orm.quote_strategy.default"/>
+          </call>
+          <call method="setEntityListenerResolver">
+            <argument type="service" id="doctrine.orm.romano_entity_listener_resolver"/>
+          </call>
+        </service>
+      </argument>
+      <factory class="Doctrine\ORM\EntityManager" method="create"/>
+      <configurator service="doctrine.orm.romano_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.etticket_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.etticket_result_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.etticket_query_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine.orm.etticket_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
+    <service id="doctrine.orm.etticket_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
+    </service>
+    <service id="doctrine.orm.etticket_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
+      <argument type="collection"/>
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine.orm.etticket_entity_manager" class="Doctrine\ORM\EntityManager">
+      <argument type="service" id="doctrine.dbal.etticket_connection"/>
+      <argument type="service">
+        <service class="Doctrine\ORM\Configuration" public="false">
+          <call method="setEntityNamespaces">
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
+          </call>
+          <call method="setMetadataCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.etticket_metadata_cache"/>
+          </call>
+          <call method="setQueryCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.etticket_query_cache"/>
+          </call>
+          <call method="setResultCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.etticket_result_cache"/>
+          </call>
+          <call method="setMetadataDriverImpl">
+            <argument type="service">
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\wamp\www\symfony3\symfony3\src\AppBundle\Resources\config\doctrine">AppBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="setProxyDir">
+            <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</argument>
+          </call>
+          <call method="setProxyNamespace">
+            <argument>Proxies</argument>
+          </call>
+          <call method="setAutoGenerateProxyClasses">
+            <argument>true</argument>
+          </call>
+          <call method="setClassMetadataFactoryName">
+            <argument>Doctrine\ORM\Mapping\ClassMetadataFactory</argument>
+          </call>
+          <call method="setDefaultRepositoryClassName">
+            <argument>Doctrine\ORM\EntityRepository</argument>
+          </call>
+          <call method="setNamingStrategy">
+            <argument type="service" id="doctrine.orm.naming_strategy.default"/>
+          </call>
+          <call method="setQuoteStrategy">
+            <argument type="service" id="doctrine.orm.quote_strategy.default"/>
+          </call>
+          <call method="setEntityListenerResolver">
+            <argument type="service" id="doctrine.orm.etticket_entity_listener_resolver"/>
+          </call>
+        </service>
+      </argument>
+      <factory class="Doctrine\ORM\EntityManager" method="create"/>
+      <configurator service="doctrine.orm.etticket_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.listanozze_result_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine_cache.providers.doctrine.orm.listanozze_query_cache" class="Doctrine\Common\Cache\ArrayCache">
+      <call method="setNamespace">
+        <argument>sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02</argument>
+      </call>
+    </service>
+    <service id="doctrine.orm.listanozze_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
+    <service id="doctrine.orm.listanozze_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
+    </service>
+    <service id="doctrine.orm.listanozze_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
+      <argument type="collection"/>
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine.orm.listanozze_entity_manager" class="Doctrine\ORM\EntityManager">
+      <argument type="service" id="doctrine.dbal.listanozze_connection"/>
+      <argument type="service">
+        <service class="Doctrine\ORM\Configuration" public="false">
+          <call method="setEntityNamespaces">
+            <argument type="collection">
+              <argument key="AppBundle">AppBundle\Entity</argument>
+            </argument>
+          </call>
+          <call method="setMetadataCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache"/>
+          </call>
+          <call method="setQueryCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.listanozze_query_cache"/>
+          </call>
+          <call method="setResultCacheImpl">
+            <argument type="service" id="doctrine_cache.providers.doctrine.orm.listanozze_result_cache"/>
+          </call>
+          <call method="setMetadataDriverImpl">
+            <argument type="service">
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\wamp\www\symfony3\symfony3\src\AppBundle\Resources\config\doctrine">AppBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>AppBundle\Entity</argument>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="setProxyDir">
+            <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/doctrine/orm/Proxies</argument>
+          </call>
+          <call method="setProxyNamespace">
+            <argument>Proxies</argument>
+          </call>
+          <call method="setAutoGenerateProxyClasses">
+            <argument>true</argument>
+          </call>
+          <call method="setClassMetadataFactoryName">
+            <argument>Doctrine\ORM\Mapping\ClassMetadataFactory</argument>
+          </call>
+          <call method="setDefaultRepositoryClassName">
+            <argument>Doctrine\ORM\EntityRepository</argument>
+          </call>
+          <call method="setNamingStrategy">
+            <argument type="service" id="doctrine.orm.naming_strategy.default"/>
+          </call>
+          <call method="setQuoteStrategy">
+            <argument type="service" id="doctrine.orm.quote_strategy.default"/>
+          </call>
+          <call method="setEntityListenerResolver">
+            <argument type="service" id="doctrine.orm.listanozze_entity_listener_resolver"/>
+          </call>
+        </service>
+      </argument>
+      <factory class="Doctrine\ORM\EntityManager" method="create"/>
+      <configurator service="doctrine.orm.listanozze_manager_configurator" method="configure"/>
     </service>
     <service id="sensio_framework_extra.view.guesser" class="Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser">
       <argument type="service" id="kernel"/>
@@ -2328,12 +3059,12 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>D:\wamp\www\symfony3\my_project\var\cache\dev/sessions</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler">
-      <argument>D:\wamp\www\symfony3\my_project\app/../var/sessions/dev</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\app/../var/sessions/dev</argument>
     </service>
     <service id="templating.loader" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\FilesystemLoader">
       <argument type="service" id="templating.locator"/>
@@ -2346,9 +3077,9 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>D:\wamp\www\symfony3\my_project\app/config/routing_dev.yml</argument>
+      <argument>D:\wamp\www\symfony3\symfony3\app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">D:\wamp\www\symfony3\my_project\var\cache\dev</argument>
+        <argument key="cache_dir">D:\wamp\www\symfony3\symfony3\var\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -2372,7 +3103,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>D:\wamp\www\symfony3\my_project\var\cache\dev/annotations</argument>
+          <argument>D:\wamp\www\symfony3\symfony3\var\cache\dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
@@ -2389,45 +3120,42 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\app/Resources/views</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>D:\wamp\www\symfony3\my_project\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
+        <argument>D:\wamp\www\symfony3\symfony3\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
       <argument>app</argument>
-      <call method="useMicrosecondTimestamps">
-        <argument>true</argument>
-      </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.console"/>
       </call>
@@ -2437,7 +3165,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.debug"/>
       </call>
-      <autowiring-type>Psr\Log\LoggerInterface</autowiring-type>
     </service>
     <service id="swiftmailer.mailer.default.transport" class="Swift_Transport_SpoolTransport">
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
@@ -2506,11 +3233,23 @@
     <service id="swiftmailer.mailer" alias="swiftmailer.mailer.default"/>
     <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport"/>
     <service id="mailer" alias="swiftmailer.mailer.default"/>
-    <service id="database_connection" alias="doctrine.dbal.default_connection"/>
-    <service id="doctrine.orm.entity_manager" alias="doctrine.orm.default_entity_manager"/>
-    <service id="doctrine.orm.default_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
-    <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
-    <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
+    <service id="database_connection" alias="doctrine.dbal.idetus_connection"/>
+    <service id="doctrine.orm.entity_manager" alias="doctrine.orm.idetus_entity_manager"/>
+    <service id="doctrine.orm.idetus_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.idetus_metadata_cache"/>
+    <service id="doctrine.orm.idetus_result_cache" alias="doctrine_cache.providers.doctrine.orm.idetus_result_cache"/>
+    <service id="doctrine.orm.idetus_query_cache" alias="doctrine_cache.providers.doctrine.orm.idetus_query_cache"/>
+    <service id="doctrine.orm.agenti_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.agenti_metadata_cache"/>
+    <service id="doctrine.orm.agenti_result_cache" alias="doctrine_cache.providers.doctrine.orm.agenti_result_cache"/>
+    <service id="doctrine.orm.agenti_query_cache" alias="doctrine_cache.providers.doctrine.orm.agenti_query_cache"/>
+    <service id="doctrine.orm.romano_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.romano_metadata_cache"/>
+    <service id="doctrine.orm.romano_result_cache" alias="doctrine_cache.providers.doctrine.orm.romano_result_cache"/>
+    <service id="doctrine.orm.romano_query_cache" alias="doctrine_cache.providers.doctrine.orm.romano_query_cache"/>
+    <service id="doctrine.orm.etticket_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.etticket_metadata_cache"/>
+    <service id="doctrine.orm.etticket_result_cache" alias="doctrine_cache.providers.doctrine.orm.etticket_result_cache"/>
+    <service id="doctrine.orm.etticket_query_cache" alias="doctrine_cache.providers.doctrine.orm.etticket_query_cache"/>
+    <service id="doctrine.orm.listanozze_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache"/>
+    <service id="doctrine.orm.listanozze_result_cache" alias="doctrine_cache.providers.doctrine.orm.listanozze_result_cache"/>
+    <service id="doctrine.orm.listanozze_query_cache" alias="doctrine_cache.providers.doctrine.orm.listanozze_query_cache"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
   </services>
 </container>

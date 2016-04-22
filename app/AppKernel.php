@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class AppKernel extends Kernel
 {
@@ -45,6 +46,20 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $request = Request::createFromGlobals();
+        // Initialize config file name
+        $configFileName = $this->getRootDir() . '/config/config_' . $this->getEnvironment();
+        
+        // Set domain environment attribute based on HTTP_HOST
+        // We will use this attribute to load the config file and in many things to do
+//        if (strpos($request->server->get('HTTP_HOST'), 'agenziaeu') !== false) {
+            $request->attributes->set('domain_env', 'eu');
+            $configFileName .= '.eu';
+//        } else {
+//            $request->attributes->set('domain_env', 'ita');
+//        }
+        
+        $loader->load($configFileName . '.yml');
     }
+    
 }

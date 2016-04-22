@@ -687,7 +687,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -721,7 +721,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -771,7 +771,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_2"][@value="&c"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -807,7 +807,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -843,7 +843,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -879,7 +879,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][@value="&b"][not(@checked)][@class="foo&bar"]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -925,7 +925,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -972,7 +972,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1007,7 +1007,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="radio"][@name="name"][@id="name_1"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1052,7 +1052,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_2"][@checked][not(@required)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1086,7 +1086,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1136,7 +1136,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_2"][@value="&c"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1172,7 +1172,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_1"][@value="&b"][not(@checked)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1218,7 +1218,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_2"][@checked][not(@required)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1264,7 +1264,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
                         ./input[@type="checkbox"][@name="name[]"][@id="name_2"][@checked][not(@required)]
                     ]
             ]
-        /following-sibling::input[@type="hidden"][@id="name__token"]
+        /following-sibling::input[@type="hidden"][@id="name__token"][@class="form-control"]
     ]
 '
         );
@@ -1766,7 +1766,7 @@ abstract class AbstractBootstrap3LayoutTest extends AbstractLayoutTest
 '/input
     [@type="hidden"]
     [@name="name"]
-    [@class="my&class"]
+    [@class="my&class form-control"]
     [@value="foo&bar"]
 '
         );

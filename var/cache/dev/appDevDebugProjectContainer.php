@@ -49,18 +49,57 @@ class appDevDebugProjectContainer extends Container
             'debug.event_dispatcher' => 'getDebug_EventDispatcherService',
             'debug.stopwatch' => 'getDebug_StopwatchService',
             'doctrine' => 'getDoctrineService',
+            'doctrine.dbal.agenti_connection' => 'getDoctrine_Dbal_AgentiConnectionService',
             'doctrine.dbal.connection_factory' => 'getDoctrine_Dbal_ConnectionFactoryService',
-            'doctrine.dbal.default_connection' => 'getDoctrine_Dbal_DefaultConnectionService',
-            'doctrine.dbal.logger.profiling.default' => 'getDoctrine_Dbal_Logger_Profiling_DefaultService',
-            'doctrine.orm.default_entity_listener_resolver' => 'getDoctrine_Orm_DefaultEntityListenerResolverService',
-            'doctrine.orm.default_entity_manager' => 'getDoctrine_Orm_DefaultEntityManagerService',
-            'doctrine.orm.default_listeners.attach_entity_listeners' => 'getDoctrine_Orm_DefaultListeners_AttachEntityListenersService',
-            'doctrine.orm.default_manager_configurator' => 'getDoctrine_Orm_DefaultManagerConfiguratorService',
+            'doctrine.dbal.etticket_connection' => 'getDoctrine_Dbal_EtticketConnectionService',
+            'doctrine.dbal.idetus_connection' => 'getDoctrine_Dbal_IdetusConnectionService',
+            'doctrine.dbal.listanozze_connection' => 'getDoctrine_Dbal_ListanozzeConnectionService',
+            'doctrine.dbal.logger' => 'getDoctrine_Dbal_LoggerService',
+            'doctrine.dbal.logger.profiling.agenti' => 'getDoctrine_Dbal_Logger_Profiling_AgentiService',
+            'doctrine.dbal.logger.profiling.etticket' => 'getDoctrine_Dbal_Logger_Profiling_EtticketService',
+            'doctrine.dbal.logger.profiling.idetus' => 'getDoctrine_Dbal_Logger_Profiling_IdetusService',
+            'doctrine.dbal.logger.profiling.listanozze' => 'getDoctrine_Dbal_Logger_Profiling_ListanozzeService',
+            'doctrine.dbal.logger.profiling.romano' => 'getDoctrine_Dbal_Logger_Profiling_RomanoService',
+            'doctrine.dbal.romano_connection' => 'getDoctrine_Dbal_RomanoConnectionService',
+            'doctrine.orm.agenti_entity_listener_resolver' => 'getDoctrine_Orm_AgentiEntityListenerResolverService',
+            'doctrine.orm.agenti_entity_manager' => 'getDoctrine_Orm_AgentiEntityManagerService',
+            'doctrine.orm.agenti_listeners.attach_entity_listeners' => 'getDoctrine_Orm_AgentiListeners_AttachEntityListenersService',
+            'doctrine.orm.agenti_manager_configurator' => 'getDoctrine_Orm_AgentiManagerConfiguratorService',
+            'doctrine.orm.etticket_entity_listener_resolver' => 'getDoctrine_Orm_EtticketEntityListenerResolverService',
+            'doctrine.orm.etticket_entity_manager' => 'getDoctrine_Orm_EtticketEntityManagerService',
+            'doctrine.orm.etticket_listeners.attach_entity_listeners' => 'getDoctrine_Orm_EtticketListeners_AttachEntityListenersService',
+            'doctrine.orm.etticket_manager_configurator' => 'getDoctrine_Orm_EtticketManagerConfiguratorService',
+            'doctrine.orm.idetus_entity_listener_resolver' => 'getDoctrine_Orm_IdetusEntityListenerResolverService',
+            'doctrine.orm.idetus_entity_manager' => 'getDoctrine_Orm_IdetusEntityManagerService',
+            'doctrine.orm.idetus_listeners.attach_entity_listeners' => 'getDoctrine_Orm_IdetusListeners_AttachEntityListenersService',
+            'doctrine.orm.idetus_manager_configurator' => 'getDoctrine_Orm_IdetusManagerConfiguratorService',
+            'doctrine.orm.listanozze_entity_listener_resolver' => 'getDoctrine_Orm_ListanozzeEntityListenerResolverService',
+            'doctrine.orm.listanozze_entity_manager' => 'getDoctrine_Orm_ListanozzeEntityManagerService',
+            'doctrine.orm.listanozze_listeners.attach_entity_listeners' => 'getDoctrine_Orm_ListanozzeListeners_AttachEntityListenersService',
+            'doctrine.orm.listanozze_manager_configurator' => 'getDoctrine_Orm_ListanozzeManagerConfiguratorService',
+            'doctrine.orm.naming_strategy.default' => 'getDoctrine_Orm_NamingStrategy_DefaultService',
+            'doctrine.orm.quote_strategy.default' => 'getDoctrine_Orm_QuoteStrategy_DefaultService',
+            'doctrine.orm.romano_entity_listener_resolver' => 'getDoctrine_Orm_RomanoEntityListenerResolverService',
+            'doctrine.orm.romano_entity_manager' => 'getDoctrine_Orm_RomanoEntityManagerService',
+            'doctrine.orm.romano_listeners.attach_entity_listeners' => 'getDoctrine_Orm_RomanoListeners_AttachEntityListenersService',
+            'doctrine.orm.romano_manager_configurator' => 'getDoctrine_Orm_RomanoManagerConfiguratorService',
             'doctrine.orm.validator.unique' => 'getDoctrine_Orm_Validator_UniqueService',
             'doctrine.orm.validator_initializer' => 'getDoctrine_Orm_ValidatorInitializerService',
-            'doctrine_cache.providers.doctrine.orm.default_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_DefaultMetadataCacheService',
-            'doctrine_cache.providers.doctrine.orm.default_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_DefaultQueryCacheService',
-            'doctrine_cache.providers.doctrine.orm.default_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_DefaultResultCacheService',
+            'doctrine_cache.providers.doctrine.orm.agenti_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_AgentiMetadataCacheService',
+            'doctrine_cache.providers.doctrine.orm.agenti_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_AgentiQueryCacheService',
+            'doctrine_cache.providers.doctrine.orm.agenti_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_AgentiResultCacheService',
+            'doctrine_cache.providers.doctrine.orm.etticket_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_EtticketMetadataCacheService',
+            'doctrine_cache.providers.doctrine.orm.etticket_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_EtticketQueryCacheService',
+            'doctrine_cache.providers.doctrine.orm.etticket_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_EtticketResultCacheService',
+            'doctrine_cache.providers.doctrine.orm.idetus_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_IdetusMetadataCacheService',
+            'doctrine_cache.providers.doctrine.orm.idetus_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_IdetusQueryCacheService',
+            'doctrine_cache.providers.doctrine.orm.idetus_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_IdetusResultCacheService',
+            'doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_ListanozzeMetadataCacheService',
+            'doctrine_cache.providers.doctrine.orm.listanozze_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_ListanozzeQueryCacheService',
+            'doctrine_cache.providers.doctrine.orm.listanozze_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_ListanozzeResultCacheService',
+            'doctrine_cache.providers.doctrine.orm.romano_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoMetadataCacheService',
+            'doctrine_cache.providers.doctrine.orm.romano_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoQueryCacheService',
+            'doctrine_cache.providers.doctrine.orm.romano_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoResultCacheService',
             'file_locator' => 'getFileLocatorService',
             'filesystem' => 'getFilesystemService',
             'form.factory' => 'getForm_FactoryService',
@@ -241,11 +280,23 @@ class appDevDebugProjectContainer extends Container
         );
         $this->aliases = array(
             'console.command.sensiolabs_security_command_securitycheckercommand' => 'sensio_distribution.security_checker.command',
-            'database_connection' => 'doctrine.dbal.default_connection',
-            'doctrine.orm.default_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.default_metadata_cache',
-            'doctrine.orm.default_query_cache' => 'doctrine_cache.providers.doctrine.orm.default_query_cache',
-            'doctrine.orm.default_result_cache' => 'doctrine_cache.providers.doctrine.orm.default_result_cache',
-            'doctrine.orm.entity_manager' => 'doctrine.orm.default_entity_manager',
+            'database_connection' => 'doctrine.dbal.idetus_connection',
+            'doctrine.orm.agenti_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_metadata_cache',
+            'doctrine.orm.agenti_query_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_query_cache',
+            'doctrine.orm.agenti_result_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_result_cache',
+            'doctrine.orm.entity_manager' => 'doctrine.orm.idetus_entity_manager',
+            'doctrine.orm.etticket_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_metadata_cache',
+            'doctrine.orm.etticket_query_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_query_cache',
+            'doctrine.orm.etticket_result_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_result_cache',
+            'doctrine.orm.idetus_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.idetus_metadata_cache',
+            'doctrine.orm.idetus_query_cache' => 'doctrine_cache.providers.doctrine.orm.idetus_query_cache',
+            'doctrine.orm.idetus_result_cache' => 'doctrine_cache.providers.doctrine.orm.idetus_result_cache',
+            'doctrine.orm.listanozze_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache',
+            'doctrine.orm.listanozze_query_cache' => 'doctrine_cache.providers.doctrine.orm.listanozze_query_cache',
+            'doctrine.orm.listanozze_result_cache' => 'doctrine_cache.providers.doctrine.orm.listanozze_result_cache',
+            'doctrine.orm.romano_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.romano_metadata_cache',
+            'doctrine.orm.romano_query_cache' => 'doctrine_cache.providers.doctrine.orm.romano_query_cache',
+            'doctrine.orm.romano_result_cache' => 'doctrine_cache.providers.doctrine.orm.romano_result_cache',
             'event_dispatcher' => 'debug.event_dispatcher',
             'mailer' => 'swiftmailer.mailer.default',
             'session.storage' => 'session.storage.native',
@@ -515,7 +566,34 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrineService()
     {
-        return $this->services['doctrine'] = new \Doctrine\Bundle\DoctrineBundle\Registry($this, array('default' => 'doctrine.dbal.default_connection'), array('default' => 'doctrine.orm.default_entity_manager'), 'default', 'default');
+        return $this->services['doctrine'] = new \Doctrine\Bundle\DoctrineBundle\Registry($this, array('agenti' => 'doctrine.dbal.agenti_connection', 'romano' => 'doctrine.dbal.romano_connection', 'idetus' => 'doctrine.dbal.idetus_connection', 'etticket' => 'doctrine.dbal.etticket_connection', 'listanozze' => 'doctrine.dbal.listanozze_connection'), array('idetus' => 'doctrine.orm.idetus_entity_manager', 'agenti' => 'doctrine.orm.agenti_entity_manager', 'romano' => 'doctrine.orm.romano_entity_manager', 'etticket' => 'doctrine.orm.etticket_entity_manager', 'listanozze' => 'doctrine.orm.listanozze_entity_manager'), 'idetus', 'idetus');
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.agenti_connection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\DBAL\Connection A Doctrine\DBAL\Connection instance.
+     */
+    protected function getDoctrine_Dbal_AgentiConnectionService()
+    {
+        $a = new \Doctrine\DBAL\Logging\LoggerChain();
+        $a->addLogger($this->get('doctrine.dbal.logger'));
+        $a->addLogger($this->get('doctrine.dbal.logger.profiling.agenti'));
+
+        $b = new \Doctrine\DBAL\Configuration();
+        $b->setSQLLogger($a);
+
+        $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
+
+        return $this->services['doctrine.dbal.agenti_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_agenti', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -532,97 +610,496 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'doctrine.dbal.default_connection' service.
+     * Gets the 'doctrine.dbal.etticket_connection' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\DBAL\Connection A Doctrine\DBAL\Connection instance.
      */
-    protected function getDoctrine_Dbal_DefaultConnectionService()
+    protected function getDoctrine_Dbal_EtticketConnectionService()
     {
         $a = new \Doctrine\DBAL\Logging\LoggerChain();
-        $a->addLogger(new \Symfony\Bridge\Doctrine\Logger\DbalLogger($this->get('monolog.logger.doctrine', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('debug.stopwatch', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
-        $a->addLogger($this->get('doctrine.dbal.logger.profiling.default'));
+        $a->addLogger($this->get('doctrine.dbal.logger'));
+        $a->addLogger($this->get('doctrine.dbal.logger.profiling.etticket'));
 
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
-        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.default_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'symfony', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array());
+        return $this->services['doctrine.dbal.etticket_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_etticket', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
-     * Gets the 'doctrine.orm.default_entity_listener_resolver' service.
+     * Gets the 'doctrine.dbal.idetus_connection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\DBAL\Connection A Doctrine\DBAL\Connection instance.
+     */
+    protected function getDoctrine_Dbal_IdetusConnectionService()
+    {
+        $a = new \Doctrine\DBAL\Logging\LoggerChain();
+        $a->addLogger($this->get('doctrine.dbal.logger'));
+        $a->addLogger($this->get('doctrine.dbal.logger.profiling.idetus'));
+
+        $b = new \Doctrine\DBAL\Configuration();
+        $b->setSQLLogger($a);
+
+        $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
+
+        return $this->services['doctrine.dbal.idetus_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_idetus_eu', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.listanozze_connection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\DBAL\Connection A Doctrine\DBAL\Connection instance.
+     */
+    protected function getDoctrine_Dbal_ListanozzeConnectionService()
+    {
+        $a = new \Doctrine\DBAL\Logging\LoggerChain();
+        $a->addLogger($this->get('doctrine.dbal.logger'));
+        $a->addLogger($this->get('doctrine.dbal.logger.profiling.listanozze'));
+
+        $b = new \Doctrine\DBAL\Configuration();
+        $b->setSQLLogger($a);
+
+        $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
+
+        return $this->services['doctrine.dbal.listanozze_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'listanozze_new', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.romano_connection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\DBAL\Connection A Doctrine\DBAL\Connection instance.
+     */
+    protected function getDoctrine_Dbal_RomanoConnectionService()
+    {
+        $a = new \Doctrine\DBAL\Logging\LoggerChain();
+        $a->addLogger($this->get('doctrine.dbal.logger'));
+        $a->addLogger($this->get('doctrine.dbal.logger.profiling.romano'));
+
+        $b = new \Doctrine\DBAL\Configuration();
+        $b->setSQLLogger($a);
+
+        $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
+        $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
+
+        return $this->services['doctrine.dbal.romano_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_romano1_eu', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+    }
+
+    /**
+     * Gets the 'doctrine.orm.agenti_entity_listener_resolver' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\ORM\Mapping\DefaultEntityListenerResolver A Doctrine\ORM\Mapping\DefaultEntityListenerResolver instance.
      */
-    protected function getDoctrine_Orm_DefaultEntityListenerResolverService()
+    protected function getDoctrine_Orm_AgentiEntityListenerResolverService()
     {
-        return $this->services['doctrine.orm.default_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
+        return $this->services['doctrine.orm.agenti_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
     }
 
     /**
-     * Gets the 'doctrine.orm.default_entity_manager' service.
+     * Gets the 'doctrine.orm.agenti_entity_manager' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance.
      */
-    protected function getDoctrine_Orm_DefaultEntityManagerService()
+    protected function getDoctrine_Orm_AgentiEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Configuration();
-        $a->setEntityNamespaces(array());
-        $a->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
-        $a->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
-        $a->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
-        $a->setMetadataDriverImpl(new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain());
-        $a->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
-        $a->setProxyNamespace('Proxies');
-        $a->setAutoGenerateProxyClasses(true);
-        $a->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $a->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $a->setNamingStrategy(new \Doctrine\ORM\Mapping\UnderscoreNamingStrategy());
-        $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
-        $a->setEntityListenerResolver($this->get('doctrine.orm.default_entity_listener_resolver'));
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a->setGlobalBasename('mapping');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $a);
+        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $b->addDriver($a, 'AppBundle\\Entity');
 
-        $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
+        $c = new \Doctrine\ORM\Configuration();
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_metadata_cache'));
+        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_query_cache'));
+        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_result_cache'));
+        $c->setMetadataDriverImpl($b);
+        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $c->setProxyNamespace('Proxies');
+        $c->setAutoGenerateProxyClasses(true);
+        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $c->setEntityListenerResolver($this->get('doctrine.orm.agenti_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.agenti_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.agenti_connection'), $c);
+
+        $this->get('doctrine.orm.agenti_manager_configurator')->configure($instance);
 
         return $instance;
     }
 
     /**
-     * Gets the 'doctrine.orm.default_listeners.attach_entity_listeners' service.
+     * Gets the 'doctrine.orm.agenti_listeners.attach_entity_listeners' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\ORM\Tools\AttachEntityListenersListener A Doctrine\ORM\Tools\AttachEntityListenersListener instance.
      */
-    protected function getDoctrine_Orm_DefaultListeners_AttachEntityListenersService()
+    protected function getDoctrine_Orm_AgentiListeners_AttachEntityListenersService()
     {
-        return $this->services['doctrine.orm.default_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
+        return $this->services['doctrine.orm.agenti_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
     }
 
     /**
-     * Gets the 'doctrine.orm.default_manager_configurator' service.
+     * Gets the 'doctrine.orm.agenti_manager_configurator' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator A Doctrine\Bundle\DoctrineBundle\ManagerConfigurator instance.
      */
-    protected function getDoctrine_Orm_DefaultManagerConfiguratorService()
+    protected function getDoctrine_Orm_AgentiManagerConfiguratorService()
     {
-        return $this->services['doctrine.orm.default_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
+        return $this->services['doctrine.orm.agenti_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
+    }
+
+    /**
+     * Gets the 'doctrine.orm.etticket_entity_listener_resolver' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultEntityListenerResolver A Doctrine\ORM\Mapping\DefaultEntityListenerResolver instance.
+     */
+    protected function getDoctrine_Orm_EtticketEntityListenerResolverService()
+    {
+        return $this->services['doctrine.orm.etticket_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.etticket_entity_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance.
+     */
+    protected function getDoctrine_Orm_EtticketEntityManagerService()
+    {
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a->setGlobalBasename('mapping');
+
+        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $b->addDriver($a, 'AppBundle\\Entity');
+
+        $c = new \Doctrine\ORM\Configuration();
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_metadata_cache'));
+        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_query_cache'));
+        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_result_cache'));
+        $c->setMetadataDriverImpl($b);
+        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $c->setProxyNamespace('Proxies');
+        $c->setAutoGenerateProxyClasses(true);
+        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $c->setEntityListenerResolver($this->get('doctrine.orm.etticket_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.etticket_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.etticket_connection'), $c);
+
+        $this->get('doctrine.orm.etticket_manager_configurator')->configure($instance);
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine.orm.etticket_listeners.attach_entity_listeners' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Tools\AttachEntityListenersListener A Doctrine\ORM\Tools\AttachEntityListenersListener instance.
+     */
+    protected function getDoctrine_Orm_EtticketListeners_AttachEntityListenersService()
+    {
+        return $this->services['doctrine.orm.etticket_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.etticket_manager_configurator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator A Doctrine\Bundle\DoctrineBundle\ManagerConfigurator instance.
+     */
+    protected function getDoctrine_Orm_EtticketManagerConfiguratorService()
+    {
+        return $this->services['doctrine.orm.etticket_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
+    }
+
+    /**
+     * Gets the 'doctrine.orm.idetus_entity_listener_resolver' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultEntityListenerResolver A Doctrine\ORM\Mapping\DefaultEntityListenerResolver instance.
+     */
+    protected function getDoctrine_Orm_IdetusEntityListenerResolverService()
+    {
+        return $this->services['doctrine.orm.idetus_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.idetus_entity_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance.
+     */
+    protected function getDoctrine_Orm_IdetusEntityManagerService()
+    {
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a->setGlobalBasename('mapping');
+
+        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $b->addDriver($a, 'AppBundle\\Entity');
+
+        $c = new \Doctrine\ORM\Configuration();
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_metadata_cache'));
+        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_query_cache'));
+        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_result_cache'));
+        $c->setMetadataDriverImpl($b);
+        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $c->setProxyNamespace('Proxies');
+        $c->setAutoGenerateProxyClasses(true);
+        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $c->setEntityListenerResolver($this->get('doctrine.orm.idetus_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.idetus_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.idetus_connection'), $c);
+
+        $this->get('doctrine.orm.idetus_manager_configurator')->configure($instance);
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine.orm.idetus_listeners.attach_entity_listeners' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Tools\AttachEntityListenersListener A Doctrine\ORM\Tools\AttachEntityListenersListener instance.
+     */
+    protected function getDoctrine_Orm_IdetusListeners_AttachEntityListenersService()
+    {
+        return $this->services['doctrine.orm.idetus_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.idetus_manager_configurator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator A Doctrine\Bundle\DoctrineBundle\ManagerConfigurator instance.
+     */
+    protected function getDoctrine_Orm_IdetusManagerConfiguratorService()
+    {
+        return $this->services['doctrine.orm.idetus_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
+    }
+
+    /**
+     * Gets the 'doctrine.orm.listanozze_entity_listener_resolver' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultEntityListenerResolver A Doctrine\ORM\Mapping\DefaultEntityListenerResolver instance.
+     */
+    protected function getDoctrine_Orm_ListanozzeEntityListenerResolverService()
+    {
+        return $this->services['doctrine.orm.listanozze_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.listanozze_entity_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance.
+     */
+    protected function getDoctrine_Orm_ListanozzeEntityManagerService()
+    {
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a->setGlobalBasename('mapping');
+
+        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $b->addDriver($a, 'AppBundle\\Entity');
+
+        $c = new \Doctrine\ORM\Configuration();
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache'));
+        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.listanozze_query_cache'));
+        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.listanozze_result_cache'));
+        $c->setMetadataDriverImpl($b);
+        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $c->setProxyNamespace('Proxies');
+        $c->setAutoGenerateProxyClasses(true);
+        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $c->setEntityListenerResolver($this->get('doctrine.orm.listanozze_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.listanozze_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.listanozze_connection'), $c);
+
+        $this->get('doctrine.orm.listanozze_manager_configurator')->configure($instance);
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine.orm.listanozze_listeners.attach_entity_listeners' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Tools\AttachEntityListenersListener A Doctrine\ORM\Tools\AttachEntityListenersListener instance.
+     */
+    protected function getDoctrine_Orm_ListanozzeListeners_AttachEntityListenersService()
+    {
+        return $this->services['doctrine.orm.listanozze_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.listanozze_manager_configurator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator A Doctrine\Bundle\DoctrineBundle\ManagerConfigurator instance.
+     */
+    protected function getDoctrine_Orm_ListanozzeManagerConfiguratorService()
+    {
+        return $this->services['doctrine.orm.listanozze_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
+    }
+
+    /**
+     * Gets the 'doctrine.orm.romano_entity_listener_resolver' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultEntityListenerResolver A Doctrine\ORM\Mapping\DefaultEntityListenerResolver instance.
+     */
+    protected function getDoctrine_Orm_RomanoEntityListenerResolverService()
+    {
+        return $this->services['doctrine.orm.romano_entity_listener_resolver'] = new \Doctrine\ORM\Mapping\DefaultEntityListenerResolver();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.romano_entity_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance.
+     */
+    protected function getDoctrine_Orm_RomanoEntityManagerService()
+    {
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a->setGlobalBasename('mapping');
+
+        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $b->addDriver($a, 'AppBundle\\Entity');
+
+        $c = new \Doctrine\ORM\Configuration();
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_metadata_cache'));
+        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_query_cache'));
+        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_result_cache'));
+        $c->setMetadataDriverImpl($b);
+        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $c->setProxyNamespace('Proxies');
+        $c->setAutoGenerateProxyClasses(true);
+        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $c->setEntityListenerResolver($this->get('doctrine.orm.romano_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.romano_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.romano_connection'), $c);
+
+        $this->get('doctrine.orm.romano_manager_configurator')->configure($instance);
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine.orm.romano_listeners.attach_entity_listeners' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\ORM\Tools\AttachEntityListenersListener A Doctrine\ORM\Tools\AttachEntityListenersListener instance.
+     */
+    protected function getDoctrine_Orm_RomanoListeners_AttachEntityListenersService()
+    {
+        return $this->services['doctrine.orm.romano_listeners.attach_entity_listeners'] = new \Doctrine\ORM\Tools\AttachEntityListenersListener();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.romano_manager_configurator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator A Doctrine\Bundle\DoctrineBundle\ManagerConfigurator instance.
+     */
+    protected function getDoctrine_Orm_RomanoManagerConfiguratorService()
+    {
+        return $this->services['doctrine.orm.romano_manager_configurator'] = new \Doctrine\Bundle\DoctrineBundle\ManagerConfigurator(array(), array());
     }
 
     /**
@@ -652,52 +1129,256 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'doctrine_cache.providers.doctrine.orm.default_metadata_cache' service.
+     * Gets the 'doctrine_cache.providers.doctrine.orm.agenti_metadata_cache' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
      */
-    protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultMetadataCacheService()
+    protected function getDoctrineCache_Providers_Doctrine_Orm_AgentiMetadataCacheService()
     {
-        $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+        $this->services['doctrine_cache.providers.doctrine.orm.agenti_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8');
+        $instance->setNamespace('sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
 
         return $instance;
     }
 
     /**
-     * Gets the 'doctrine_cache.providers.doctrine.orm.default_query_cache' service.
+     * Gets the 'doctrine_cache.providers.doctrine.orm.agenti_query_cache' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
      */
-    protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultQueryCacheService()
+    protected function getDoctrineCache_Providers_Doctrine_Orm_AgentiQueryCacheService()
     {
-        $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+        $this->services['doctrine_cache.providers.doctrine.orm.agenti_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8');
+        $instance->setNamespace('sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
 
         return $instance;
     }
 
     /**
-     * Gets the 'doctrine_cache.providers.doctrine.orm.default_result_cache' service.
+     * Gets the 'doctrine_cache.providers.doctrine.orm.agenti_result_cache' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
      */
-    protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultResultCacheService()
+    protected function getDoctrineCache_Providers_Doctrine_Orm_AgentiResultCacheService()
     {
-        $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+        $this->services['doctrine_cache.providers.doctrine.orm.agenti_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_839ff8dadf62984e794cd4a533764f7b325c15430f884b61632da6c679d694b8');
+        $instance->setNamespace('sf2orm_agenti_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.etticket_metadata_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_EtticketMetadataCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.etticket_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.etticket_query_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_EtticketQueryCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.etticket_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.etticket_result_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_EtticketResultCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.etticket_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_etticket_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.idetus_metadata_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_IdetusMetadataCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.idetus_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.idetus_query_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_IdetusQueryCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.idetus_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.idetus_result_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_IdetusResultCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.idetus_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_idetus_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_ListanozzeMetadataCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.listanozze_query_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_ListanozzeQueryCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.listanozze_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.listanozze_result_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_ListanozzeResultCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.listanozze_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_listanozze_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.romano_metadata_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_RomanoMetadataCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.romano_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.romano_query_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_RomanoQueryCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.romano_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'doctrine_cache.providers.doctrine.orm.romano_result_cache' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     */
+    protected function getDoctrineCache_Providers_Doctrine_Orm_RomanoResultCacheService()
+    {
+        $this->services['doctrine_cache.providers.doctrine.orm.romano_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+
+        $instance->setNamespace('sf2orm_romano_897e548281fd49850a1d9861d1d93afe7a60bf71078f4c8ebc5241e75947fc02');
 
         return $instance;
     }
@@ -1453,7 +2134,6 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['logger'] = $instance = new \Symfony\Bridge\Monolog\Logger('app');
 
-        $instance->useMicrosecondTimestamps(true);
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
         $instance->pushHandler($this->get('monolog.handler.debug'));
@@ -1682,7 +2362,11 @@ class appDevDebugProjectContainer extends Container
         $b = $this->get('kernel', ContainerInterface::NULL_ON_INVALID_REFERENCE);
 
         $c = new \Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector($this->get('doctrine'));
-        $c->addLogger('default', $this->get('doctrine.dbal.logger.profiling.default'));
+        $c->addLogger('agenti', $this->get('doctrine.dbal.logger.profiling.agenti'));
+        $c->addLogger('romano', $this->get('doctrine.dbal.logger.profiling.romano'));
+        $c->addLogger('idetus', $this->get('doctrine.dbal.logger.profiling.idetus'));
+        $c->addLogger('etticket', $this->get('doctrine.dbal.logger.profiling.etticket'));
+        $c->addLogger('listanozze', $this->get('doctrine.dbal.logger.profiling.listanozze'));
 
         $d = new \Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector();
         if ($this->has('kernel')) {
@@ -1928,7 +2612,7 @@ class appDevDebugProjectContainer extends Container
 
         $e = new \Symfony\Component\Security\Http\AccessMap();
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5716e43d9693d0.27214052', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5719d97049aa14.50633411', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
 
     /**
@@ -2985,7 +3669,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getUriSignerService()
     {
-        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('007a323aa0df869534da4a461cc1029c0370b3d5');
+        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('1931596e546917c71ac5a1f06f1aae8db5281818');
     }
 
     /**
@@ -3151,7 +3835,24 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'doctrine.dbal.logger.profiling.default' service.
+     * Gets the 'doctrine.dbal.logger' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Symfony\Bridge\Doctrine\Logger\DbalLogger A Symfony\Bridge\Doctrine\Logger\DbalLogger instance.
+     */
+    protected function getDoctrine_Dbal_LoggerService()
+    {
+        return $this->services['doctrine.dbal.logger'] = new \Symfony\Bridge\Doctrine\Logger\DbalLogger($this->get('monolog.logger.doctrine', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('debug.stopwatch', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.logger.profiling.agenti' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
@@ -3162,9 +3863,111 @@ class appDevDebugProjectContainer extends Container
      *
      * @return \Doctrine\DBAL\Logging\DebugStack A Doctrine\DBAL\Logging\DebugStack instance.
      */
-    protected function getDoctrine_Dbal_Logger_Profiling_DefaultService()
+    protected function getDoctrine_Dbal_Logger_Profiling_AgentiService()
     {
-        return $this->services['doctrine.dbal.logger.profiling.default'] = new \Doctrine\DBAL\Logging\DebugStack();
+        return $this->services['doctrine.dbal.logger.profiling.agenti'] = new \Doctrine\DBAL\Logging\DebugStack();
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.logger.profiling.etticket' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\DBAL\Logging\DebugStack A Doctrine\DBAL\Logging\DebugStack instance.
+     */
+    protected function getDoctrine_Dbal_Logger_Profiling_EtticketService()
+    {
+        return $this->services['doctrine.dbal.logger.profiling.etticket'] = new \Doctrine\DBAL\Logging\DebugStack();
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.logger.profiling.idetus' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\DBAL\Logging\DebugStack A Doctrine\DBAL\Logging\DebugStack instance.
+     */
+    protected function getDoctrine_Dbal_Logger_Profiling_IdetusService()
+    {
+        return $this->services['doctrine.dbal.logger.profiling.idetus'] = new \Doctrine\DBAL\Logging\DebugStack();
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.logger.profiling.listanozze' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\DBAL\Logging\DebugStack A Doctrine\DBAL\Logging\DebugStack instance.
+     */
+    protected function getDoctrine_Dbal_Logger_Profiling_ListanozzeService()
+    {
+        return $this->services['doctrine.dbal.logger.profiling.listanozze'] = new \Doctrine\DBAL\Logging\DebugStack();
+    }
+
+    /**
+     * Gets the 'doctrine.dbal.logger.profiling.romano' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\DBAL\Logging\DebugStack A Doctrine\DBAL\Logging\DebugStack instance.
+     */
+    protected function getDoctrine_Dbal_Logger_Profiling_RomanoService()
+    {
+        return $this->services['doctrine.dbal.logger.profiling.romano'] = new \Doctrine\DBAL\Logging\DebugStack();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.naming_strategy.default' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultNamingStrategy A Doctrine\ORM\Mapping\DefaultNamingStrategy instance.
+     */
+    protected function getDoctrine_Orm_NamingStrategy_DefaultService()
+    {
+        return $this->services['doctrine.orm.naming_strategy.default'] = new \Doctrine\ORM\Mapping\DefaultNamingStrategy();
+    }
+
+    /**
+     * Gets the 'doctrine.orm.quote_strategy.default' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Doctrine\ORM\Mapping\DefaultQuoteStrategy A Doctrine\ORM\Mapping\DefaultQuoteStrategy instance.
+     */
+    protected function getDoctrine_Orm_QuoteStrategy_DefaultService()
+    {
+        return $this->services['doctrine.orm.quote_strategy.default'] = new \Doctrine\ORM\Mapping\DefaultQuoteStrategy();
     }
 
     /**
@@ -3221,7 +4024,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5716e43d9693d0.27214052')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5719d97049aa14.50633411')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -3421,20 +4224,36 @@ class appDevDebugProjectContainer extends Container
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
-            'database_host' => '127.0.0.1',
             'database_port' => NULL,
-            'database_name' => 'symfony',
-            'database_user' => 'root',
-            'database_password' => NULL,
+            'database_host_agenti' => 'localhost',
+            'database_name_agenti' => 'vacanzev_agenti',
+            'database_user_agenti' => 'root',
+            'database_password_agenti' => '',
+            'database_host_romano' => 'localhost',
+            'database_name_romano' => 'vacanzev_romano1_eu',
+            'database_user_romano' => 'root',
+            'database_password_romano' => '',
+            'database_host_idetus' => 'localhost',
+            'database_name_idetus' => 'vacanzev_idetus_eu',
+            'database_user_idetus' => 'root',
+            'database_password_idetus' => '',
+            'database_host_etticket' => 'localhost',
+            'database_name_etticket' => 'vacanzev_etticket',
+            'database_user_etticket' => 'root',
+            'database_password_etticket' => '',
+            'database_host_listanozze' => 'localhost',
+            'database_name_listanozze' => 'listanozze_new',
+            'database_user_listanozze' => 'root',
+            'database_password_listanozze' => '',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
             'mailer_password' => NULL,
-            'secret' => '007a323aa0df869534da4a461cc1029c0370b3d5',
+            'secret' => '1931596e546917c71ac5a1f06f1aae8db5281818',
             'locale' => 'en',
             'fragment.renderer.hinclude.global_template' => NULL,
             'fragment.path' => '/_fragment',
-            'kernel.secret' => '007a323aa0df869534da4a461cc1029c0370b3d5',
+            'kernel.secret' => '1931596e546917c71ac5a1f06f1aae8db5281818',
             'kernel.http_method_override' => true,
             'kernel.trusted_hosts' => array(
 
@@ -3500,7 +4319,6 @@ class appDevDebugProjectContainer extends Container
             'monolog.handler.console.class' => 'Symfony\\Bridge\\Monolog\\Handler\\ConsoleHandler',
             'monolog.handler.group.class' => 'Monolog\\Handler\\GroupHandler',
             'monolog.handler.buffer.class' => 'Monolog\\Handler\\BufferHandler',
-            'monolog.handler.deduplication.class' => 'Monolog\\Handler\\DeduplicationHandler',
             'monolog.handler.rotating_file.class' => 'Monolog\\Handler\\RotatingFileHandler',
             'monolog.handler.syslog.class' => 'Monolog\\Handler\\SyslogHandler',
             'monolog.handler.syslogudp.class' => 'Monolog\\Handler\\SyslogUdpHandler',
@@ -3535,7 +4353,6 @@ class appDevDebugProjectContainer extends Container
             'monolog.mongo.client.class' => 'MongoClient',
             'monolog.handler.elasticsearch.class' => 'Monolog\\Handler\\ElasticSearchHandler',
             'monolog.elastica.client.class' => 'Elastica\\Client',
-            'monolog.use_microseconds' => true,
             'monolog.swift_mailer.handlers' => array(
 
             ),
@@ -3642,16 +4459,24 @@ class appDevDebugProjectContainer extends Container
             'doctrine.dbal.events.oracle_session_init.class' => 'Doctrine\\DBAL\\Event\\Listeners\\OracleSessionInit',
             'doctrine.class' => 'Doctrine\\Bundle\\DoctrineBundle\\Registry',
             'doctrine.entity_managers' => array(
-                'default' => 'doctrine.orm.default_entity_manager',
+                'idetus' => 'doctrine.orm.idetus_entity_manager',
+                'agenti' => 'doctrine.orm.agenti_entity_manager',
+                'romano' => 'doctrine.orm.romano_entity_manager',
+                'etticket' => 'doctrine.orm.etticket_entity_manager',
+                'listanozze' => 'doctrine.orm.listanozze_entity_manager',
             ),
-            'doctrine.default_entity_manager' => 'default',
+            'doctrine.default_entity_manager' => 'idetus',
             'doctrine.dbal.connection_factory.types' => array(
 
             ),
             'doctrine.connections' => array(
-                'default' => 'doctrine.dbal.default_connection',
+                'agenti' => 'doctrine.dbal.agenti_connection',
+                'romano' => 'doctrine.dbal.romano_connection',
+                'idetus' => 'doctrine.dbal.idetus_connection',
+                'etticket' => 'doctrine.dbal.etticket_connection',
+                'listanozze' => 'doctrine.dbal.listanozze_connection',
             ),
-            'doctrine.default_connection' => 'default',
+            'doctrine.default_connection' => 'idetus',
             'doctrine.orm.configuration.class' => 'Doctrine\\ORM\\Configuration',
             'doctrine.orm.entity_manager.class' => 'Doctrine\\ORM\\EntityManager',
             'doctrine.orm.manager_configurator.class' => 'Doctrine\\Bundle\\DoctrineBundle\\ManagerConfigurator',

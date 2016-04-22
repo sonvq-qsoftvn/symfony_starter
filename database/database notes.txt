@@ -1,0 +1,75 @@
+vacanzev_agenti
+vacanzev_romano1_eu
+vacanzev_idetus_eu
+vacanzev_etticket
+listanozze_new
+
+
+
+vacanzev_idetus_eu
+
+Delete VIEW:
+anagrafiche_view
+moduli_notifiche_lettura_nonLetto
+servizi_v1
+
+table with no primary key:
+incentive_scala 
+incentive_users_history
+iso
+pag_dettagli
+preventivi_v2_md5
+preventivi_view
+
+
+vacanzev_agenti
+
+Delete View:
+users1
+
+table with no primary key:
+adv1
+adv2
+adv3
+offers => ko add key mà change field id => primary key
+promoip
+residence
+sesclick
+sesip
+users1_lingue_history
+users1_note => ko add key mà change field id => primary key
+users_contratti_history => combine id and agenzia fields to primary key
+users_history => ko add key mà change field id => primary key
+
+
+vacanzev_romano1_eu
+Delete View 
+backoffice_fornitori
+backoffice_fornitori_agenzie_contatti
+backoffice_pagamenti
+backoffice_portali
+
+table with no primary key:
+backoffice_provvigioni => ko add key mà change field id => primary key
+backoffice_strutture
+backoffice_to_rel_prov => combine ToID va ProvvigioneID => primary key
+backoffice_trattamenti => ko add key mà change field id => primary key
+log
+log_2005
+log_2006
+log_2007
+log_2008
+log_2009
+log_2010
+touroperator_portale => combine tourOperator_id and portale_id fields to primary key
+
+
+delete table:
+test --> maybe dump table
+
+
+vacanzev_etticket
+
+table with no primary key:
+request_changelog
+usertypestorights

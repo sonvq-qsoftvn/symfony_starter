@@ -13,7 +13,6 @@ namespace Symfony\Bridge\Doctrine\PropertyInfo;
 
 use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use Doctrine\Common\Persistence\Mapping\MappingException;
-use Doctrine\DBAL\Types\Type as DBALType;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException as OrmMappingException;
 use Symfony\Component\PropertyInfo\PropertyListExtractorInterface;
@@ -94,26 +93,23 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
             $nullable = $metadata instanceof ClassMetadataInfo && $metadata->isNullable($property);
 
             switch ($typeOfField) {
-                case DBALType::DATE:
-                case DBALType::DATETIME:
-                case DBALType::DATETIMETZ:
-                case 'vardatetime':
-                case DBALType::TIME:
+                case 'date':
+                case 'datetime':
+                case 'datetimetz':
+                case 'time':
                     return array(new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, 'DateTime'));
 
-                case DBALType::TARRAY:
+                case 'array':
                     return array(new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true));
 
-                case DBALType::SIMPLE_ARRAY:
+                case 'simple_array':
                     return array(new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true, new Type(Type::BUILTIN_TYPE_INT), new Type(Type::BUILTIN_TYPE_STRING)));
 
-                case DBALType::JSON_ARRAY:
+                case 'json_array':
                     return array(new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true));
 
                 default:
-                    $builtinType = $this->getPhpType($typeOfField);
-
-                    return $builtinType ? array(new Type($builtinType, $nullable)) : null;
+                    return array(new Type($this->getPhpType($typeOfField), $nullable));
             }
         }
     }
@@ -123,37 +119,36 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
      *
      * @param string $doctrineType
      *
-     * @return string|null
+     * @return string
      */
     private function getPhpType($doctrineType)
     {
         switch ($doctrineType) {
-            case DBALType::SMALLINT:
-            case DBALType::BIGINT:
-            case DBALType::INTEGER:
+            case 'smallint':
+                // No break
+            case 'bigint':
+                // No break
+            case 'integer':
                 return Type::BUILTIN_TYPE_INT;
 
-            case DBALType::FLOAT:
-            case DBALType::DECIMAL:
+            case 'decimal':
                 return Type::BUILTIN_TYPE_FLOAT;
 
-            case DBALType::STRING:
-            case DBALType::TEXT:
-            case DBALType::GUID:
+            case 'text':
+                // No break
+            case 'guid':
                 return Type::BUILTIN_TYPE_STRING;
 
-            case DBALType::BOOLEAN:
+            case 'boolean':
                 return Type::BUILTIN_TYPE_BOOL;
 
-            case DBALType::BLOB:
+            case 'blob':
+                // No break
             case 'binary':
                 return Type::BUILTIN_TYPE_RESOURCE;
 
-            case DBALType::OBJECT:
-                return Type::BUILTIN_TYPE_OBJECT;
-
             default:
-                return;
+                return $doctrineType;
         }
     }
 }

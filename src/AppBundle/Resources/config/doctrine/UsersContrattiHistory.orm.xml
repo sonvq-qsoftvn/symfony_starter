@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\UsersContrattiHistory" table="users_contratti_history">
+    <id name="id" type="integer" column="id"/>
+    <id name="agenzia" type="string" column="agenzia" length="20"/>
+    <field name="contrattoTipo" type="string" column="contratto_tipo" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="contrattoRinnovo" type="decimal" column="contratto_rinnovo" precision="7" scale="2" nullable="false"/>
+    <field name="contrattoData" type="date" column="contratto_data" nullable="true"/>
+    <field name="principale" type="boolean" column="principale" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="historyAction" type="string" column="history_action" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="historyActionAt" type="datetime" column="history_action_at" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,4 +1,4 @@
-my_project
-==========
+symfony3
+========
 
-A Symfony project created on April 19, 2016, 1:24 pm.
+A Symfony project created on March 28, 2016, 11:04 am.

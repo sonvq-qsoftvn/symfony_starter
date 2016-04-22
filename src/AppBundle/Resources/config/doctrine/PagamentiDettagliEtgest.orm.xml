@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PagamentiDettagliEtgest" table="pagamenti_dettagli_etgest">
+    <indexes>
+      <index name="idPag" columns="idPag"/>
+    </indexes>
+    <id name="iddettagli" type="integer" column="idDettagli">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idpag" type="integer" column="idPag" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="idrif" type="string" column="idRif" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

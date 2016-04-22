@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ServiziNoleggio" table="servizi_noleggio">
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="datain" type="date" column="datain" nullable="true"/>
+    <field name="ritiroLuogo" type="string" column="ritiro_luogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ritiroOre" type="time" column="ritiro_ore" nullable="true"/>
+    <field name="dataout" type="date" column="dataout" nullable="true"/>
+    <field name="consegnaLuogo" type="string" column="consegna_luogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="consegnaOre" type="time" column="consegna_ore" nullable="true"/>
+    <field name="mezzoTipo" type="string" column="mezzo_tipo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzoModello" type="string" column="mezzo_modello" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzoTarga" type="string" column="mezzo_targa" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="guidatore" type="string" column="guidatore" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

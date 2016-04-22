@@ -40,24 +40,99 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
+        default_connection: idetus
+        connections:
+            agenti:
+                driver:   pdo_mysql
+                host:     "%database_host_agenti%"
+                port:     "%database_port%"
+                dbname:   "%database_name_agenti%"
+                user:     "%database_user_agenti%"
+                password: "%database_password_agenti%"
+                charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text
+            romano:
+                driver:   pdo_mysql
+                host:     "%database_host_romano%"
+                port:     "%database_port%"
+                dbname:   "%database_name_romano%"
+                user:     "%database_user_romano%"
+                password: "%database_password_romano%"
+                charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text
+            idetus:
+                driver:   pdo_mysql
+                host:     "%database_host_idetus%"
+                port:     "%database_port%"
+                dbname:   "%database_name_idetus%"
+                user:     "%database_user_idetus%"
+                password: "%database_password_idetus%"
+                charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text
+            etticket:
+                driver:   pdo_mysql
+                host:     "%database_host_etticket%"
+                port:     "%database_port%"
+                dbname:   "%database_name_etticket%"
+                user:     "%database_user_etticket%"
+                password: "%database_password_etticket%"
+                charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text
+            listanozze:
+                driver:   pdo_mysql
+                host:     "%database_host_listanozze%"
+                port:     "%database_port%"
+                dbname:   "%database_name_listanozze%"
+                user:     "%database_user_listanozze%"
+                password: "%database_password_listanozze%"
+                charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+#        naming_strategy: doctrine.orm.naming_strategy.underscore
+#        auto_mapping: true
+        default_entity_manager: idetus
+        entity_managers:
+            idetus:
+                connection: idetus
+                mappings:
+                    AppBundle: ~
+            agenti:
+                connection: agenti
+                mappings:
+                    AppBundle: ~
+            romano:
+                connection: romano
+                mappings:
+                    AppBundle: ~
+            etticket:
+                connection: etticket
+                mappings:
+                    AppBundle: ~
+            listanozze:
+                connection: listanozze
+                mappings:
+                    AppBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

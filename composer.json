@@ -1,5 +1,5 @@
 {
-    "name": "sonvq/my_project",
+    "name": "vietnh/symfony3",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -49,6 +49,11 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
     },
     "extra": {
         "symfony-app-dir": "app",

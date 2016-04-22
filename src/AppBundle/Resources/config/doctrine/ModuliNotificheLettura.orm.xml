@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ModuliNotificheLettura" table="moduli_notifiche_lettura">
+    <indexes>
+      <index name="stato" columns="stato"/>
+    </indexes>
+    <id name="idModulo" type="integer" column="id_modulo"/>
+    <id name="tipodocumento" type="boolean" column="tipoDocumento"/>
+    <field name="codpromotore" type="integer" column="codPromotore" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="datalettura" type="datetime" column="dataLettura" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="stato" type="boolean" column="stato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

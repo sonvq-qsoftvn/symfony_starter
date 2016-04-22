@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PreventiviTemporanei" table="preventivi_temporanei">
+    <indexes>
+      <index name="codpromotore_idx" columns="codpromotore"/>
+      <index name="id_viaggio_idx" columns="id_viaggio"/>
+    </indexes>
+    <id name="id" type="bigint" column="id"/>
+    <id name="idAnagrafica" type="string" column="id_anagrafica" length="18"/>
+    <id name="idViaggio" type="bigint" column="id_viaggio"/>
+    <id name="codpromotore" type="integer" column="codpromotore"/>
+    <field name="titolo" type="string" column="titolo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="corpo" type="text" column="corpo" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nota" type="text" column="nota" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

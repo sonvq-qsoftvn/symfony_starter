@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\UsersBk20140410" table="users_bk_2014_04_10">
+    <indexes>
+      <index name="iduser" columns="iduser"/>
+      <index name="status" columns="status"/>
+      <index name="ferie" columns="ferie"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="username" columns="username"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="iduser" type="string" column="iduser" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="username" type="string" column="username" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" length="120" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="dataPassword" type="date" column="data_password" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="incentive" type="boolean" column="incentive" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gruppoLavoro" type="integer" column="gruppo_lavoro" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="35" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="lname" type="string" column="lname" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="contrattoNome" type="string" column="contratto_nome" length="35" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="contrattoCognome" type="string" column="contratto_cognome" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="noteutente" type="string" column="noteutente" length="95" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="sesso" type="string" column="sesso" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="dataNascita" type="date" column="data_nascita" nullable="true"/>
+    <field name="luogoNascita" type="string" column="luogo_nascita" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tel" type="string" column="tel" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="cell" type="string" column="cell" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="celllavoro" type="string" column="celllavoro" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="address" type="string" column="address" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="emailbox" type="string" column="emailbox" length="35" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="town" type="string" column="town" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="cap" type="string" column="cap" length="5" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provincia" type="string" column="provincia" length="4" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="regione" type="string" column="regione" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nazione" type="string" column="nazione" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default">ITA</option>
+      </options>
+    </field>
+    <field name="codiceFiscale" type="string" column="codice_fiscale" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="partitaIva" type="string" column="partita_iva" length="13" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="disp" type="string" column="disp" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="photo" type="string" column="photo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url1" type="string" column="url1" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url2" type="string" column="url2" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url3" type="string" column="url3" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url4" type="string" column="url4" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url5" type="string" column="url5" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url6" type="string" column="url6" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url7" type="string" column="url7" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url8" type="string" column="url8" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="note" type="text" column="note" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="date" type="datetime" column="date" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="dateUpdateAt" type="datetime" column="date_update_at" nullable="true"/>
+    <field name="status" type="string" column="status" length="11" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="imk" type="string" column="imk" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="chat" type="string" column="chat" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="totaldayclick" type="boolean" column="totaldayclick" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="ferie" type="string" column="ferie" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="ckchat" type="integer" column="ckchat" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="noteferie" type="string" column="noteferie" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="inizioferie" type="datetime" column="inizioferie" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="fineferie" type="datetime" column="fineferie" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="hotel" type="string" column="hotel" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="banned" type="string" column="banned" length="5" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">si</option>
+      </options>
+    </field>
+    <field name="skype" type="string" column="skype" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="msn" type="string" column="msn" length="35" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="facebook" type="string" column="facebook" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="twitter" type="string" column="twitter" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="emailpersonale" type="string" column="emailPersonale" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="clearPasswd" type="string" column="clear_passwd" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="imkPasswd" type="string" column="imk_passwd" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="imkAttivo" type="string" column="imk_attivo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mailAttivazione" type="string" column="mail_attivazione" length="2" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="vuoto" type="string" column="vuoto" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="gid" type="integer" column="gid" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">6</option>
+      </options>
+    </field>
+    <field name="idcom" type="integer" column="idCom" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="promotoreriferimento" type="boolean" column="promotoreRiferimento" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="strutture" type="integer" column="strutture" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="redazionali" type="integer" column="redazionali" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gestionecampagne" type="boolean" column="gestioneCampagne" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="latitudine" type="float" column="latitudine" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="longitudine" type="float" column="longitudine" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="adwords" type="string" column="adwords" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="adwordsLabel" type="string" column="adwords_label" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="analytics" type="string" column="analytics" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="chisonoita" type="text" column="chiSonoIta" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="provvigioniaves" type="string" column="provvigioniAves" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="idaves" type="string" column="idAves" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="linguaPannelli" type="string" column="lingua_pannelli" length="5" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">it_IT</option>
+      </options>
+    </field>
+    <field name="iscrittiNewsletterRiassegnati" type="datetime" column="iscritti_newsletter_riassegnati" nullable="true"/>
+    <field name="limiteProdottiMarketplace" type="smallint" column="limite_prodotti_marketplace" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">5</option>
+      </options>
+    </field>
+    <field name="tipocontrattoPto" type="string" column="tipocontratto_pto" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="maToupdate" type="boolean" column="ma_toupdate" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="multiagenziaId" type="integer" column="multiagenzia_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="maSincronizzatoAl" type="datetime" column="ma_sincronizzato_al" nullable="true"/>
+  </entity>
+</doctrine-mapping>

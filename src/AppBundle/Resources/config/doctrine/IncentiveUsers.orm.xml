@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\IncentiveUsers" table="incentive_users">
+    <indexes>
+      <index name="cpp" columns="gruppo"/>
+      <index name="dataSottoscrizione" columns="dataSottoscrizione"/>
+    </indexes>
+    <id name="codpromotore" type="integer" column="codPromotore">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="gruppo" type="integer" column="gruppo" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="tipo" type="boolean" column="tipo" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="datasottoscrizione" type="date" column="dataSottoscrizione" nullable="false">
+      <options>
+        <option name="default">0000-00-00</option>
+      </options>
+    </field>
+    <field name="demeritoPersonale" type="boolean" column="demerito_personale" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="demeritoGruppo" type="boolean" column="demerito_gruppo" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

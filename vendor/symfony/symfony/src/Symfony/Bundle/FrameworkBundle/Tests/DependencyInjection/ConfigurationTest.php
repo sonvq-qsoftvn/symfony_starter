@@ -163,7 +163,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'annotations' => array(
                 'cache' => 'file',
                 'file_cache_dir' => '%kernel.cache_dir%/annotations',
-                'debug' => true,
+                'debug' => '%kernel.debug%',
             ),
             'serializer' => array(
                 'enabled' => false,

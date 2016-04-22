@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\GruppiBk" table="gruppi_bk">
+    <id name="gid" type="integer" column="gid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomeGruppo" type="string" column="nome_gruppo" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="gruppoReale" type="integer" column="gruppo_reale" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="admin" type="boolean" column="admin" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fax" type="boolean" column="fax" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="redazionali" type="boolean" column="redazionali" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="strutture" type="boolean" column="strutture" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prodotti" type="boolean" column="prodotti" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="redattore" type="boolean" column="redattore" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="agenziaOnline" type="boolean" column="agenzia_online" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="backOffice" type="integer" column="back_office" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pannelloAgenti" type="boolean" column="pannello_agenti" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pannelloAdmAgenti" type="boolean" column="pannello_adm_agenti" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pannelloAdmCampagne" type="boolean" column="pannello_adm_campagne" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pannelloAdmPoslavorativa" type="boolean" column="pannello_adm_poslavorativa" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gruppoLink" type="boolean" column="gruppo_link" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="idetus" type="boolean" column="idetus" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="log" type="boolean" column="log" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gestioneCorsi" type="boolean" column="gestione_corsi" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="confermaPrenotazione" type="boolean" column="conferma_prenotazione" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prenota" type="boolean" column="prenota" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="ettarget" type="boolean" column="ettarget" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="changeUser" type="boolean" column="change_user" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gestioneAppaltoClienti" type="boolean" column="gestione_appalto_clienti" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="gestioneAppaltoRichieste" type="boolean" column="gestione_appalto_richieste" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="etmarketplace" type="boolean" column="etmarketplace" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="demo" type="boolean" column="demo" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="credenzialeGruppo" type="string" column="credenziale_gruppo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="etgestVersione" type="boolean" column="etgest_versione" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

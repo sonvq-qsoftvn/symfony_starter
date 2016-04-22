@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PreventiviAttesa" table="preventivi_attesa">
+    <indexes>
+      <index name="codpromotore_idx" columns="codpromotore"/>
+      <index name="codpromotorecreazione_idx" columns="codpromotorecreazione"/>
+      <index name="codpromotoremodifica_idx" columns="codpromotoremodifica"/>
+      <index name="id_viaggio_idx" columns="id_viaggio"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idViaggio" type="bigint" column="id_viaggio" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotore" type="integer" column="codpromotore" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotorecreazione" type="integer" column="codpromotorecreazione" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotoremodifica" type="integer" column="codpromotoremodifica" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="destinatari" type="text" column="destinatari" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinataricopia" type="text" column="destinataricopia" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinatarinascosti" type="text" column="destinatarinascosti" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prprichiesta" type="string" column="prpRichiesta" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titolo" type="string" column="titolo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="corpo" type="text" column="corpo" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datainvio" type="datetime" column="datainvio" nullable="true"/>
+    <field name="datapreventivo" type="datetime" column="datapreventivo" nullable="true"/>
+    <field name="data" type="datetime" column="data" nullable="false"/>
+    <field name="datamodifica" type="datetime" column="datamodifica" nullable="false"/>
+  </entity>
+</doctrine-mapping>

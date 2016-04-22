@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Offertebackup" table="offertebackup">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="destinazione" type="string" column="destinazione" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataPartenza1" type="date" column="data_partenza1" nullable="true"/>
+    <field name="dataPartenza2" type="date" column="data_partenza2" nullable="true"/>
+    <field name="dataPartenza3" type="date" column="data_partenza3" nullable="true"/>
+    <field name="dataPartenza4" type="date" column="data_partenza4" nullable="true"/>
+    <field name="dataPartenza5" type="date" column="data_partenza5" nullable="true"/>
+    <field name="cittaPartenza1" type="string" column="citta_partenza1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza2" type="string" column="citta_partenza2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza3" type="string" column="citta_partenza3" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza4" type="string" column="citta_partenza4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cittaPartenza5" type="string" column="citta_partenza5" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoOfferta" type="string" column="tipo_offerta" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prezzoDa" type="smallint" column="prezzo_da" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prezzoA" type="smallint" column="prezzo_a" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tour" type="string" column="tour" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataScadenza" type="date" column="data_scadenza" nullable="true"/>
+    <field name="dataInserimento" type="datetime" column="data_inserimento" nullable="true"/>
+    <field name="dataModifica" type="datetime" column="data_modifica" nullable="true">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="migliore" type="string" column="migliore" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img1" type="string" column="img1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img2" type="string" column="img2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="img3" type="string" column="img3" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="durata" type="string" column="durata" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomeInserimento" type="string" column="nome_inserimento" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="modificato" type="string" column="modificato" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

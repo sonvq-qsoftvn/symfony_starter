@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\BackofficeToRelDest" table="backoffice_to_rel_dest">
+    <indexes>
+      <index name="idTo" columns="idTo"/>
+      <index name="idDestinazione" columns="idDestinazione"/>
+    </indexes>
+    <id name="idto" type="integer" column="idTo"/>
+    <id name="iddestinazione" type="integer" column="idDestinazione"/>
+  </entity>
+</doctrine-mapping>

@@ -325,8 +325,9 @@ class Container implements ResettableContainerInterface
     public function getServiceIds()
     {
         $ids = array();
-        foreach (get_class_methods($this) as $method) {
-            if (preg_match('/^get(.+)Service$/', $method, $match)) {
+        $r = new \ReflectionClass($this);
+        foreach ($r->getMethods() as $method) {
+            if (preg_match('/^get(.+)Service$/', $method->name, $match)) {
                 $ids[] = self::underscore($match[1]);
             }
         }
