@@ -1,0 +1,16 @@
+$ php bin/console doctrine:mapping:import --force AcmeBlogBundle xml
+
+$ php bin/console doctrine:generate:entities AcmeBlogBundle --em=customer
+
+$ php bin/console cache:clear --env=prod
+
+$ php bin/console debug:router
+
+$ php bin/console debug:container log
+
+$ php bin/console server:run
+
+
+list useful function
+
+dump()
