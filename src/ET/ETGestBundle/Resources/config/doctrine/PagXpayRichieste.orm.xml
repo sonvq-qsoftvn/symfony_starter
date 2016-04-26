@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\PagXpayRichieste" table="pag_xpay_richieste">
+    <indexes>
+      <index name="id_op" columns="id_op"/>
+    </indexes>
+    <id name="transactionId" type="string" column="transaction_id" length="20"/>
+    <id name="idOp" type="string" column="id_op" length="10"/>
+    <field name="actionCode" type="string" column="action_code" length="8" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="amount" type="integer" column="amount" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="currency" type="string" column="currency" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="language" type="string" column="language" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descOrder" type="string" column="desc_order" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="optionFields" type="text" column="option_fields" length="16777215" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="messageType" type="string" column="message_type" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="response" type="string" column="response" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="authCode" type="string" column="auth_code" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="transactionDate" type="datetime" column="transaction_date" nullable="false"/>
+    <field name="cardType" type="string" column="card_type" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="transactionType" type="string" column="transaction_type" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="region" type="string" column="region" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="country" type="string" column="country" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="productType" type="string" column="product_type" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="liabilityShift" type="string" column="liability_shift" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="requestType" type="string" column="request_type" length="2" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="typeOp" type="string" column="type_op" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="amountOp" type="integer" column="amount_op" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="user" type="string" column="user" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

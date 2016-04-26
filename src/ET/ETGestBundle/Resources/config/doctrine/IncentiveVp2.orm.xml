@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\IncentiveVp2" table="incentive_vp2">
+    <indexes>
+      <index name="gruppo" columns="gruppo"/>
+      <index name="data" columns="data"/>
+    </indexes>
+    <id name="data" type="string" column="data" length="6"/>
+    <id name="codpromotore" type="integer" column="codPromotore"/>
+    <field name="gruppo" type="integer" column="gruppo" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="punti" type="decimal" column="punti" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="fatturato" type="decimal" column="fatturato" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="moduli" type="smallint" column="moduli" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

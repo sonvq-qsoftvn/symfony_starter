@@ -1,3 +1,13 @@
+et_gest:
+#    resource: "@ETGestBundle/Resources/config/routing.yml"
+#    prefix:   /
+    resource: "@ETGestBundle/Controller/"
+    type:     annotation
+
+et_ticket:
+    resource: "@ETTicketBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

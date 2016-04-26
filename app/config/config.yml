@@ -116,7 +116,7 @@ doctrine:
             idetus:
                 connection: idetus
                 mappings:
-                    AppBundle: ~
+                    ETGestBundle: ~
             agenti:
                 connection: agenti
                 mappings:
@@ -129,6 +129,7 @@ doctrine:
                 connection: etticket
                 mappings:
                     AppBundle: ~
+                    ETTicketBundle: ~
             listanozze:
                 connection: listanozze
                 mappings:

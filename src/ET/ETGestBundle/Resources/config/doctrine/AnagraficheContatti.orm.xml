@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\AnagraficheContatti" table="anagrafiche_contatti">
+    <indexes>
+      <index name="id_anagrafica_idx" columns="id_anagrafica"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="contatto_idx" columns="contatto"/>
+    </unique-constraints>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idAnagrafica" type="string" column="id_anagrafica" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipocontatto" type="string" column="tipocontatto" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="contatto" type="string" column="contatto" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descrizione" type="string" column="descrizione" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datacreazione" type="datetime" column="datacreazione" nullable="true"/>
+    <field name="datamodifica" type="datetime" column="datamodifica" nullable="true"/>
+    <field name="versione" type="boolean" column="versione" nullable="false">
+      <options>
+        <option name="default">2</option>
+      </options>
+    </field>
+    <field name="principale" type="boolean" column="principale" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="solaLettura" type="boolean" column="sola_lettura" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

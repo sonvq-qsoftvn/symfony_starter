@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\Viaggi" table="viaggi">
+    <indexes>
+      <index name="codPromotore" columns="codPromotore"/>
+      <index name="id_anagrafica" columns="id_anagrafica,codPromotore"/>
+      <index name="tipologia" columns="tipologia"/>
+      <index name="status" columns="status,id_viaggio"/>
+      <index name="agenzia" columns="agenzia"/>
+    </indexes>
+    <id name="idViaggio" type="integer" column="id_viaggio">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idAnagrafica" type="string" column="id_anagrafica" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codpromotore" type="integer" column="codPromotore" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="tipologia" type="string" column="tipologia" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="descrizione" type="string" column="descrizione" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="valutazione" type="boolean" column="valutazione" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="destinazionetext" type="string" column="destinazioneText" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinazioneIso" type="string" column="destinazione_iso" length="4" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="boolean" column="status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="data" type="datetime" column="data" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="datamodifica" type="datetime" column="dataModifica" nullable="true"/>
+    <field name="datacompleto" type="datetime" column="dataCompleto" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="dataviaggio" type="datetime" column="dataViaggio" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="datainizioviaggio" type="datetime" column="dataInizioViaggio" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="datafineviaggio" type="datetime" column="dataFineViaggio" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="avesRisposta" type="text" column="aves_risposta" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="agenzia" type="string" column="agenzia" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ETIta</option>
+      </options>
+    </field>
+    <field name="valuta" type="string" column="valuta" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="versione" type="boolean" column="versione" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="margineminimo" type="float" column="margineMinimo" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="margineconsigliato" type="float" column="margineConsigliato" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="regime" type="string" column="regime" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titoloIt" type="text" column="titolo_it" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titoloEs" type="text" column="titolo_es" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titoloEn" type="text" column="titolo_en" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titolotext" type="text" column="titoloText" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="erroriviaggio" type="text" column="erroriviaggio" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apikey" type="string" column="apiKey" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apisiapkey" type="string" column="apiSiapKey" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apistatus" type="boolean" column="apiStatus" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="apisiapstatus" type="boolean" column="apiSiapStatus" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="apiesportato" type="boolean" column="apiEsportato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="apisiapesportato" type="boolean" column="apiSiapEsportato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="viaggiototale" type="decimal" column="viaggioTotale" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="viaggiototaledovuto" type="decimal" column="viaggioTotaleDovuto" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="viaggiototaleoperatore" type="decimal" column="viaggioTotaleOperatore" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="viaggiototalecosti" type="decimal" column="viaggioTotaleCosti" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="viaggiototaleimposte" type="decimal" column="viaggioTotaleImposte" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="viaggiomargine" type="decimal" column="viaggioMargine" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="listascorpori" type="text" column="listaScorpori" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ngiornipratica" type="integer" column="ngiorniPratica" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nnottipratica" type="integer" column="nnottiPratica" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="quota" type="string" column="quota" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoivapratica" type="boolean" column="tipoIVAPratica" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

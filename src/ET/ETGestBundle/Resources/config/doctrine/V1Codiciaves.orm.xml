@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\V1Codiciaves" table="v1_codiciaves">
+    <indexes>
+      <index name="codice" columns="codiceAves"/>
+      <index name="agenzia" columns="agenzia"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="codiceAves" columns="codiceAves"/>
+    </unique-constraints>
+    <id name="id" type="boolean" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="codiceaves" type="string" column="codiceAves" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="iva" type="decimal" column="iva" precision="5" scale="2" nullable="false">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="codice" type="string" column="codice" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="moduli" type="string" column="moduli" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="php" type="text" column="php" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descrizione" type="string" column="descrizione" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="deslunga" type="text" column="deslunga" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="regimeiva" type="string" column="regimeIva" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="regime" type="string" column="regime" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="commissioneassicurazione" type="decimal" column="commissioneAssicurazione" precision="8" scale="5" nullable="false">
+      <options>
+        <option name="default">0.00000</option>
+      </options>
+    </field>
+    <field name="tipodestinazione" type="boolean" column="tipoDestinazione" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="agenzia" type="string" column="agenzia" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ETIta</option>
+      </options>
+    </field>
+    <field name="deletedAt" type="datetime" column="deleted_at" nullable="true"/>
+  </entity>
+</doctrine-mapping>

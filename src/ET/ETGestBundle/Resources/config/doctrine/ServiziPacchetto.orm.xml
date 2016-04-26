@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\ServiziPacchetto" table="servizi_pacchetto">
+    <indexes>
+      <index name="portale_id_idx" columns="portale_id"/>
+      <index name="destinazione_idx" columns="destinazione"/>
+      <index name="codpromotorepromorif_idx" columns="codpromotorepromorif"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="portaleId" type="smallint" column="portale_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idofferta" type="string" column="idofferta" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nropzione" type="string" column="nropzione" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datain" type="date" column="datain" nullable="true"/>
+    <field name="dataout" type="date" column="dataout" nullable="true"/>
+    <field name="destinazione" type="string" column="destinazione" length="3" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="localita" type="string" column="localita" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomestruttura" type="string" column="nomestruttura" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipostruttura" type="string" column="tipostruttura" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sistemazioni" type="text" column="sistemazioni" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numprenotazione" type="string" column="numprenotazione" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="notecontratto" type="string" column="notecontratto" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aeroportopartenza" type="string" column="aeroportopartenza" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aeroportopartenzaarrivo" type="string" column="aeroportopartenzaarrivo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aeroportoarrivo" type="string" column="aeroportoarrivo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aeroportoarrivoarrivo" type="string" column="aeroportoarrivoarrivo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codpromotorepromorif" type="integer" column="codpromotorepromorif" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="accettazioneassicurazione" type="string" column="accettazioneAssicurazione" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="startdeparturelocation" type="string" column="startDepartureLocation" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="startarrivallocation" type="string" column="startArrivalLocation" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="returndeparturelocation" type="string" column="returnDepartureLocation" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="returnarrivallocation" type="string" column="returnArrivalLocation" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="transporttype" type="boolean" column="transportType" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

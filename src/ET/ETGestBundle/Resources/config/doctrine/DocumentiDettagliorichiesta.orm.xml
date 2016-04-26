@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\DocumentiDettagliorichiesta" table="documenti_dettagliorichiesta">
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="richiestacodice" type="string" column="richiestacodice" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestadatacreazione" type="datetime" column="richiestadatacreazione" nullable="true"/>
+    <field name="richiestapacchettodescrizione" type="string" column="richiestapacchettodescrizione" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestapacchettoid" type="string" column="richiestapacchettoid" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestapacchettocosto" type="string" column="richiestapacchettocosto" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestapartenzadal" type="string" column="richiestapartenzadal" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestapartenzaal" type="string" column="richiestapartenzaal" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestaadultinumero" type="smallint" column="richiestaadultinumero" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="richiestabambininumero" type="smallint" column="richiestabambininumero" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="richiestabambinieta" type="string" column="richiestabambinieta" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestareperibileda" type="string" column="richiestareperibileda" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestareperibilea" type="string" column="richiestareperibilea" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestarecapitoemail" type="string" column="richiestarecapitoemail" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestarecapitotelefonocasa" type="string" column="richiestarecapitotelefonocasa" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestarecapitotelefonoufficio" type="string" column="richiestarecapitotelefonoufficio" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="richiestarecapitotelefonocellulare" type="string" column="richiestarecapitotelefonocellulare" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

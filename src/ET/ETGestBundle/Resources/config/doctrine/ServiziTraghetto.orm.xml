@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\ServiziTraghetto" table="servizi_traghetto">
+    <indexes>
+      <index name="partenzanazione_idx" columns="partenzaNazione"/>
+      <index name="destinazionenazione_idx" columns="destinazioneNazione"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="partenzanazione" type="string" column="partenzaNazione" length="4" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinazionenazione" type="string" column="destinazioneNazione" length="4" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datain" type="date" column="dataIN" nullable="true"/>
+    <field name="andataluogo" type="string" column="andataLuogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="andataore" type="time" column="andataOre" nullable="true"/>
+    <field name="andataarrivoluogo" type="string" column="andataArrivoLuogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="andataarrivoore" type="time" column="andataArrivoOre" nullable="true"/>
+    <field name="andatasistemazioni" type="text" column="andataSistemazioni" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="andatasistemazionitext" type="text" column="andataSistemazioniText" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataout" type="date" column="dataOUT" nullable="true"/>
+    <field name="ritornoluogo" type="string" column="ritornoLuogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ritornoore" type="time" column="ritornoOre" nullable="true"/>
+    <field name="ritornoarrivoluogo" type="string" column="ritornoArrivoLuogo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ritornoarrivoore" type="time" column="ritornoArrivoOre" nullable="true"/>
+    <field name="ritornosistemazioni" type="text" column="ritornoSistemazioni" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ritornosistemazionitext" type="text" column="ritornoSistemazioniText" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzotipo" type="string" column="mezzoTipo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzomodello" type="string" column="mezzoModello" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzotarga" type="string" column="mezzoTarga" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mezzodimensione" type="string" column="mezzoDimensione" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="confermaprenotazione" type="boolean" column="confermaPrenotazione" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

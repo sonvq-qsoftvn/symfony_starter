@@ -817,14 +817,14 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Orm_EtticketEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\ET\\ETTicketBundle\\Resources\\config\\doctrine') => 'ET\\ETTicketBundle\\Entity'));
         $a->setGlobalBasename('mapping');
 
         $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
-        $b->addDriver($a, 'AppBundle\\Entity');
+        $b->addDriver($a, 'ET\\ETTicketBundle\\Entity');
 
         $c = new \Doctrine\ORM\Configuration();
-        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setEntityNamespaces(array('ETTicketBundle' => 'ET\\ETTicketBundle\\Entity'));
         $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_metadata_cache'));
         $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_query_cache'));
         $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.etticket_result_cache'));
@@ -894,14 +894,14 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Orm_IdetusEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\ET\\ETGestBundle\\Resources\\config\\doctrine') => 'ET\\ETGestBundle\\Entity'));
         $a->setGlobalBasename('mapping');
 
         $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
-        $b->addDriver($a, 'AppBundle\\Entity');
+        $b->addDriver($a, 'ET\\ETGestBundle\\Entity');
 
         $c = new \Doctrine\ORM\Configuration();
-        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setEntityNamespaces(array('ETGestBundle' => 'ET\\ETGestBundle\\Entity'));
         $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_metadata_cache'));
         $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_query_cache'));
         $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_result_cache'));
@@ -2612,7 +2612,7 @@ class appDevDebugProjectContainer extends Container
 
         $e = new \Symfony\Component\Security\Http\AccessMap();
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '571dc6085cf0e7.80359222', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '571ed697a97fb7.78431361', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
 
     /**
@@ -3625,6 +3625,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views'), 'Twig');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\swiftmailer-bundle/Resources/views'), 'Swiftmailer');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ET\\ETTicketBundle/Resources/views'), 'ETTicket');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ET\\ETGestBundle/Resources/views'), 'ETGest');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
         $instance->addPath(($this->targetDirs[3].'\\app/Resources/views'));
@@ -4024,7 +4026,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('571dc6085cf0e7.80359222')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('571ed697a97fb7.78431361')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4217,6 +4219,8 @@ class appDevDebugProjectContainer extends Container
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'AppBundle' => 'AppBundle\\AppBundle',
+                'ETTicketBundle' => 'ET\\ETTicketBundle\\ETTicketBundle',
+                'ETGestBundle' => 'ET\\ETGestBundle\\ETGestBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',

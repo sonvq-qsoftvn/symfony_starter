@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\ServiziVololinea" table="servizi_vololinea">
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numprenotazione" type="string" column="numPrenotazione" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datain" type="date" column="dataIN" nullable="true"/>
+    <field name="partenza" type="string" column="partenza" length="3" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="partenzaaereoporto" type="string" column="partenzaAereoporto" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="partenzaaereoportoarrivo" type="string" column="partenzaAereoportoArrivo" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataout" type="date" column="dataOUT" nullable="true"/>
+    <field name="arrivo" type="string" column="arrivo" length="3" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="arrivoaereoporto" type="string" column="arrivoAereoporto" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="arrivoaereoportoarrivo" type="string" column="arrivoAereoportoArrivo" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nominativocartacc" type="string" column="nominativoCartaCC" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipobiglietto" type="string" column="tipoBiglietto" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="indirizzobigliettocartaceo" type="text" column="indirizzoBigliettoCartaceo" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="note" type="text" column="note" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,3 @@
+et_ticket_homepage:
+    path:     /
+    defaults: { _controller: ETTicketBundle:Default:index }

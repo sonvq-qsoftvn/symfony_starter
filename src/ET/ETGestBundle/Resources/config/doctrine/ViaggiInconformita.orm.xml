@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\ViaggiInconformita" table="viaggi_inconformita">
+    <id name="regime" type="string" column="regime" length="255"/>
+    <id name="tiposervizio" type="string" column="tiposervizio" length="50"/>
+    <id name="noncompatible" type="string" column="noncompatible" length="50"/>
+    <field name="messaggio" type="text" column="messaggio" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

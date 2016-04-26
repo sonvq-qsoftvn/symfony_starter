@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\Servizi" table="servizi">
+    <indexes>
+      <index name="myindex_idx" columns="id,id_viaggio"/>
+      <index name="servizi_tipo_servizio_idx" columns="tipo"/>
+      <index name="codpromotore_idx" columns="codpromotore"/>
+      <index name="codpromotorecreazione_idx" columns="codpromotorecreazione"/>
+      <index name="codpromotoremodifica_idx" columns="codpromotoremodifica"/>
+      <index name="id_viaggio_idx" columns="id_viaggio"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idViaggio" type="bigint" column="id_viaggio" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotore" type="integer" column="codpromotore" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotorecreazione" type="integer" column="codpromotorecreazione" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="codpromotoremodifica" type="integer" column="codpromotoremodifica" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="tipo" type="string" column="tipo" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="titolo" type="string" column="titolo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descrizione" type="text" column="descrizione" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idfornitore" type="smallint" column="idfornitore" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="fornitoretext" type="text" column="fornitoreText" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="costo" type="decimal" column="costo" precision="10" scale="2" nullable="true"/>
+    <field name="ricavo" type="decimal" column="ricavo" precision="10" scale="2" nullable="true"/>
+    <field name="commissione" type="decimal" column="commissione" precision="10" scale="2" nullable="true"/>
+    <field name="imposta" type="decimal" column="imposta" precision="10" scale="2" nullable="true"/>
+    <field name="pagatodirettooperatore" type="boolean" column="pagatodirettooperatore" nullable="true"/>
+    <field name="erroriespletamento" type="text" column="erroriespletamento" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="confermaPrenotazione" type="boolean" column="conferma_prenotazione" nullable="true"/>
+    <field name="bookingStato" type="bigint" column="booking_stato" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bookingCodpromotorestato" type="bigint" column="booking_codPromotoreStato" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bookingCodpromotorelavorazione" type="bigint" column="booking_codPromotoreLavorazione" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bookingLetto" type="boolean" column="booking_letto" nullable="true"/>
+    <field name="ecStato" type="bigint" column="ec_stato" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="ecCodpromotorestato" type="bigint" column="ec_codPromotoreStato" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ecCodpromotorelavorazione" type="bigint" column="ec_codPromotoreLavorazione" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ecLetto" type="boolean" column="ec_letto" nullable="true"/>
+    <field name="prenotazioniLetturadata" type="datetime" column="prenotazioni_letturaData" nullable="true"/>
+    <field name="prenotazioniLetturacodpromotore" type="integer" column="prenotazioni_letturaCodPromotore" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prenotazioniLetturastato" type="boolean" column="prenotazioni_letturaStato" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="codicecontabile" type="string" column="codiceContabile" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codicepagamento" type="string" column="codicePagamento" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apistato" type="string" column="apiStato" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apisiapstato" type="string" column="apiSiapStato" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">nuovo</option>
+      </options>
+    </field>
+    <field name="apistatodata" type="datetime" column="apiStatoData" nullable="true"/>
+    <field name="apisiapstatodata" type="datetime" column="apiSiapStatoData" nullable="true"/>
+    <field name="apikey" type="string" column="apiKey" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="data" type="datetime" column="data" nullable="false"/>
+    <field name="datamodifica" type="datetime" column="datamodifica" nullable="false"/>
+    <field name="datainvio" type="datetime" column="datainvio" nullable="true"/>
+    <field name="tipoinvio" type="string" column="tipoinvio" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="stornato" type="boolean" column="stornato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="duplicato" type="bigint" column="duplicato" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="incentiveAt" type="datetime" column="incentive_at" nullable="true"/>
+    <field name="approved" type="boolean" column="approved" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="selectedValuta" type="string" column="selected_valuta" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cambioCosto" type="decimal" column="cambio_costo" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="default">0.00</option>
+      </options>
+    </field>
+    <field name="linkSupplier" type="string" column="link_supplier" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

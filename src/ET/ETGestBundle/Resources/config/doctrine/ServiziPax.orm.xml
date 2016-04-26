@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\ServiziPax" table="servizi_pax">
+    <indexes>
+      <index name="id_anagrafica_idx" columns="id_anagrafica"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nome" type="string" column="nome" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cognome" type="string" column="cognome" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datanascita" type="date" column="datanascita" nullable="true"/>
+    <field name="idAnagrafica" type="string" column="id_anagrafica" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoPasseggeroField" type="integer" column="tipo_passeggero_field" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="sessoPasseggero" type="string" column="sesso_passeggero" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

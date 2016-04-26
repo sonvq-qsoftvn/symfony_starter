@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\AnagraficheV2Old" table="anagrafiche_v2_old">
+    <indexes>
+      <index name="codpromotore_idx" columns="codPromotore"/>
+      <index name="codpromotoreprec_idx" columns="codPromotorePrec"/>
+      <index name="codpromotoreproprietario_idx" columns="codPromotoreProprietario"/>
+      <index name="nazione_idx" columns="nazione"/>
+    </indexes>
+    <id name="idAnagrafica" type="string" column="id_anagrafica" length="18">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="datanascita" type="date" column="dataNascita" nullable="true"/>
+    <field name="cognome" type="string" column="cognome" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nome" type="string" column="nome" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="sesso" type="string" column="sesso" length="1" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">M</option>
+      </options>
+    </field>
+    <field name="codfisc" type="string" column="codFisc" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="indirizzo" type="string" column="indirizzo" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="numcivico" type="string" column="numCivico" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="cap" type="string" column="cap" length="5" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="comune" type="string" column="comune" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provincia" type="string" column="provincia" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nazione" type="string" column="nazione" length="3" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codpromotore" type="integer" column="codPromotore" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="codpromotoreprec" type="integer" column="codPromotorePrec" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="noteCliente" type="text" column="note_cliente" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="temporaneo" type="boolean" column="temporaneo" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="tipoanagrafica" type="string" column="tipoAnagrafica" length="1" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">P</option>
+      </options>
+    </field>
+    <field name="ragionesociale" type="string" column="ragioneSociale" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="partitaiva" type="string" column="partitaIva" length="13" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="luogonascita" type="string" column="luogoNascita" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="indirizzoazienda" type="string" column="indirizzoAzienda" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codpromotoreproprietario" type="integer" column="codPromotoreProprietario" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="provvigioneappaltocliente" type="integer" column="provvigioneAppaltoCliente" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="lingua" type="string" column="lingua" length="5" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">it_IT</option>
+      </options>
+    </field>
+    <field name="datacreazione" type="datetime" column="dataCreazione" nullable="false"/>
+    <field name="datamodifica" type="datetime" column="dataModifica" nullable="false"/>
+  </entity>
+</doctrine-mapping>

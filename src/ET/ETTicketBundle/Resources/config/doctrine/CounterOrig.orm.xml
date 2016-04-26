@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETTicketBundle\Entity\CounterOrig" table="counter_orig">
+    <id name="promotoreId" type="integer" column="promotore_id"/>
+    <id name="portale" type="string" column="portale" length="100"/>
+    <id name="lingua" type="string" column="lingua" length="10"/>
+    <field name="totaleassegnatodirette" type="integer" column="totaleAssegnatoDirette" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totaleassegnateappalto" type="integer" column="totaleAssegnateAppalto" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totaleappaltate" type="integer" column="totaleAppaltate" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalelavoratedirette" type="integer" column="totaleLavorateDirette" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalelavorateappalto" type="integer" column="totaleLavorateAppalto" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalechiusedirette" type="integer" column="totaleChiuseDirette" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalechiuseappalto" type="integer" column="totaleChiuseAppalto" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

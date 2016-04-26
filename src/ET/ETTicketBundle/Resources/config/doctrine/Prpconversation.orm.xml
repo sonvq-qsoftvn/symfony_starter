@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETTicketBundle\Entity\Prpconversation" table="prpconversation">
+    <id name="prpconversationId" type="integer" column="prpconversation_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="prpconversationPromotoreid" type="integer" column="prpconversation_promotoreId" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prpconversationRequestid" type="integer" column="prpconversation_requestId" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="prpconversationPrpid" type="integer" column="prpconversation_prpId" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -10,7 +10,13 @@ $ php bin/console debug:container log
 
 $ php bin/console server:run
 
+$ php app/console generate:bundle --bundle-name=AcmeBlogBundle
+
 
 list useful function
 
 dump()
+
+
+Entities from vacanzev_etticket -> ETTicket bundle
+Entities from vacanzev_idetus(eu) -> ETGest bundle

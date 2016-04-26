@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\IncentivePerc2" table="incentive_perc2">
+    <id name="data" type="string" column="data" length="6"/>
+    <id name="codpromdest" type="integer" column="codPromDest"/>
+    <id name="codprompart" type="integer" column="codPromPart"/>
+    <field name="percorso" type="string" column="percorso" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="perc" type="boolean" column="perc" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETTicketBundle\Entity\BkRequest" table="bk_request">
+    <indexes>
+      <index name="request_assigned_promotore_id" columns="request_assigned_promotore_id"/>
+      <index name="request_prpid" columns="request_prpid"/>
+    </indexes>
+    <id name="requestId" type="integer" column="request_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="requestPackage" type="text" column="request_package" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestPeriodfrom" type="text" column="request_periodFrom" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestPeriodto" type="text" column="request_periodTo" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestCost" type="text" column="request_cost" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestName" type="text" column="request_name" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestSurname" type="text" column="request_surname" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestEmail" type="text" column="request_email" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestAdults" type="integer" column="request_adults" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestChildren" type="integer" column="request_children" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestTel" type="text" column="request_tel" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestCell" type="text" column="request_cell" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestOffice" type="text" column="request_office" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestRepfrom" type="text" column="request_repFrom" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestRepto" type="text" column="request_repTo" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestOther" type="text" column="request_other" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestFcd" type="text" column="request_fcd" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestFmt" type="text" column="request_fmt" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestMaildest" type="text" column="request_maildest" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestMailrif" type="text" column="request_mailrif" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestFsu" type="text" column="request_fsu" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestPid" type="text" column="request_pid" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestPacchetonome" type="text" column="request_pacchetonome" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestChildrendetails" type="text" column="request_childrendetails" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestAssignedPromotoreId" type="integer" column="request_assigned_promotore_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestStatus" type="string" column="request_status" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestComment" type="text" column="request_comment" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestDate" type="datetime" column="request_date" nullable="true"/>
+    <field name="requestPrpname" type="text" column="request_prpname" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestPrpid" type="integer" column="request_prpid" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestPrpmail" type="text" column="request_prpmail" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestLoggedUsers" type="integer" column="request_logged_users" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="requestPromotoreid" type="integer" column="request_promotoreid" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestTimeLeft" type="integer" column="request_time_left" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="requestAnagraficaId" type="string" column="request_anagrafica_id" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="requestAnagraficaPromotoreId" type="smallint" column="request_anagrafica_promotore_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="requestCode" type="string" column="request_code" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

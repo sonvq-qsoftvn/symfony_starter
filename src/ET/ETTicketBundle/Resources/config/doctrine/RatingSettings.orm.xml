@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETTicketBundle\Entity\RatingSettings" table="rating_settings">
+    <indexes>
+      <index name="agency_idx" columns="agenzia"/>
+    </indexes>
+    <id name="portaleFcd" type="string" column="portale_fcd" length="30">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="workedMinRequiredRequests" type="integer" column="worked_min_required_requests" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="workedMinRequiredRatio" type="boolean" column="worked_min_required_ratio" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="closedMinRequiredRequests" type="integer" column="closed_min_required_requests" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="closedMinRequiredRatio" type="boolean" column="closed_min_required_ratio" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="minRatingRequired" type="integer" column="min_rating_required" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="daysIncluded" type="integer" column="days_included" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="reserved" type="boolean" column="reserved" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="agenzia" type="string" column="agenzia" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="deletedAt" type="datetime" column="deleted_at" nullable="true"/>
+  </entity>
+</doctrine-mapping>

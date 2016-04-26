@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETTicketBundle\Entity\RatingDetails" table="rating_details">
+    <indexes>
+      <index name="rating_user_id" columns="rating_user_id"/>
+      <index name="rating_request_id" columns="rating_request_id"/>
+      <index name="rating_request_status" columns="rating_request_status"/>
+    </indexes>
+    <id name="ratingId" type="integer" column="rating_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ratingUserId" type="integer" column="rating_user_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="ratingRequestId" type="integer" column="rating_request_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="ratingRequestStatus" type="string" column="rating_request_status" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="ratingDate" type="datetime" column="rating_date" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

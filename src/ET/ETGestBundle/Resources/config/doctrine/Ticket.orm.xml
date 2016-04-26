@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETGestBundle\Entity\Ticket" table="ticket">
+    <indexes>
+      <index name="id_promotore" columns="id_promotore"/>
+      <index name="id_anagrafica" columns="id_anagrafica"/>
+      <index name="id_viaggio" columns="id_viaggio"/>
+      <index name="id_ticket" columns="id_ticket,id_promotore"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idTicket" type="integer" column="id_ticket" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="idPromotore" type="integer" column="id_promotore" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="idAnagrafica" type="string" column="id_anagrafica" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="idViaggio" type="integer" column="id_viaggio" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="tipoRiferimento" type="string" column="tipo_riferimento" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ticket</option>
+      </options>
+    </field>
+    <field name="riferimento" type="bigint" column="riferimento" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="dataCreazione" type="datetime" column="data_creazione" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
