@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config_prod.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/src/AppBundle/Controller/DashboardController.php</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/Resources/views/dashboard/index.html.twig</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config_dev.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config_test.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/parameters.eu.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config.eu.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/parameters.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/config_dev.eu.yml</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/AppKernel.php</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/src/ET/ETGestBundle/Controller/DefaultController.php</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/src/ET/ETGestBundle/ETGestBundle.php</file>
+            <file>file:/D:/wamp/www/symfony3/symfony_starter/app/config/routing.yml</file>
+        </group>
     </open-files>
 </project-private>

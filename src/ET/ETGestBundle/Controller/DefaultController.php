@@ -14,8 +14,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        // Retrieves a repository managed by the "default" em
+        $client = $this->get('doctrine')
+            ->getRepository('ETGestBundle:Anagrafiche')
+            ->findAll();       
+        
         return $this->render('dashboard/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'client' => $client
         ]);
     }
 }
