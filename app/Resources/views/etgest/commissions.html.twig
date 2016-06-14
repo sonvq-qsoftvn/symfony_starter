@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">          
+    <link rel="stylesheet" href="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.css') }}">           
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-treegrid/css/jquery.treegrid.css') }}">  
+{% endblock %}
+        
+{% block main_content %}    
+    <div class="content month-select-datepicker">
+        <h2 class="content-main-title">{% trans %}COMMISSIONS{% endtrans %}</h2>
+        <br/>
+        <div class="row">
+            <div class="col-md-4 text-left">
+                <a href="{{ path('etgest_commissions', {'date': prevMonthQuery }) }}">
+                    <i class="fa fa-backward" aria-hidden="true"></i> {{ prevMonth }}
+                </a>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label" for="startDate">Filter by month:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="startDate" id="startDate" class="date-picker form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{{ path('etgest_commissions', {'date': nextMonthQuery }) }}">
+                    {{ nextMonth }} <i class="fa fa-forward" aria-hidden="true"></i> 
+                </a>                
+            </div>            
+        </div>
+        
+        <br/><br/>
+        
+        <table class="table tree-2 table-bordered table-striped table-condensed table-highlight tree">
+            {% if commissionsArray %}
+                {% set period = commissionsArray.array %}
+                {% if period %}
+                    {% for keyPeriod, valuePeriod in period %} 
+                        <tr>
+                            <th colspan="2">{{ valuePeriod.periodoDate }}</th>
+                        </tr>
+                        {% set arrayPromoter = valuePeriod.array %}
+                        {% if arrayPromoter %}
+                            {% for keyPromoter, valuePromoter in arrayPromoter %} 
+                                <tr class="treegrid-{{ keyPromoter }}">
+                                    <td>{{ keyPromoter }}) {{ valuePromoter.nome }}</td>
+                                    <td>
+                                        <a href="#" title="Total billable detail" target="_blank">Detail</a>
+                                        {% if valuePromoter.promotoreSaldato %}
+                                            {% set textClass = 'text-success' %}                    
+                                        {% else %}
+                                            {% set textClass = 'text-danger' %}                    
+                                        {% endif %}
+                                        <span class="{{textClass}}">{{ valuePromoter.totale | number_format(2, '.', ',') }}</span>
+                                    </td>
+                                    {% set arrayViaggi = valuePromoter.array %}
+                                    {% if arrayViaggi %}   
+                                        {% for keyViaggi, valueViaggi in arrayViaggi %} 
+                                            <tr class="treegrid-{{ keyPromoter }}-{{ keyViaggi }} treegrid-parent-{{ keyPromoter }}">
+                                                {% set idViaggi = keyViaggi ? '#' ~ keyViaggi : '' %}
+                                                {% if valueViaggi.provvigione == 'incentive' %}
+                                                    {% set provvigioneValue = valueViaggi.provvigione %}
+                                                {% elseif (valueViaggi.provvigione == 'promotore')  or (valueViaggi.provvigione == 'ET') %}
+                                                    {% set provvigioneValue = valueViaggi.promVenditaName %}
+                                                {% else %}
+                                                    {% set provvigioneValue = '(' ~ valueViaggi.provvigione ~ ') ' ~ valueViaggi.promVenditaName %}
+                                                {% endif %}
+                                                
+                                                <td>
+                                                    {{ idViaggi }} 
+                                                    {{ provvigioneValue }} 
+                                                    <a href="#">{{ valueViaggi.titolo_it }} {{ valueViaggi.descrizione }}</a>  {{ valueViaggi.cliente ? ('- ' ~ valueViaggi.cliente) : '' }} 
+                                                </td>
+                                                <td> {{ valueViaggi.totale | number_format(2, '.', ',') }}</td>
+                                            </tr>
+                                            {% set arrayDocument = valueViaggi.array %}
+                                            {% if (arrayDocument) and (keyViaggi != 0) %}
+                                                {% for keyDocument, valueDocument in arrayDocument %} 
+                                                    <tr class="treegrid-{{ keyDocument }} treegrid-parent-{{ keyPromoter }}-{{ keyViaggi }}">
+                                                        {% if (valueViaggi.provvigione == 'promotore')  or (valueViaggi.provvigione == 'ET') %}
+                                                            <td> {{ valueDocument.tipoDocumento }} </td>
+                                                        {% else %}
+                                                            <td> {{ valueDocument.provvigione }} </td>
+                                                        {% endif %}
+                                                        <td> {{ valueDocument.totale | number_format(2, '.', ',') }}</td>
+                                                    </tr>
+                                                {% endfor %}            
+                                            {% endif %}            
+                                        {% endfor %}                
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}    
+            {% else %}
+                {% trans %}No items found{% endtrans %}
+            {% endif %}                  
+        </table>	
+             
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/moment-with-locales.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.js') }}"></script>        
+    <script src="{{ asset('vendor/jquery-treegrid/js/jquery.treegrid.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-treegrid/js/jquery.treegrid.bootstrap3.js') }}"></script>    
+    <script>
+        $(function () {            
+            $('.tree').treegrid({
+                initialState: 'collapsed',                            
+                expanderExpandedClass: 'glyphicon glyphicon-minus',
+                expanderCollapsedClass: 'glyphicon glyphicon-plus'
+            });
+            
+            
+            $('.date-picker').datepicker(
+            {
+                dateFormat: "mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                maxDate: 0,
+                onClose: function(dateText, inst) {
+                    function isDonePressed(){
+                        return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                    }
+
+                    if (isDonePressed()){
+                        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();                        
+                        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();                        
+                        $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+                        
+                        month = parseInt(month) + 1;
+                        var newMonth = (month < 10) ? ('0' + month) : month;
+                        var dateQuery = year.substr(2,2) + '-' + newMonth;                        
+                        $('.date-picker').focusout()//Added to remove focus from datepicker inpt box on selecting date
+                        window.location.href = window.location.pathname+"?"+$.param({'date':dateQuery});
+                    }
+                },
+                beforeShow : function(input, inst) {
+                    inst.dpDiv.addClass('month_year_datepicker')
+
+                    if ((datestr = $(this).val()).length > 0) {
+                        year = datestr.substring(datestr.length-4, datestr.length);
+                        month = datestr.substring(0, 2);
+                        $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                        $(this).datepicker('setDate', new Date(year, month-1, 1));
+                        $(".ui-datepicker-calendar").hide();
+                    }
+                }
+            });
+            
+            var getDate = '{{ date }}';
+            var currentYear = new Date().getFullYear();
+            var year = currentYear.toString().substr(0, 2) + getDate.substr(0, 2);
+            var month = getDate.substr(3, 2);
+            
+            $('.date-picker').datepicker('setDate', new Date(year, month-1)).trigger('change');                
+        });
+    </script>
+{% endblock %}

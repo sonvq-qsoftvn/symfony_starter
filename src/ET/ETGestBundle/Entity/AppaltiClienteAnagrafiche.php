@@ -2,30 +2,46 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * AppaltiClienteAnagrafiche
+ *
+ * @ORM\Table(name="appalti_cliente_anagrafiche")
+ * @ORM\Entity
  */
 class AppaltiClienteAnagrafiche
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_appalto", type="integer", nullable=false)
      */
     private $idAppalto = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
      */
     private $idAnagrafica = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="attivo", type="boolean", nullable=false)
      */
     private $attivo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -110,4 +126,3 @@ class AppaltiClienteAnagrafiche
         return $this->id;
     }
 }
-

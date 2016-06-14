@@ -1,4 +1,4 @@
 services:
-#    et_gest.example:
-#        class: ET\ETGestBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+   et_gest.documents_manager:
+       class: ET\ETGestBundle\Services\DocumentsManager
+       arguments: ['%file%']

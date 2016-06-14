@@ -1,32 +1,22 @@
 # This file is auto-generated during the composer install
 parameters:
     database_port: null
-    
     database_host_agenti: localhost
     database_name_agenti: vacanzev_agenti
     database_user_agenti: root
     database_password_agenti: ''
-    
     database_host_romano: localhost
     database_name_romano: vacanzev_romano1
     database_user_romano: root
     database_password_romano: ''
-    
     database_host_idetus: localhost
     database_name_idetus: vacanzev_idetus
     database_user_idetus: root
     database_password_idetus: ''
-    
     database_host_etticket: localhost
     database_name_etticket: vacanzev_etticket
     database_user_etticket: root
     database_password_etticket: ''
-    
-    database_host_listanozze: localhost
-    database_name_listanozze: listanozze_new
-    database_user_listanozze: root
-    database_password_listanozze: ''
-    
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null

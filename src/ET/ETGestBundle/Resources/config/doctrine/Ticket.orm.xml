@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="ET\ETGestBundle\Entity\Ticket" table="ticket">
+  <entity name="ET\ETGestBundle\Entity\Ticket" table="ticket" repository-class="ET\ETGestBundle\Repository\TicketRepository">
     <indexes>
       <index name="id_promotore" columns="id_promotore"/>
       <index name="id_anagrafica" columns="id_anagrafica"/>

@@ -2,90 +2,131 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
+
 /**
  * Pagamenti
+ *
+ * @ORM\Table(name="pagamenti", indexes={@ORM\Index(name="importo", columns={"importo"}), @ORM\Index(name="id_importo", columns={"id_viaggio", "importo"})})
+ * @ORM\Entity
  */
 class Pagamenti
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
      */
     private $idViaggio = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataPag", type="datetime", nullable=false)
      */
     private $datapag = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataEffettiva", type="date", nullable=false)
      */
     private $dataeffettiva = '0000-00-00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="importo", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $importo = '0.00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="pagato", type="boolean", nullable=false)
      */
     private $pagato = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="metodoPag", type="string", length=30, nullable=false)
      */
     private $metodopag = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=255, nullable=false)
      */
     private $descrizione = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=false)
      */
     private $codpromotorecreazione = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
      */
     private $datamodifica = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreModifica", type="integer", nullable=false)
      */
     private $codpromotoremodifica = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="aves_risposta", type="text", length=65535, nullable=false)
      */
     private $avesRisposta;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
      */
     private $tipo = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="rimborso", type="boolean", nullable=false)
      */
     private $rimborso = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="siap_reg_number", type="integer", nullable=false)
      */
     private $siapRegNumber;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="siap_reg_date", type="datetime", nullable=false)
      */
     private $siapRegDate = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idPag", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idpag;
+
 
 
     /**
@@ -458,4 +499,3 @@ class Pagamenti
         return $this->idpag;
     }
 }
-

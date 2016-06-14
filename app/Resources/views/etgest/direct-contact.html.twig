@@ -1,0 +1,606 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">          
+    <link rel="stylesheet" href="{{ asset('vendor/intl-tel-input-8.5.2/build/css/intlTelInput.css') }}">  
+    <link rel="stylesheet" href="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.css') }}">      
+    <link rel="stylesheet" href="{{ asset('vendor/formValidation/formValidation.min.css') }}">     
+{% endblock %}
+        
+{% block main_content %}    
+    <div class="content">
+        <h2 class="content-main-title">{% trans %}INSERT DIRECT CONTACT{% endtrans %}</h2>
+        <br/>
+        {#{{ form_start(form) }}#}
+        {{ form_errors(form) }}
+        {#{{ form_widget(form) }}
+        {{ form_end(form) }}#}
+                       
+        <form name="request" role="form" class="form-horizontal" id="createNewRequestForm" method="POST">
+            <div class="form-group form-group-md hasValidate">
+                {{ form_label(form.requestMaildest, null, {
+                    'label': 'Promoter',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.requestMaildest, {
+                        'attr': {'class': 'form-control', 'required': true}
+                    }) }}  
+                </div>
+            </div>
+                    
+            <div class="form-group form-group-md hasValidate">                 
+                {{ form_label(form.requestName, null, {
+                    'label': 'Firstname',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.requestName, {
+                        'attr': {'class': 'form-control', 'required': true, 'placeholder': 'Enter your firstname'}
+                    }) }} 
+                </div>
+            </div>  
+            
+            <div class="form-group form-group-md hasValidate">
+                {{ form_label(form.requestSurname, null, {
+                    'label': 'Lastname',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.requestSurname, {
+                        'attr': {'class': 'form-control', 'required': true, 'placeholder': 'Enter your lastname'}
+                    }) }}
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md messagestatus hasValidate">
+                <div class="col-md-10 col-md-offset-2">
+                    <span id="helpBlock" class="help-block">{% trans %}At least one of the fields (E-mail - Phone - Mobile) is required{% endtrans %}</span>                    
+                </div>
+                <div class="col-md-6 col-md-offset-2">
+                    <input type="hidden" name="hiddenValidate" />
+                </div>
+                <br/>
+            </div>
+                
+            <div class="form-group form-group-md hasValidate">     
+                {{ form_label(form.requestEmail, null, {
+                    'label': 'Email',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-6">  
+                    {{ form_widget(form.requestEmail, {
+                        'attr': {'class': 'form-control justone', 'placeholder': 'Enter your email', 'autocomplete': 'off'}
+                    }) }}
+                </div>
+            </div>
+            <div class="form-group form-group-md phone-input">
+                {{ form_label(form.requestTel, null, {
+                    'label': 'Telephone',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-2">                    
+                    <select class="form-control" id="telephone_country_code" name="telephone_country_code">
+                        {% if countryCodeArray %}
+                            {% for countryCode in countryCodeArray %}                            
+                                {% if( app.request.query.get("telephone_country_code") == countryCode.prefissointernazionale ) %}
+                                    {% set isSelectedPCC = 'selected' %}
+                                {% else %}
+                                    {% set isSelectedPCC = '' %}
+                                {% endif %}
+                                    <option {{ isSelectedPCC }} value="{{ countryCode.prefissointernazionale }}">
+                                        {{ countryCode.stato }} [{{ countryCode.prefissointernazionale }}]
+                                    </option>                            
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-md-4 hasValidate">   
+                    {{ form_widget(form.requestTel, {
+                        'attr': {'class': 'form-control justone', 'autocomplete': 'off'}
+                    }) }}
+                </div>
+            </div>
+            <div class="form-group form-group-md mobile-input">                
+                {{ form_label(form.requestCell, null, {
+                    'label': 'Mobile Phone',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-2">                    
+                    <select class="form-control" id="mobile_country_code" name="mobile_country_code">
+                        {% if countryCodeArray %}
+                            {% for countryCode in countryCodeArray %}                            
+                                {% if( app.request.query.get("mobile_country_code") == countryCode.prefissointernazionale ) %}
+                                    {% set isSelectedMCC = 'selected' %}
+                                {% else %}
+                                    {% set isSelectedMCC = '' %}
+                                {% endif %}
+                                    <option {{ isSelectedMCC }} value="{{ countryCode.prefissointernazionale }}">
+                                        {{ countryCode.stato }} [{{ countryCode.prefissointernazionale }}]
+                                    </option>                            
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-md-4 hasValidate">  
+                    {{ form_widget(form.requestCell, {
+                        'attr': {'class': 'form-control justone', 'autocomplete': 'off'}
+                    }) }}
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md">
+                {{ form_label(form.requestRepfrom, null, {
+                    'label': 'Available From',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}                
+                <div class="col-md-2">   
+                    {{ form_widget(form.requestRepfrom, {
+                        'attr': {'class': 'form-control', 'placeholder': 'Enter available from'}
+                    }) }}
+                </div>
+                {{ form_label(form.requestRepto, null, {
+                    'label': 'Available At',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}                
+                <div class="col-md-2">     
+                    {{ form_widget(form.requestRepto, {
+                        'attr': {'class': 'form-control', 'placeholder': 'Enter available at'}
+                    }) }}
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md">
+                {{ form_label(form.requestLingua, null, {
+                    'label': 'Language',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }} 
+                <div class="col-md-6">    
+                    {{ form_widget(form.requestLingua, {
+                        'attr': {'class': 'form-control', 'required': true}
+                    }) }}                    
+                </div>
+            </div>
+                    
+            <div class="form-group form-group-md">                
+                {{ form_label(form.requestFsu, null, {
+                    'label': 'Product',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }} 
+                <div class="col-md-6">  
+                    {{ form_widget(form.requestFsu, {
+                        'attr': {'class': 'form-control', 'required': true}
+                    }) }}                    
+                </div>
+            </div>
+                    
+            <div class="form-group form-group-md">                
+                <label class="col-md-2 control-label" for="locality">{% trans %}Locality{% endtrans %}: <span class="text-danger">*</span></label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="locality" id="locality" placeholder="{% trans %}Enter your locality{% endtrans %}" required>
+                </div>
+            </div>  
+                
+            <div class="form-group form-group-md">                 
+                {{ form_label(form.requestPeriodfrom, null, {
+                    'label': 'Departure',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-2 hasValidate">
+                    <div class="input-group date hasDatepicker">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        {{ form_widget(form.requestPeriodfrom, {
+                            'attr': {'class': 'form-control', 'required': true, 'readonly': 'readonly'}
+                        }) }}
+                    </div>
+                </div>  
+                {{ form_label(form.requestPeriodto, null, {
+                    'label': 'Arrival',
+                    'label_attr': {'class': 'col-md-2 control-label'}
+                }) }}
+                <div class="col-md-2 hasValidate">
+                    <div class="input-group date hasDatepicker">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        {{ form_widget(form.requestPeriodto, {
+                            'attr': {'class': 'form-control', 'required': true, 'readonly': 'readonly'}
+                        }) }}                      
+                    </div>
+                </div>  
+            </div>
+                
+            <div class="form-group form-group-md">
+                <label class="col-md-4 control-label" for="flexstartday">{% trans %}Flexible starting days{% endtrans %}: </label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="flexstartday" id="flexstartday" placeholder="{% trans %}Enter your flexible starting days{% endtrans %}">
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md">
+                <label class="col-md-2 control-label" for="accommodation_type">{% trans %}Accommodation Type{% endtrans %}: <span class="text-danger">*</span></label>
+                <div class="col-md-2 hasValidate">
+                    <input required type="text" class="form-control" name="accommodation_type" id="accommodation_type" placeholder="{% trans %}Accommodation type{% endtrans %}">
+                </div>
+                <label class="col-md-2 control-label" for="room_type">{% trans %}Room Type{% endtrans %}: <span class="text-danger">*</span></label>
+                <div class="col-md-2 hasValidate">
+                    <input required type="text" class="form-control" name="room_type" id="room_type" placeholder="{% trans %}Room type{% endtrans %}">
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md">
+                <label class="col-md-2 control-label" for="adult">{% trans %}Adult{% endtrans %}: </label>
+                <div class="col-md-2">            
+                    <select class="form-control" id="adult" name="adult">
+                        {% if arrayNumberPeople %}                            
+                            {% for numberPeople in arrayNumberPeople %}   
+                                {% if( app.request.query.get("adult") == numberPeople ) %}
+                                    {% set isSelectedNumberAdult = 'selected' %}
+                                {% else %}
+                                    {% set isSelectedNumberAdult = '' %}
+                                {% endif %}
+                                    <option {{ isSelectedNumberAdult }} value="{{ numberPeople }}">
+                                        {{ numberPeople }}
+                                    </option>                            
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <label class="col-md-2 control-label" for="baby">{% trans %}Children under 2 years{% endtrans %}: </label>
+                <div class="col-md-2">            
+                    <select class="form-control" id="baby" name="baby">
+                        {% if arrayNumberPeople %}                            
+                            {% for numberPeople in arrayNumberPeople %}   
+                                {% if( app.request.query.get("baby") == numberPeople ) %}
+                                    {% set isSelectedNumberAdult = 'selected' %}
+                                {% else %}
+                                    {% set isSelectedNumberAdult = '' %}
+                                {% endif %}
+                                    <option {{ isSelectedNumberAdult }} value="{{ numberPeople }}">
+                                        {{ numberPeople }}
+                                    </option>                            
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+                    
+            <div class="form-group form-group-md">
+                <label class="col-md-2 control-label" for="child">{% trans %}Children 2 - 12 years{% endtrans %}: </label>
+                <div class="col-md-2">            
+                    <select class="form-control" id="child" name="child">
+                        {% if arrayNumberPeople %}                            
+                            {% for numberPeople in arrayNumberPeople %}   
+                                {% if( app.request.query.get("child") == numberPeople ) %}
+                                    {% set isSelectedNumberAdult = 'selected' %}
+                                {% else %}
+                                    {% set isSelectedNumberAdult = '' %}
+                                {% endif %}
+                                    <option {{ isSelectedNumberAdult }} value="{{ numberPeople }}">
+                                        {{ numberPeople }}
+                                    </option>                            
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>        
+               
+            <div class="form-group form-group-md">
+                <label class="col-md-2 control-label" for="airport">{% trans %}Airport{% endtrans %}: </label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="airport" id="airport" placeholder="{% trans %}Enter your airport{% endtrans %}">
+                </div>
+            </div>
+             
+            <div class="form-group form-group-md">
+                <label class="col-md-2 control-label" for="note">{% trans %}Note{% endtrans %}: </label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="5" name="note" id="note" placeholder="{% trans %}Enter your note{% endtrans %}"></textarea>
+                </div>
+            </div>    
+                
+            <div class="form-group form-group-md">
+                <div class="col-md-10 col-md-offset-2">
+                    <span id="helpBlock" class="text-info">{% trans %}* Required fields{% endtrans %}</span>
+                </div>
+            </div>
+                
+            <div class="form-group form-group-md">
+                <div class="col-md-10 col-md-offset-2">                    
+                    {{ form_widget(form.save, {
+                        'attr': {'class': 'btn btn-primary'}
+                    }) }}                     
+                </div>
+            </div>
+            {{ form_row(form._token) }}
+        </form>        
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/moment-with-locales.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.js') }}"></script>    
+    <script src="{{ asset('vendor/formValidation/formValidation.min.js') }}"></script>   
+    <script src="{{ asset('vendor/formValidation/bootstrap.min.js') }}"></script>       
+    <script src="{{ asset('vendor/intl-tel-input-8.5.2/build/js/intlTelInput.min.js') }}"></script>   
+    <script>
+        $(function () {            
+            var today = moment(new Date());
+            
+            $( ".hasDatepicker" ).datetimepicker({
+                viewMode: 'days',
+                locale: 'it',
+                format: 'DD/MM/YYYY',
+                minDate: today,
+                showTodayButton: true,
+                allowInputToggle: true,
+                ignoreReadonly: true,
+                showClose: true,
+                defaultDate: today,
+
+                tooltips: {
+                    today: 'Go to today',
+                    clear: 'Clear selection',
+                    close: 'Close the picker',
+                    selectMonth: 'Select Month',
+                    prevMonth: 'Previous Month',
+                    nextMonth: 'Next Month',
+                    selectYear: 'Select Year',
+                    prevYear: 'Previous Year',
+                    nextYear: 'Next Year',
+                    selectDecade: 'Select Decade',
+                    prevDecade: 'Previous Decade',
+                    nextDecade: 'Next Decade',
+                    prevCentury: 'Previous Century',
+                    nextCentury: 'Next Century'
+                }
+            });    
+            
+            $('#createNewRequestForm').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    'request[requestName]': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'First name is required'
+                            }
+                        }
+                    },
+                    'request[requestSurname]': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'Last name is required'
+                            }
+                        }
+                    },                    
+                    'request[requestEmail]': {
+                        row: '.hasValidate',
+                        validators: {
+                            emailAddress: {
+                                message: 'The input is not a valid email address'
+                            },
+                            {#validator.updateStatus('mobile', 'VALID');
+                            validator.updateStatus('mobile', 'NOT_VALIDATED').validateField('mobile');#}                            
+                        }
+                    },
+                    'request[requestTel]': {
+                        row: '.hasValidate',
+                        validators: {                            
+                            callback: {
+                                message: 'Telephone number is not valid',
+                                callback: function(value, validator, $field) {
+                                    return value === '' || $field.intlTelInput('isValidNumber');
+                                }
+                            }
+                        }
+                    },
+                    hiddenValidate: {
+                        row: '.hasValidate',
+                        excluded: false,    // Don't ignore me, please!
+                        validators: {
+                            notEmpty: {
+                                message: 'Please provide either email, telephone or mobile number'
+                            }
+                        }
+                    },
+                    'request[requestCell]': {
+                        row: '.hasValidate',
+                        validators: {
+                            callback: {
+                                message: 'Mobile number is not valid',
+                                callback: function(value, validator, $field) {                                       
+                                    return value === '' || $field.intlTelInput('isValidNumber');
+                                }
+                            }
+                        }
+                    },                    
+                    'request[requestPeriodfrom]': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'Departure date is required'
+                            },
+                            date: {
+                                format: 'DD/MM/YYYY',
+                                max: 'request[requestPeriodto]',
+                                message: 'Departure date is not valid or greater than Arrival date'
+                            }
+                        }
+                    },
+                    'request[requestPeriodto]': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'The Arrival date is required'
+                            },
+                            date: {
+                                format: 'DD/MM/YYYY',
+                                min: 'request[requestPeriodfrom]',
+                                message: 'The Arrival date is not valid or less than Departure date'
+                            }
+                        }
+                    },
+                    'accommodation_type': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'Accommodation Type is required'
+                            }
+                        }
+                    },
+                    'room_type': {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'Room Type is required'
+                            }
+                        }
+                    }
+                }
+            })
+            .on('click', '.phone-input .country-list', function() {
+                $('#createNewRequestForm').formValidation('revalidateField', 'request[requestTel]');
+                var selectedPhoneCountry = $('#createNewRequestForm').find('[name="request[requestTel]"]').intlTelInput("getSelectedCountryData");
+                
+                if (selectedPhoneCountry.dialCode == '420') {
+                    $('#telephone_country_code').val('+' + selectedPhoneCountry.dialCode);
+                } else {
+                    $('#telephone_country_code').val('00' + selectedPhoneCountry.dialCode);
+                }
+            })
+            .on('click', '.mobile-input .country-list', function() {
+                $('#createNewRequestForm').formValidation('revalidateField', 'request[requestCell]');
+        
+                var selectedMobileCountry = $('#createNewRequestForm').find('[name="request[requestCell]"]').intlTelInput("getSelectedCountryData");
+                
+                if (selectedMobileCountry.dialCode == '420') {
+                    $('#mobile_country_code').val('+' + selectedMobileCountry.dialCode);
+                } else {
+                    $('#mobile_country_code').val('00' + selectedMobileCountry.dialCode);
+                }
+            })
+            .on('keyup', '[name="request[requestTel]"], [name="request[requestCell]"], [name="request[requestEmail]"]', function(e) {
+                var email = $('#createNewRequestForm').find('[name="request[requestEmail]"]').val();
+                var telephone = $('#createNewRequestForm').find('[name="request[requestTel]"]').val();
+                var mobile = $('#createNewRequestForm').find('[name="request[requestCell]"]').val();               
+
+                $('#createNewRequestForm')
+                    // Update the value for hidden field
+                    .find('[name="hiddenValidate"]')
+                    .val(email || telephone || mobile)
+                    .end()
+                    // Revalidate it
+                    .formValidation('revalidateField', 'hiddenValidate');
+                    
+            });
+            
+            $('#telephone_country_code').on('change', function() {
+                var selectedCountryDial = this.value;
+                var selectedCountryCode = '';
+                switch(selectedCountryDial) {
+                    case '00355':
+                        selectedCountryCode = 'al'; break;
+                    case '00372':
+                        selectedCountryCode = 'ee'; break;  
+                    case '0033':
+                        selectedCountryCode = 'fr'; break; 
+                    case '0049':
+                        selectedCountryCode = 'de'; break; 
+                    case '0039':
+                        selectedCountryCode = 'it'; break; 
+                    case '00853':
+                        selectedCountryCode = 'mo'; break; 
+                    case '0044':
+                        selectedCountryCode = 'gg'; break; 
+                    case '+420':
+                        selectedCountryCode = 'cz'; break; 
+                    case '0040':
+                        selectedCountryCode = 'ro'; break; 
+                    case '0034':
+                        selectedCountryCode = 'es'; break; 
+                    case '001':
+                        selectedCountryCode = 'us'; break; 
+                    case '0041':
+                        selectedCountryCode = 'ch'; break; 
+                    case '00886':
+                        selectedCountryCode = 'tw'; break; 
+                }
+                
+                $('#request_requestTel').intlTelInput("setCountry", selectedCountryCode);
+            });
+            
+            $('#mobile_country_code').on('change', function() {
+                var selectedCountryDial = this.value;
+                var selectedCountryCode = '';
+                switch(selectedCountryDial) {
+                    case '00355':
+                        selectedCountryCode = 'al'; break;
+                    case '00372':
+                        selectedCountryCode = 'ee'; break;  
+                    case '0033':
+                        selectedCountryCode = 'fr'; break; 
+                    case '0049':
+                        selectedCountryCode = 'de'; break; 
+                    case '0039':
+                        selectedCountryCode = 'it'; break; 
+                    case '00853':
+                        selectedCountryCode = 'mo'; break; 
+                    case '0044':
+                        selectedCountryCode = 'gg'; break; 
+                    case '+420':
+                        selectedCountryCode = 'cz'; break; 
+                    case '0040':
+                        selectedCountryCode = 'ro'; break; 
+                    case '0034':
+                        selectedCountryCode = 'es'; break; 
+                    case '001':
+                        selectedCountryCode = 'us'; break; 
+                    case '0041':
+                        selectedCountryCode = 'ch'; break; 
+                    case '00886':
+                        selectedCountryCode = 'tw'; break; 
+                }
+
+                $('#request_requestCell').intlTelInput("setCountry", selectedCountryCode);
+            });
+            setTimeout(function(){
+                $('#request_requestTel').intlTelInput("setCountry", 'al');
+                $('#request_requestCell').intlTelInput("setCountry", 'al');
+            }, 500);
+            
+            
+            $('#createNewRequestForm').find('[name="request[requestTel]"]').intlTelInput({
+                utilsScript: '/vendor/intl-tel-input-8.5.2/used/js/utils.js',
+                autoPlaceholder: true,
+                onlyCountries: ['al', 'ee', 'fr', 'de', 'it', 'mo', 'gg', 'cz', 'ro', 'es', 'us', 'ch', 'tw'],
+                preferredCountries: []
+            });
+            
+            $('#createNewRequestForm').find('[name="request[requestCell]"]').intlTelInput({
+                utilsScript: '/vendor/intl-tel-input-8.5.2/used/js/utils.js',
+                autoPlaceholder: true,
+                onlyCountries: ['al', 'es', 'fr', 'de', 'it', 'mo', 'gg', 'cz', 'ro', 'es', 'us', 'ch', 'tw'],
+                preferredCountries: []
+            });
+
+            $('.hasDatepicker').on('dp.change dp.show', function (e) {
+                // Revalidate the date when user change it
+                $('#createNewRequestForm').formValidation('revalidateField', 'request[requestPeriodfrom]');
+                $('#createNewRequestForm').formValidation('revalidateField', 'request[requestPeriodto]');
+            });
+        });
+    </script>
+{% endblock %}

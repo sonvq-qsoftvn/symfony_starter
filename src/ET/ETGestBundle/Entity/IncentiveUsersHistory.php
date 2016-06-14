@@ -2,60 +2,88 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncentiveUsersHistory
+ *
+ * @ORM\Table(name="incentive_users_history")
+ * @ORM\Entity
  */
 class IncentiveUsersHistory
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="smallint", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="gruppo", type="smallint", nullable=false)
      */
     private $gruppo = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipo", type="boolean", nullable=false)
      */
     private $tipo = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataSottoscrizione", type="date", nullable=false)
      */
     private $datasottoscrizione = '0000-00-00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="demerito_personale", type="boolean", nullable=false)
      */
     private $demeritoPersonale = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="demerito_gruppo", type="boolean", nullable=false)
      */
     private $demeritoGruppo = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
     private $deletedAt;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="operation_type", type="string", length=50, nullable=false)
      */
     private $operationType;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -284,4 +312,3 @@ class IncentiveUsersHistory
         return $this->id;
     }
 }
-

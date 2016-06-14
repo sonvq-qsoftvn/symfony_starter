@@ -2,240 +2,340 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Servizi
+ *
+ * @ORM\Table(name="servizi", indexes={@ORM\Index(name="myindex_idx", columns={"id", "id_viaggio"}), @ORM\Index(name="servizi_tipo_servizio_idx", columns={"tipo"}), @ORM\Index(name="codpromotore_idx", columns={"codpromotore"}), @ORM\Index(name="codpromotorecreazione_idx", columns={"codpromotorecreazione"}), @ORM\Index(name="codpromotoremodifica_idx", columns={"codpromotoremodifica"}), @ORM\Index(name="id_viaggio_idx", columns={"id_viaggio"})})
+ * @ORM\Entity
  */
 class Servizi
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="bigint", nullable=true)
      */
     private $idViaggio;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotore", type="integer", nullable=true)
      */
     private $codpromotore;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotorecreazione", type="integer", nullable=true)
      */
     private $codpromotorecreazione;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotoremodifica", type="integer", nullable=true)
      */
     private $codpromotoremodifica;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=true)
      */
     private $tipo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=true)
      */
     private $titolo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="text", length=65535, nullable=true)
      */
     private $descrizione;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idfornitore", type="smallint", nullable=true)
      */
     private $idfornitore;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="fornitoreText", type="text", length=65535, nullable=true)
      */
     private $fornitoretext;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="costo", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $costo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ricavo", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $ricavo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissione", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $commissione;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="imposta", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $imposta;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="pagatodirettooperatore", type="boolean", nullable=true)
      */
     private $pagatodirettooperatore;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="erroriespletamento", type="text", nullable=true)
      */
     private $erroriespletamento;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="conferma_prenotazione", type="boolean", nullable=true)
      */
     private $confermaPrenotazione;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_stato", type="bigint", nullable=true)
      */
     private $bookingStato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreStato", type="bigint", nullable=true)
      */
     private $bookingCodpromotorestato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreLavorazione", type="bigint", nullable=true)
      */
     private $bookingCodpromotorelavorazione;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_letto", type="boolean", nullable=true)
      */
     private $bookingLetto;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_stato", type="bigint", nullable=true)
      */
     private $ecStato = '1';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_codPromotoreStato", type="bigint", nullable=true)
      */
     private $ecCodpromotorestato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_codPromotoreLavorazione", type="bigint", nullable=true)
      */
     private $ecCodpromotorelavorazione;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="ec_letto", type="boolean", nullable=true)
      */
     private $ecLetto;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="prenotazioni_letturaData", type="datetime", nullable=true)
      */
     private $prenotazioniLetturadata;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="prenotazioni_letturaCodPromotore", type="integer", nullable=true)
      */
     private $prenotazioniLetturacodpromotore;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="prenotazioni_letturaStato", type="boolean", nullable=true)
      */
     private $prenotazioniLetturastato = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codiceContabile", type="string", length=50, nullable=true)
      */
     private $codicecontabile;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codicePagamento", type="string", length=64, nullable=true)
      */
     private $codicepagamento;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="apiStato", type="string", length=255, nullable=true)
      */
     private $apistato;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="apiSiapStato", type="string", length=255, nullable=true)
      */
     private $apisiapstato = 'nuovo';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="apiStatoData", type="datetime", nullable=true)
      */
     private $apistatodata;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="apiSiapStatoData", type="datetime", nullable=true)
      */
     private $apisiapstatodata;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="apiKey", type="string", length=255, nullable=true)
      */
     private $apikey;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datamodifica", type="datetime", nullable=false)
      */
     private $datamodifica;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datainvio", type="datetime", nullable=true)
      */
     private $datainvio;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipoinvio", type="string", length=50, nullable=true)
      */
     private $tipoinvio;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="stornato", type="boolean", nullable=false)
      */
     private $stornato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="duplicato", type="bigint", nullable=false)
      */
     private $duplicato = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="incentive_at", type="datetime", nullable=true)
      */
     private $incentiveAt;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable=false)
      */
     private $approved = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="selected_valuta", type="string", length=3, nullable=true)
      */
     private $selectedValuta;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cambio_costo", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $cambioCosto = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="link_supplier", type="string", length=255, nullable=true)
      */
     private $linkSupplier;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -1328,4 +1428,3 @@ class Servizi
         return $this->id;
     }
 }
-

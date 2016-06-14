@@ -400,4 +400,3 @@ class Exchange
         return $this->exchangeId;
     }
 }
-

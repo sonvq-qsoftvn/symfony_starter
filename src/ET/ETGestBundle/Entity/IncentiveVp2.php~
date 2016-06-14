@@ -1,0 +1,63 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * IncentiveVp2
+ *
+ * @ORM\Table(name="incentive_vp2", indexes={@ORM\Index(name="gruppo", columns={"gruppo"}), @ORM\Index(name="data", columns={"data"})})
+ * @ORM\Entity
+ */
+class IncentiveVp2
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gruppo", type="integer", nullable=false)
+     */
+    private $gruppo = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="punti", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $punti = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fatturato", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $fatturato = '0.00';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="moduli", type="smallint", nullable=false)
+     */
+    private $moduli = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=6)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $data;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $codpromotore;
+
+
+}
+

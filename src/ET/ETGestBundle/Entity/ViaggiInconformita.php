@@ -2,30 +2,50 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ViaggiInconformita
+ *
+ * @ORM\Table(name="viaggi_inconformita")
+ * @ORM\Entity
  */
 class ViaggiInconformita
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="messaggio", type="text", length=65535, nullable=true)
      */
     private $messaggio;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="regime", type="string", length=255)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $regime;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tiposervizio", type="string", length=50)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $tiposervizio;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="noncompatible", type="string", length=50)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $noncompatible;
+
 
 
     /**
@@ -124,4 +144,3 @@ class ViaggiInconformita
         return $this->noncompatible;
     }
 }
-

@@ -1,0 +1,327 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Viaggi
+ *
+ * @ORM\Table(name="viaggi", indexes={@ORM\Index(name="codPromotore", columns={"codPromotore"}), @ORM\Index(name="id_anagrafica", columns={"id_anagrafica", "codPromotore"}), @ORM\Index(name="tipologia", columns={"tipologia"}), @ORM\Index(name="status", columns={"status", "id_viaggio"}), @ORM\Index(name="agenzia", columns={"agenzia"})})
+ * @ORM\Entity
+ */
+class Viaggi
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
+     */
+    private $idAnagrafica = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
+     */
+    private $codpromotore = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipologia", type="string", length=50, nullable=false)
+     */
+    private $tipologia = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=50, nullable=false)
+     */
+    private $descrizione = '';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="valutazione", type="boolean", nullable=false)
+     */
+    private $valutazione = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinazioneText", type="string", length=255, nullable=false)
+     */
+    private $destinazionetext;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinazione_iso", type="string", length=4, nullable=false)
+     */
+    private $destinazioneIso;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
+     */
+    private $status = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
+     */
+    private $data = '0000-00-00 00:00:00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=true)
+     */
+    private $datamodifica;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCompleto", type="datetime", nullable=false)
+     */
+    private $datacompleto = '0000-00-00 00:00:00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataViaggio", type="datetime", nullable=false)
+     */
+    private $dataviaggio = '0000-00-00 00:00:00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataInizioViaggio", type="datetime", nullable=false)
+     */
+    private $datainizioviaggio = '0000-00-00 00:00:00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataFineViaggio", type="datetime", nullable=false)
+     */
+    private $datafineviaggio = '0000-00-00 00:00:00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aves_risposta", type="text", length=65535, nullable=false)
+     */
+    private $avesRisposta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agenzia", type="string", length=20, nullable=false)
+     */
+    private $agenzia = 'ETIta';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valuta", type="string", length=10, nullable=false)
+     */
+    private $valuta;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="versione", type="boolean", nullable=false)
+     */
+    private $versione = '1';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="margineMinimo", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $margineminimo = '0';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="margineConsigliato", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $margineconsigliato = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regime", type="string", length=255, nullable=false)
+     */
+    private $regime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo_it", type="text", length=65535, nullable=false)
+     */
+    private $titoloIt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo_es", type="text", length=65535, nullable=false)
+     */
+    private $titoloEs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo_en", type="text", length=65535, nullable=false)
+     */
+    private $titoloEn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titoloText", type="text", length=65535, nullable=false)
+     */
+    private $titolotext;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="erroriviaggio", type="text", nullable=false)
+     */
+    private $erroriviaggio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apiKey", type="string", length=255, nullable=false)
+     */
+    private $apikey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apiSiapKey", type="string", length=255, nullable=false)
+     */
+    private $apisiapkey;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="apiStatus", type="boolean", nullable=false)
+     */
+    private $apistatus = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="apiSiapStatus", type="boolean", nullable=false)
+     */
+    private $apisiapstatus = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="apiEsportato", type="boolean", nullable=false)
+     */
+    private $apiesportato = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="apiSiapEsportato", type="boolean", nullable=false)
+     */
+    private $apisiapesportato = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioTotale", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiototale = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioTotaleDovuto", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiototaledovuto = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioTotaleOperatore", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiototaleoperatore = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioTotaleCosti", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiototalecosti = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioTotaleImposte", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiototaleimposte = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="viaggioMargine", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $viaggiomargine = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="listaScorpori", type="text", length=65535, nullable=true)
+     */
+    private $listascorpori;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ngiorniPratica", type="integer", nullable=false)
+     */
+    private $ngiornipratica;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nnottiPratica", type="integer", nullable=false)
+     */
+    private $nnottipratica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quota", type="string", length=20, nullable=true)
+     */
+    private $quota;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tipoIVAPratica", type="boolean", nullable=true)
+     */
+    private $tipoivapratica = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idViaggio;
+
+
+}
+

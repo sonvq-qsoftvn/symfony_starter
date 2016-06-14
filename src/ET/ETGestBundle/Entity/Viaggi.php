@@ -43,7 +43,7 @@ class Viaggi
     private $destinazioneIso;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $status = '0';
 
@@ -93,7 +93,7 @@ class Viaggi
     private $valuta;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $versione = '1';
 
@@ -1270,4 +1270,3 @@ class Viaggi
         return $this->idViaggio;
     }
 }
-

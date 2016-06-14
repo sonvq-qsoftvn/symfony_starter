@@ -2,110 +2,158 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ModuloStorno
+ *
+ * @ORM\Table(name="modulo_storno", indexes={@ORM\Index(name="id_viaggio", columns={"id_viaggio"}), @ORM\Index(name="tipoDocumento", columns={"tipoDocumento"}), @ORM\Index(name="data", columns={"data"}), @ORM\Index(name="booking_stato", columns={"booking_stato"})})
+ * @ORM\Entity
  */
 class ModuloStorno
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
      */
     private $idViaggio = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=true)
      */
     private $data = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=false)
      */
     private $codpromotorecreazione = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=200, nullable=false)
      */
     private $titolo = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nota", type="text", length=65535, nullable=false)
      */
     private $nota;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="importo", type="decimal", precision=6, scale=2, nullable=false)
      */
     private $importo = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="statoPagamento", type="string", length=20, nullable=false)
      */
     private $statopagamento = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="integer", nullable=false)
      */
     private $tipodocumento = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
      */
     private $datamodifica = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreModifica", type="integer", nullable=false)
      */
     private $codpromotoremodifica = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo_riferimento", type="integer", nullable=false)
      */
     private $idModuloRiferimento = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento_riferimento", type="boolean", nullable=false)
      */
     private $tipodocumentoRiferimento = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_stato", type="boolean", nullable=false)
      */
     private $bookingStato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreStato", type="integer", nullable=false)
      */
     private $bookingCodpromotorestato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreLavorazione", type="integer", nullable=false)
      */
     private $bookingCodpromotorelavorazione = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_letto", type="boolean", nullable=false)
      */
     private $bookingLetto = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataInvio", type="datetime", nullable=true)
      */
     private $datainvio;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="ec_letto", type="boolean", nullable=false)
      */
     private $ecLetto = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idModulo;
+
 
 
     /**
@@ -574,4 +622,3 @@ class ModuloStorno
         return $this->idModulo;
     }
 }
-

@@ -24,7 +24,7 @@ class appDevDebugProjectContainer extends Container
     public function __construct()
     {
         $dir = __DIR__;
-        for ($i = 1; $i <= 5; ++$i) {
+        for ($i = 1; $i <= 4; ++$i) {
             $this->targetDirs[$i] = $dir = dirname($dir);
         }
         $this->parameters = $this->getDefaultParameters();
@@ -43,6 +43,7 @@ class appDevDebugProjectContainer extends Container
             'data_collector.form.extractor' => 'getDataCollector_Form_ExtractorService',
             'data_collector.request' => 'getDataCollector_RequestService',
             'data_collector.router' => 'getDataCollector_RouterService',
+            'data_collector.translation' => 'getDataCollector_TranslationService',
             'debug.controller_resolver' => 'getDebug_ControllerResolverService',
             'debug.debug_handlers_listener' => 'getDebug_DebugHandlersListenerService',
             'debug.dump_listener' => 'getDebug_DumpListenerService',
@@ -100,6 +101,8 @@ class appDevDebugProjectContainer extends Container
             'doctrine_cache.providers.doctrine.orm.romano_metadata_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoMetadataCacheService',
             'doctrine_cache.providers.doctrine.orm.romano_query_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoQueryCacheService',
             'doctrine_cache.providers.doctrine.orm.romano_result_cache' => 'getDoctrineCache_Providers_Doctrine_Orm_RomanoResultCacheService',
+            'et_gest.documents_manager' => 'getEtGest_DocumentsManagerService',
+            'et_user.registration_event' => 'getEtUser_RegistrationEventService',
             'file_locator' => 'getFileLocatorService',
             'filesystem' => 'getFilesystemService',
             'form.factory' => 'getForm_FactoryService',
@@ -145,6 +148,27 @@ class appDevDebugProjectContainer extends Container
             'form.type_extension.submit.validator' => 'getForm_TypeExtension_Submit_ValidatorService',
             'form.type_guesser.doctrine' => 'getForm_TypeGuesser_DoctrineService',
             'form.type_guesser.validator' => 'getForm_TypeGuesser_ValidatorService',
+            'fos_user.change_password.form.factory' => 'getFosUser_ChangePassword_Form_FactoryService',
+            'fos_user.change_password.form.type' => 'getFosUser_ChangePassword_Form_TypeService',
+            'fos_user.listener.authentication' => 'getFosUser_Listener_AuthenticationService',
+            'fos_user.listener.flash' => 'getFosUser_Listener_FlashService',
+            'fos_user.listener.resetting' => 'getFosUser_Listener_ResettingService',
+            'fos_user.mailer' => 'getFosUser_MailerService',
+            'fos_user.profile.form.factory' => 'getFosUser_Profile_Form_FactoryService',
+            'fos_user.profile.form.type' => 'getFosUser_Profile_Form_TypeService',
+            'fos_user.registration.form.factory' => 'getFosUser_Registration_Form_FactoryService',
+            'fos_user.registration.form.type' => 'getFosUser_Registration_Form_TypeService',
+            'fos_user.resetting.form.factory' => 'getFosUser_Resetting_Form_FactoryService',
+            'fos_user.resetting.form.type' => 'getFosUser_Resetting_Form_TypeService',
+            'fos_user.security.interactive_login_listener' => 'getFosUser_Security_InteractiveLoginListenerService',
+            'fos_user.security.login_manager' => 'getFosUser_Security_LoginManagerService',
+            'fos_user.user_listener' => 'getFosUser_UserListenerService',
+            'fos_user.user_manager' => 'getFosUser_UserManagerService',
+            'fos_user.user_provider.username' => 'getFosUser_UserProvider_UsernameService',
+            'fos_user.username_form_type' => 'getFosUser_UsernameFormTypeService',
+            'fos_user.util.email_canonicalizer' => 'getFosUser_Util_EmailCanonicalizerService',
+            'fos_user.util.token_generator' => 'getFosUser_Util_TokenGeneratorService',
+            'fos_user.util.user_manipulator' => 'getFosUser_Util_UserManipulatorService',
             'fragment.handler' => 'getFragment_HandlerService',
             'fragment.listener' => 'getFragment_ListenerService',
             'fragment.renderer.esi' => 'getFragment_Renderer_EsiService',
@@ -180,6 +204,7 @@ class appDevDebugProjectContainer extends Container
             'security.access.decision_manager' => 'getSecurity_Access_DecisionManagerService',
             'security.authentication.guard_handler' => 'getSecurity_Authentication_GuardHandlerService',
             'security.authentication.manager' => 'getSecurity_Authentication_ManagerService',
+            'security.authentication.session_strategy' => 'getSecurity_Authentication_SessionStrategyService',
             'security.authentication.trust_resolver' => 'getSecurity_Authentication_TrustResolverService',
             'security.authentication_utils' => 'getSecurity_AuthenticationUtilsService',
             'security.authorization_checker' => 'getSecurity_AuthorizationCheckerService',
@@ -257,7 +282,6 @@ class appDevDebugProjectContainer extends Container
             'translation.writer' => 'getTranslation_WriterService',
             'translator' => 'getTranslatorService',
             'translator.default' => 'getTranslator_DefaultService',
-            'translator.selector' => 'getTranslator_SelectorService',
             'translator_listener' => 'getTranslatorListenerService',
             'twig' => 'getTwigService',
             'twig.controller.exception' => 'getTwig_Controller_ExceptionService',
@@ -284,7 +308,7 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.agenti_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_metadata_cache',
             'doctrine.orm.agenti_query_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_query_cache',
             'doctrine.orm.agenti_result_cache' => 'doctrine_cache.providers.doctrine.orm.agenti_result_cache',
-            'doctrine.orm.entity_manager' => 'doctrine.orm.idetus_entity_manager',
+            'doctrine.orm.entity_manager' => 'doctrine.orm.agenti_entity_manager',
             'doctrine.orm.etticket_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_metadata_cache',
             'doctrine.orm.etticket_query_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_query_cache',
             'doctrine.orm.etticket_result_cache' => 'doctrine_cache.providers.doctrine.orm.etticket_result_cache',
@@ -298,6 +322,7 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.romano_query_cache' => 'doctrine_cache.providers.doctrine.orm.romano_query_cache',
             'doctrine.orm.romano_result_cache' => 'doctrine_cache.providers.doctrine.orm.romano_result_cache',
             'event_dispatcher' => 'debug.event_dispatcher',
+            'fos_user.util.username_canonicalizer' => 'fos_user.util.email_canonicalizer',
             'mailer' => 'swiftmailer.mailer.default',
             'session.storage' => 'session.storage.native',
             'swiftmailer.mailer' => 'swiftmailer.mailer.default',
@@ -383,7 +408,7 @@ class appDevDebugProjectContainer extends Container
 
         $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, ($this->targetDirs[3].'\\app/Resources'));
 
-        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => $this->get('kernel.class_cache.cache_warmer'), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TranslationsCacheWarmer($this->get('translator')), 3 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 4 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c, array()), 5 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer($this->get('twig'), new \Symfony\Bundle\TwigBundle\TemplateIterator($a, ($this->targetDirs[3].'\\app'), array())), 6 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine'))));
+        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => $this->get('kernel.class_cache.cache_warmer'), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TranslationsCacheWarmer($this->get('translator.default')), 3 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 4 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c, array()), 5 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer($this->get('twig'), new \Symfony\Bundle\TwigBundle\TemplateIterator($a, ($this->targetDirs[3].'\\app'), array())), 6 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine'))));
     }
 
     /**
@@ -465,6 +490,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'data_collector.translation' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symfony\Component\Translation\DataCollector\TranslationDataCollector A Symfony\Component\Translation\DataCollector\TranslationDataCollector instance.
+     */
+    protected function getDataCollector_TranslationService()
+    {
+        return $this->services['data_collector.translation'] = new \Symfony\Component\Translation\DataCollector\TranslationDataCollector($this->get('translator'));
+    }
+
+    /**
      * Gets the 'debug.controller_resolver' service.
      *
      * This service is shared.
@@ -516,6 +554,7 @@ class appDevDebugProjectContainer extends Container
         $this->services['debug.event_dispatcher'] = $instance = new \Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher(new \Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher($this), $this->get('debug.stopwatch'), $this->get('monolog.logger.event', ContainerInterface::NULL_ON_INVALID_REFERENCE));
 
         $instance->addListenerService('kernel.controller', array(0 => 'data_collector.router', 1 => 'onKernelController'), 0);
+        $instance->addSubscriberService('et_user.registration_event', 'ET\\UserBundle\\EventListener\\RegistrationListener');
         $instance->addSubscriberService('response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener');
         $instance->addSubscriberService('streamed_response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\StreamedResponseListener');
         $instance->addSubscriberService('locale_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\LocaleListener');
@@ -537,6 +576,10 @@ class appDevDebugProjectContainer extends Container
         $instance->addSubscriberService('sensio_framework_extra.view.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener');
         $instance->addSubscriberService('sensio_framework_extra.cache.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\HttpCacheListener');
         $instance->addSubscriberService('sensio_framework_extra.security.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\SecurityListener');
+        $instance->addSubscriberService('fos_user.security.interactive_login_listener', 'FOS\\UserBundle\\EventListener\\LastLoginListener');
+        $instance->addSubscriberService('fos_user.listener.authentication', 'FOS\\UserBundle\\EventListener\\AuthenticationListener');
+        $instance->addSubscriberService('fos_user.listener.flash', 'FOS\\UserBundle\\EventListener\\FlashListener');
+        $instance->addSubscriberService('fos_user.listener.resetting', 'FOS\\UserBundle\\EventListener\\ResettingListener');
         $instance->addSubscriberService('debug.dump_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\DumpListener');
         $instance->addSubscriberService('web_profiler.debug_toolbar', 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener');
 
@@ -566,7 +609,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrineService()
     {
-        return $this->services['doctrine'] = new \Doctrine\Bundle\DoctrineBundle\Registry($this, array('agenti' => 'doctrine.dbal.agenti_connection', 'romano' => 'doctrine.dbal.romano_connection', 'idetus' => 'doctrine.dbal.idetus_connection', 'etticket' => 'doctrine.dbal.etticket_connection', 'listanozze' => 'doctrine.dbal.listanozze_connection'), array('idetus' => 'doctrine.orm.idetus_entity_manager', 'agenti' => 'doctrine.orm.agenti_entity_manager', 'romano' => 'doctrine.orm.romano_entity_manager', 'etticket' => 'doctrine.orm.etticket_entity_manager', 'listanozze' => 'doctrine.orm.listanozze_entity_manager'), 'idetus', 'idetus');
+        return $this->services['doctrine'] = new \Doctrine\Bundle\DoctrineBundle\Registry($this, array('agenti' => 'doctrine.dbal.agenti_connection', 'romano' => 'doctrine.dbal.romano_connection', 'idetus' => 'doctrine.dbal.idetus_connection', 'etticket' => 'doctrine.dbal.etticket_connection', 'listanozze' => 'doctrine.dbal.listanozze_connection'), array('idetus' => 'doctrine.orm.idetus_entity_manager', 'agenti' => 'doctrine.orm.agenti_entity_manager', 'romano' => 'doctrine.orm.romano_entity_manager', 'etticket' => 'doctrine.orm.etticket_entity_manager', 'listanozze' => 'doctrine.orm.listanozze_entity_manager'), 'idetus', 'agenti');
     }
 
     /**
@@ -587,13 +630,14 @@ class appDevDebugProjectContainer extends Container
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber($this->get('fos_user.user_listener'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.agenti_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_agenti', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+        return $this->services['doctrine.dbal.agenti_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_agenti', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -627,13 +671,14 @@ class appDevDebugProjectContainer extends Container
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber($this->get('fos_user.user_listener'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.etticket_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_etticket', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+        return $this->services['doctrine.dbal.etticket_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_etticket', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -654,13 +699,14 @@ class appDevDebugProjectContainer extends Container
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber($this->get('fos_user.user_listener'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.idetus_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_idetus_eu', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+        return $this->services['doctrine.dbal.idetus_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_idetus_eu', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -681,13 +727,14 @@ class appDevDebugProjectContainer extends Container
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber($this->get('fos_user.user_listener'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.listanozze_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'listanozze_new', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+        return $this->services['doctrine.dbal.listanozze_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'listanozze_new', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -708,13 +755,14 @@ class appDevDebugProjectContainer extends Container
         $b->setSQLLogger($a);
 
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber($this->get('fos_user.user_listener'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.etticket_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.agenti_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.idetus_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.romano_listeners.attach_entity_listeners'));
         $c->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.listanozze_listeners.attach_entity_listeners'));
 
-        return $this->services['doctrine.dbal.romano_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_romano1_eu', 'user' => 'root', 'password' => '', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
+        return $this->services['doctrine.dbal.romano_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'vacanzev_romano1_eu', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array('enum' => 'string', 'set' => 'string', 'varbinary' => 'string', 'tinyblob' => 'text'));
     }
 
     /**
@@ -740,28 +788,26 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Orm_AgentiEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
-        $a->setGlobalBasename('mapping');
+        $a = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $a->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => ($this->targetDirs[3].'\\src\\ET\\UserBundle\\Entity'))), 'ET\\UserBundle\\Entity');
+        $a->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config\\doctrine-mapping') => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
-        $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
-        $b->addDriver($a, 'AppBundle\\Entity');
+        $b = new \Doctrine\ORM\Configuration();
+        $b->setEntityNamespaces(array('ETUserBundle' => 'ET\\UserBundle\\Entity'));
+        $b->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_metadata_cache'));
+        $b->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_query_cache'));
+        $b->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_result_cache'));
+        $b->setMetadataDriverImpl($a);
+        $b->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $b->setProxyNamespace('Proxies');
+        $b->setAutoGenerateProxyClasses(true);
+        $b->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $b->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $b->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
+        $b->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
+        $b->setEntityListenerResolver($this->get('doctrine.orm.agenti_entity_listener_resolver'));
 
-        $c = new \Doctrine\ORM\Configuration();
-        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
-        $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_metadata_cache'));
-        $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_query_cache'));
-        $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.agenti_result_cache'));
-        $c->setMetadataDriverImpl($b);
-        $c->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
-        $c->setProxyNamespace('Proxies');
-        $c->setAutoGenerateProxyClasses(true);
-        $c->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $c->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
-        $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
-        $c->setEntityListenerResolver($this->get('doctrine.orm.agenti_entity_listener_resolver'));
-
-        $this->services['doctrine.orm.agenti_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.agenti_connection'), $c);
+        $this->services['doctrine.orm.agenti_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.agenti_connection'), $b);
 
         $this->get('doctrine.orm.agenti_manager_configurator')->configure($instance);
 
@@ -899,9 +945,10 @@ class appDevDebugProjectContainer extends Container
 
         $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $b->addDriver($a, 'ET\\ETGestBundle\\Entity');
+        $b->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => ($this->targetDirs[3].'\\src\\ET\\UserBundle\\Entity'))), 'ET\\UserBundle\\Entity');
 
         $c = new \Doctrine\ORM\Configuration();
-        $c->setEntityNamespaces(array('ETGestBundle' => 'ET\\ETGestBundle\\Entity'));
+        $c->setEntityNamespaces(array('ETGestBundle' => 'ET\\ETGestBundle\\Entity', 'ETUserBundle' => 'ET\\UserBundle\\Entity'));
         $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_metadata_cache'));
         $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_query_cache'));
         $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.idetus_result_cache'));
@@ -914,6 +961,10 @@ class appDevDebugProjectContainer extends Container
         $c->setNamingStrategy($this->get('doctrine.orm.naming_strategy.default'));
         $c->setQuoteStrategy($this->get('doctrine.orm.quote_strategy.default'));
         $c->setEntityListenerResolver($this->get('doctrine.orm.idetus_entity_listener_resolver'));
+        $c->addCustomStringFunction('date_format', 'AppBundle\\DQL\\DateFormat');
+        $c->addCustomNumericFunction('month', 'Oro\\ORM\\Query\\AST\\Functions\\SimpleFunction');
+        $c->addCustomNumericFunction('year', 'Oro\\ORM\\Query\\AST\\Functions\\SimpleFunction');
+        $c->addCustomNumericFunction('ifnull', 'AppBundle\\DQL\\IfNull');
 
         $this->services['doctrine.orm.idetus_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.idetus_connection'), $c);
 
@@ -1048,14 +1099,15 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Orm_RomanoEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity'));
+        $a = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\AppBundle\\Resources\\config\\doctrine') => 'AppBundle\\Entity', ($this->targetDirs[3].'\\src\\ET\\ETBackofficeBundle\\Resources\\config\\doctrine') => 'ET\\ETBackofficeBundle\\Entity'));
         $a->setGlobalBasename('mapping');
 
         $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $b->addDriver($a, 'AppBundle\\Entity');
+        $b->addDriver($a, 'ET\\ETBackofficeBundle\\Entity');
 
         $c = new \Doctrine\ORM\Configuration();
-        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
+        $c->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity', 'ETBackofficeBundle' => 'ET\\ETBackofficeBundle\\Entity'));
         $c->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_metadata_cache'));
         $c->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_query_cache'));
         $c->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.romano_result_cache'));
@@ -1140,7 +1192,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.agenti_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_agenti_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_agenti_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1157,7 +1209,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.agenti_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_agenti_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_agenti_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1174,7 +1226,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.agenti_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_agenti_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_agenti_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1191,7 +1243,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.etticket_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_etticket_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_etticket_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1208,7 +1260,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.etticket_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_etticket_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_etticket_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1225,7 +1277,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.etticket_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_etticket_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_etticket_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1242,7 +1294,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.idetus_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_idetus_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_idetus_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1259,7 +1311,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.idetus_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_idetus_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_idetus_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1276,7 +1328,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.idetus_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_idetus_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_idetus_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1293,7 +1345,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.listanozze_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_listanozze_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_listanozze_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1310,7 +1362,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.listanozze_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_listanozze_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_listanozze_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1327,7 +1379,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.listanozze_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_listanozze_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_listanozze_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1344,7 +1396,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.romano_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_romano_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_romano_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1361,7 +1413,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.romano_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_romano_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_romano_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
     }
@@ -1378,9 +1430,35 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.romano_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_romano_0451059e982ea757853592dbe606bb5b892d943de2f94630d61f7f88e0cb37f4');
+        $instance->setNamespace('sf2orm_romano_95084f734066d64d2b9245364d461172665c16d4d213a8bc622444e3d518ce20');
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'et_gest.documents_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \ET\ETGestBundle\Services\DocumentsManager A ET\ETGestBundle\Services\DocumentsManager instance.
+     */
+    protected function getEtGest_DocumentsManagerService()
+    {
+        return $this->services['et_gest.documents_manager'] = new \ET\ETGestBundle\Services\DocumentsManager(array('cartella' => 'documenti/', 'doc' => array(0 => array('nomeFile' => 'prenotaTO/prenotaTO', 'desc' => 'Prenotazione', 'descBreve' => 'Prenotazione', 'prenotazione_aperto' => 'Modulo Pacchetto/Soggiorno', 'preventivo_nuovo' => 'Modulo Pacchetto/Soggiorno', 'preventivo_aperto' => 'Modulo Pacchetto/Soggiorno', 'tabella' => 'modulo_to', 'allegati' => true, 'view' => true, 'mail' => array('from' => 'pro', 'to' => 'prp'), 'union' => true, 'lista_preventivo' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'importi' => array('scontoAgenzia' => '-|Sconto', 'iscrizione' => '+', 'carburante' => '+', 'assicurazione' => '+', 'nPartecipanti' => '+|nPartecipanti', 'partecipanti' => '', 'erroriViaggio' => ''), 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'iscrizione' => '+', 'commissioneCarta' => '-|Comm. carta', 'commissioneAssicurazione' => '-|Comm. assicurazione', 'scontoAgenzia' => '-', 'speseCorriere' => '-', 'speseBonifico' => '-', 'commissioneNetta' => '+|Comm. netta'), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_to`.titolo, `modulo_to`.tipoSistemazione, `modulo_to`.trattamento, `modulo_to`.assicurazione,`modulo_to`.dataIN,`modulo_to`.data,`modulo_to`.dataOUT,`modulo_to`.commissioneLorda, `modulo_to`.totale, `modulo_to`.commissioneCarta,  `modulo_to`.scontoAgenzia, modulo_to.to, modulo_to.to, modulo_to.iscrizione', 'exportAves' => true, 'promemoria' => true, 'partecipanti' => true, 'pannello_booking' => true, 'conferma_prenotazione' => true, 'classe' => 'servizio_pacchetto', 'promotore_riferimento' => true, 'gruppo1' => 'moduli', 'entity' => 'ModuloTo'), 1 => array('nomeFile' => 'traghetto/traghetto', 'desc' => 'Prenotazione Traghetto', 'descBreve' => 'Traghetto', 'prenotazione_aperto' => 'Modulo Traghetto', 'preventivo_nuovo' => 'Modulo Traghetto', 'preventivo_aperto' => 'Modulo Traghetto', 'tabella' => 'modulo_traghetto', 'view' => true, 'union' => true, 'allegati' => true, 'lista_preventivo' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'importi' => array('scontoAgenzia' => '-|Sconto', 'nPartecipanti' => '+|nPartecipanti', 'partecipanti' => '', 'erroriViaggio' => '', 'agencyfee' => '+'), 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'commissioneCarta' => '-|Comm. carta', 'speseCorriere' => '-', 'commissioneNetta' => '+|Comm. netta', 'agencyfee' => '+|Agency fee'), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_traghetto`.titolo,`modulo_traghetto`.dataIN,`modulo_traghetto`.data,`modulo_traghetto`.dataOUT,`modulo_traghetto`.commissioneLorda, `modulo_traghetto`.totale, `modulo_traghetto`.commissioneCarta,  `modulo_traghetto`.scontoAgenzia, `modulo_traghetto`.compagnia', 'exportAves' => true, 'promemoria' => true, 'partecipanti' => true, 'conferma_prenotazione' => true, 'pannello_booking' => true, 'classe' => 'servizio', 'gruppo1' => 'moduli', 'entity' => 'ModuloTraghetto'), 2 => array('nomeFile' => 'voloLinea/voloLinea', 'desc' => 'Volo di linea', 'descBreve' => 'volo linea', 'prenotazione_aperto' => 'Modulo Volo di linea', 'preventivo_nuovo' => 'Modulo Volo di linea', 'preventivo_aperto' => 'Modulo Volo di linea', 'tabella' => 'modulo_voloLinea', 'view' => true, 'union' => true, 'allegati' => true, 'eccezioni' => false, 'lista_preventivo' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'importi' => array('scontoAgenzia' => '-|Sconto', 'speseCorriere' => '+|Corriere', 'commissioneLorda' => '+|AgencyFee', 'nPartecipanti' => '+|nPartecipanti', 'partecipanti' => '', 'erroriViaggio' => ''), 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'commissioneCarta' => '-|Comm. carta', 'commissioneNetta' => '+|Comm. netta'), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLinea`.agencyfee,`modulo_voloLinea`.titolo,`modulo_voloLinea`.dataIN,`modulo_voloLinea`.data,`modulo_voloLinea`.dataOUT,`modulo_voloLinea`.commissioneLorda, `modulo_voloLinea`.commissioneAggiuntiva,`modulo_voloLinea`.speseCorriere, `modulo_voloLinea`.totale, `modulo_voloLinea`.commissioneCarta,  `modulo_voloLinea`.scontoAgenzia, `modulo_voloLinea`.compagnia, `modulo_voloLinea`.incasso_pagamento', 'exportAves' => true, 'promemoria' => true, 'partecipanti' => true, 'pannello_booking' => true, 'classe' => 'servizio', 'gruppo1' => 'moduli', 'entity' => 'ModuloVololinea'), 3 => array('nomeFile' => 'voloLowCost/voloLowCost', 'desc' => 'Volo Low Cost', 'descBreve' => 'Volo Low Cost', 'prenotazione_aperto' => 'Modulo Volo low cost', 'preventivo_nuovo' => 'Modulo Volo low cost', 'preventivo_aperto' => 'Modulo Volo low cost', 'tabella' => 'modulo_voloLowCost', 'view' => true, 'allegati' => true, 'union' => true, 'lista_preventivo' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'importi' => array('scontoAgenzia' => '-|Sconto', 'commissioneLorda' => '+|AgencyFee', 'nPartecipanti' => '+|nPartecipanti', 'erroriViaggio' => ''), 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'commissioneCarta' => '-|Comm. carta', 'commissioneNetta' => '+|Comm. netta'), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLowCost`.agencyfee,`modulo_voloLowCost`.titolo,`modulo_voloLowCost`.dataIN,`modulo_voloLowCost`.data,`modulo_voloLowCost`.dataOUT,`modulo_voloLowCost`.commissioneLorda, `modulo_voloLowCost`.totale, `modulo_voloLowCost`.commissioneCarta,  `modulo_voloLowCost`.scontoAgenzia, `modulo_voloLowCost`.compagnia, `modulo_voloLowCost`.incasso_pagamento', 'exportAves' => true, 'promemoria' => true, 'pannello_booking' => true, 'classe' => 'servizio', 'gruppo1' => 'moduli', 'entity' => 'ModuloVololowcost'), 4 => array('nomeFile' => 'annullamentoTO', 'desc' => 'Annullamento', 'descBreve' => 'Annullamento', 'prenotazione_aperto' => 'Annullamento', 'prenotazione_importato' => 'Annullamento', 'tabella' => 'modulo_annullamentoTO', 'view' => true, 'union' => true, 'unico_per_viaggio' => true, 'promemoria' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'pannello_booking' => true, 'entity' => 'ModuloAnnullamentoto'), 5 => array('titolo' => 'Nota &amp; Allegati', 'nomeFile' => 'note', 'prenotazione_aperto' => 'Nota e Allegati', 'preventivo_aperto' => 'Nota', 'tabella' => 'modulo_note', 'mail' => array('from' => array(0 => 'pro', 1 => 'noreply'), 'to' => array(0 => 'pro', 1 => false)), 'allegati' => true, 'union' => true, 'accesso' => 1, 'accesso_eliminazione' => false, 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 6 => array('titolo' => 'Nota cliente', 'nomeFile' => 'note', 'tabella' => 'anagrafiche_note', 'accesso' => 1), 7 => array('nomeFile' => 'note', 'tabella' => 'modulo_note_lotus', 'union' => true, 'entity' => 'ModuloNoteLotus'), 8 => array('titolo' => 'Nota riscontro vacanza', 'nomeFile' => 'note', 'prenotazione_importato' => 'Nota e/o riscontro vacanza', 'tabella' => 'modulo_note', 'union' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'espandibile' => true, 'entity' => 'ModuloNote'), 9 => array('titolo' => 'Storno', 'nomeFile' => 'storno', 'desc' => 'Storno provvigioni', 'tabella' => 'modulo_storno', 'incluso' => true, 'dettaglio' => array('importo' => '+|Comm. lorda', 'nota' => '.'), 'classe' => 'storno'), 10 => array('nomeFile' => 'assicurazione/assicurazione', 'desc' => 'Assicurazione integrativa', 'descBreve' => 'Assicurazione', 'prenotazione_aperto' => 'Modulo Assicurazione', 'preventivo_nuovo' => 'Modulo Assicurazione', 'preventivo_aperto' => 'Modulo Assicurazione', 'tabella' => 'modulo_assicurazione', 'view' => true, 'union' => true, 'allegati' => true, 'lista_preventivo' => true, 'importi' => true, 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'commissioneCarta' => '-|Comm. carta', 'commissioneNetta' => '+|Comm. netta', 'nPartecipanti' => '+|nPartecipanti', 'partecipanti' => '', 'erroriViaggio' => ''), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_assicurazione`.titolo, `modulo_assicurazione`.dataIN,`modulo_assicurazione`.data,`modulo_assicurazione`.dataOUT,`modulo_assicurazione`.commissioneLorda, `modulo_assicurazione`.totale, `modulo_assicurazione`.commissioneCarta, `modulo_assicurazione`.codice_fiscale', 'exportAves' => true, 'partecipanti' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'pannello_booking' => true, 'classe' => 'servizio', 'gruppo1' => 'moduli', 'entity' => 'ModuloAssicurazione'), 11 => array('nomeFile' => 'preventivi/preventivo', 'desc' => 'Preventivo', 'tabella' => 'modulo_preventivo', 'view' => true, 'union' => true, 'unico_per_viaggio' => true, 'salvataggio_automatico' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'preventivo' => true, 'allegati' => true, 'classe' => 'preventivo', 'gruppo1' => 'preventivi', 'entity' => 'ModuloPreventivo'), 12 => array('nomeFile' => 'serviziWeb/serviziWeb', 'desc' => 'Servizi Web', 'descBreve' => 'Servizi Web', 'tabella' => 'modulo_serviziWeb', 'view' => true, 'mail' => array('from' => 'pro', 'to' => 'booking'), 'union' => true, 'lista_preventivo' => true, 'importi' => array('scontoAgenzia' => '-|Sconto'), 'dettaglio' => array('totale' => '+|Tot. pratica', 'commissioneLorda' => '+|Comm. lorda', 'iva' => '-', 'commissioneCarta' => '-|Comm. carta', 'commissioneNetta' => '+|Comm. netta', 'erroriViaggio' => ''), 'aves' => 'codiciAves.codice,codiciAves.php,`modulo_serviziWeb`.titolo,`modulo_serviziWeb`.dataIN,`modulo_serviziWeb`.data,`modulo_serviziWeb`.commissioneLorda, `modulo_serviziWeb`.totale, `modulo_serviziWeb`.commissioneCarta,  `modulo_serviziWeb`.scontoAgenzia', 'promemoria' => true, 'gruppo1' => 'moduli', 'entity' => 'ModuloServiziweb'), 13 => array('nomeFile' => 'contratto/contratto', 'desc' => 'Contratti', 'tabella' => 'modulo_contratto', 'view' => true, 'unico_per_viaggio' => true), 14 => array('titolo' => 'Allega pagamento', 'nomeFile' => 'note', 'desc' => '', 'descBreve' => '', 'prenotazione_aperto' => 'Allega pagamento', 'prenotazione_importato' => 'Allega pagamento', 'preventivo_aperto' => 'Allega pagamento', 'tabella' => 'modulo_note', 'allegati' => true, 'mail' => false, 'union' => true, 'importi' => false, 'aves' => false, 'lista_preventivo' => false, 'unico_per_viaggio' => false, 'eccezioni' => false, 'promemoria' => false, 'partecipanti' => false, 'accesso' => 1, 'accesso_eliminazione' => false, 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 15 => array('titolo' => 'Modalit&agrave; di pagamento', 'nomeFile' => 'pagamenti/pagamento', 'tabella' => 'modulo_note', 'unico_per_viaggio' => true, 'accesso' => 1, 'classe' => 'pagamenti'), 16 => array('titolo' => 'Contratto di viaggio', 'nomeFile' => 'contratto/contratto_mail', 'prenotazione_aperto' => 'Contratto viaggio', 'tabella' => 'modulo_contratto_mail', 'view' => true, 'mail' => array('from' => 'pro', 'to' => 'cli', 'ccn' => 'pro', 'conf' => 'pro'), 'allegati' => true, 'union' => true, 'unico_per_viaggio' => true, 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloContrattoMail'), 17 => array('titolo' => 'Documenti di viaggio elettronici', 'nomeFile' => 'documentiViaggio/documentiViaggio', 'prenotazione_aperto' => 'Doc. di viaggio elettronico', 'prenotazione_importato' => 'Doc. di viaggio elettronico', 'tabella' => 'modulo_note', 'allegati' => true, 'mail' => array('from' => 'noreply', 'to' => 'cli', 'ccn' => 'pro', 'conf' => 'pro'), 'union' => true, 'unico_per_viaggio' => false, 'inviato_documenti' => true, 'sms' => array('from' => 'ET', 'to' => 'cli', 'mail' => true), 'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo inviato i documenti di viaggio al tuo indirizzo di posta elettronica. Buon viaggio Evolution Travel', 'gruppo_visualizzazione' => 'Documenti di viaggio', 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 18 => array('titolo' => 'Estratto Conto', 'nomeFile' => 'estrattoConto/estrattoConto', 'prenotazione_aperto' => 'E/C visibile', 'prenotazione_importato' => 'E/C visibile', 'tabella' => 'modulo_note', 'allegati' => true, 'union' => true, 'unico_per_viaggio' => false, 'allegato_estratto_conto' => true, 'mail' => array('from' => 'noreply', 'to' => 'pro'), 'gruppo_visualizzazione' => 'Estratto conto', 'note_booking' => true, 'pannello_estratto_conto' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 19 => array('titolo' => 'Estratto Conto Invisibile', 'nomeFile' => 'estrattoConto/estrattoConto', 'prenotazione_aperto' => 'E/C invisibile', 'prenotazione_importato' => 'E/C invisibile', 'tabella' => 'modulo_note', 'allegati' => true, 'union' => true, 'unico_per_viaggio' => false, 'allegato_estratto_conto' => true, 'accesso_lettura' => 5, 'gruppo_visualizzazione' => 'Estratto conto', 'note_booking' => true, 'pannello_estratto_conto' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 20 => array('titolo' => 'Documenti di viaggio con corriere', 'nomeFile' => 'documentiViaggioCorriere/documentiViaggioCorriere', 'prenotazione_aperto' => 'Doc. di viaggio corriere', 'prenotazione_importato' => 'Doc. di viaggio corriere', 'tabella' => 'modulo_note', 'allegati' => false, 'mail' => array('from' => 'noreply', 'to' => 'cli', 'ccn' => 'pro', 'conf' => 'pro'), 'union' => true, 'unico_per_viaggio' => false, 'inviato_documenti' => true, 'sms' => array('from' => 'ET', 'to' => 'cli', 'mail' => true), 'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo spedito i documenti di viaggio con corriere. Buon viaggio Evolution Travel', 'gruppo_visualizzazione' => 'Documenti di viaggio', 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 21 => array('titolo' => 'Attesa preventivo', 'nomeFile' => 'attesaPreventivo/attesaPreventivo_old', 'tabella' => 'modulo_attesa_preventivo', 'union' => true, 'accesso' => 1, 'accesso_eliminazione' => false, 'gruppo1' => 'preventivi', 'entity' => 'ModuloAttesaPreventivo'), 22 => array('titolo' => 'Dettaglio richiesta', 'nomeFile' => 'note', 'tabella' => 'modulo_note', 'union' => true, 'accesso' => 1, 'espandibile' => true, 'accesso_eliminazione' => false, 'entity' => 'ModuloNote'), 23 => array('titolo' => 'Attesa preventivo', 'nomeFile' => 'attesaPreventivo/attesaPreventivo', 'preventivo_nuovo' => 'Attesa preventivo', 'preventivo_aperto' => 'Attesa preventivo', 'tabella' => 'modulo_attesa_preventivo', 'union' => true, 'unico_per_viaggio' => true, 'accesso' => 1, 'ticket_attesa_preventivo' => true, 'ticket_escludi_portale' => false, 'accesso_eliminazione' => false, 'classe' => 'attesapreventivo', 'gruppo1' => 'preventivi', 'entity' => 'ModuloAttesaPreventivo'), 24 => array('titolo' => 'Modifica pratica', 'desc' => 'Modifica pratica', 'nomeFile' => 'modificaPratica/modificaPratica', 'prenotazione_aperto' => 'Modifica pratica', 'prenotazione_importato' => 'Modifica pratica', 'tabella' => 'modulo_note', 'allegati' => true, 'union' => true, 'accesso' => 1, 'pannello_booking' => true, 'accesso_eliminazione' => false, 'entity' => 'ModuloNote'), 25 => array('titolo' => 'Note assistenza booking', 'preventivo_nuovo' => false, 'preventivo_aperto' => false, 'prenotazione_aperto' => 'Scrivi all\' assistenza booking', 'prenotazione_importato' => 'Scrivi all\' assistenza booking', 'mail' => false, 'gruppo_visualizzazione' => 'Note per la sede', 'espandibile' => true, 'entity' => 'ModuloNote'), 26 => array('titolo' => 'Note assistenza amministrativa', 'preventivo_nuovo' => false, 'preventivo_aperto' => false, 'nomeFile' => 'note/noteAmm', 'prenotazione_aperto' => 'Scrivi all\' assistenza amministrativa', 'prenotazione_importato' => 'Scrivi all\' assistenza amministrativa', 'mail' => false, 'gruppo_visualizzazione' => 'Note per la sede', 'note_booking' => false, 'note_amministrazione' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 27 => array('titolo' => 'Rifiuta prenotazione', 'nomeFile' => 'rifiutaPrenotazione/rifiutaPrenotazione', 'prenotazione_aperto' => 'Rifiuta prenotazione', 'prenotazione_importato' => false, 'tabella' => 'modulo_note', 'allegati' => true, 'union' => true, 'unico_per_viaggio' => false, 'accesso' => 5, 'rifiuta_viaggio' => true, 'mail' => array('from' => 'noreply', 'to' => 'pro'), 'stile_union' => 'rifiutaPrenotazione', 'espandibile' => true, 'accesso_eliminazione' => false, 'classe' => 'rifiuta_pratica', 'entity' => 'ModuloNote'), 28 => array('titolo' => 'Convenzioni strutture', 'nomeFile' => 'note', 'tabella' => 'modulo_note', 'mail' => array('from' => array(0 => 'pro', 1 => 'noreply'), 'to' => array(0 => 'pro', 1 => false)), 'allegati' => true, 'union' => true, 'accesso' => 1, 'accesso_eliminazione' => false, 'note_booking' => true, 'espandibile' => true, 'entity' => 'ModuloNote'), 29 => array('nomeFile' => 'preventivi/preventivoV2', 'desc' => 'Preventivo', 'descBreve' => 'Preventivo', 'preventivo_nuovo' => 'Nuovo preventivo', 'preventivo_aperto' => 'Nuovo preventivo', 'tabella' => 'modulo_preventivo_new', 'view' => true, 'union' => true, 'salvataggio_automatico' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'preventivo' => true, 'allegati' => true, 'classe' => 'preventivo', 'gruppo1' => 'preventivi', 'entity' => 'ModuloPreventivoNew'), 30 => array('nomeFile' => 'donazione/donazione', 'desc' => 'Donazione', 'titolo' => 'Donazione', 'descBreve' => 'Donazione', 'prenotazione_aperto' => 'Modulo Donazione', 'preventivo_nuovo' => 'Modulo Donazione', 'preventivo_aperto' => 'Modulo Donazione', 'tabella' => 'modulo_donazione', 'view' => true, 'allegati' => true, 'union' => true, 'lista_preventivo' => true, 'accesso' => 1, 'accesso_eliminazione' => 1, 'importi' => array('erroriViaggio' => ''), 'dettaglio' => array('totale' => '+|Tot. pratica'), 'pannello_booking' => true, 'classe' => 'servizio_donazione', 'gruppo1' => 'moduli', 'entity' => 'ModuloDonazione')), 'path_allegati' => '/allegati/', 'ins' => '_e', 'edit' => '_e', 'view' => '_v', 'print' => '_p', 'contr' => '_c', 'ext' => '.php'));
+    }
+
+    /**
+     * Gets the 'et_user.registration_event' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \ET\UserBundle\EventListener\RegistrationListener A ET\UserBundle\EventListener\RegistrationListener instance.
+     */
+    protected function getEtUser_RegistrationEventService()
+    {
+        return $this->services['et_user.registration_event'] = new \ET\UserBundle\EventListener\RegistrationListener();
     }
 
     /**
@@ -1432,7 +1510,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\BirthdayType' => 'form.type.birthday', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType' => 'form.type.checkbox', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType' => 'form.type.collection', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CountryType' => 'form.type.country', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType' => 'form.type.date', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateTimeType' => 'form.type.datetime', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType' => 'form.type.email', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => 'form.type.file', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType' => 'form.type.hidden', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType' => 'form.type.integer', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LanguageType' => 'form.type.language', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LocaleType' => 'form.type.locale', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType' => 'form.type.money', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType' => 'form.type.number', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType' => 'form.type.password', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PercentType' => 'form.type.percent', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RadioType' => 'form.type.radio', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RangeType' => 'form.type.range', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => 'form.type.repeated', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SearchType' => 'form.type.search', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType' => 'form.type.textarea', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType' => 'form.type.text', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType' => 'form.type.time', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimezoneType' => 'form.type.timezone', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\UrlType' => 'form.type.url', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType' => 'form.type.button', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => 'form.type.submit', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ResetType' => 'form.type.reset', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CurrencyType' => 'form.type.currency', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
+        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\BirthdayType' => 'form.type.birthday', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType' => 'form.type.checkbox', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType' => 'form.type.collection', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CountryType' => 'form.type.country', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType' => 'form.type.date', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateTimeType' => 'form.type.datetime', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType' => 'form.type.email', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => 'form.type.file', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType' => 'form.type.hidden', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType' => 'form.type.integer', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LanguageType' => 'form.type.language', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LocaleType' => 'form.type.locale', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType' => 'form.type.money', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType' => 'form.type.number', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType' => 'form.type.password', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PercentType' => 'form.type.percent', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RadioType' => 'form.type.radio', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RangeType' => 'form.type.range', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => 'form.type.repeated', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SearchType' => 'form.type.search', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType' => 'form.type.textarea', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType' => 'form.type.text', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType' => 'form.type.time', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimezoneType' => 'form.type.timezone', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\UrlType' => 'form.type.url', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType' => 'form.type.button', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => 'form.type.submit', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ResetType' => 'form.type.reset', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CurrencyType' => 'form.type.currency', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity', 'FOS\\UserBundle\\Form\\Type\\UsernameFormType' => 'fos_user.username_form_type', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType' => 'fos_user.profile.form.type', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType' => 'fos_user.registration.form.type', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType' => 'fos_user.change_password.form.type', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType' => 'fos_user.resetting.form.type'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
     }
 
     /**
@@ -1969,6 +2047,255 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_user.change_password.form.factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance.
+     */
+    protected function getFosUser_ChangePassword_Form_FactoryService()
+    {
+        return $this->services['fos_user.change_password.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_change_password_form', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType', array(0 => 'ChangePassword', 1 => 'Default'));
+    }
+
+    /**
+     * Gets the 'fos_user.change_password.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Type\ChangePasswordFormType A FOS\UserBundle\Form\Type\ChangePasswordFormType instance.
+     */
+    protected function getFosUser_ChangePassword_Form_TypeService()
+    {
+        return $this->services['fos_user.change_password.form.type'] = new \FOS\UserBundle\Form\Type\ChangePasswordFormType('ET\\UserBundle\\Entity\\Users');
+    }
+
+    /**
+     * Gets the 'fos_user.listener.authentication' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\EventListener\AuthenticationListener A FOS\UserBundle\EventListener\AuthenticationListener instance.
+     */
+    protected function getFosUser_Listener_AuthenticationService()
+    {
+        return $this->services['fos_user.listener.authentication'] = new \FOS\UserBundle\EventListener\AuthenticationListener($this->get('fos_user.security.login_manager'), 'main');
+    }
+
+    /**
+     * Gets the 'fos_user.listener.flash' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\EventListener\FlashListener A FOS\UserBundle\EventListener\FlashListener instance.
+     */
+    protected function getFosUser_Listener_FlashService()
+    {
+        return $this->services['fos_user.listener.flash'] = new \FOS\UserBundle\EventListener\FlashListener($this->get('session'), $this->get('translator'));
+    }
+
+    /**
+     * Gets the 'fos_user.listener.resetting' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\EventListener\ResettingListener A FOS\UserBundle\EventListener\ResettingListener instance.
+     */
+    protected function getFosUser_Listener_ResettingService()
+    {
+        return $this->services['fos_user.listener.resetting'] = new \FOS\UserBundle\EventListener\ResettingListener($this->get('router'), 86400);
+    }
+
+    /**
+     * Gets the 'fos_user.mailer' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Mailer\Mailer A FOS\UserBundle\Mailer\Mailer instance.
+     */
+    protected function getFosUser_MailerService()
+    {
+        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('webmaster@example.com' => 'webmaster'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
+    }
+
+    /**
+     * Gets the 'fos_user.profile.form.factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance.
+     */
+    protected function getFosUser_Profile_Form_FactoryService()
+    {
+        return $this->services['fos_user.profile.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_profile_form', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType', array(0 => 'Profile', 1 => 'Default'));
+    }
+
+    /**
+     * Gets the 'fos_user.profile.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Type\ProfileFormType A FOS\UserBundle\Form\Type\ProfileFormType instance.
+     */
+    protected function getFosUser_Profile_Form_TypeService()
+    {
+        return $this->services['fos_user.profile.form.type'] = new \FOS\UserBundle\Form\Type\ProfileFormType('ET\\UserBundle\\Entity\\Users');
+    }
+
+    /**
+     * Gets the 'fos_user.registration.form.factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance.
+     */
+    protected function getFosUser_Registration_Form_FactoryService()
+    {
+        return $this->services['fos_user.registration.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_registration_form', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType', array(0 => 'Registration', 1 => 'Default'));
+    }
+
+    /**
+     * Gets the 'fos_user.registration.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Type\RegistrationFormType A FOS\UserBundle\Form\Type\RegistrationFormType instance.
+     */
+    protected function getFosUser_Registration_Form_TypeService()
+    {
+        return $this->services['fos_user.registration.form.type'] = new \FOS\UserBundle\Form\Type\RegistrationFormType('ET\\UserBundle\\Entity\\Users');
+    }
+
+    /**
+     * Gets the 'fos_user.resetting.form.factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance.
+     */
+    protected function getFosUser_Resetting_Form_FactoryService()
+    {
+        return $this->services['fos_user.resetting.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_resetting_form', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType', array(0 => 'ResetPassword', 1 => 'Default'));
+    }
+
+    /**
+     * Gets the 'fos_user.resetting.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Type\ResettingFormType A FOS\UserBundle\Form\Type\ResettingFormType instance.
+     */
+    protected function getFosUser_Resetting_Form_TypeService()
+    {
+        return $this->services['fos_user.resetting.form.type'] = new \FOS\UserBundle\Form\Type\ResettingFormType('ET\\UserBundle\\Entity\\Users');
+    }
+
+    /**
+     * Gets the 'fos_user.security.interactive_login_listener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\EventListener\LastLoginListener A FOS\UserBundle\EventListener\LastLoginListener instance.
+     */
+    protected function getFosUser_Security_InteractiveLoginListenerService()
+    {
+        return $this->services['fos_user.security.interactive_login_listener'] = new \FOS\UserBundle\EventListener\LastLoginListener($this->get('fos_user.user_manager'));
+    }
+
+    /**
+     * Gets the 'fos_user.security.login_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Security\LoginManager A FOS\UserBundle\Security\LoginManager instance.
+     */
+    protected function getFosUser_Security_LoginManagerService()
+    {
+        return $this->services['fos_user.security.login_manager'] = new \FOS\UserBundle\Security\LoginManager($this->get('security.token_storage'), $this->get('security.user_checker.main'), $this->get('security.authentication.session_strategy'), $this);
+    }
+
+    /**
+     * Gets the 'fos_user.user_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Doctrine\UserManager A FOS\UserBundle\Doctrine\UserManager instance.
+     */
+    protected function getFosUser_UserManagerService()
+    {
+        $a = $this->get('fos_user.util.email_canonicalizer');
+
+        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Doctrine\UserManager($this->get('security.encoder_factory'), $a, $a, $this->get('doctrine')->getManager(NULL), 'ET\\UserBundle\\Entity\\Users');
+    }
+
+    /**
+     * Gets the 'fos_user.username_form_type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Form\Type\UsernameFormType A FOS\UserBundle\Form\Type\UsernameFormType instance.
+     */
+    protected function getFosUser_UsernameFormTypeService()
+    {
+        return $this->services['fos_user.username_form_type'] = new \FOS\UserBundle\Form\Type\UsernameFormType(new \FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer($this->get('fos_user.user_manager')));
+    }
+
+    /**
+     * Gets the 'fos_user.util.email_canonicalizer' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Util\Canonicalizer A FOS\UserBundle\Util\Canonicalizer instance.
+     */
+    protected function getFosUser_Util_EmailCanonicalizerService()
+    {
+        return $this->services['fos_user.util.email_canonicalizer'] = new \FOS\UserBundle\Util\Canonicalizer();
+    }
+
+    /**
+     * Gets the 'fos_user.util.token_generator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Util\TokenGenerator A FOS\UserBundle\Util\TokenGenerator instance.
+     */
+    protected function getFosUser_Util_TokenGeneratorService()
+    {
+        return $this->services['fos_user.util.token_generator'] = new \FOS\UserBundle\Util\TokenGenerator($this->get('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+
+    /**
+     * Gets the 'fos_user.util.user_manipulator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Util\UserManipulator A FOS\UserBundle\Util\UserManipulator instance.
+     */
+    protected function getFosUser_Util_UserManipulatorService()
+    {
+        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('fos_user.user_manager'));
+    }
+
+    /**
      * Gets the 'fragment.handler' service.
      *
      * This service is shared.
@@ -2134,6 +2461,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['logger'] = $instance = new \Symfony\Bridge\Monolog\Logger('app');
 
+        $instance->useMicrosecondTimestamps(true);
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
         $instance->pushHandler($this->get('monolog.handler.debug'));
@@ -2384,6 +2712,7 @@ class appDevDebugProjectContainer extends Container
         $instance->add(new \Symfony\Component\HttpKernel\DataCollector\LoggerDataCollector($a));
         $instance->add(new \Symfony\Component\HttpKernel\DataCollector\EventDataCollector($this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->add($this->get('data_collector.router'));
+        $instance->add($this->get('data_collector.translation'));
         $instance->add(new \Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector($this->get('security.token_storage', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('security.role_hierarchy'), $this->get('security.logout_url_generator')));
         $instance->add(new \Symfony\Bridge\Twig\DataCollector\TwigDataCollector($this->get('twig.profile')));
         $instance->add($c);
@@ -2566,7 +2895,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_EncoderFactoryService()
     {
-        return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array());
+        return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array('FOS\\UserBundle\\Model\\UserInterface' => array('class' => 'Symfony\\Component\\Security\\Core\\Encoder\\BCryptPasswordEncoder', 'arguments' => array(0 => 13))));
     }
 
     /**
@@ -2579,7 +2908,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_FirewallService()
     {
-        return $this->services['security.firewall'] = new \Symfony\Component\Security\Http\Firewall(new \Symfony\Bundle\SecurityBundle\Security\FirewallMap($this, array('security.firewall.map.context.dev' => new \Symfony\Component\HttpFoundation\RequestMatcher('^/(_(profiler|wdt)|css|images|js)/'), 'security.firewall.map.context.main' => NULL)), $this->get('debug.event_dispatcher'));
+        return $this->services['security.firewall'] = new \Symfony\Component\Security\Http\Firewall(new \Symfony\Bundle\SecurityBundle\Security\FirewallMap($this, array('security.firewall.map.context.dev' => new \Symfony\Component\HttpFoundation\RequestMatcher('^/(_(profiler|wdt)|css|images|js)/'), 'security.firewall.map.context.main' => new \Symfony\Component\HttpFoundation\RequestMatcher('^/'))), $this->get('debug.event_dispatcher'));
     }
 
     /**
@@ -2607,12 +2936,38 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $b = $this->get('security.token_storage');
-        $c = $this->get('security.authentication.manager');
+        $c = $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $d = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
+        $e = $this->get('http_kernel');
+        $f = $this->get('security.authentication.manager');
 
-        $e = new \Symfony\Component\Security\Http\AccessMap();
+        $g = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login$');
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '571ef2d6e3a402.51981676', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        $h = new \Symfony\Component\HttpFoundation\RequestMatcher('^/register');
+
+        $i = new \Symfony\Component\HttpFoundation\RequestMatcher('^/resetting');
+
+        $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/etgest/');
+
+        $k = new \Symfony\Component\Security\Http\AccessMap();
+        $k->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $k->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $k->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $k->add($j, array(0 => 'ROLE_ADMIN'), NULL);
+
+        $l = new \Symfony\Component\Security\Http\HttpUtils($d, $d);
+
+        $m = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $l, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($l, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => '/logout'));
+        $m->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+
+        $n = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($l, array());
+        $n->setOptions(array('always_use_default_target_path' => false, 'default_target_path' => '/', 'login_path' => '/login', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $n->setProviderKey('main');
+
+        $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
+        $o->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '575f673b54a0f7.20781450', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -3484,11 +3839,11 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return \Symfony\Component\Translation\IdentityTranslator A Symfony\Component\Translation\IdentityTranslator instance.
+     * @return \Symfony\Component\Translation\DataCollectorTranslator A Symfony\Component\Translation\DataCollectorTranslator instance.
      */
     protected function getTranslatorService()
     {
-        return $this->services['translator'] = new \Symfony\Component\Translation\IdentityTranslator($this->get('translator.selector'));
+        return $this->services['translator'] = new \Symfony\Component\Translation\DataCollectorTranslator(new \Symfony\Component\Translation\LoggingTranslator($this->get('translator.default'), $this->get('monolog.logger.translation')));
     }
 
     /**
@@ -3501,9 +3856,10 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTranslator_DefaultService()
     {
-        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => (__DIR__.'/translations'), 'debug' => true), array());
+        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => (__DIR__.'/translations'), 'debug' => true, 'resource_files' => array('af' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.af.xlf')), 'ar' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.ar.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.ar.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ar.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ar.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ar.yml')), 'az' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.az.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.az.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.az.xlf')), 'bg' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.bg.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.bg.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.bg.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.bg.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.bg.yml')), 'ca' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.ca.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.ca.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ca.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ca.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ca.yml')), 'cs' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.cs.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.cs.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.cs.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.cs.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.cs.yml')), 'cy' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.cy.xlf')), 'da' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.da.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.da.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.da.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.da.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.da.yml')), 'de' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.de.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.de.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.de.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.de.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.de.yml')), 'el' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.el.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.el.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.el.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.el.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.el.yml')), 'en' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.en.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.en.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.en.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.en.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.en.yml')), 'es' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.es.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.es.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.es.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.es.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.es.yml')), 'et' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.et.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.et.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.et.yml')), 'eu' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.eu.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.eu.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.eu.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.eu.yml')), 'fa' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.fa.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.fa.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.fa.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.fa.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.fa.yml')), 'fi' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.fi.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.fi.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.fi.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.fi.yml')), 'fr' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.fr.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.fr.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.fr.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.fr.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.fr.yml')), 'gl' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.gl.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.gl.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.gl.xlf')), 'he' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.he.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.he.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.he.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.he.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.he.yml')), 'hr' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.hr.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.hr.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.hr.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.hr.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.hr.yml')), 'hu' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.hu.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.hu.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.hu.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.hu.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.hu.yml')), 'hy' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.hy.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.hy.xlf')), 'id' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.id.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.id.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.id.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.id.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.id.yml')), 'it' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.it.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.it.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.it.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.it.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.it.yml')), 'ja' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.ja.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.ja.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ja.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ja.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ja.yml')), 'lb' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.lb.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.lb.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.lb.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.lb.yml')), 'lt' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.lt.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.lt.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.lt.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.lt.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.lt.yml')), 'mn' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.mn.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.mn.xlf')), 'nl' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.nl.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.nl.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.nl.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.nl.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.nl.yml')), 'nn' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.nn.xlf')), 'no' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.no.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.no.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.no.xlf')), 'pl' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.pl.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.pl.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.pl.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.pl.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.pl.yml')), 'pt' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.pt.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.pt.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.pt.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.pt.yml')), 'pt_BR' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.pt_BR.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.pt_BR.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.pt_BR.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.pt_BR.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.pt_BR.yml')), 'ro' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.ro.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.ro.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ro.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ro.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ro.yml')), 'ru' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.ru.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.ru.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ru.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ru.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ru.yml')), 'sk' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sk.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.sk.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sk.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.sk.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.sk.yml')), 'sl' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sl.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.sl.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sl.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.sl.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.sl.yml')), 'sq' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sq.xlf')), 'sr_Cyrl' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sr_Cyrl.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.sr_Cyrl.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sr_Cyrl.xlf')), 'sr_Latn' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sr_Latn.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.sr_Latn.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sr_Latn.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.sr_Latn.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.sr_Latn.yml')), 'sv' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.sv.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.sv.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sv.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.sv.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.sv.yml')), 'th' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.th.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.th.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.th.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.th.yml')), 'tr' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.tr.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.tr.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.tr.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.tr.yml')), 'uk' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.uk.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.uk.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.uk.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.uk.yml')), 'vi' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.vi.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.vi.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.vi.yml'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.vi.yml')), 'zh_CN' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.zh_CN.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.zh_CN.xlf'), 2 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.zh_CN.xlf'), 3 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.zh_CN.yml'), 4 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.zh_CN.yml')), 'zh_TW' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Validator/Resources/translations\\validators.zh_TW.xlf')), 'lv' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/translations\\validators.lv.xlf'), 1 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.lv.yml'), 2 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.lv.yml')), 'pt_PT' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.pt_PT.xlf')), 'ua' => array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ua.xlf')), 'ky' => array(0 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ky.yml'), 1 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.ky.yml')), 'nb' => array(0 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.nb.yml'), 1 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.nb.yml')))), array());
 
         $instance->setConfigCacheFactory($this->get('config_cache_factory'));
+        $instance->setFallbackLocales(array(0 => 'en'));
 
         return $instance;
     }
@@ -3564,6 +3920,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\DumpExtension($this->get('var_dumper.cloner')));
         $instance->addExtension(new \Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension());
         $instance->addGlobal('app', $c);
+        $instance->addGlobal('cliente_url', 'etgest/cliente/');
         call_user_func(array(new \Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator('F j, Y H:i', '%d days', NULL, 0, '.', ','), 'configure'), $instance);
 
         return $instance;
@@ -3627,6 +3984,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
         $instance->addPath(($this->targetDirs[3].'\\src\\ET\\ETTicketBundle/Resources/views'), 'ETTicket');
         $instance->addPath(($this->targetDirs[3].'\\src\\ET\\ETGestBundle/Resources/views'), 'ETGest');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ET\\UserBundle/Resources/views'), 'ETUser');
+        $instance->addPath(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/views'), 'FOSUser');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ET\\ETBackofficeBundle/Resources/views'), 'ETBackoffice');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
         $instance->addPath(($this->targetDirs[3].'\\app/Resources/views'));
@@ -3702,10 +4062,11 @@ class appDevDebugProjectContainer extends Container
         $instance->setConstraintValidatorFactory(new \Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory($this, array('validator.expression' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\ExpressionValidator' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\EmailValidator' => 'validator.email', 'security.validator.user_password' => 'security.validator.user_password', 'Symfony\\Component\\Security\\Core\\Validator\\Constraints\\UserPasswordValidator' => 'security.validator.user_password', 'doctrine.orm.validator.unique' => 'doctrine.orm.validator.unique', 'Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntityValidator' => 'doctrine.orm.validator.unique')));
         $instance->setTranslator($this->get('translator'));
         $instance->setTranslationDomain('validators');
-        $instance->addXmlMappings(array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml')));
+        $instance->addXmlMappings(array(0 => ($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml'), 1 => ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config\\validation.xml')));
         $instance->enableAnnotationMapping($this->get('annotation_reader'));
         $instance->addMethodMapping('loadValidatorMetadata');
-        $instance->addObjectInitializers(array(0 => $this->get('doctrine.orm.validator_initializer')));
+        $instance->addObjectInitializers(array(0 => $this->get('doctrine.orm.validator_initializer'), 1 => new \FOS\UserBundle\Validator\Initializer($this->get('fos_user.user_manager'))));
+        $instance->addXmlMapping(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\DependencyInjection\\Compiler/../../Resources/config/storage-validation/orm.xml'));
 
         return $instance;
     }
@@ -3790,7 +4151,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getWebProfiler_Controller_ProfilerService()
     {
-        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.ajax' => array(0 => 'ajax', 1 => '@WebProfiler/Collector/ajax.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'data_collector.twig' => array(0 => 'twig', 1 => '@WebProfiler/Collector/twig.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => '@Doctrine/Collector/db.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.dump' => array(0 => 'dump', 1 => '@Debug/Profiler/dump.html.twig'), 'data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig')), 'bottom');
+        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.ajax' => array(0 => 'ajax', 1 => '@WebProfiler/Collector/ajax.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.translation' => array(0 => 'translation', 1 => '@WebProfiler/Collector/translation.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'data_collector.twig' => array(0 => 'twig', 1 => '@WebProfiler/Collector/twig.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => '@Doctrine/Collector/db.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.dump' => array(0 => 'dump', 1 => '@Debug/Profiler/dump.html.twig'), 'data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig')), 'bottom');
     }
 
     /**
@@ -3973,6 +4334,40 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_user.user_listener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \FOS\UserBundle\Doctrine\UserListener A FOS\UserBundle\Doctrine\UserListener instance.
+     */
+    protected function getFosUser_UserListenerService()
+    {
+        return $this->services['fos_user.user_listener'] = new \FOS\UserBundle\Doctrine\UserListener($this);
+    }
+
+    /**
+     * Gets the 'fos_user.user_provider.username' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \FOS\UserBundle\Security\UserProvider A FOS\UserBundle\Security\UserProvider instance.
+     */
+    protected function getFosUser_UserProvider_UsernameService()
+    {
+        return $this->services['fos_user.user_provider.username'] = new \FOS\UserBundle\Security\UserProvider($this->get('fos_user.user_manager'));
+    }
+
+    /**
      * Gets the 'router.request_context' service.
      *
      * This service is shared.
@@ -4003,11 +4398,12 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Access_DecisionManagerService()
     {
-        $a = $this->get('security.authentication.trust_resolver');
+        $a = $this->get('security.role_hierarchy');
+        $b = $this->get('security.authentication.trust_resolver');
 
         $this->services['security.access.decision_manager'] = $instance = new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(), 'affirmative', false, true);
 
-        $instance->setVoters(array(0 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleVoter(), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter(new \Symfony\Component\Security\Core\Authorization\ExpressionLanguage(), $a, $this->get('security.role_hierarchy', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($a)));
+        $instance->setVoters(array(0 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter($a), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter(new \Symfony\Component\Security\Core\Authorization\ExpressionLanguage(), $b, $a), 2 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($b)));
 
         return $instance;
     }
@@ -4026,11 +4422,28 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('571ef2d6e3a402.51981676')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('575f673b54a0f7.20781450')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'security.authentication.session_strategy' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy A Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy instance.
+     */
+    protected function getSecurity_Authentication_SessionStrategyService()
+    {
+        return $this->services['security.authentication.session_strategy'] = new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate');
     }
 
     /**
@@ -4064,7 +4477,11 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_LogoutUrlGeneratorService()
     {
-        return $this->services['security.logout_url_generator'] = new \Symfony\Component\Security\Http\Logout\LogoutUrlGenerator($this->get('request_stack', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('security.token_storage', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        $this->services['security.logout_url_generator'] = $instance = new \Symfony\Component\Security\Http\Logout\LogoutUrlGenerator($this->get('request_stack', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('security.token_storage', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+
+        $instance->registerListener('main', '/logout', 'logout', '_csrf_token', NULL);
+
+        return $instance;
     }
 
     /**
@@ -4081,7 +4498,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_RoleHierarchyService()
     {
-        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array());
+        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_ADMIN' => array(0 => 'ROLE_USER'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_ADMIN')));
     }
 
     /**
@@ -4133,23 +4550,6 @@ class appDevDebugProjectContainer extends Container
     protected function getTemplating_LocatorService()
     {
         return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), __DIR__);
-    }
-
-    /**
-     * Gets the 'translator.selector' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * This service is private.
-     * If you want to be able to request this service from the container directly,
-     * make it public, otherwise you might end up with broken code.
-     *
-     * @return \Symfony\Component\Translation\MessageSelector A Symfony\Component\Translation\MessageSelector instance.
-     */
-    protected function getTranslator_SelectorService()
-    {
-        return $this->services['translator.selector'] = new \Symfony\Component\Translation\MessageSelector();
     }
 
     /**
@@ -4221,6 +4621,9 @@ class appDevDebugProjectContainer extends Container
                 'AppBundle' => 'AppBundle\\AppBundle',
                 'ETTicketBundle' => 'ET\\ETTicketBundle\\ETTicketBundle',
                 'ETGestBundle' => 'ET\\ETGestBundle\\ETGestBundle',
+                'ETUserBundle' => 'ET\\UserBundle\\ETUserBundle',
+                'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
+                'ETBackofficeBundle' => 'ET\\ETBackofficeBundle\\ETBackofficeBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -4228,32 +4631,1439 @@ class appDevDebugProjectContainer extends Container
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
+            'docbase' => array(
+                'nomeFile' => '',
+                'desc' => '',
+                'descBreve' => '',
+                'prenotazione_nuovo' => '',
+                'prenotazione_aperto' => '',
+                'prenotazione_importato' => '',
+                'preventivo_nuovo' => '',
+                'preventivo_aperto' => '',
+                'tabella' => '',
+                'allegati' => false,
+                'view' => false,
+                'mail' => false,
+                'union' => false,
+                'lista_preventivo' => false,
+                'unico_per_viaggio' => false,
+                'eccezioni' => array(
+                    0 => 16,
+                ),
+                'accesso' => 5,
+                'accesso_lettura' => 1,
+                'accesso_eliminazione' => 5,
+                'importi' => '',
+                'dettaglio' => '',
+                'aves' => '',
+                'exportAves' => '',
+                'promemoria' => false,
+                'partecipanti' => false,
+                'salvataggio_automatico' => false,
+                'pannello_booking' => false,
+                'pannello_estratto_conto' => false,
+                'note_booking' => false,
+                'note_amministrazione' => false,
+                'conferma_prenotazione' => false,
+                'inviato_documenti' => false,
+                'allegato_estratto_conto' => false,
+                'sms' => false,
+                'sms_messaggio' => false,
+                'gruppo_visualizzazione' => false,
+                'ticket_escludi_portale' => false,
+                'ticket_attesa_preventivo' => false,
+                'preventivo' => false,
+                'espandibile' => false,
+                'stile_union' => false,
+                'rifiuta_viaggio' => false,
+                'classe' => false,
+                'premotore_riferimento' => false,
+                'gruppo1' => 'note',
+                'gruppo2' => '',
+                'gruppo3' => '',
+            ),
+            'doc' => array(
+                0 => array(
+                    'nomeFile' => 'prenotaTO/prenotaTO',
+                    'desc' => 'Prenotazione',
+                    'descBreve' => 'Prenotazione',
+                    'prenotazione_aperto' => 'Modulo Pacchetto/Soggiorno',
+                    'preventivo_nuovo' => 'Modulo Pacchetto/Soggiorno',
+                    'preventivo_aperto' => 'Modulo Pacchetto/Soggiorno',
+                    'tabella' => 'modulo_to',
+                    'allegati' => true,
+                    'view' => true,
+                    'mail' => array(
+                        'from' => 'pro',
+                        'to' => 'prp',
+                    ),
+                    'union' => true,
+                    'lista_preventivo' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'importi' => array(
+                        'scontoAgenzia' => '-|Sconto',
+                        'iscrizione' => '+',
+                        'carburante' => '+',
+                        'assicurazione' => '+',
+                        'nPartecipanti' => '+|nPartecipanti',
+                        'partecipanti' => '',
+                        'erroriViaggio' => '',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'iscrizione' => '+',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'commissioneAssicurazione' => '-|Comm. assicurazione',
+                        'scontoAgenzia' => '-',
+                        'speseCorriere' => '-',
+                        'speseBonifico' => '-',
+                        'commissioneNetta' => '+|Comm. netta',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_to`.titolo, `modulo_to`.tipoSistemazione, `modulo_to`.trattamento, `modulo_to`.assicurazione,`modulo_to`.dataIN,`modulo_to`.data,`modulo_to`.dataOUT,`modulo_to`.commissioneLorda, `modulo_to`.totale, `modulo_to`.commissioneCarta,  `modulo_to`.scontoAgenzia, modulo_to.to, modulo_to.to, modulo_to.iscrizione',
+                    'exportAves' => true,
+                    'promemoria' => true,
+                    'partecipanti' => true,
+                    'pannello_booking' => true,
+                    'conferma_prenotazione' => true,
+                    'classe' => 'servizio_pacchetto',
+                    'promotore_riferimento' => true,
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloTo',
+                ),
+                1 => array(
+                    'nomeFile' => 'traghetto/traghetto',
+                    'desc' => 'Prenotazione Traghetto',
+                    'descBreve' => 'Traghetto',
+                    'prenotazione_aperto' => 'Modulo Traghetto',
+                    'preventivo_nuovo' => 'Modulo Traghetto',
+                    'preventivo_aperto' => 'Modulo Traghetto',
+                    'tabella' => 'modulo_traghetto',
+                    'view' => true,
+                    'union' => true,
+                    'allegati' => true,
+                    'lista_preventivo' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'importi' => array(
+                        'scontoAgenzia' => '-|Sconto',
+                        'nPartecipanti' => '+|nPartecipanti',
+                        'partecipanti' => '',
+                        'erroriViaggio' => '',
+                        'agencyfee' => '+',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'speseCorriere' => '-',
+                        'commissioneNetta' => '+|Comm. netta',
+                        'agencyfee' => '+|Agency fee',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_traghetto`.titolo,`modulo_traghetto`.dataIN,`modulo_traghetto`.data,`modulo_traghetto`.dataOUT,`modulo_traghetto`.commissioneLorda, `modulo_traghetto`.totale, `modulo_traghetto`.commissioneCarta,  `modulo_traghetto`.scontoAgenzia, `modulo_traghetto`.compagnia',
+                    'exportAves' => true,
+                    'promemoria' => true,
+                    'partecipanti' => true,
+                    'conferma_prenotazione' => true,
+                    'pannello_booking' => true,
+                    'classe' => 'servizio',
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloTraghetto',
+                ),
+                2 => array(
+                    'nomeFile' => 'voloLinea/voloLinea',
+                    'desc' => 'Volo di linea',
+                    'descBreve' => 'volo linea',
+                    'prenotazione_aperto' => 'Modulo Volo di linea',
+                    'preventivo_nuovo' => 'Modulo Volo di linea',
+                    'preventivo_aperto' => 'Modulo Volo di linea',
+                    'tabella' => 'modulo_voloLinea',
+                    'view' => true,
+                    'union' => true,
+                    'allegati' => true,
+                    'eccezioni' => false,
+                    'lista_preventivo' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'importi' => array(
+                        'scontoAgenzia' => '-|Sconto',
+                        'speseCorriere' => '+|Corriere',
+                        'commissioneLorda' => '+|AgencyFee',
+                        'nPartecipanti' => '+|nPartecipanti',
+                        'partecipanti' => '',
+                        'erroriViaggio' => '',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'commissioneNetta' => '+|Comm. netta',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLinea`.agencyfee,`modulo_voloLinea`.titolo,`modulo_voloLinea`.dataIN,`modulo_voloLinea`.data,`modulo_voloLinea`.dataOUT,`modulo_voloLinea`.commissioneLorda, `modulo_voloLinea`.commissioneAggiuntiva,`modulo_voloLinea`.speseCorriere, `modulo_voloLinea`.totale, `modulo_voloLinea`.commissioneCarta,  `modulo_voloLinea`.scontoAgenzia, `modulo_voloLinea`.compagnia, `modulo_voloLinea`.incasso_pagamento',
+                    'exportAves' => true,
+                    'promemoria' => true,
+                    'partecipanti' => true,
+                    'pannello_booking' => true,
+                    'classe' => 'servizio',
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloVololinea',
+                ),
+                3 => array(
+                    'nomeFile' => 'voloLowCost/voloLowCost',
+                    'desc' => 'Volo Low Cost',
+                    'descBreve' => 'Volo Low Cost',
+                    'prenotazione_aperto' => 'Modulo Volo low cost',
+                    'preventivo_nuovo' => 'Modulo Volo low cost',
+                    'preventivo_aperto' => 'Modulo Volo low cost',
+                    'tabella' => 'modulo_voloLowCost',
+                    'view' => true,
+                    'allegati' => true,
+                    'union' => true,
+                    'lista_preventivo' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'importi' => array(
+                        'scontoAgenzia' => '-|Sconto',
+                        'commissioneLorda' => '+|AgencyFee',
+                        'nPartecipanti' => '+|nPartecipanti',
+                        'erroriViaggio' => '',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'commissioneNetta' => '+|Comm. netta',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLowCost`.agencyfee,`modulo_voloLowCost`.titolo,`modulo_voloLowCost`.dataIN,`modulo_voloLowCost`.data,`modulo_voloLowCost`.dataOUT,`modulo_voloLowCost`.commissioneLorda, `modulo_voloLowCost`.totale, `modulo_voloLowCost`.commissioneCarta,  `modulo_voloLowCost`.scontoAgenzia, `modulo_voloLowCost`.compagnia, `modulo_voloLowCost`.incasso_pagamento',
+                    'exportAves' => true,
+                    'promemoria' => true,
+                    'pannello_booking' => true,
+                    'classe' => 'servizio',
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloVololowcost',
+                ),
+                4 => array(
+                    'nomeFile' => 'annullamentoTO',
+                    'desc' => 'Annullamento',
+                    'descBreve' => 'Annullamento',
+                    'prenotazione_aperto' => 'Annullamento',
+                    'prenotazione_importato' => 'Annullamento',
+                    'tabella' => 'modulo_annullamentoTO',
+                    'view' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => true,
+                    'promemoria' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'pannello_booking' => true,
+                    'entity' => 'ModuloAnnullamentoto',
+                ),
+                5 => array(
+                    'titolo' => 'Nota &amp; Allegati',
+                    'nomeFile' => 'note',
+                    'prenotazione_aperto' => 'Nota e Allegati',
+                    'preventivo_aperto' => 'Nota',
+                    'tabella' => 'modulo_note',
+                    'mail' => array(
+                        'from' => array(
+                            0 => 'pro',
+                            1 => 'noreply',
+                        ),
+                        'to' => array(
+                            0 => 'pro',
+                            1 => false,
+                        ),
+                    ),
+                    'allegati' => true,
+                    'union' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => false,
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                6 => array(
+                    'titolo' => 'Nota cliente',
+                    'nomeFile' => 'note',
+                    'tabella' => 'anagrafiche_note',
+                    'accesso' => 1,
+                ),
+                7 => array(
+                    'nomeFile' => 'note',
+                    'tabella' => 'modulo_note_lotus',
+                    'union' => true,
+                    'entity' => 'ModuloNoteLotus',
+                ),
+                8 => array(
+                    'titolo' => 'Nota riscontro vacanza',
+                    'nomeFile' => 'note',
+                    'prenotazione_importato' => 'Nota e/o riscontro vacanza',
+                    'tabella' => 'modulo_note',
+                    'union' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                9 => array(
+                    'titolo' => 'Storno',
+                    'nomeFile' => 'storno',
+                    'desc' => 'Storno provvigioni',
+                    'tabella' => 'modulo_storno',
+                    'incluso' => true,
+                    'dettaglio' => array(
+                        'importo' => '+|Comm. lorda',
+                        'nota' => '.',
+                    ),
+                    'classe' => 'storno',
+                ),
+                10 => array(
+                    'nomeFile' => 'assicurazione/assicurazione',
+                    'desc' => 'Assicurazione integrativa',
+                    'descBreve' => 'Assicurazione',
+                    'prenotazione_aperto' => 'Modulo Assicurazione',
+                    'preventivo_nuovo' => 'Modulo Assicurazione',
+                    'preventivo_aperto' => 'Modulo Assicurazione',
+                    'tabella' => 'modulo_assicurazione',
+                    'view' => true,
+                    'union' => true,
+                    'allegati' => true,
+                    'lista_preventivo' => true,
+                    'importi' => true,
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'commissioneNetta' => '+|Comm. netta',
+                        'nPartecipanti' => '+|nPartecipanti',
+                        'partecipanti' => '',
+                        'erroriViaggio' => '',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_assicurazione`.titolo, `modulo_assicurazione`.dataIN,`modulo_assicurazione`.data,`modulo_assicurazione`.dataOUT,`modulo_assicurazione`.commissioneLorda, `modulo_assicurazione`.totale, `modulo_assicurazione`.commissioneCarta, `modulo_assicurazione`.codice_fiscale',
+                    'exportAves' => true,
+                    'partecipanti' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'pannello_booking' => true,
+                    'classe' => 'servizio',
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloAssicurazione',
+                ),
+                11 => array(
+                    'nomeFile' => 'preventivi/preventivo',
+                    'desc' => 'Preventivo',
+                    'tabella' => 'modulo_preventivo',
+                    'view' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => true,
+                    'salvataggio_automatico' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'preventivo' => true,
+                    'allegati' => true,
+                    'classe' => 'preventivo',
+                    'gruppo1' => 'preventivi',
+                    'entity' => 'ModuloPreventivo',
+                ),
+                12 => array(
+                    'nomeFile' => 'serviziWeb/serviziWeb',
+                    'desc' => 'Servizi Web',
+                    'descBreve' => 'Servizi Web',
+                    'tabella' => 'modulo_serviziWeb',
+                    'view' => true,
+                    'mail' => array(
+                        'from' => 'pro',
+                        'to' => 'booking',
+                    ),
+                    'union' => true,
+                    'lista_preventivo' => true,
+                    'importi' => array(
+                        'scontoAgenzia' => '-|Sconto',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                        'commissioneLorda' => '+|Comm. lorda',
+                        'iva' => '-',
+                        'commissioneCarta' => '-|Comm. carta',
+                        'commissioneNetta' => '+|Comm. netta',
+                        'erroriViaggio' => '',
+                    ),
+                    'aves' => 'codiciAves.codice,codiciAves.php,`modulo_serviziWeb`.titolo,`modulo_serviziWeb`.dataIN,`modulo_serviziWeb`.data,`modulo_serviziWeb`.commissioneLorda, `modulo_serviziWeb`.totale, `modulo_serviziWeb`.commissioneCarta,  `modulo_serviziWeb`.scontoAgenzia',
+                    'promemoria' => true,
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloServiziweb',
+                ),
+                13 => array(
+                    'nomeFile' => 'contratto/contratto',
+                    'desc' => 'Contratti',
+                    'tabella' => 'modulo_contratto',
+                    'view' => true,
+                    'unico_per_viaggio' => true,
+                ),
+                14 => array(
+                    'titolo' => 'Allega pagamento',
+                    'nomeFile' => 'note',
+                    'desc' => '',
+                    'descBreve' => '',
+                    'prenotazione_aperto' => 'Allega pagamento',
+                    'prenotazione_importato' => 'Allega pagamento',
+                    'preventivo_aperto' => 'Allega pagamento',
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'mail' => false,
+                    'union' => true,
+                    'importi' => false,
+                    'aves' => false,
+                    'lista_preventivo' => false,
+                    'unico_per_viaggio' => false,
+                    'eccezioni' => false,
+                    'promemoria' => false,
+                    'partecipanti' => false,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => false,
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                15 => array(
+                    'titolo' => 'Modalit&agrave; di pagamento',
+                    'nomeFile' => 'pagamenti/pagamento',
+                    'tabella' => 'modulo_note',
+                    'unico_per_viaggio' => true,
+                    'accesso' => 1,
+                    'classe' => 'pagamenti',
+                ),
+                16 => array(
+                    'titolo' => 'Contratto di viaggio',
+                    'nomeFile' => 'contratto/contratto_mail',
+                    'prenotazione_aperto' => 'Contratto viaggio',
+                    'tabella' => 'modulo_contratto_mail',
+                    'view' => true,
+                    'mail' => array(
+                        'from' => 'pro',
+                        'to' => 'cli',
+                        'ccn' => 'pro',
+                        'conf' => 'pro',
+                    ),
+                    'allegati' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => true,
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloContrattoMail',
+                ),
+                17 => array(
+                    'titolo' => 'Documenti di viaggio elettronici',
+                    'nomeFile' => 'documentiViaggio/documentiViaggio',
+                    'prenotazione_aperto' => 'Doc. di viaggio elettronico',
+                    'prenotazione_importato' => 'Doc. di viaggio elettronico',
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'mail' => array(
+                        'from' => 'noreply',
+                        'to' => 'cli',
+                        'ccn' => 'pro',
+                        'conf' => 'pro',
+                    ),
+                    'union' => true,
+                    'unico_per_viaggio' => false,
+                    'inviato_documenti' => true,
+                    'sms' => array(
+                        'from' => 'ET',
+                        'to' => 'cli',
+                        'mail' => true,
+                    ),
+                    'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo inviato i documenti di viaggio al tuo indirizzo di posta elettronica. Buon viaggio Evolution Travel',
+                    'gruppo_visualizzazione' => 'Documenti di viaggio',
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                18 => array(
+                    'titolo' => 'Estratto Conto',
+                    'nomeFile' => 'estrattoConto/estrattoConto',
+                    'prenotazione_aperto' => 'E/C visibile',
+                    'prenotazione_importato' => 'E/C visibile',
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => false,
+                    'allegato_estratto_conto' => true,
+                    'mail' => array(
+                        'from' => 'noreply',
+                        'to' => 'pro',
+                    ),
+                    'gruppo_visualizzazione' => 'Estratto conto',
+                    'note_booking' => true,
+                    'pannello_estratto_conto' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                19 => array(
+                    'titolo' => 'Estratto Conto Invisibile',
+                    'nomeFile' => 'estrattoConto/estrattoConto',
+                    'prenotazione_aperto' => 'E/C invisibile',
+                    'prenotazione_importato' => 'E/C invisibile',
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => false,
+                    'allegato_estratto_conto' => true,
+                    'accesso_lettura' => 5,
+                    'gruppo_visualizzazione' => 'Estratto conto',
+                    'note_booking' => true,
+                    'pannello_estratto_conto' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                20 => array(
+                    'titolo' => 'Documenti di viaggio con corriere',
+                    'nomeFile' => 'documentiViaggioCorriere/documentiViaggioCorriere',
+                    'prenotazione_aperto' => 'Doc. di viaggio corriere',
+                    'prenotazione_importato' => 'Doc. di viaggio corriere',
+                    'tabella' => 'modulo_note',
+                    'allegati' => false,
+                    'mail' => array(
+                        'from' => 'noreply',
+                        'to' => 'cli',
+                        'ccn' => 'pro',
+                        'conf' => 'pro',
+                    ),
+                    'union' => true,
+                    'unico_per_viaggio' => false,
+                    'inviato_documenti' => true,
+                    'sms' => array(
+                        'from' => 'ET',
+                        'to' => 'cli',
+                        'mail' => true,
+                    ),
+                    'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo spedito i documenti di viaggio con corriere. Buon viaggio Evolution Travel',
+                    'gruppo_visualizzazione' => 'Documenti di viaggio',
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                21 => array(
+                    'titolo' => 'Attesa preventivo',
+                    'nomeFile' => 'attesaPreventivo/attesaPreventivo_old',
+                    'tabella' => 'modulo_attesa_preventivo',
+                    'union' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => false,
+                    'gruppo1' => 'preventivi',
+                    'entity' => 'ModuloAttesaPreventivo',
+                ),
+                22 => array(
+                    'titolo' => 'Dettaglio richiesta',
+                    'nomeFile' => 'note',
+                    'tabella' => 'modulo_note',
+                    'union' => true,
+                    'accesso' => 1,
+                    'espandibile' => true,
+                    'accesso_eliminazione' => false,
+                    'entity' => 'ModuloNote',
+                ),
+                23 => array(
+                    'titolo' => 'Attesa preventivo',
+                    'nomeFile' => 'attesaPreventivo/attesaPreventivo',
+                    'preventivo_nuovo' => 'Attesa preventivo',
+                    'preventivo_aperto' => 'Attesa preventivo',
+                    'tabella' => 'modulo_attesa_preventivo',
+                    'union' => true,
+                    'unico_per_viaggio' => true,
+                    'accesso' => 1,
+                    'ticket_attesa_preventivo' => true,
+                    'ticket_escludi_portale' => false,
+                    'accesso_eliminazione' => false,
+                    'classe' => 'attesapreventivo',
+                    'gruppo1' => 'preventivi',
+                    'entity' => 'ModuloAttesaPreventivo',
+                ),
+                24 => array(
+                    'titolo' => 'Modifica pratica',
+                    'desc' => 'Modifica pratica',
+                    'nomeFile' => 'modificaPratica/modificaPratica',
+                    'prenotazione_aperto' => 'Modifica pratica',
+                    'prenotazione_importato' => 'Modifica pratica',
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'union' => true,
+                    'accesso' => 1,
+                    'pannello_booking' => true,
+                    'accesso_eliminazione' => false,
+                    'entity' => 'ModuloNote',
+                ),
+                25 => array(
+                    'titolo' => 'Note assistenza booking',
+                    'preventivo_nuovo' => false,
+                    'preventivo_aperto' => false,
+                    'prenotazione_aperto' => 'Scrivi all\' assistenza booking',
+                    'prenotazione_importato' => 'Scrivi all\' assistenza booking',
+                    'mail' => false,
+                    'gruppo_visualizzazione' => 'Note per la sede',
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                26 => array(
+                    'titolo' => 'Note assistenza amministrativa',
+                    'preventivo_nuovo' => false,
+                    'preventivo_aperto' => false,
+                    'nomeFile' => 'note/noteAmm',
+                    'prenotazione_aperto' => 'Scrivi all\' assistenza amministrativa',
+                    'prenotazione_importato' => 'Scrivi all\' assistenza amministrativa',
+                    'mail' => false,
+                    'gruppo_visualizzazione' => 'Note per la sede',
+                    'note_booking' => false,
+                    'note_amministrazione' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                27 => array(
+                    'titolo' => 'Rifiuta prenotazione',
+                    'nomeFile' => 'rifiutaPrenotazione/rifiutaPrenotazione',
+                    'prenotazione_aperto' => 'Rifiuta prenotazione',
+                    'prenotazione_importato' => false,
+                    'tabella' => 'modulo_note',
+                    'allegati' => true,
+                    'union' => true,
+                    'unico_per_viaggio' => false,
+                    'accesso' => 5,
+                    'rifiuta_viaggio' => true,
+                    'mail' => array(
+                        'from' => 'noreply',
+                        'to' => 'pro',
+                    ),
+                    'stile_union' => 'rifiutaPrenotazione',
+                    'espandibile' => true,
+                    'accesso_eliminazione' => false,
+                    'classe' => 'rifiuta_pratica',
+                    'entity' => 'ModuloNote',
+                ),
+                28 => array(
+                    'titolo' => 'Convenzioni strutture',
+                    'nomeFile' => 'note',
+                    'tabella' => 'modulo_note',
+                    'mail' => array(
+                        'from' => array(
+                            0 => 'pro',
+                            1 => 'noreply',
+                        ),
+                        'to' => array(
+                            0 => 'pro',
+                            1 => false,
+                        ),
+                    ),
+                    'allegati' => true,
+                    'union' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => false,
+                    'note_booking' => true,
+                    'espandibile' => true,
+                    'entity' => 'ModuloNote',
+                ),
+                29 => array(
+                    'nomeFile' => 'preventivi/preventivoV2',
+                    'desc' => 'Preventivo',
+                    'descBreve' => 'Preventivo',
+                    'preventivo_nuovo' => 'Nuovo preventivo',
+                    'preventivo_aperto' => 'Nuovo preventivo',
+                    'tabella' => 'modulo_preventivo_new',
+                    'view' => true,
+                    'union' => true,
+                    'salvataggio_automatico' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'preventivo' => true,
+                    'allegati' => true,
+                    'classe' => 'preventivo',
+                    'gruppo1' => 'preventivi',
+                    'entity' => 'ModuloPreventivoNew',
+                ),
+                30 => array(
+                    'nomeFile' => 'donazione/donazione',
+                    'desc' => 'Donazione',
+                    'titolo' => 'Donazione',
+                    'descBreve' => 'Donazione',
+                    'prenotazione_aperto' => 'Modulo Donazione',
+                    'preventivo_nuovo' => 'Modulo Donazione',
+                    'preventivo_aperto' => 'Modulo Donazione',
+                    'tabella' => 'modulo_donazione',
+                    'view' => true,
+                    'allegati' => true,
+                    'union' => true,
+                    'lista_preventivo' => true,
+                    'accesso' => 1,
+                    'accesso_eliminazione' => 1,
+                    'importi' => array(
+                        'erroriViaggio' => '',
+                    ),
+                    'dettaglio' => array(
+                        'totale' => '+|Tot. pratica',
+                    ),
+                    'pannello_booking' => true,
+                    'classe' => 'servizio_donazione',
+                    'gruppo1' => 'moduli',
+                    'entity' => 'ModuloDonazione',
+                ),
+            ),
+            'file' => array(
+                'cartella' => 'documenti/',
+                'doc' => array(
+                    0 => array(
+                        'nomeFile' => 'prenotaTO/prenotaTO',
+                        'desc' => 'Prenotazione',
+                        'descBreve' => 'Prenotazione',
+                        'prenotazione_aperto' => 'Modulo Pacchetto/Soggiorno',
+                        'preventivo_nuovo' => 'Modulo Pacchetto/Soggiorno',
+                        'preventivo_aperto' => 'Modulo Pacchetto/Soggiorno',
+                        'tabella' => 'modulo_to',
+                        'allegati' => true,
+                        'view' => true,
+                        'mail' => array(
+                            'from' => 'pro',
+                            'to' => 'prp',
+                        ),
+                        'union' => true,
+                        'lista_preventivo' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'importi' => array(
+                            'scontoAgenzia' => '-|Sconto',
+                            'iscrizione' => '+',
+                            'carburante' => '+',
+                            'assicurazione' => '+',
+                            'nPartecipanti' => '+|nPartecipanti',
+                            'partecipanti' => '',
+                            'erroriViaggio' => '',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'iscrizione' => '+',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'commissioneAssicurazione' => '-|Comm. assicurazione',
+                            'scontoAgenzia' => '-',
+                            'speseCorriere' => '-',
+                            'speseBonifico' => '-',
+                            'commissioneNetta' => '+|Comm. netta',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_to`.titolo, `modulo_to`.tipoSistemazione, `modulo_to`.trattamento, `modulo_to`.assicurazione,`modulo_to`.dataIN,`modulo_to`.data,`modulo_to`.dataOUT,`modulo_to`.commissioneLorda, `modulo_to`.totale, `modulo_to`.commissioneCarta,  `modulo_to`.scontoAgenzia, modulo_to.to, modulo_to.to, modulo_to.iscrizione',
+                        'exportAves' => true,
+                        'promemoria' => true,
+                        'partecipanti' => true,
+                        'pannello_booking' => true,
+                        'conferma_prenotazione' => true,
+                        'classe' => 'servizio_pacchetto',
+                        'promotore_riferimento' => true,
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloTo',
+                    ),
+                    1 => array(
+                        'nomeFile' => 'traghetto/traghetto',
+                        'desc' => 'Prenotazione Traghetto',
+                        'descBreve' => 'Traghetto',
+                        'prenotazione_aperto' => 'Modulo Traghetto',
+                        'preventivo_nuovo' => 'Modulo Traghetto',
+                        'preventivo_aperto' => 'Modulo Traghetto',
+                        'tabella' => 'modulo_traghetto',
+                        'view' => true,
+                        'union' => true,
+                        'allegati' => true,
+                        'lista_preventivo' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'importi' => array(
+                            'scontoAgenzia' => '-|Sconto',
+                            'nPartecipanti' => '+|nPartecipanti',
+                            'partecipanti' => '',
+                            'erroriViaggio' => '',
+                            'agencyfee' => '+',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'speseCorriere' => '-',
+                            'commissioneNetta' => '+|Comm. netta',
+                            'agencyfee' => '+|Agency fee',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_traghetto`.titolo,`modulo_traghetto`.dataIN,`modulo_traghetto`.data,`modulo_traghetto`.dataOUT,`modulo_traghetto`.commissioneLorda, `modulo_traghetto`.totale, `modulo_traghetto`.commissioneCarta,  `modulo_traghetto`.scontoAgenzia, `modulo_traghetto`.compagnia',
+                        'exportAves' => true,
+                        'promemoria' => true,
+                        'partecipanti' => true,
+                        'conferma_prenotazione' => true,
+                        'pannello_booking' => true,
+                        'classe' => 'servizio',
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloTraghetto',
+                    ),
+                    2 => array(
+                        'nomeFile' => 'voloLinea/voloLinea',
+                        'desc' => 'Volo di linea',
+                        'descBreve' => 'volo linea',
+                        'prenotazione_aperto' => 'Modulo Volo di linea',
+                        'preventivo_nuovo' => 'Modulo Volo di linea',
+                        'preventivo_aperto' => 'Modulo Volo di linea',
+                        'tabella' => 'modulo_voloLinea',
+                        'view' => true,
+                        'union' => true,
+                        'allegati' => true,
+                        'eccezioni' => false,
+                        'lista_preventivo' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'importi' => array(
+                            'scontoAgenzia' => '-|Sconto',
+                            'speseCorriere' => '+|Corriere',
+                            'commissioneLorda' => '+|AgencyFee',
+                            'nPartecipanti' => '+|nPartecipanti',
+                            'partecipanti' => '',
+                            'erroriViaggio' => '',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'commissioneNetta' => '+|Comm. netta',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLinea`.agencyfee,`modulo_voloLinea`.titolo,`modulo_voloLinea`.dataIN,`modulo_voloLinea`.data,`modulo_voloLinea`.dataOUT,`modulo_voloLinea`.commissioneLorda, `modulo_voloLinea`.commissioneAggiuntiva,`modulo_voloLinea`.speseCorriere, `modulo_voloLinea`.totale, `modulo_voloLinea`.commissioneCarta,  `modulo_voloLinea`.scontoAgenzia, `modulo_voloLinea`.compagnia, `modulo_voloLinea`.incasso_pagamento',
+                        'exportAves' => true,
+                        'promemoria' => true,
+                        'partecipanti' => true,
+                        'pannello_booking' => true,
+                        'classe' => 'servizio',
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloVololinea',
+                    ),
+                    3 => array(
+                        'nomeFile' => 'voloLowCost/voloLowCost',
+                        'desc' => 'Volo Low Cost',
+                        'descBreve' => 'Volo Low Cost',
+                        'prenotazione_aperto' => 'Modulo Volo low cost',
+                        'preventivo_nuovo' => 'Modulo Volo low cost',
+                        'preventivo_aperto' => 'Modulo Volo low cost',
+                        'tabella' => 'modulo_voloLowCost',
+                        'view' => true,
+                        'allegati' => true,
+                        'union' => true,
+                        'lista_preventivo' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'importi' => array(
+                            'scontoAgenzia' => '-|Sconto',
+                            'commissioneLorda' => '+|AgencyFee',
+                            'nPartecipanti' => '+|nPartecipanti',
+                            'erroriViaggio' => '',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'commissioneNetta' => '+|Comm. netta',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_voloLowCost`.agencyfee,`modulo_voloLowCost`.titolo,`modulo_voloLowCost`.dataIN,`modulo_voloLowCost`.data,`modulo_voloLowCost`.dataOUT,`modulo_voloLowCost`.commissioneLorda, `modulo_voloLowCost`.totale, `modulo_voloLowCost`.commissioneCarta,  `modulo_voloLowCost`.scontoAgenzia, `modulo_voloLowCost`.compagnia, `modulo_voloLowCost`.incasso_pagamento',
+                        'exportAves' => true,
+                        'promemoria' => true,
+                        'pannello_booking' => true,
+                        'classe' => 'servizio',
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloVololowcost',
+                    ),
+                    4 => array(
+                        'nomeFile' => 'annullamentoTO',
+                        'desc' => 'Annullamento',
+                        'descBreve' => 'Annullamento',
+                        'prenotazione_aperto' => 'Annullamento',
+                        'prenotazione_importato' => 'Annullamento',
+                        'tabella' => 'modulo_annullamentoTO',
+                        'view' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => true,
+                        'promemoria' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'pannello_booking' => true,
+                        'entity' => 'ModuloAnnullamentoto',
+                    ),
+                    5 => array(
+                        'titolo' => 'Nota &amp; Allegati',
+                        'nomeFile' => 'note',
+                        'prenotazione_aperto' => 'Nota e Allegati',
+                        'preventivo_aperto' => 'Nota',
+                        'tabella' => 'modulo_note',
+                        'mail' => array(
+                            'from' => array(
+                                0 => 'pro',
+                                1 => 'noreply',
+                            ),
+                            'to' => array(
+                                0 => 'pro',
+                                1 => false,
+                            ),
+                        ),
+                        'allegati' => true,
+                        'union' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => false,
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    6 => array(
+                        'titolo' => 'Nota cliente',
+                        'nomeFile' => 'note',
+                        'tabella' => 'anagrafiche_note',
+                        'accesso' => 1,
+                    ),
+                    7 => array(
+                        'nomeFile' => 'note',
+                        'tabella' => 'modulo_note_lotus',
+                        'union' => true,
+                        'entity' => 'ModuloNoteLotus',
+                    ),
+                    8 => array(
+                        'titolo' => 'Nota riscontro vacanza',
+                        'nomeFile' => 'note',
+                        'prenotazione_importato' => 'Nota e/o riscontro vacanza',
+                        'tabella' => 'modulo_note',
+                        'union' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    9 => array(
+                        'titolo' => 'Storno',
+                        'nomeFile' => 'storno',
+                        'desc' => 'Storno provvigioni',
+                        'tabella' => 'modulo_storno',
+                        'incluso' => true,
+                        'dettaglio' => array(
+                            'importo' => '+|Comm. lorda',
+                            'nota' => '.',
+                        ),
+                        'classe' => 'storno',
+                    ),
+                    10 => array(
+                        'nomeFile' => 'assicurazione/assicurazione',
+                        'desc' => 'Assicurazione integrativa',
+                        'descBreve' => 'Assicurazione',
+                        'prenotazione_aperto' => 'Modulo Assicurazione',
+                        'preventivo_nuovo' => 'Modulo Assicurazione',
+                        'preventivo_aperto' => 'Modulo Assicurazione',
+                        'tabella' => 'modulo_assicurazione',
+                        'view' => true,
+                        'union' => true,
+                        'allegati' => true,
+                        'lista_preventivo' => true,
+                        'importi' => true,
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'commissioneNetta' => '+|Comm. netta',
+                            'nPartecipanti' => '+|nPartecipanti',
+                            'partecipanti' => '',
+                            'erroriViaggio' => '',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_assicurazione`.titolo, `modulo_assicurazione`.dataIN,`modulo_assicurazione`.data,`modulo_assicurazione`.dataOUT,`modulo_assicurazione`.commissioneLorda, `modulo_assicurazione`.totale, `modulo_assicurazione`.commissioneCarta, `modulo_assicurazione`.codice_fiscale',
+                        'exportAves' => true,
+                        'partecipanti' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'pannello_booking' => true,
+                        'classe' => 'servizio',
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloAssicurazione',
+                    ),
+                    11 => array(
+                        'nomeFile' => 'preventivi/preventivo',
+                        'desc' => 'Preventivo',
+                        'tabella' => 'modulo_preventivo',
+                        'view' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => true,
+                        'salvataggio_automatico' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'preventivo' => true,
+                        'allegati' => true,
+                        'classe' => 'preventivo',
+                        'gruppo1' => 'preventivi',
+                        'entity' => 'ModuloPreventivo',
+                    ),
+                    12 => array(
+                        'nomeFile' => 'serviziWeb/serviziWeb',
+                        'desc' => 'Servizi Web',
+                        'descBreve' => 'Servizi Web',
+                        'tabella' => 'modulo_serviziWeb',
+                        'view' => true,
+                        'mail' => array(
+                            'from' => 'pro',
+                            'to' => 'booking',
+                        ),
+                        'union' => true,
+                        'lista_preventivo' => true,
+                        'importi' => array(
+                            'scontoAgenzia' => '-|Sconto',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                            'commissioneLorda' => '+|Comm. lorda',
+                            'iva' => '-',
+                            'commissioneCarta' => '-|Comm. carta',
+                            'commissioneNetta' => '+|Comm. netta',
+                            'erroriViaggio' => '',
+                        ),
+                        'aves' => 'codiciAves.codice,codiciAves.php,`modulo_serviziWeb`.titolo,`modulo_serviziWeb`.dataIN,`modulo_serviziWeb`.data,`modulo_serviziWeb`.commissioneLorda, `modulo_serviziWeb`.totale, `modulo_serviziWeb`.commissioneCarta,  `modulo_serviziWeb`.scontoAgenzia',
+                        'promemoria' => true,
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloServiziweb',
+                    ),
+                    13 => array(
+                        'nomeFile' => 'contratto/contratto',
+                        'desc' => 'Contratti',
+                        'tabella' => 'modulo_contratto',
+                        'view' => true,
+                        'unico_per_viaggio' => true,
+                    ),
+                    14 => array(
+                        'titolo' => 'Allega pagamento',
+                        'nomeFile' => 'note',
+                        'desc' => '',
+                        'descBreve' => '',
+                        'prenotazione_aperto' => 'Allega pagamento',
+                        'prenotazione_importato' => 'Allega pagamento',
+                        'preventivo_aperto' => 'Allega pagamento',
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'mail' => false,
+                        'union' => true,
+                        'importi' => false,
+                        'aves' => false,
+                        'lista_preventivo' => false,
+                        'unico_per_viaggio' => false,
+                        'eccezioni' => false,
+                        'promemoria' => false,
+                        'partecipanti' => false,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => false,
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    15 => array(
+                        'titolo' => 'Modalit&agrave; di pagamento',
+                        'nomeFile' => 'pagamenti/pagamento',
+                        'tabella' => 'modulo_note',
+                        'unico_per_viaggio' => true,
+                        'accesso' => 1,
+                        'classe' => 'pagamenti',
+                    ),
+                    16 => array(
+                        'titolo' => 'Contratto di viaggio',
+                        'nomeFile' => 'contratto/contratto_mail',
+                        'prenotazione_aperto' => 'Contratto viaggio',
+                        'tabella' => 'modulo_contratto_mail',
+                        'view' => true,
+                        'mail' => array(
+                            'from' => 'pro',
+                            'to' => 'cli',
+                            'ccn' => 'pro',
+                            'conf' => 'pro',
+                        ),
+                        'allegati' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => true,
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloContrattoMail',
+                    ),
+                    17 => array(
+                        'titolo' => 'Documenti di viaggio elettronici',
+                        'nomeFile' => 'documentiViaggio/documentiViaggio',
+                        'prenotazione_aperto' => 'Doc. di viaggio elettronico',
+                        'prenotazione_importato' => 'Doc. di viaggio elettronico',
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'mail' => array(
+                            'from' => 'noreply',
+                            'to' => 'cli',
+                            'ccn' => 'pro',
+                            'conf' => 'pro',
+                        ),
+                        'union' => true,
+                        'unico_per_viaggio' => false,
+                        'inviato_documenti' => true,
+                        'sms' => array(
+                            'from' => 'ET',
+                            'to' => 'cli',
+                            'mail' => true,
+                        ),
+                        'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo inviato i documenti di viaggio al tuo indirizzo di posta elettronica. Buon viaggio Evolution Travel',
+                        'gruppo_visualizzazione' => 'Documenti di viaggio',
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    18 => array(
+                        'titolo' => 'Estratto Conto',
+                        'nomeFile' => 'estrattoConto/estrattoConto',
+                        'prenotazione_aperto' => 'E/C visibile',
+                        'prenotazione_importato' => 'E/C visibile',
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => false,
+                        'allegato_estratto_conto' => true,
+                        'mail' => array(
+                            'from' => 'noreply',
+                            'to' => 'pro',
+                        ),
+                        'gruppo_visualizzazione' => 'Estratto conto',
+                        'note_booking' => true,
+                        'pannello_estratto_conto' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    19 => array(
+                        'titolo' => 'Estratto Conto Invisibile',
+                        'nomeFile' => 'estrattoConto/estrattoConto',
+                        'prenotazione_aperto' => 'E/C invisibile',
+                        'prenotazione_importato' => 'E/C invisibile',
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => false,
+                        'allegato_estratto_conto' => true,
+                        'accesso_lettura' => 5,
+                        'gruppo_visualizzazione' => 'Estratto conto',
+                        'note_booking' => true,
+                        'pannello_estratto_conto' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    20 => array(
+                        'titolo' => 'Documenti di viaggio con corriere',
+                        'nomeFile' => 'documentiViaggioCorriere/documentiViaggioCorriere',
+                        'prenotazione_aperto' => 'Doc. di viaggio corriere',
+                        'prenotazione_importato' => 'Doc. di viaggio corriere',
+                        'tabella' => 'modulo_note',
+                        'allegati' => false,
+                        'mail' => array(
+                            'from' => 'noreply',
+                            'to' => 'cli',
+                            'ccn' => 'pro',
+                            'conf' => 'pro',
+                        ),
+                        'union' => true,
+                        'unico_per_viaggio' => false,
+                        'inviato_documenti' => true,
+                        'sms' => array(
+                            'from' => 'ET',
+                            'to' => 'cli',
+                            'mail' => true,
+                        ),
+                        'sms_messaggio' => 'Ciao {cliente_nominativo} abbiamo spedito i documenti di viaggio con corriere. Buon viaggio Evolution Travel',
+                        'gruppo_visualizzazione' => 'Documenti di viaggio',
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    21 => array(
+                        'titolo' => 'Attesa preventivo',
+                        'nomeFile' => 'attesaPreventivo/attesaPreventivo_old',
+                        'tabella' => 'modulo_attesa_preventivo',
+                        'union' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => false,
+                        'gruppo1' => 'preventivi',
+                        'entity' => 'ModuloAttesaPreventivo',
+                    ),
+                    22 => array(
+                        'titolo' => 'Dettaglio richiesta',
+                        'nomeFile' => 'note',
+                        'tabella' => 'modulo_note',
+                        'union' => true,
+                        'accesso' => 1,
+                        'espandibile' => true,
+                        'accesso_eliminazione' => false,
+                        'entity' => 'ModuloNote',
+                    ),
+                    23 => array(
+                        'titolo' => 'Attesa preventivo',
+                        'nomeFile' => 'attesaPreventivo/attesaPreventivo',
+                        'preventivo_nuovo' => 'Attesa preventivo',
+                        'preventivo_aperto' => 'Attesa preventivo',
+                        'tabella' => 'modulo_attesa_preventivo',
+                        'union' => true,
+                        'unico_per_viaggio' => true,
+                        'accesso' => 1,
+                        'ticket_attesa_preventivo' => true,
+                        'ticket_escludi_portale' => false,
+                        'accesso_eliminazione' => false,
+                        'classe' => 'attesapreventivo',
+                        'gruppo1' => 'preventivi',
+                        'entity' => 'ModuloAttesaPreventivo',
+                    ),
+                    24 => array(
+                        'titolo' => 'Modifica pratica',
+                        'desc' => 'Modifica pratica',
+                        'nomeFile' => 'modificaPratica/modificaPratica',
+                        'prenotazione_aperto' => 'Modifica pratica',
+                        'prenotazione_importato' => 'Modifica pratica',
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'union' => true,
+                        'accesso' => 1,
+                        'pannello_booking' => true,
+                        'accesso_eliminazione' => false,
+                        'entity' => 'ModuloNote',
+                    ),
+                    25 => array(
+                        'titolo' => 'Note assistenza booking',
+                        'preventivo_nuovo' => false,
+                        'preventivo_aperto' => false,
+                        'prenotazione_aperto' => 'Scrivi all\' assistenza booking',
+                        'prenotazione_importato' => 'Scrivi all\' assistenza booking',
+                        'mail' => false,
+                        'gruppo_visualizzazione' => 'Note per la sede',
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    26 => array(
+                        'titolo' => 'Note assistenza amministrativa',
+                        'preventivo_nuovo' => false,
+                        'preventivo_aperto' => false,
+                        'nomeFile' => 'note/noteAmm',
+                        'prenotazione_aperto' => 'Scrivi all\' assistenza amministrativa',
+                        'prenotazione_importato' => 'Scrivi all\' assistenza amministrativa',
+                        'mail' => false,
+                        'gruppo_visualizzazione' => 'Note per la sede',
+                        'note_booking' => false,
+                        'note_amministrazione' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    27 => array(
+                        'titolo' => 'Rifiuta prenotazione',
+                        'nomeFile' => 'rifiutaPrenotazione/rifiutaPrenotazione',
+                        'prenotazione_aperto' => 'Rifiuta prenotazione',
+                        'prenotazione_importato' => false,
+                        'tabella' => 'modulo_note',
+                        'allegati' => true,
+                        'union' => true,
+                        'unico_per_viaggio' => false,
+                        'accesso' => 5,
+                        'rifiuta_viaggio' => true,
+                        'mail' => array(
+                            'from' => 'noreply',
+                            'to' => 'pro',
+                        ),
+                        'stile_union' => 'rifiutaPrenotazione',
+                        'espandibile' => true,
+                        'accesso_eliminazione' => false,
+                        'classe' => 'rifiuta_pratica',
+                        'entity' => 'ModuloNote',
+                    ),
+                    28 => array(
+                        'titolo' => 'Convenzioni strutture',
+                        'nomeFile' => 'note',
+                        'tabella' => 'modulo_note',
+                        'mail' => array(
+                            'from' => array(
+                                0 => 'pro',
+                                1 => 'noreply',
+                            ),
+                            'to' => array(
+                                0 => 'pro',
+                                1 => false,
+                            ),
+                        ),
+                        'allegati' => true,
+                        'union' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => false,
+                        'note_booking' => true,
+                        'espandibile' => true,
+                        'entity' => 'ModuloNote',
+                    ),
+                    29 => array(
+                        'nomeFile' => 'preventivi/preventivoV2',
+                        'desc' => 'Preventivo',
+                        'descBreve' => 'Preventivo',
+                        'preventivo_nuovo' => 'Nuovo preventivo',
+                        'preventivo_aperto' => 'Nuovo preventivo',
+                        'tabella' => 'modulo_preventivo_new',
+                        'view' => true,
+                        'union' => true,
+                        'salvataggio_automatico' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'preventivo' => true,
+                        'allegati' => true,
+                        'classe' => 'preventivo',
+                        'gruppo1' => 'preventivi',
+                        'entity' => 'ModuloPreventivoNew',
+                    ),
+                    30 => array(
+                        'nomeFile' => 'donazione/donazione',
+                        'desc' => 'Donazione',
+                        'titolo' => 'Donazione',
+                        'descBreve' => 'Donazione',
+                        'prenotazione_aperto' => 'Modulo Donazione',
+                        'preventivo_nuovo' => 'Modulo Donazione',
+                        'preventivo_aperto' => 'Modulo Donazione',
+                        'tabella' => 'modulo_donazione',
+                        'view' => true,
+                        'allegati' => true,
+                        'union' => true,
+                        'lista_preventivo' => true,
+                        'accesso' => 1,
+                        'accesso_eliminazione' => 1,
+                        'importi' => array(
+                            'erroriViaggio' => '',
+                        ),
+                        'dettaglio' => array(
+                            'totale' => '+|Tot. pratica',
+                        ),
+                        'pannello_booking' => true,
+                        'classe' => 'servizio_donazione',
+                        'gruppo1' => 'moduli',
+                        'entity' => 'ModuloDonazione',
+                    ),
+                ),
+                'path_allegati' => '/allegati/',
+                'ins' => '_e',
+                'edit' => '_e',
+                'view' => '_v',
+                'print' => '_p',
+                'contr' => '_c',
+                'ext' => '.php',
+            ),
+            'statusmodulo' => array(
+                'nuova_pratica' => array(
+                    'id' => 0,
+                    'etichetta' => 'Nuova pratica',
+                    'gruppo' => 'da_confermare',
+                    'gruppo_etichetta' => false,
+                    'cambio_stato' => true,
+                    'allegati' => true,
+                    'invio_documenti' => false,
+                    'contratto_viaggio' => false,
+                    'allega_estratto_conto' => false,
+                    'rifiuta_viaggio' => true,
+                    'visualizzato' => true,
+                    'modifica' => 'tutto',
+                ),
+                'da_confermare' => array(
+                    'id' => 1,
+                    'etichetta' => 'Da confermare',
+                    'gruppo' => 'da_confermare',
+                    'gruppo_etichetta' => false,
+                    'cambio_stato' => true,
+                    'allegati' => true,
+                    'invio_documenti' => false,
+                    'contratto_viaggio' => false,
+                    'allega_estratto_conto' => false,
+                    'rifiuta_viaggio' => true,
+                    'visualizzato' => true,
+                    'modifica' => 'tutto',
+                ),
+            ),
             'database_port' => NULL,
             'database_host_agenti' => 'localhost',
             'database_name_agenti' => 'vacanzev_agenti',
             'database_user_agenti' => 'root',
-            'database_password_agenti' => '',
+            'database_password_agenti' => NULL,
             'database_host_romano' => 'localhost',
             'database_name_romano' => 'vacanzev_romano1_eu',
             'database_user_romano' => 'root',
-            'database_password_romano' => '',
+            'database_password_romano' => NULL,
             'database_host_idetus' => 'localhost',
             'database_name_idetus' => 'vacanzev_idetus_eu',
             'database_user_idetus' => 'root',
-            'database_password_idetus' => '',
+            'database_password_idetus' => NULL,
             'database_host_etticket' => 'localhost',
             'database_name_etticket' => 'vacanzev_etticket',
             'database_user_etticket' => 'root',
-            'database_password_etticket' => '',
+            'database_password_etticket' => NULL,
             'database_host_listanozze' => 'localhost',
             'database_name_listanozze' => 'listanozze_new',
             'database_user_listanozze' => 'root',
-            'database_password_listanozze' => '',
+            'database_password_listanozze' => NULL,
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
             'mailer_password' => NULL,
             'secret' => '1931596e546917c71ac5a1f06f1aae8db5281818',
+            'status_viaggio_aves' => array(
+                'da_completare' => 0,
+                'completo' => 1,
+                'in_elaborazione' => 2,
+                'importato' => 3,
+                'errore' => 4,
+                'da_non_importare' => 5,
+                'preventivo' => 6,
+                'cancellato' => 7,
+            ),
+            'etichette_viaggio' => array(
+                'da_completare' => 'prenotazione',
+                'completo' => 'prenotazione',
+                'in_elaborazione' => 'prenotazione',
+                'importato' => 'prenotazione',
+                'errore' => 'prenotazione',
+                'da_non_importare' => 'prenotazione',
+                'preventivo' => 'preventivo',
+                'cancellato' => 'viaggio cancellato',
+            ),
+            'status_modulo_estratto_conto_base' => array(
+                'id' => 0,
+                'etichetta' => '',
+                'gruppo' => '',
+                'cambio_stato' => true,
+                'visualizzato' => true,
+            ),
+            'status_modulo_estratto_conto' => array(
+                'non_in_carico' => array(
+                    'base' => array(
+                        'id' => 0,
+                        'etichetta' => '',
+                        'gruppo' => '',
+                        'cambio_stato' => true,
+                        'visualizzato' => true,
+                    ),
+                    'id' => 1,
+                    'etichetta' => 'Da prendere in carico',
+                    'gruppo' => 'non_in_carico',
+                ),
+                'in_carico' => array(
+                    'base' => array(
+                        'id' => 0,
+                        'etichetta' => '',
+                        'gruppo' => '',
+                        'cambio_stato' => true,
+                        'visualizzato' => true,
+                    ),
+                    'id' => 2,
+                    'etichetta' => 'In carico',
+                    'gruppo' => 'in_carico',
+                    'visualizzato' => false,
+                ),
+            ),
+            'url.cliente' => 'etgest/cliente/',
+            'path_allegati' => '/allegati/',
             'locale' => 'en',
             'fragment.renderer.hinclude.global_template' => NULL,
             'fragment.path' => '/_fragment',
@@ -4282,6 +6092,7 @@ class appDevDebugProjectContainer extends Container
             ),
             'validator.mapping.cache.prefix' => '',
             'validator.translation_domain' => 'validators',
+            'translator.logging' => true,
             'profiler_listener.only_exceptions' => false,
             'profiler_listener.only_master_requests' => false,
             'profiler.storage.dsn' => ('file:'.__DIR__.'/profiler'),
@@ -4305,7 +6116,12 @@ class appDevDebugProjectContainer extends Container
             'security.authentication.trust_resolver.anonymous_class' => 'Symfony\\Component\\Security\\Core\\Authentication\\Token\\AnonymousToken',
             'security.authentication.trust_resolver.rememberme_class' => 'Symfony\\Component\\Security\\Core\\Authentication\\Token\\RememberMeToken',
             'security.role_hierarchy.roles' => array(
-
+                'ROLE_ADMIN' => array(
+                    0 => 'ROLE_USER',
+                ),
+                'ROLE_SUPER_ADMIN' => array(
+                    0 => 'ROLE_ADMIN',
+                ),
             ),
             'security.access.denied_url' => NULL,
             'security.authentication.manager.erase_credentials' => true,
@@ -4323,6 +6139,7 @@ class appDevDebugProjectContainer extends Container
             'monolog.handler.console.class' => 'Symfony\\Bridge\\Monolog\\Handler\\ConsoleHandler',
             'monolog.handler.group.class' => 'Monolog\\Handler\\GroupHandler',
             'monolog.handler.buffer.class' => 'Monolog\\Handler\\BufferHandler',
+            'monolog.handler.deduplication.class' => 'Monolog\\Handler\\DeduplicationHandler',
             'monolog.handler.rotating_file.class' => 'Monolog\\Handler\\RotatingFileHandler',
             'monolog.handler.syslog.class' => 'Monolog\\Handler\\SyslogHandler',
             'monolog.handler.syslogudp.class' => 'Monolog\\Handler\\SyslogUdpHandler',
@@ -4357,6 +6174,7 @@ class appDevDebugProjectContainer extends Container
             'monolog.mongo.client.class' => 'MongoClient',
             'monolog.handler.elasticsearch.class' => 'Monolog\\Handler\\ElasticSearchHandler',
             'monolog.elastica.client.class' => 'Elastica\\Client',
+            'monolog.use_microseconds' => true,
             'monolog.swift_mailer.handlers' => array(
 
             ),
@@ -4469,7 +6287,7 @@ class appDevDebugProjectContainer extends Container
                 'etticket' => 'doctrine.orm.etticket_entity_manager',
                 'listanozze' => 'doctrine.orm.listanozze_entity_manager',
             ),
-            'doctrine.default_entity_manager' => 'idetus',
+            'doctrine.default_entity_manager' => 'agenti',
             'doctrine.dbal.connection_factory.types' => array(
 
             ),
@@ -4539,6 +6357,96 @@ class appDevDebugProjectContainer extends Container
             'sensio_framework_extra.converter.doctrine.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DoctrineParamConverter',
             'sensio_framework_extra.converter.datetime.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DateTimeParamConverter',
             'sensio_framework_extra.view.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener',
+            'basepath' => 'amministrazione',
+            'basepathit' => 'http://agenzia.evolutiontravel.com/amministrazione/',
+            'basepathmalta' => 'http://agenziaeu.evolutiontravel.com/amministrazione/',
+            'etesp' => 'http://agencia.evolutiontravel.it',
+            'etusa' => 'http://agency.evolutiontravel.it',
+            'etit' => 'http://agenzia.evolutiontravel.it',
+            'etmalta' => 'http://agenziaeu.evolutiontravel.it',
+            'etservice' => 'http://etservice.info',
+            'agenti' => 'http://agenti.evolutiontravel.net',
+            'evolutiontravel' => 'http://www.evolutiontravel.it',
+            'etwiki' => 'http://etwiki.cogitoweb.it',
+            'vtiger' => 'http://master.evolutiontravel.it',
+            'posta' => 'http://posta.evolutiontravel.it',
+            'etespcom' => 'http://agencia.evolutiontravel.com',
+            'agentur' => 'http://agentur.evolutiontravel.it',
+            'etservice_agency' => 'http://agency.etservice.info',
+            'sms_gateway' => 'http://gate.sms.it/gate-http?',
+            'et_pay' => 'http://www.et-pay.net',
+            'etit_main' => 'http://agenzia.evolutiontravel.com',
+            'etmalta_main' => 'http://agenziaeu.evolutiontravel.com',
+            'agenti_it' => 'http://agenti.evolutiontravel.it',
+            'tuttotartufi' => 'http://www.tuttotartufi.com',
+            '89.251.180.3' => 'http://89.251.180.3',
+            'puglia' => 'http://puglia.evolutiontravel.net',
+            'tierra' => 'https://www.tierra.net/special/xmlapi',
+            'sms' => 'http://www.sms.it',
+            'itwg' => 'http://www.itwg.com',
+            'tway' => 'http://tway.evolutiontravel.net',
+            'clientsection' => 'http://clientsection.contactlab.it',
+            'evolutiontravelnet' => 'http://evolutiontravel.net',
+            'cctravel' => 'http://www.cctravel.it',
+            'googleadservices' => 'http://www.googleadservices.com',
+            'adobe_acrobat_readstep2' => 'http://www.adobe.com/it/products/acrobat/readstep2.html',
+            'etnstore_etraveler' => 'http://www.etnstore.com/it/etraveller.html',
+            'etraveler_privacy' => 'http://www.etraveller.it/privacy.html',
+            'rinnovo' => 'http://it.evolutiontravelnetwork.com/it/etraveller.html',
+            'default_promotore_foto' => 'http://default.evolutiontravel.it/img/promotore.jpg',
+            'iscrizione' => 'http://www.etraveller.it/lp/',
+            'etgest_webservice' => 'http://api.evolutiontravel.it/etgest',
+            'evolutiontravelitalia' => 'http://www.evolutiontravelitalia.it',
+            'evolutiontravelspain' => 'http://www.evolutiontravelspain.com',
+            'evolutiontravelusa' => 'http://www.evolutiontravelusa.com',
+            'evolutiontravelruss' => 'http://www.evolutiontravel.ru',
+            'evolutiontravelbraz' => 'http://evolutiontravel.com.br',
+            'evolutiontravelger' => 'http://evolutiontravel.de',
+            'evolutiontravelamt' => 'http://amt.evolutiontravelnetwork.com',
+            'evolutiontravelitapi' => 'http://api.evolutiontravel.it',
+            'viaggi-scontati' => 'http://www.viaggi-scontati.com/',
+            'etraveler' => 'http://www.etraveller.it',
+            'fos_user.backend_type_orm' => true,
+            'fos_user.security.interactive_login_listener.class' => 'FOS\\UserBundle\\EventListener\\LastLoginListener',
+            'fos_user.security.login_manager.class' => 'FOS\\UserBundle\\Security\\LoginManager',
+            'fos_user.resetting.email.template' => 'FOSUserBundle:Resetting:email.txt.twig',
+            'fos_user.registration.confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig',
+            'fos_user.storage' => 'orm',
+            'fos_user.firewall_name' => 'main',
+            'fos_user.model_manager_name' => NULL,
+            'fos_user.model.user.class' => 'ET\\UserBundle\\Entity\\Users',
+            'fos_user.profile.form.type' => 'FOS\\UserBundle\\Form\\Type\\ProfileFormType',
+            'fos_user.profile.form.name' => 'fos_user_profile_form',
+            'fos_user.profile.form.validation_groups' => array(
+                0 => 'Profile',
+                1 => 'Default',
+            ),
+            'fos_user.registration.confirmation.from_email' => array(
+                'webmaster@example.com' => 'webmaster',
+            ),
+            'fos_user.registration.confirmation.enabled' => false,
+            'fos_user.registration.form.type' => 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType',
+            'fos_user.registration.form.name' => 'fos_user_registration_form',
+            'fos_user.registration.form.validation_groups' => array(
+                0 => 'Registration',
+                1 => 'Default',
+            ),
+            'fos_user.change_password.form.type' => 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType',
+            'fos_user.change_password.form.name' => 'fos_user_change_password_form',
+            'fos_user.change_password.form.validation_groups' => array(
+                0 => 'ChangePassword',
+                1 => 'Default',
+            ),
+            'fos_user.resetting.email.from_email' => array(
+                'webmaster@example.com' => 'webmaster',
+            ),
+            'fos_user.resetting.token_ttl' => 86400,
+            'fos_user.resetting.form.type' => 'FOS\\UserBundle\\Form\\Type\\ResettingFormType',
+            'fos_user.resetting.form.name' => 'fos_user_resetting_form',
+            'fos_user.resetting.form.validation_groups' => array(
+                0 => 'ResetPassword',
+                1 => 'Default',
+            ),
             'web_profiler.debug_toolbar.position' => 'bottom',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,
@@ -4578,6 +6486,10 @@ class appDevDebugProjectContainer extends Container
                 'data_collector.router' => array(
                     0 => 'router',
                     1 => '@WebProfiler/Collector/router.html.twig',
+                ),
+                'data_collector.translation' => array(
+                    0 => 'translation',
+                    1 => '@WebProfiler/Collector/translation.html.twig',
                 ),
                 'data_collector.security' => array(
                     0 => 'security',

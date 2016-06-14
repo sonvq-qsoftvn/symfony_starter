@@ -2,20 +2,32 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PagamentiDettagliEbook
+ *
+ * @ORM\Table(name="pagamenti_dettagli_ebook")
+ * @ORM\Entity
  */
 class PagamentiDettagliEbook
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255, nullable=false)
      */
     private $mail = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idDettagli", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $iddettagli;
+
 
 
     /**
@@ -52,4 +64,3 @@ class PagamentiDettagliEbook
         return $this->iddettagli;
     }
 }
-

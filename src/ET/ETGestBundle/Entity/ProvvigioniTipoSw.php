@@ -2,35 +2,53 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ProvvigioniTipoSw
+ *
+ * @ORM\Table(name="provvigioni_tipo_sw", indexes={@ORM\Index(name="padre", columns={"padre"})})
+ * @ORM\Entity
  */
 class ProvvigioniTipoSw
 {
     /**
      * @var float
+     *
+     * @ORM\Column(name="percentuale", type="float", precision=10, scale=0, nullable=false)
      */
     private $percentuale = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="ordine", type="boolean", nullable=false)
      */
     private $ordine = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="padre", type="string", length=20, nullable=false)
      */
     private $padre = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nome_variabile_id", type="string", length=20, nullable=false)
      */
     private $nomeVariabileId = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $nome;
+
 
 
     /**
@@ -139,4 +157,3 @@ class ProvvigioniTipoSw
         return $this->nome;
     }
 }
-

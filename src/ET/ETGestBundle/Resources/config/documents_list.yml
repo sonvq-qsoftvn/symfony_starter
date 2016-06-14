@@ -1,0 +1,709 @@
+parameters:
+    docBase:
+        nomeFile: '' #nome del file caricato per rappresentare il documento
+        desc: ''
+        descBreve: '' #aggiorna il nome del viaggio
+        prenotazione_nuovo: '' #nome modulo nella barra dei documenti per creare nuovo viaggio
+        prenotazione_aperto: '' #nome modulo nella barra dei documenti dentro al VIAGGIO aperto
+        prenotazione_importato: '' #con viaggio importato
+        preventivo_nuovo: '' #nome modulo nella barra dei documenti per creare nuovo viaggio
+        preventivo_aperto: '' #nome modulo nella barra dei documenti dentro al PREVENTIVO aperto
+        tabella: '' #nome tabella che contiene i dati del modulo
+        allegati: false
+        view: false
+        mail: false #invia la mail di conferma all'inserimento del modulo tipo(from, to, cc, ccn, conf(conferma lettura)) persone(pro, prp(se esiste),cli, booking, tecnica, amministra)
+        union: false #unisce i moduli nella lista moduli dentro al viaggio
+        lista_preventivo: false #inserisce il documento nella lista per il preventivo
+        unico_per_viaggio: false #si puo creare solo un modulo di questo tipo per viaggio
+        eccezioni: #numero dei gruppi a cui non concedere questo modulo
+            - 16
+        accesso: 5 # controlla accessi ai menu specificando i diritti necessari per aprire questo documento
+        accesso_lettura: 1 #controlla la visualizzazione del modulo nella lista dei documenti del viaggio specificando i diritti necessari per visualizzare questo documento
+        accesso_eliminazione: 5 #controlla accessi ai menu specificando i diritti necessari per eliminare questo documento
+        importi: '' #campi da utilizzare per calcolare importo da chiedere al cliente
+        dettaglio: ''
+        aves: ''
+        exportAves: '' #documenti abilitati all'esportazione dei servizi in avesCodici.class.php
+        promemoria: false #Abilita i promemoria automatici per il modulo
+        partecipanti: false 
+        salvataggio_automatico: false #Abilita il salvataggio automatico in fase di editing
+        pannello_booking: false #Visualizza/nasconde il modulo nel pannello booking
+        pannello_estratto_conto: false #Visualizza/nasconde il modulo nel pannello estratti conto
+        note_booking: false #Visualizza/nasconde il modulo nelle note del pannello booking
+        note_amministrazione: false #Visualizza/nasconde il modulo nelle note del pannello estratti conto
+        conferma_prenotazione: false #Visualizza/nasconde il campo Conferma prenotazione (Se abilitato aggiungere nella tabella del modulo il campo conferma_prenotazione)
+        inviato_documenti: false #Indica che il modulo invia i documenti
+        allegato_estratto_conto: false #Indica che il modulo allega un estratto conto
+        sms: false #Invia il messaggio di conferma all'inserimento del modulo tipo(from, to, only mail) persone(ET, pro, cli)
+        sms_messaggio: false #Indica il testo da inserire nel messaggio
+        gruppo_visualizzazione: false #Gruppo di appartenenza nella visualizzazione del viaggio
+        ticket_escludi_portale: false #Indica l'elenco dei portali per cui il documento non viene visualizzato
+        ticket_attesa_preventivo: false #Indica se il documento pu� generare un'attesa preventivo
+        preventivo: false #Indica se il documento � un preventivo
+        espandibile: false #Indica se il documento viene visualizzato chiuso
+        stile_union: false #Indica lo stile utilizzato nella lista documenti
+        rifiuta_viaggio: false #Indica che il documento � utilizzato per rifiutare il viaggio e riportare il viaggio i nstato preventivo
+        classe: false #Nome cella classe che implementa il tipo di documento
+        premotore_riferimento: false #Indica che gestisce il promotore di riferimento
+        gruppo1: note
+        gruppo2: ''
+        gruppo3: ''
+
+    doc:
+        0: 
+            
+            nomeFile: prenotaTO/prenotaTO
+            desc: Prenotazione
+            descBreve: Prenotazione
+            prenotazione_aperto: Modulo Pacchetto/Soggiorno
+            preventivo_nuovo: Modulo Pacchetto/Soggiorno
+            preventivo_aperto: Modulo Pacchetto/Soggiorno
+            tabella: modulo_to
+            allegati: true
+            view: true
+            mail:
+                from: pro
+                to: prp
+            union: true
+            lista_preventivo: true
+            accesso: 1
+            accesso_eliminazione: 1
+            importi: 
+                scontoAgenzia: -|Sconto
+                iscrizione: +
+                carburante: +
+                assicurazione: +
+                nPartecipanti: +|nPartecipanti
+                partecipanti: ''
+                erroriViaggio: ''
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                iscrizione: +
+                commissioneCarta: -|Comm. carta
+                commissioneAssicurazione: -|Comm. assicurazione
+                scontoAgenzia: '-'
+                speseCorriere: '-'
+                speseBonifico: '-'
+                commissioneNetta: +|Comm. netta
+            aves: codiciAves.codice,codiciAves.php,`modulo_to`.titolo, `modulo_to`.tipoSistemazione, `modulo_to`.trattamento, `modulo_to`.assicurazione,`modulo_to`.dataIN,`modulo_to`.data,`modulo_to`.dataOUT,`modulo_to`.commissioneLorda, `modulo_to`.totale, `modulo_to`.commissioneCarta,  `modulo_to`.scontoAgenzia, modulo_to.to, modulo_to.to, modulo_to.iscrizione
+            exportAves: true
+            promemoria: true
+            partecipanti: true
+            pannello_booking: true
+            conferma_prenotazione: true
+            classe: servizio_pacchetto
+            promotore_riferimento: true
+            gruppo1: moduli
+            entity: ModuloTo
+
+        1: 
+            
+            nomeFile: traghetto/traghetto
+            desc: Prenotazione Traghetto
+            descBreve: Traghetto
+            prenotazione_aperto: Modulo Traghetto
+            preventivo_nuovo: Modulo Traghetto
+            preventivo_aperto: Modulo Traghetto
+            tabella: modulo_traghetto
+            view: true
+            union: true
+            allegati: true
+            lista_preventivo: true
+            accesso: 1
+            accesso_eliminazione: 1
+            importi:
+                scontoAgenzia: -|Sconto
+                nPartecipanti: +|nPartecipanti
+                partecipanti: ''
+                erroriViaggio: ''
+                agencyfee: +
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                commissioneCarta: -|Comm. carta
+                speseCorriere: '-'
+                commissioneNetta: +|Comm. netta
+                agencyfee: +|Agency fee
+            aves: codiciAves.codice,codiciAves.php,`modulo_traghetto`.titolo,`modulo_traghetto`.dataIN,`modulo_traghetto`.data,`modulo_traghetto`.dataOUT,`modulo_traghetto`.commissioneLorda, `modulo_traghetto`.totale, `modulo_traghetto`.commissioneCarta,  `modulo_traghetto`.scontoAgenzia, `modulo_traghetto`.compagnia
+            exportAves: true
+            promemoria: true
+            partecipanti: true
+            conferma_prenotazione: true
+            pannello_booking: true
+            classe: servizio
+            gruppo1: moduli
+            entity: ModuloTraghetto
+
+        2:
+            nomeFile: voloLinea/voloLinea
+            desc: Volo di linea
+            descBreve: volo linea
+            prenotazione_aperto: Modulo Volo di linea
+            preventivo_nuovo: Modulo Volo di linea
+            preventivo_aperto: Modulo Volo di linea
+            tabella: modulo_voloLinea
+            view: true
+            union: true
+            allegati: true
+            eccezioni: false
+            lista_preventivo: true
+            accesso: 1
+            accesso_eliminazione: 1
+            importi:
+                scontoAgenzia: -|Sconto
+                speseCorriere: +|Corriere
+                commissioneLorda: +|AgencyFee
+                nPartecipanti: +|nPartecipanti
+                partecipanti: ''
+                erroriViaggio: ''
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                commissioneCarta: -|Comm. carta
+                commissioneNetta: +|Comm. netta
+            aves: codiciAves.codice,codiciAves.php,`modulo_voloLinea`.agencyfee,`modulo_voloLinea`.titolo,`modulo_voloLinea`.dataIN,`modulo_voloLinea`.data,`modulo_voloLinea`.dataOUT,`modulo_voloLinea`.commissioneLorda, `modulo_voloLinea`.commissioneAggiuntiva,`modulo_voloLinea`.speseCorriere, `modulo_voloLinea`.totale, `modulo_voloLinea`.commissioneCarta,  `modulo_voloLinea`.scontoAgenzia, `modulo_voloLinea`.compagnia, `modulo_voloLinea`.incasso_pagamento
+            exportAves: true
+            promemoria: true
+            partecipanti: true
+            pannello_booking: true
+            classe: servizio
+            gruppo1: moduli
+            entity: ModuloVololinea
+
+        3:
+            
+            nomeFile: voloLowCost/voloLowCost
+            desc: Volo Low Cost
+            descBreve: Volo Low Cost
+            prenotazione_aperto: Modulo Volo low cost
+            preventivo_nuovo: Modulo Volo low cost
+            preventivo_aperto: Modulo Volo low cost
+            tabella: modulo_voloLowCost
+            view: true
+            allegati: true
+            union: true
+            lista_preventivo: true
+            accesso: 1
+            accesso_eliminazione: 1
+            importi:
+                scontoAgenzia: -|Sconto
+                commissioneLorda: +|AgencyFee
+                nPartecipanti: +|nPartecipanti
+                erroriViaggio: ''
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                commissioneCarta: -|Comm. carta
+                commissioneNetta: +|Comm. netta
+            aves: codiciAves.codice,codiciAves.php,`modulo_voloLowCost`.agencyfee,`modulo_voloLowCost`.titolo,`modulo_voloLowCost`.dataIN,`modulo_voloLowCost`.data,`modulo_voloLowCost`.dataOUT,`modulo_voloLowCost`.commissioneLorda, `modulo_voloLowCost`.totale, `modulo_voloLowCost`.commissioneCarta,  `modulo_voloLowCost`.scontoAgenzia, `modulo_voloLowCost`.compagnia, `modulo_voloLowCost`.incasso_pagamento
+            exportAves: true
+            promemoria: true
+            pannello_booking: true
+            classe: servizio
+            gruppo1: moduli
+            entity: ModuloVololowcost
+
+        4:
+            
+            nomeFile: annullamentoTO
+            desc: Annullamento
+            descBreve: Annullamento
+            prenotazione_aperto: Annullamento
+            prenotazione_importato: Annullamento
+            tabella: modulo_annullamentoTO
+            view: true
+            union: true
+            unico_per_viaggio: true
+            promemoria: true
+            accesso: 1
+            accesso_eliminazione: 1
+            pannello_booking: true
+            entity: ModuloAnnullamentoto
+
+        5:
+            
+            titolo: Nota &amp; Allegati
+            nomeFile: note
+            prenotazione_aperto: Nota e Allegati
+            preventivo_aperto: Nota
+            tabella: modulo_note
+            mail:
+                from:
+                    - pro
+                    - noreply
+                to:
+                    - pro
+                    - false
+            allegati: true
+            union: true
+            accesso: 1
+            accesso_eliminazione: false
+            note_booking: true
+            espandibile: true
+            entity: ModuloNote
+
+        6:
+            
+            titolo: Nota cliente
+            nomeFile: note
+            tabella: anagrafiche_note
+            accesso: 1
+
+        7:
+            
+            nomeFile: note
+            tabella: modulo_note_lotus
+            union: true
+            entity: ModuloNoteLotus
+
+        8:
+            
+            titolo: Nota riscontro vacanza
+            nomeFile: note
+            prenotazione_importato: Nota e/o riscontro vacanza
+            tabella: modulo_note
+            union: true
+            accesso: 1
+            accesso_eliminazione: 1
+            espandibile: true
+            entity: ModuloNote
+
+        9:
+            
+            titolo: Storno
+            nomeFile: storno
+            desc: Storno provvigioni
+            tabella: modulo_storno
+            incluso: true
+            dettaglio:
+                importo: +|Comm. lorda
+                nota: '.'
+            classe: storno
+
+        10:
+            
+            nomeFile: assicurazione/assicurazione
+            desc: Assicurazione integrativa
+            descBreve: Assicurazione
+            prenotazione_aperto: Modulo Assicurazione #Aggiungi assicurazione
+            preventivo_nuovo: Modulo Assicurazione #Nuova assicurazione
+            preventivo_aperto: Modulo Assicurazione
+            tabella: modulo_assicurazione
+            view: true
+            union: true
+            allegati: true
+            lista_preventivo: true
+            importi: true
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                commissioneCarta: -|Comm. carta
+                commissioneNetta: +|Comm. netta
+                nPartecipanti: +|nPartecipanti
+                partecipanti: ''
+                erroriViaggio: ''
+            aves: codiciAves.codice,codiciAves.php,`modulo_assicurazione`.titolo, `modulo_assicurazione`.dataIN,`modulo_assicurazione`.data,`modulo_assicurazione`.dataOUT,`modulo_assicurazione`.commissioneLorda, `modulo_assicurazione`.totale, `modulo_assicurazione`.commissioneCarta, `modulo_assicurazione`.codice_fiscale
+            exportAves: true
+            partecipanti: true
+            accesso: 1
+            accesso_eliminazione: 1
+            pannello_booking: true
+            classe: servizio
+            gruppo1: moduli
+            entity: ModuloAssicurazione
+
+        11: #preventivo
+            
+            nomeFile: preventivi/preventivo
+            desc: Preventivo
+            tabella: modulo_preventivo
+            view: true
+            union: true
+            unico_per_viaggio: true
+            salvataggio_automatico: true
+            accesso: 1
+            accesso_eliminazione: 1
+            preventivo: true
+            allegati: true
+            classe: preventivo
+            gruppo1: preventivi
+            entity: ModuloPreventivo
+
+        12: #serviziWeb
+            
+            nomeFile: serviziWeb/serviziWeb
+            desc: Servizi Web
+            descBreve: Servizi Web
+            tabella: modulo_serviziWeb
+            view: true
+            mail: 
+                from: pro
+                to: booking
+            union: true
+            lista_preventivo: true
+            importi: 
+                scontoAgenzia: -|Sconto
+            dettaglio:
+                totale: +|Tot. pratica
+                commissioneLorda: +|Comm. lorda
+                iva: '-'
+                commissioneCarta: -|Comm. carta
+                commissioneNetta: +|Comm. netta
+                erroriViaggio: ''
+            aves: codiciAves.codice,codiciAves.php,`modulo_serviziWeb`.titolo,`modulo_serviziWeb`.dataIN,`modulo_serviziWeb`.data,`modulo_serviziWeb`.commissioneLorda, `modulo_serviziWeb`.totale, `modulo_serviziWeb`.commissioneCarta,  `modulo_serviziWeb`.scontoAgenzia
+            promemoria: true
+            gruppo1: moduli
+            entity: ModuloServiziweb
+
+        13: #contratti
+            
+            nomeFile: contratto/contratto
+            desc: Contratti
+            tabella: modulo_contratto
+            view: true
+            unico_per_viaggio: true
+
+        14: #Allega pagamento
+            
+            titolo: Allega pagamento
+            nomeFile: note
+            desc: ''
+            descBreve: ''
+            prenotazione_aperto: Allega pagamento #Allega pagamento
+            prenotazione_importato: Allega pagamento
+            preventivo_aperto: Allega pagamento
+            tabella: modulo_note
+            allegati: true
+            mail: false
+            union: true
+            importi: false
+            aves: false
+            lista_preventivo: false
+            unico_per_viaggio: false
+            eccezioni: false
+            promemoria: false
+            partecipanti: false
+            accesso: 1
+            accesso_eliminazione: false
+            note_booking: true
+            espandibile: true
+            entity: ModuloNote
+
+        15: #modalit� pagamento
+            
+            titolo: Modalit&agrave; di pagamento
+            nomeFile: pagamenti/pagamento
+            tabella: modulo_note
+            unico_per_viaggio: true
+            accesso: 1
+            classe: pagamenti
+
+        16: #mail contratto
+            
+            titolo: Contratto di viaggio
+            nomeFile: contratto/contratto_mail
+            prenotazione_aperto: Contratto viaggio
+            tabella: modulo_contratto_mail
+            view: true
+            mail:
+                from: pro
+                to: cli
+                ccn: pro
+                conf: pro
+            allegati: true
+            union: true
+            unico_per_viaggio: true
+            note_booking: true
+            espandibile: true
+            entity: ModuloContrattoMail
+
+        17: #Invio documenti di viaggio elettronico
+            
+            titolo: Documenti di viaggio elettronici
+            nomeFile: documentiViaggio/documentiViaggio
+            prenotazione_aperto: Doc. di viaggio elettronico #Allega pagamento
+            prenotazione_importato: Doc. di viaggio elettronico
+            tabella: modulo_note
+            allegati: true
+            mail:
+                from: noreply
+                to: cli
+                ccn: pro
+                conf: pro
+            union: true
+            unico_per_viaggio: false
+            inviato_documenti: true
+            sms:
+                from: ET
+                to: cli
+                mail: true
+            sms_messaggio: Ciao {cliente_nominativo} abbiamo inviato i documenti di viaggio al tuo indirizzo di posta elettronica. Buon viaggio Evolution Travel
+            gruppo_visualizzazione: Documenti di viaggio
+            note_booking: true
+            espandibile: true
+            entity: ModuloNote
+
+        18: #Allego estratto conto visibile promotore
+            
+            titolo: Estratto Conto
+            nomeFile: estrattoConto/estrattoConto
+            prenotazione_aperto: E/C visibile #Estratto Conto
+            prenotazione_importato: E/C visibile
+            tabella: modulo_note
+            allegati: true
+            union: true
+            unico_per_viaggio: false
+            allegato_estratto_conto: true
+            mail:
+                from: noreply
+                to: pro
+            gruppo_visualizzazione: Estratto conto
+            note_booking: true
+            pannello_estratto_conto: true
+            espandibile: true
+            entity: ModuloNote
+
+        19: #Allego estratto conto
+            
+            titolo: Estratto Conto Invisibile
+            nomeFile: estrattoConto/estrattoConto
+            prenotazione_aperto: E/C invisibile
+            prenotazione_importato: E/C invisibile
+            tabella: modulo_note
+            allegati: true
+            union: true
+            unico_per_viaggio: false
+            allegato_estratto_conto: true
+            accesso_lettura: 5
+            gruppo_visualizzazione: Estratto conto
+            note_booking: true
+            pannello_estratto_conto: true
+            espandibile: true
+            entity: ModuloNote
+
+        20: #Invio documenti di viaggio corriere
+            
+            titolo: Documenti di viaggio con corriere
+            nomeFile: documentiViaggioCorriere/documentiViaggioCorriere
+            prenotazione_aperto: Doc. di viaggio corriere #Allega pagamento
+            prenotazione_importato: Doc. di viaggio corriere
+            tabella: modulo_note
+            allegati: false
+            mail: 
+                from: noreply
+                to: cli
+                ccn: pro
+                conf: pro
+            union: true
+            unico_per_viaggio: false
+            inviato_documenti: true
+            sms:
+                from: ET
+                to: cli
+                mail: true
+            sms_messaggio: Ciao {cliente_nominativo} abbiamo spedito i documenti di viaggio con corriere. Buon viaggio Evolution Travel
+            gruppo_visualizzazione: Documenti di viaggio
+            note_booking: true
+            espandibile: true
+            entity: ModuloNote
+
+        21: #Attesa preventivo  vecchio modulo
+            
+            titolo: Attesa preventivo
+            nomeFile: attesaPreventivo/attesaPreventivo_old
+            tabella: modulo_attesa_preventivo
+            union: true
+            accesso: 1
+            accesso_eliminazione: false
+            gruppo1: preventivi
+            entity: ModuloAttesaPreventivo
+
+        22: #Dettaglio richiesta
+            
+            titolo: Dettaglio richiesta
+            nomeFile: note
+            tabella: modulo_note
+            union: true
+            accesso: 1
+            espandibile: true
+            accesso_eliminazione: false
+            entity: ModuloNote
+
+        23: #Attesa preventivo
+           
+           titolo: Attesa preventivo
+           nomeFile: attesaPreventivo/attesaPreventivo
+           preventivo_nuovo: Attesa preventivo
+           preventivo_aperto: Attesa preventivo
+           tabella: modulo_attesa_preventivo
+           union: true
+           unico_per_viaggio: true
+           accesso: 1
+           ticket_attesa_preventivo: true
+           ticket_escludi_portale: false
+           accesso_eliminazione: false
+           classe: attesapreventivo
+           gruppo1: preventivi
+           entity: ModuloAttesaPreventivo
+
+        24: #Modifica pratica
+            
+            titolo: Modifica pratica
+            desc: Modifica pratica
+            nomeFile: modificaPratica/modificaPratica
+            prenotazione_aperto: Modifica pratica
+            prenotazione_importato: Modifica pratica
+            tabella: modulo_note
+            allegati: true
+            union: true
+            accesso: 1
+            pannello_booking: true
+            accesso_eliminazione: false
+            entity: ModuloNote
+
+        25: #note per il booking
+            
+            titolo: Note assistenza booking
+            preventivo_nuovo: false
+            preventivo_aperto: false
+            prenotazione_aperto: Scrivi all' assistenza booking
+            prenotazione_importato: Scrivi all' assistenza booking
+            mail: false
+            gruppo_visualizzazione: Note per la sede
+            espandibile: true
+            entity: ModuloNote
+
+        26: #note per l'amministazione
+            
+            titolo: Note assistenza amministrativa
+            preventivo_nuovo: false
+            preventivo_aperto: false
+            nomeFile: note/noteAmm
+            prenotazione_aperto: Scrivi all' assistenza amministrativa
+            prenotazione_importato: Scrivi all' assistenza amministrativa
+            mail: false
+            gruppo_visualizzazione: Note per la sede
+            note_booking: false
+            note_amministrazione: true
+            espandibile: true
+            entity: ModuloNote
+
+        27: #rifiuta prenotazione
+            
+            titolo: Rifiuta prenotazione
+            nomeFile: rifiutaPrenotazione/rifiutaPrenotazione
+            prenotazione_aperto: Rifiuta prenotazione
+            prenotazione_importato: false
+            tabella: modulo_note
+            allegati: true
+            union: true
+            unico_per_viaggio: false
+            accesso: 5
+            rifiuta_viaggio: true
+            mail:
+                from: noreply
+                to: pro
+            stile_union: rifiutaPrenotazione
+            espandibile: true
+            accesso_eliminazione: false
+            classe: rifiuta_pratica
+            entity: ModuloNote
+
+        28: #note viaggio
+            
+            titolo: Convenzioni strutture
+            nomeFile: note
+            tabella: modulo_note
+            mail:
+                from:
+                    - pro
+                    - noreply
+                to:
+                    - pro
+                    - false
+            allegati: true
+            union: true
+            accesso: 1
+            accesso_eliminazione: false
+            note_booking: true
+            espandibile: true
+            entity: ModuloNote
+
+        29: #preventivo
+            
+            nomeFile: preventivi/preventivoV2
+            desc: Preventivo
+            descBreve: Preventivo
+            preventivo_nuovo: Nuovo preventivo
+            preventivo_aperto: Nuovo preventivo
+            tabella: modulo_preventivo_new
+            view: true
+            union: true
+            salvataggio_automatico: true
+            accesso: 1
+            accesso_eliminazione: 1
+            preventivo: true
+            allegati: true
+            classe: preventivo
+            gruppo1: preventivi
+            entity: ModuloPreventivoNew
+
+        30:
+            
+            nomeFile: donazione/donazione
+            desc: Donazione
+            titolo: Donazione
+            descBreve: Donazione
+            prenotazione_aperto: Modulo Donazione
+            preventivo_nuovo: Modulo Donazione
+            preventivo_aperto: Modulo Donazione
+            tabella: modulo_donazione
+            view: true
+            allegati: true
+            union: true
+            lista_preventivo: true
+            accesso: 1
+            accesso_eliminazione: 1
+            importi:
+                erroriViaggio: ''
+            dettaglio:
+                totale: +|Tot. pratica
+            pannello_booking: true
+            classe: servizio_donazione
+            gruppo1: moduli
+            entity: ModuloDonazione
+
+    file:
+        cartella: documenti/
+        doc: '%doc%'
+        path_allegati: '%path_allegati%'
+        ins: _e
+        edit: _e
+        view: _v
+        print: _p
+        contr: _c
+        ext: .php
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+

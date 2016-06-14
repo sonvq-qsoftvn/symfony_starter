@@ -153,4 +153,3 @@ class IncentivePerc2
         return $this->codprompart;
     }
 }
-

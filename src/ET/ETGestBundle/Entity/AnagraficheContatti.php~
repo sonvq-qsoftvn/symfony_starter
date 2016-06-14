@@ -1,0 +1,89 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AnagraficheContatti
+ *
+ * @ORM\Table(name="anagrafiche_contatti", uniqueConstraints={@ORM\UniqueConstraint(name="contatto_idx", columns={"contatto"})}, indexes={@ORM\Index(name="id_anagrafica_idx", columns={"id_anagrafica"})})
+ * @ORM\Entity
+ */
+class AnagraficheContatti
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
+     */
+    private $idAnagrafica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipocontatto", type="string", length=10, nullable=false)
+     */
+    private $tipocontatto = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contatto", type="string", length=255, nullable=true)
+     */
+    private $contatto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=255, nullable=false)
+     */
+    private $descrizione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datacreazione", type="datetime", nullable=true)
+     */
+    private $datacreazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datamodifica", type="datetime", nullable=true)
+     */
+    private $datamodifica;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="versione", type="boolean", nullable=false)
+     */
+    private $versione = '2';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="principale", type="boolean", nullable=false)
+     */
+    private $principale = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="sola_lettura", type="boolean", nullable=false)
+     */
+    private $solaLettura = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

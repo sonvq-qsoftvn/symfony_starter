@@ -2,40 +2,60 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncentiveUsers
+ *
+ * @ORM\Table(name="incentive_users", indexes={@ORM\Index(name="cpp", columns={"gruppo"}), @ORM\Index(name="dataSottoscrizione", columns={"dataSottoscrizione"})})
+ * @ORM\Entity
  */
 class IncentiveUsers
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="gruppo", type="integer", nullable=false)
      */
     private $gruppo = '0';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="tipo", type="integer", nullable=false)
      */
     private $tipo = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataSottoscrizione", type="date", nullable=false)
      */
     private $datasottoscrizione = '0000-00-00';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_personale", type="integer", nullable=false)
      */
     private $demeritoPersonale = '0';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_gruppo", type="integer", nullable=false)
      */
     private $demeritoGruppo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codpromotore;
+
 
 
     /**
@@ -65,7 +85,7 @@ class IncentiveUsers
     /**
      * Set tipo
      *
-     * @param boolean $tipo
+     * @param integer $tipo
      *
      * @return IncentiveUsers
      */
@@ -79,7 +99,7 @@ class IncentiveUsers
     /**
      * Get tipo
      *
-     * @return boolean
+     * @return integer
      */
     public function getTipo()
     {
@@ -113,7 +133,7 @@ class IncentiveUsers
     /**
      * Set demeritoPersonale
      *
-     * @param boolean $demeritoPersonale
+     * @param integer $demeritoPersonale
      *
      * @return IncentiveUsers
      */
@@ -127,7 +147,7 @@ class IncentiveUsers
     /**
      * Get demeritoPersonale
      *
-     * @return boolean
+     * @return integer
      */
     public function getDemeritoPersonale()
     {
@@ -137,7 +157,7 @@ class IncentiveUsers
     /**
      * Set demeritoGruppo
      *
-     * @param boolean $demeritoGruppo
+     * @param integer $demeritoGruppo
      *
      * @return IncentiveUsers
      */
@@ -151,7 +171,7 @@ class IncentiveUsers
     /**
      * Get demeritoGruppo
      *
-     * @return boolean
+     * @return integer
      */
     public function getDemeritoGruppo()
     {
@@ -168,4 +188,3 @@ class IncentiveUsers
         return $this->codpromotore;
     }
 }
-

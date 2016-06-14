@@ -6,7 +6,11 @@
 
 {% block main_content %}
     <ul class="">
-        <li><a href="{{ path('etgest_dashboard') }}">ETGEST</a></li>
+        <li>
+            <a href="{{ path('etgest_dashboard') }}">
+                {% trans %}ETGEST{% endtrans %}
+            </a>
+        </li>
         
     </ul>
 {% endblock %}

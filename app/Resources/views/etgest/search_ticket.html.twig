@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/theme.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/formValidation/formValidation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/intl-tel-input-8.5.2/build/css/intlTelInput.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    <div class="content">
+        <h2 class="content-main-title">{% trans %}TICKET SEARCH{% endtrans %}</h2>
+        <br/>
+        <form role="form" class="form-horizontal" id="ticket-search">
+            <div class="form-group form-group-md">
+                <label class="col-md-3 text-left control-label">{% trans %}Ticket number{% endtrans %}:</label>
+                <div class="col-md-6 hasValidate">
+                    <input required class="form-control" name="code" id="code" type="text">
+                </div>
+            </div>
+
+            <div class="form-group form-group-md">
+                <div class="col-md-6 col-md-offset-3">
+                    <input class="btn btn-primary" name="azione" id="azione" value="{% trans %}Search{% endtrans %}" type="submit" >
+                </div>
+            </div>
+
+            <input name="form_token" id="form-token" value="{{ formToken }}" type="hidden">
+            <img class="etticket search wait" src="{{ asset('images/indicator.gif') }}" style="display:none"></td>
+        </form>
+
+        <div class="row">
+            <div id="risultato" class="col-md-12"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('vendor/formValidation/formValidation.min.js') }}"></script>   
+    <script src="{{ asset('vendor/formValidation/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            $('#ticket-search').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    code: {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'Ticket number is required'
+                            },
+                            stringLength: {
+                                message: 'Ticket number must be 10 characters long',
+                                max: 10,
+                                min: 10
+                            }
+                        }
+                    }
+                }
+            });
+
+            function addZero(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+
+            jQuery('#azione').click(function(e){
+                $('#ticket-search').data('formValidation').validate();
+                
+                var isValid = $('#ticket-search').data('formValidation').isValid();
+                if ( isValid === false || isValid === null) {
+                    return false;
+                }
+                
+                e.preventDefault();
+
+                var html = '<center><img src="{{ asset('images/spinner.gif') }}"></center>';
+                jQuery('#risultato').html(html);
+
+                jQuery.ajax({
+                    url: "{{ path('etgest_ticket_ajax_search') }}",
+                    dataType: "json",
+                    data: { request_code: jQuery('#code').val(), form_token: jQuery('#form-token').val() },
+                    type: "POST",
+                    success: function(result) {
+                        if(result) {
+                            if(result.success == true) {
+                                html = '';
+                                jQuery('#risultato').html(html);
+
+                                var language, languageArr = [], status = [], locale = "it-it";                                
+
+                                status['STATUS_ASSIGNED'] = 'Assegnato';
+                                status['STATUS_ACCEPTED'] = 'Accettato';
+                                status['STATUS_WORKED'] = 'Lavorato';
+                                status['STATUS_CLOSED'] = 'Chiuso';
+                                status['STATUS_WAITING'] = 'In attesa preventivo';
+                                status['STATUS_LINKED'] = 'Collegamento ad altro ticket';
+                                status['STATUS_EXCHANGE'] = 'In attesa di appalto';
+                                status['STATUS_ARCHIVED'] = 'Archiviato';
+                                status['SPAM'] = 'Spam';
+                                status['STATUS_TERMINATED'] = 'Terminata attesa preventivo';
+
+                                if (typeof result[0] != 'undefined') {
+                                    requestDate = new Date(result[0].requestDate.date);                                    
+
+                                    languageArr['it_IT'] = '{% trans %}it_IT{% endtrans %}';
+                                    languageArr['en_US'] = '{% trans %}en_US{% endtrans %}';
+                                    languageArr['fr_FR'] = '{% trans %}fr_FR{% endtrans %}';
+                                    languageArr['de_DE'] = '{% trans %}de_DE{% endtrans %}';
+                                    languageArr['ru_RU'] = '{% trans %}ru_RU{% endtrans %}';
+                                    languageArr['pt_BR'] = '{% trans %}pt_BR{% endtrans %}';
+                                    languageArr['es_ES'] = '{% trans %}es_ES{% endtrans %}';
+                                    
+                                    for (var k in languageArr) {
+                                        if (result[0].requestLingua == k)
+                                            language = languageArr[k];
+                                    }
+
+                                    html += '<table class="table table-bordered table-striped table-highlight">';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Code{% endtrans %}</th>';
+                                    html += '<td>' + (typeof result[0].requestCode === 'undefined' ? '-' : result[0].requestCode) + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Agency{% endtrans %}</th>';
+                                    html += '<td>' + (typeof result[0].requestAgenzia === 'undefined' ? '-' : result[0].requestAgenzia) + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}language{% endtrans %}</th>';
+                                    
+                                    var countryFlag = result[0].requestLingua.substring(0, 2);
+                                    
+                                    countryFlag = (countryFlag == 'en') ? 'gb' : countryFlag;
+                                    
+                                    html += '<td><div class="iti-flag ' + countryFlag + ' country-flag"></div>' + language + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Requested date{% endtrans %}</th>';
+                                    html += '<td>' + addZero(requestDate.getDate()) + '/' + requestDate.toLocaleString(locale, { month: "short" }) + '/' + requestDate.getFullYear() + ' ' + addZero(requestDate.getHours()) + ':' + addZero(requestDate.getMinutes()) + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Status{% endtrans %}</th>';
+                                    html += '<td>' + (typeof status[result[0].requestStatus] === 'undefined' ? '-' : status[result[0].requestStatus]) + '</td>';
+                                    html += '</tr>';
+
+                                    if (result[0].requestInputPromotore) {
+                                        html += '<tr>';
+                                        html += '<th>{% trans %}Promotore di ingresso *{% endtrans %}</th>';
+                                        html += '<td>' + result[0].requestInputPromotore[1] + '</td>';
+                                        html += '</tr>';
+                                    }
+
+                                    if (result[0].requestAssignedPromotore) {
+                                        html += '<tr>';
+                                        html += '<th>{% trans %}Promotore assegnatario{% endtrans %}</th>';
+                                        html += '<td>' + result[0].requestAssignedPromotore[1] + '</td>';
+                                        html += '</tr>';
+                                    }
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Nominativo{% endtrans %}</th>';
+                                    html += '<td>' + result[0].requestName + ' ' + result[0].requestSurname + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}Pacchetto{% endtrans %}</th>';
+                                    html += '<td>' + result[0].requestPackage + '</td>';
+                                    html += '</tr>';
+
+                                    html += '<tr>';
+                                    html += '<th>{% trans %}ID Scheda{% endtrans %}</th>';
+                                    html += '<td>' + result[0].requestPid + '</td>';
+                                    html += '</tr>';
+
+                                    if (result[0].requestReferencePromoter) {
+                                        html += '<tr>';
+                                        html += '<th>{% trans %}Promotore di riferimento{% endtrans %}</th>';
+                                        html += '<td>' + result[0].requestReferencePromoter[1] + '</td>';
+                                        html += '</tr>';
+                                    }
+
+                                    if (result[0].requestTravelId) {
+                                        html += '<tr>';
+                                        html += '<th>{% trans %}ID Viaggio{% endtrans %}</th>';
+                                        html += '<td>';
+                                        if (result[0].requestTravelId.length > 0) {
+                                            for (var i = 0; i < result[0].requestTravelId.length; i++) {
+                                                html += result[0].requestTravelId[i].idViaggio;
+                                                if (i < parseInt(result[0].requestTravelId.length - 1)) {
+                                                    html += ', ';
+                                                }
+                                            }
+                                        } else {
+                                            html += '-';
+                                        }
+                                        html += '</td>';
+                                        html += '</tr>';
+                                    }
+
+                                    html += '</table>';
+                                    html += "<p class='text-info'>* {% trans %}Se la richiesta è un contatto diretto, è il promotore che l'ha inserita{% endtrans %}</p><br/>";
+                                    html += '<h4>{% trans %}Storia del ticket{% endtrans %}</h4>';
+                                    html += '';
+                                    html += '<table class="table table-striped table-highlight">';
+
+                                    var logDescription;
+                                    if (result[0].requestChangeLogs && result[0].requestChangeLogs.length > 0) {
+                                        for (var i = 0; i < result[0].requestChangeLogs.length; i++) {
+                                            if (result[0].requestChangeLogs[i] != null) {
+                                                switch (result[0].requestChangeLogs[i].req_modifiedField) {
+                                                    case 'request_status':
+                                                        logDescription = 'Modificato lo stato della richiesta da "' + status[result[0].requestChangeLogs[i].req_originalValue] + '" a "' + status[result[0].requestChangeLogs[i].req_newValue] + '"';
+                                                        break;
+                                                    case 'assignment_reason':
+                                                        logDescription = 'Richiesta assegnata a ' + result[0].requestChangeLogs[i].assigedPromotore[1] + ' con la seguente motivazione: "' + result[0].requestChangeLogs[i].reqas_assignmentDescr + '"';
+                                                        break;
+                                                    case 'request_comment':
+                                                        logDescription = 'Modificato il commento della richiesta da ' + status[result[0].requestChangeLogs[i].req_originalValue] + ' a ' + status[result[0].requestChangeLogs[i].req_newValue];
+                                                        break;
+                                                    case 'Promemoria':
+                                                        logDescription = "Inviato promemoria per ricordare la scadenza dell\'attesa preventivo";
+                                                        break;
+                                                    default:
+                                                        logDescription = '';
+                                                }
+
+                                                if (result[0].requestChangeLogs[i].req_date) {
+                                                    requestDate = new Date(result[0].requestChangeLogs[i].req_date.date);                                                                                                                                                                  
+
+                                                    if (logDescription !== '') {
+                                                        html += '<tr>';
+                                                        html += '<td><span class="text-success">[' + addZero(requestDate.getDate()) + ' ' + requestDate.toLocaleString(locale, { month: "short" }) + ' ' + requestDate.getFullYear() + ' ' + addZero(requestDate.getHours()) + ':' + addZero(requestDate.getMinutes()) + ']</span></td>';
+                                                        html += '<td><span class="text-primary"> ' + logDescription + '</span></td>';                                                        
+                                                        html += '</tr>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    html += '</table>';
+                                } else {
+                                    html = '<div style="margin-top:10px;" class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{% trans %}There are no tickets in search result{% endtrans %}</div>';
+                                }
+                                jQuery('#risultato').html(html);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

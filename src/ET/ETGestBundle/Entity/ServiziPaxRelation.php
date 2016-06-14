@@ -2,20 +2,34 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziPaxRelation
+ *
+ * @ORM\Table(name="servizi_pax_relation")
+ * @ORM\Entity
  */
 class ServiziPaxRelation
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="pax_id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $paxId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="servizio_id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $servizioId;
+
 
 
     /**
@@ -66,4 +80,3 @@ class ServiziPaxRelation
         return $this->servizioId;
     }
 }
-

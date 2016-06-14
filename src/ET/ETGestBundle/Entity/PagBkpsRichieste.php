@@ -2,90 +2,132 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PagBkpsRichieste
+ *
+ * @ORM\Table(name="pag_bkps_richieste", indexes={@ORM\Index(name="numord", columns={"numord"}), @ORM\Index(name="reqrefnum", columns={"reqrefnum"}), @ORM\Index(name="operazione", columns={"operazione"})})
+ * @ORM\Entity
  */
 class PagBkpsRichieste
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="idnegozio", type="string", length=15, nullable=false)
      */
     private $idnegozio = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="importo", type="integer", nullable=false)
      */
     private $importo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="valuta", type="integer", nullable=false)
      */
     private $valuta = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tcontab", type="string", length=1, nullable=false)
      */
     private $tcontab = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tautor", type="string", length=1, nullable=false)
      */
     private $tautor = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="operazione", type="string", length=50, nullable=false)
      */
     private $operazione = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="timestamp", type="string", length=23, nullable=false)
      */
     private $timestamp = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="operatore", type="string", length=8, nullable=false)
      */
     private $operatore = '';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datainizio", type="datetime", nullable=false)
      */
     private $datainizio = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datafine", type="datetime", nullable=false)
      */
     private $datafine = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="filtro", type="integer", nullable=false)
      */
     private $filtro = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="idtrans", type="string", length=25, nullable=false)
      */
     private $idtrans = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="orainizio", type="string", length=5, nullable=false)
      */
     private $orainizio = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="orafine", type="string", length=5, nullable=false)
      */
     private $orafine = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="reqrefnum", type="string", length=32)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $reqrefnum;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="numord", type="string", length=50)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $numord;
+
 
 
     /**
@@ -472,4 +514,3 @@ class PagBkpsRichieste
         return $this->numord;
     }
 }
-

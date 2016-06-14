@@ -1,0 +1,47 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PreventiviV2Md5
+ *
+ * @ORM\Table(name="preventivi_v2_md5", uniqueConstraints={@ORM\UniqueConstraint(name="idx_preventivi_v2_md5", columns={"codice_md5"})})
+ * @ORM\Entity
+ */
+class PreventiviV2Md5
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="preventivo_id", type="bigint", nullable=false)
+     */
+    private $preventivoId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="viaggio_id", type="bigint", nullable=false)
+     */
+    private $viaggioId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codice_md5", type="string", length=50, nullable=false)
+     */
+    private $codiceMd5;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

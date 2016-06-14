@@ -371,4 +371,3 @@ class Filter
         return $this->filterId;
     }
 }
-

@@ -2,35 +2,57 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncentivePerc
+ *
+ * @ORM\Table(name="incentive_perc")
+ * @ORM\Entity
  */
 class IncentivePerc
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="percorso", type="string", length=50, nullable=false)
      */
     private $percorso = '';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="perc", type="integer", nullable=false)
      */
     private $perc = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=6)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $data;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromDest", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $codpromdest;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromPart", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $codprompart;
+
 
 
     /**
@@ -60,7 +82,7 @@ class IncentivePerc
     /**
      * Set perc
      *
-     * @param boolean $perc
+     * @param integer $perc
      *
      * @return IncentivePerc
      */
@@ -74,7 +96,7 @@ class IncentivePerc
     /**
      * Get perc
      *
-     * @return boolean
+     * @return integer
      */
     public function getPerc()
     {
@@ -153,4 +175,3 @@ class IncentivePerc
         return $this->codprompart;
     }
 }
-

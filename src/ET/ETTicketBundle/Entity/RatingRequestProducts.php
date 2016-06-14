@@ -66,4 +66,3 @@ class RatingRequestProducts
         return $this->product;
     }
 }
-

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\BackofficePagamentiAgenzie" table="backoffice_pagamenti_agenzie">
+    <indexes>
+      <index name="agenzia" columns="agenzia"/>
+    </indexes>
+    <id name="idPagamento" type="integer" column="id_pagamento">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cod" type="string" column="cod" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="descrizione" type="string" column="descrizione" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="agenzia" type="string" column="agenzia" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ETIta</option>
+      </options>
+    </field>
+    <field name="pagamentiSiap" type="string" column="pagamenti_siap" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

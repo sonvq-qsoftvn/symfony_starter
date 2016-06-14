@@ -1,0 +1,96 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiziNoleggio
+ *
+ * @ORM\Table(name="servizi_noleggio")
+ * @ORM\Entity
+ */
+class ServiziNoleggio
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datain", type="date", nullable=true)
+     */
+    private $datain;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritiro_luogo", type="string", length=50, nullable=true)
+     */
+    private $ritiroLuogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ritiro_ore", type="time", nullable=true)
+     */
+    private $ritiroOre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataout", type="date", nullable=true)
+     */
+    private $dataout;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="consegna_luogo", type="string", length=50, nullable=true)
+     */
+    private $consegnaLuogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="consegna_ore", type="time", nullable=true)
+     */
+    private $consegnaOre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzo_tipo", type="string", length=255, nullable=true)
+     */
+    private $mezzoTipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzo_modello", type="string", length=255, nullable=true)
+     */
+    private $mezzoModello;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzo_targa", type="string", length=20, nullable=true)
+     */
+    private $mezzoTarga;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="guidatore", type="string", length=255, nullable=false)
+     */
+    private $guidatore;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

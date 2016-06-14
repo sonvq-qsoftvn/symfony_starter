@@ -226,4 +226,3 @@ class Stats
         return $this->statId;
     }
 }
-

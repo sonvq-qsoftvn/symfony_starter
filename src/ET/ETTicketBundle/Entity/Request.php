@@ -195,7 +195,7 @@ class Request
     /**
      * @var boolean
      */
-    private $requestCanLink = '0';
+    private $requestCanLink = false;
 
     /**
      * @var integer
@@ -1328,4 +1328,3 @@ class Request
         return $this->requestId;
     }
 }
-

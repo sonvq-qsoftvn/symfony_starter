@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="ET\ETGestBundle\Entity\Allegati" table="allegati">
+  <entity name="ET\ETGestBundle\Entity\Allegati" table="allegati" repository-class="ET\ETGestBundle\Repository\AllegatiRepository">
     <indexes>
       <index name="id_modulo" columns="id_modulo,tipoDocumento"/>
     </indexes>
@@ -24,7 +24,7 @@
         <option name="default"/>
       </options>
     </field>
-    <field name="tipodocumento" type="boolean" column="tipoDocumento" nullable="false">
+    <field name="tipodocumento" type="integer" column="tipoDocumento" nullable="false">
       <options>
         <option name="default">0</option>
       </options>

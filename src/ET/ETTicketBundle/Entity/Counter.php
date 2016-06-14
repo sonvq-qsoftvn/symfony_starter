@@ -356,4 +356,3 @@ class Counter
         return $this->collegato;
     }
 }
-

@@ -748,4 +748,3 @@ class AnagraficheV2Old
         return $this->idAnagrafica;
     }
 }
-

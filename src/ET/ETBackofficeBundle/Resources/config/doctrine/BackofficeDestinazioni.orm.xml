@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\BackofficeDestinazioni" table="backoffice_destinazioni">
+    <indexes>
+      <index name="tipo" columns="tipo"/>
+      <index name="nazione" columns="nazione"/>
+    </indexes>
+    <id name="iddestinazione" type="integer" column="idDestinazione">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tipo" type="string" column="tipo" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">dest</option>
+      </options>
+    </field>
+    <field name="nazione" type="string" column="nazione" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provincia" type="string" column="provincia" length="2" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="citta" type="string" column="citta" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="status" type="boolean" column="status" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

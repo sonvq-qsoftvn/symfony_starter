@@ -1,0 +1,103 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AppaltiClienteTestate
+ *
+ * @ORM\Table(name="appalti_cliente_testate")
+ * @ORM\Entity
+ */
+class AppaltiClienteTestate
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
+     */
+    private $data = '0000-00-00 00:00:00';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotoreMittente", type="integer", nullable=false)
+     */
+    private $codpromotoremittente = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotoreDestinatario", type="integer", nullable=false)
+     */
+    private $codpromotoredestinatario = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stato", type="string", length=20, nullable=false)
+     */
+    private $stato = '';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataStato", type="datetime", nullable=false)
+     */
+    private $datastato = '0000-00-00 00:00:00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="text", length=65535, nullable=false)
+     */
+    private $descrizione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="risposta", type="text", length=65535, nullable=false)
+     */
+    private $risposta;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="provvigione", type="boolean", nullable=false)
+     */
+    private $provvigione = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codice", type="string", length=10, nullable=false)
+     */
+    private $codice = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_appalto_riferimento", type="integer", nullable=false)
+     */
+    private $idAppaltoRiferimento = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ticket_creazione", type="integer", nullable=false)
+     */
+    private $idTicketCreazione = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_appalto", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAppalto;
+
+
+}
+

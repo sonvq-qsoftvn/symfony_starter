@@ -2,30 +2,48 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * CodiciavesRelFornitori
+ *
+ * @ORM\Table(name="codiciaves_rel_fornitori", indexes={@ORM\Index(name="codiceAves", columns={"codiceAves"})})
+ * @ORM\Entity
  */
 class CodiciavesRelFornitori
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="approvanti", type="text", length=65535, nullable=false)
      */
     private $approvanti;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="approvato", type="boolean", nullable=false)
      */
     private $approvato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idFornitore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idfornitore;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codiceAves", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $codiceaves;
+
 
 
     /**
@@ -124,4 +142,3 @@ class CodiciavesRelFornitori
         return $this->codiceaves;
     }
 }
-

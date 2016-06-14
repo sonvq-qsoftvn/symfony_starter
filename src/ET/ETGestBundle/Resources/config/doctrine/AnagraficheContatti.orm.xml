@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="ET\ETGestBundle\Entity\AnagraficheContatti" table="anagrafiche_contatti">
+  <entity name="ET\ETGestBundle\Entity\AnagraficheContatti" table="anagrafiche_contatti" repository-class="ET\ETGestBundle\Repository\AnagraficheRepository">
     <indexes>
       <index name="id_anagrafica_idx" columns="id_anagrafica"/>
     </indexes>

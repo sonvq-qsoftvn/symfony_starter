@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="{{ asset('vendor/tablesorter/theme.bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.css') }}">
+
+<table id="unimport"> <!-- bootstrap classes added by the uitheme widget -->
+	<thead>
+		<tr>
+			<th>{% trans %}Viaggio{% endtrans %}</th>
+			<th>{% trans %}Stato viaggio{% endtrans %}</th>
+			<th>{% trans %}Pag{% endtrans %}</th>
+			<th>{% trans %}Eff{% endtrans %}</th>
+			<th><i class="fa fa-eur"></i></th>
+			<th>{% trans %}ModoPag{% endtrans %}</th>
+			<th>{% trans %}Descr{% endtrans %}</th>
+		</tr>
+	</thead>
+
+	<tfoot>
+		<tr>
+            <th colspan="7" class="ts-pager form-horizontal">
+                {% if pagination is defined %}
+                    {{ pagination|raw }}
+                {% endif %}
+            </th>
+        </tr>
+	</tfoot>
+
+	<tbody>
+		{% for payment in payments %}
+		<tr>
+			<td>{{ payment.id_viaggio }}</td>
+			<td>{{ payment.status }}</td>
+			<td>{{ payment.dataPag }}</td>
+			<td>{{ payment.dataEffettiva }}</td>
+			<td>{{ payment.importo }}</td>
+			<td>{{ payment.metodoPag }}</td>
+			<td>{{ payment.descrizione }}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td colspan="7" align="center"><strong>{{ totalAmount }}</strong></td>
+		</tr>
+		<tr>
+			<td colspan="7" align="center"><strong>{{ bigSum }}</strong></td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="{{ asset('vendor/tablesorter/jquery.tablesorter.js') }}"></script>
+<script src="{{ asset('vendor/tablesorter/jquery.tablesorter.widgets.js') }}"></script>
+<script src="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.js') }}"></script>
+
+<script type="text/javascript">
+	$(function () {
+        // NOTE: $.tablesorter.theme.bootstrap is ALREADY INCLUDED in the jquery.tablesorter.widgets.js
+        // file; it is included here to show how you can modify the default classes
+        $.tablesorter.themes.bootstrap = {
+            // these classes are added to the table. To see other table classes available,
+            // look here: http://getbootstrap.com/css/#tables
+            table: 'table table-bordered table-striped',
+            caption: 'caption',
+            // header class names
+            header: 'bootstrap-header', // give the header a gradient background (theme.bootstrap_2.css)
+            sortNone: '',
+            sortAsc: '',
+            sortDesc: '',
+            active: '', // applied when column is sorted
+            hover: '', // custom css required - a defined bootstrap style may not override other classes
+            // icon class names
+            icons: '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+            iconSortNone: 'bootstrap-icon-unsorted', // class name added to icon when column is not sorted
+            iconSortAsc: 'glyphicon glyphicon-chevron-up', // class name added to icon when column has ascending sort
+            iconSortDesc: 'glyphicon glyphicon-chevron-down', // class name added to icon when column has descending sort
+            filterRow: '', // filter row class; use widgetOptions.filter_cssFilter for the input/select element
+            footerRow: '',
+            footerCells: '',
+            even: '', // even row zebra striping
+            odd: ''  // odd row zebra striping
+        };
+
+        // call the tablesorter plugin and apply the uitheme widget
+        $("table").tablesorter({
+            // this will apply the bootstrap theme if "uitheme" widget is included
+            // the widgetOptions.uitheme is no longer required to be set
+            theme: "bootstrap",
+            widthFixed: true,
+            headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!                
+            // widget code contained in the jquery.tablesorter.widgets.js file
+            // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+            widgets: ["uitheme", "filter", "zebra"],
+            widgetOptions: {
+                // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                zebra: ["even", "odd"],
+                // reset filters button
+                filter_reset: ".reset",
+                // extra css class name (string or array) added to the filter element (input or select)
+                filter_cssFilter: "form-control",
+                // set the uitheme widget to use the bootstrap theme class names
+                // this is no longer required, if theme is set
+                // ,uitheme : "bootstrap"
+
+            }
+        });
+
+        $("div#etn-pagination li>a").click(function(e){
+        	e.preventDefault();
+        	$.ajax({
+				url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+	    		type: "POST",
+				dataType: "json",
+				data: { unimport: "unimport", page: $(this).text() },
+				success: function( result ) {
+					if(result.success==true) {
+						var html = '';
+						
+						for(var i=0; i<result.payments.length; i++) {
+							html += '<tr>';
+							html += '<td>'+ result.payments[i].id_viaggio +'</td>';
+							html += '<td>'+ result.payments[i].status +'</td>';
+							html += '<td>'+ result.payments[i].dataPag +'</td>';
+							html += '<td>'+ result.payments[i].dataEffettiva +'</td>';
+							html += '<td>'+ result.payments[i].importo +'</td>';
+							html += '<td>'+ result.payments[i].metodoPag +'</td>';
+							html += '<td>'+ result.payments[i].descrizione +'</td>';
+							html += '</tr>';
+						}
+
+						html += '<tr>';
+						html += '<td colspan="7" align="center"><strong>' + result.totalAmount + '</strong></td>';
+						html += '</tr>';
+
+						html += '<tr>';
+						html += '<td colspan="7" align="center"><strong>' + result.bigSum + '</strong></td>';
+						html += '</tr>';
+
+						$('table#unimport').find('tbody').html(html);
+
+					}
+				}
+			});
+        });
+    });
+</script>

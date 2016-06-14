@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/theme.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<div class="content">
+	<h2>{% trans %}GESTIONE ESTRATTI CONTO{% endtrans %}</h2>
+
+	<div id="main">
+
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#tabs-remote" aria-controls="tabs-remote" role="tab" data-toggle="tab">{% trans %}Da prendere in carico{% endtrans %}</a></li>
+	    	<li role="presentation"><a href="#tabs-note-prenotazioni" aria-controls="tabs-note-prenotazioni" role="tab" data-toggle="tab">{% trans %}Note pratiche{% endtrans %}</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="tabs-remote">
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="tabs-note-prenotazioni">
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	<script src="https://use.fontawesome.com/1d317c931a.js"></script>
+	<script src="{{ asset('js/etgest/functions.js') }}"></script>
+	<script src="{{ asset('js/etgest/updater.js') }}"></script>
+
+	<script type="text/javascript">
+		var url = [];
+		var u = new updater("{{ url('etgest_client_list') }}", 'estratticonto', 2);
+
+		function printDettaglio(cliente, viaggio, modulo, versione) {
+			u.url = "{{ url('etgest_client_list') }}";
+	    	u.printDettaglio(cliente, viaggio, modulo, versione);
+	    }
+
+	    function viewDettaglio(cliente, viaggio, modulo, versione) {
+	    	var id = modulo.replace(',','_');
+	    	u.url = "{{ url('etgest_account_extract_view_detail') }}";
+
+	    	if (jQuery( '#dettaglio_' + id ).css('display') == 'none') {
+	    		return u.showView(cliente, viaggio, modulo, versione);
+	    	} else {
+	    		u.hideView(versione);
+	    	}
+	    }
+
+	    function editDettaglio(cliente, viaggio, modulo, versione) {
+	    	var id = modulo.replace(',','_');
+	    	u.url = "{{ url('etgest_account_extract_view_detail') }}";
+
+	    	if (jQuery( '#dettaglio_' + id ).css('display') == 'none') {
+	    		return u.showEdit(cliente, viaggio, modulo, versione);
+	    	} else {
+	    		u.hideEdit(versione);
+	    	}
+	    }
+
+	    function showViaggioNuovaNota(cliente, viaggio, versione) {
+	    	versione = parseInt(versione);
+
+	    	if ( versione == 1 ){
+				u.showEditViaggio(cliente, viaggio, 5, 'd', false);
+			} else if ( versione == 2 ){
+				u.showEditViaggio_v2(cliente, viaggio, 'notaViaggio', 'new', false);
+			}
+	    }
+
+		jQuery(document).ready(function(){
+			u.loadViaggi("{{ path('etgest_account_extract_ajax') }}", '{{formToken}}', "{{ asset('uploads/attachments/') }}");
+			u.loadNode("{{ path('etgest_account_extract_ajax') }}", '{{formToken}}', "{{ asset('uploads/attachments/') }}");
+		});
+	</script>
+{% endblock %}

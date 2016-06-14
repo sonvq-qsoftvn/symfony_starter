@@ -1,0 +1,75 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ticket
+ *
+ * @ORM\Table(name="ticket", indexes={@ORM\Index(name="id_promotore", columns={"id_promotore"}), @ORM\Index(name="id_anagrafica", columns={"id_anagrafica"}), @ORM\Index(name="id_viaggio", columns={"id_viaggio"}), @ORM\Index(name="id_ticket", columns={"id_ticket", "id_promotore"})})
+ * @ORM\Entity
+ */
+class Ticket
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ticket", type="integer", nullable=false)
+     */
+    private $idTicket = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_promotore", type="integer", nullable=false)
+     */
+    private $idPromotore = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
+     */
+    private $idAnagrafica = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
+     */
+    private $idViaggio = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_riferimento", type="string", length=255, nullable=true)
+     */
+    private $tipoRiferimento = 'ticket';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="riferimento", type="bigint", nullable=true)
+     */
+    private $riferimento;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_creazione", type="datetime", nullable=false)
+     */
+    private $dataCreazione = '0000-00-00 00:00:00';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

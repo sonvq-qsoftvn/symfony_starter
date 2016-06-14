@@ -20,9 +20,21 @@
         <option name="default">0</option>
       </options>
     </field>
-    <field name="tipo" type="boolean" column="tipo" nullable="false"/>
-    <field name="demeritoPersonale" type="boolean" column="demerito_personale" nullable="false"/>
-    <field name="demeritoGruppo" type="boolean" column="demerito_gruppo" nullable="false"/>
+    <field name="tipo" type="integer" column="tipo" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="demeritoPersonale" type="integer" column="demerito_personale" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="demeritoGruppo" type="integer" column="demerito_gruppo" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <field name="punti" type="decimal" column="punti" precision="8" scale="2" nullable="false">
       <options>
         <option name="default">0.00</option>

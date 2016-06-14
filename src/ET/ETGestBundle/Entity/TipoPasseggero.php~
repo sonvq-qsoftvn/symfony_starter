@@ -1,0 +1,47 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TipoPasseggero
+ *
+ * @ORM\Table(name="tipo_passeggero")
+ * @ORM\Entity
+ */
+class TipoPasseggero
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=100, nullable=false)
+     */
+    private $descrizione = '';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datacreazione", type="datetime", nullable=true)
+     */
+    private $datacreazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datamodifica", type="datetime", nullable=true)
+     */
+    private $datamodifica;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idTipoPasseggero", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtipopasseggero;
+
+
+}
+

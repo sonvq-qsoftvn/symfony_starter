@@ -1,0 +1,75 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ModuloPreventivoModelliNew
+ *
+ * @ORM\Table(name="modulo_preventivo_modelli_new", indexes={@ORM\Index(name="id_promotore", columns={"id_promotore"}), @ORM\Index(name="descrizione", columns={"descrizione"})})
+ * @ORM\Entity
+ */
+class ModuloPreventivoModelliNew
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_promotore", type="integer", nullable=false)
+     */
+    private $idPromotore = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=50, nullable=false)
+     */
+    private $descrizione = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="corpo", type="text", length=65535, nullable=false)
+     */
+    private $corpo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="predefinito", type="boolean", nullable=false)
+     */
+    private $predefinito = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="pubblico", type="boolean", nullable=false)
+     */
+    private $pubblico = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="promoRif", type="integer", nullable=false)
+     */
+    private $promorif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lingua", type="string", length=5, nullable=false)
+     */
+    private $lingua = 'it_IT';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new ET\ETTicketBundle\ETTicketBundle(),
             new ET\ETGestBundle\ETGestBundle(),
+            new ET\UserBundle\ETUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new ET\ETBackofficeBundle\ETBackofficeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

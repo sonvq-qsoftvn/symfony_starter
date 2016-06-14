@@ -2,25 +2,39 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PagamentiDettagliEtgest
+ *
+ * @ORM\Table(name="pagamenti_dettagli_etgest", indexes={@ORM\Index(name="idPag", columns={"idPag"})})
+ * @ORM\Entity
  */
 class PagamentiDettagliEtgest
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idPag", type="integer", nullable=false)
      */
     private $idpag = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="idRif", type="string", length=255, nullable=false)
      */
     private $idrif = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idDettagli", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $iddettagli;
+
 
 
     /**
@@ -81,4 +95,3 @@ class PagamentiDettagliEtgest
         return $this->iddettagli;
     }
 }
-

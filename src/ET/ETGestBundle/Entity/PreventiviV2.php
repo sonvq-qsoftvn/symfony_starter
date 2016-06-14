@@ -2,115 +2,165 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PreventiviV2
+ *
+ * @ORM\Table(name="preventivi_v2", indexes={@ORM\Index(name="codpromotore_idx", columns={"codPromotore"}), @ORM\Index(name="codpromotorecreazione_idx", columns={"codPromotoreCreazione"}), @ORM\Index(name="codpromotoremodifica_idx", columns={"codPromotoreModifica"}), @ORM\Index(name="id_viaggio_idx", columns={"id_viaggio"})})
+ * @ORM\Entity
  */
 class PreventiviV2
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="bigint", nullable=true)
      */
     private $idViaggio;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=true)
      */
     private $codpromotore;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=true)
      */
     private $codpromotorecreazione;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreModifica", type="integer", nullable=true)
      */
     private $codpromotoremodifica;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="destinatari", type="text", nullable=true)
      */
     private $destinatari;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="destinatariCopia", type="text", nullable=true)
      */
     private $destinataricopia;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="destinatariNascosti", type="text", nullable=true)
      */
     private $destinatarinascosti;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="prpRichiesta", type="string", length=255, nullable=false)
      */
     private $prprichiesta;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="prpInCopia", type="boolean", nullable=false)
      */
     private $prpincopia = '1';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=false)
      */
     private $titolo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="corpo", type="text", nullable=false)
      */
     private $corpo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nota", type="text", nullable=true)
      */
     private $nota;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataInvio", type="datetime", nullable=true)
      */
     private $datainvio;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipoInvio", type="string", length=50, nullable=true)
      */
     private $tipoinvio;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataAccettato", type="datetime", nullable=true)
      */
     private $dataaccettato;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataAccettatoAnnullato", type="datetime", nullable=true)
      */
     private $dataaccettatoannullato;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataLetto", type="datetime", nullable=true)
      */
     private $dataletto;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
      */
     private $datamodifica;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="duplicato", type="bigint", nullable=false)
      */
     private $duplicato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -603,4 +653,3 @@ class PreventiviV2
         return $this->id;
     }
 }
-

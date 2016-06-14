@@ -356,4 +356,3 @@ class Rating
         return $this->lingua;
     }
 }
-

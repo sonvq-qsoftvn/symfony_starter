@@ -2,25 +2,39 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziIncasso
+ *
+ * @ORM\Table(name="servizi_incasso")
+ * @ORM\Entity
  */
 class ServiziIncasso
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_tipologia", type="bigint", nullable=true)
      */
     private $idTipologia = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="incassato", type="decimal", precision=7, scale=2, nullable=true)
      */
     private $incassato = '0.00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -81,4 +95,3 @@ class ServiziIncasso
         return $this->id;
     }
 }
-

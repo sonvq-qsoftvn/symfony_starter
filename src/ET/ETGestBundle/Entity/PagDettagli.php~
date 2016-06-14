@@ -1,0 +1,47 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PagDettagli
+ *
+ * @ORM\Table(name="pag_dettagli", indexes={@ORM\Index(name="campo", columns={"campo"}), @ORM\Index(name="valore", columns={"valore"}), @ORM\Index(name="chiave", columns={"chiave"})})
+ * @ORM\Entity
+ */
+class PagDettagli
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chiave", type="string", length=255, nullable=false)
+     */
+    private $chiave = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="campo", type="string", length=255, nullable=false)
+     */
+    private $campo = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valore", type="string", length=255, nullable=false)
+     */
+    private $valore = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

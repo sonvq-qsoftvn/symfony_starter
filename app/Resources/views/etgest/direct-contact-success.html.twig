@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">          
+    <link rel="stylesheet" href="{{ asset('vendor/intl-tel-input-8.5.2/build/css/intlTelInput.css') }}">  
+    <link rel="stylesheet" href="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.css') }}">      
+    <link rel="stylesheet" href="{{ asset('vendor/formValidation/formValidation.min.css') }}">     
+{% endblock %}
+        
+{% block main_content %}    
+    <div class="content">
+        <h2 class="content-main-title">{% trans %}SUCCESSFULLY CREATED NEW DIRECT CONTACT{% endtrans %}</h2>
+        <br/>
+        Direct contact is created successfully!!!
+    </div>
+{% endblock %}

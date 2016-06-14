@@ -2,45 +2,67 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * AllegatiV2
+ *
+ * @ORM\Table(name="allegati_v2", indexes={@ORM\Index(name="allegati_type_idx", columns={"type"})})
+ * @ORM\Entity
  */
 class AllegatiV2
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="parent_id", type="bigint", nullable=true)
      */
     private $parentId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
      */
     private $path;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="file", type="string", length=255, nullable=true)
      */
     private $file;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="caption", type="string", length=255, nullable=true)
      */
     private $caption;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -197,4 +219,3 @@ class AllegatiV2
         return $this->id;
     }
 }
-

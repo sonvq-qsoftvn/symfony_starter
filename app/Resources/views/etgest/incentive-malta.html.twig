@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">          
+    <link rel="stylesheet" href="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.css') }}">           
+{% endblock %}
+        
+{% block main_content %}    
+    <div class="content">
+        <h2 class="content-main-title">{% trans %}MODULO INCENTIVE MALTA{% endtrans %}</h2>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed table-highlight">
+            <tr class="periodo">
+                <th class="text-center">{% trans %}Promotore{% endtrans %}</th>
+                <th class="text-center">{% trans %}Tot. Provv. vendita{% endtrans %}<br />
+                    {% trans %}Nessun elemento trovato{% endtrans %}({% trans %}No prom. rif.{% endtrans %})</th>
+                <th class="text-center">{% trans %}Punti{% endtrans %}</th>
+                <th class="text-center">{% trans %}Perc.{% endtrans %}<br />
+                    {% trans %}raggiunta{% endtrans %}</th>
+                <th class="text-center">{% trans %}Perc.{% endtrans %}<br />
+                    {% trans %}pagata{% endtrans %}</th>
+                <th class="text-center">{% trans %}Importo{% endtrans %}</th>
+                <th class="text-center">{% trans %}Localizzazione{% endtrans %}</th>
+            </tr>
+            {% if incentiveArray %}
+                
+            {% endif %}
+        </table>
+             
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/moment-with-locales.js') }}"></script>
+    <script src="{{ asset('vendor/datetimepicker/bootstrap-datetimepicker.js') }}"></script>        
+    <script>
+        $(function () {            
+            
+        });
+    </script>
+{% endblock %}

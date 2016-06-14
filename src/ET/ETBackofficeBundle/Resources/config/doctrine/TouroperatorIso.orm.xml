@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\TouroperatorIso" table="touroperator_iso">
+    <indexes>
+      <index name="dev_romano1_tourOperator_iso_iso_id_iso_codice" columns="iso_id"/>
+    </indexes>
+    <id name="isoId" type="string" column="iso_id" length="4"/>
+    <id name="touroperatorId" type="integer" column="tourOperator_id"/>
+    <field name="consigliato" type="integer" column="consigliato" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="note" type="text" column="note" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

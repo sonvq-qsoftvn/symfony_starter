@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\BackofficeTo" table="backoffice_to">
+    <indexes>
+      <index name="ToNome" columns="ToNome"/>
+      <index name="ToConvenzionato" columns="ToConvenzionato"/>
+    </indexes>
+    <id name="idto" type="integer" column="idTo">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tonome" type="string" column="ToNome" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tourl" type="string" column="ToUrl" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tocodice" type="string" column="ToCodice" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="totelefono" type="text" column="ToTelefono" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="todescrizionebreve" type="text" column="ToDescrizioneBreve" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="toparolechiave" type="text" column="ToParoleChiave" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="toconvenzionato" type="boolean" column="ToConvenzionato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="operatoreConsigliato" type="boolean" column="operatore_consigliato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="noteOperatoreConsigliato" type="text" column="note_operatore_consigliato" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="useradm" type="string" column="UserAdm" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="accessoTo" type="text" column="accesso_to" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

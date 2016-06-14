@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\BackofficeFornitoriAgenzie" table="backoffice_fornitori_agenzie">
+    <indexes>
+      <index name="ragione_sociale_idx" columns="ragione_sociale"/>
+      <index name="cod_stato_idx" columns="cod_stato"/>
+      <index name="parent_idx" columns="parent"/>
+      <index name="fk_pagamento_idx" columns="fk_pagamento"/>
+      <index name="agenzia" columns="agenzia"/>
+      <index name="visibile_pannello_to" columns="visibile_pannello_to"/>
+    </indexes>
+    <id name="idfornitore" type="integer" column="idFornitore">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ragioneSociale" type="string" column="ragione_sociale" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descrizione" type="string" column="descrizione" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="indirizzo" type="string" column="indirizzo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cap" type="string" column="cap" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="citta" type="string" column="citta" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="provincia" type="string" column="provincia" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codStato" type="string" column="cod_stato" length="4" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="piva" type="string" column="piva" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codFiscale" type="string" column="cod_fiscale" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="url" type="string" column="url" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fkPagamento" type="integer" column="fk_pagamento" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aves" type="boolean" column="aves" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="avesRisposta" type="text" column="aves_risposta" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="statoverificato" type="boolean" column="statoVerificato" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="assicurazioneobbligatoria" type="boolean" column="assicurazioneObbligatoria" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="parent" type="integer" column="parent" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="note" type="text" column="note" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+    <field name="deletedAt" type="datetime" column="deleted_at" nullable="true"/>
+    <field name="agenzia" type="string" column="agenzia" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ETIta</option>
+      </options>
+    </field>
+    <field name="visibilePannelloTo" type="boolean" column="visibile_pannello_to" nullable="false"/>
+    <field name="siapCode" type="string" column="siap_code" length="13" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="defaultValuta" type="string" column="default_valuta" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">EUR</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

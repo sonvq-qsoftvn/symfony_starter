@@ -2,80 +2,116 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * V1Codiciaves
+ *
+ * @ORM\Table(name="v1_codiciaves", uniqueConstraints={@ORM\UniqueConstraint(name="codiceAves", columns={"codiceAves"})}, indexes={@ORM\Index(name="codice", columns={"codiceAves"}), @ORM\Index(name="agenzia", columns={"agenzia"})})
+ * @ORM\Entity
  */
 class V1Codiciaves
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="codiceAves", type="string", length=255, nullable=false)
      */
     private $codiceaves = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="iva", type="decimal", precision=5, scale=2, nullable=false)
      */
     private $iva = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codice", type="string", length=20, nullable=false)
      */
     private $codice = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="moduli", type="string", length=255, nullable=false)
      */
     private $moduli = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="php", type="text", length=65535, nullable=false)
      */
     private $php;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=255, nullable=false)
      */
     private $descrizione = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="deslunga", type="text", length=65535, nullable=false)
      */
     private $deslunga;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="regimeIva", type="string", length=100, nullable=false)
      */
     private $regimeiva = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="regime", type="string", length=100, nullable=false)
      */
     private $regime;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissioneAssicurazione", type="decimal", precision=8, scale=5, nullable=false)
      */
     private $commissioneassicurazione = '0.00000';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDestinazione", type="boolean", nullable=false)
      */
     private $tipodestinazione = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="agenzia", type="string", length=10, nullable=false)
      */
     private $agenzia = 'ETIta';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
     private $deletedAt;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="id", type="boolean")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -400,4 +436,3 @@ class V1Codiciaves
         return $this->id;
     }
 }
-

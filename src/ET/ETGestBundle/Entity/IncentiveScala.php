@@ -2,30 +2,46 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncentiveScala
+ *
+ * @ORM\Table(name="incentive_scala")
+ * @ORM\Entity
  */
 class IncentiveScala
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="vp", type="smallint", nullable=false)
      */
     private $vp = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="percentuale", type="boolean", nullable=false)
      */
     private $percentuale = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipo", type="boolean", nullable=false)
      */
     private $tipo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -110,4 +126,3 @@ class IncentiveScala
         return $this->id;
     }
 }
-

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="ET\ETTicketBundle\Entity\Request" table="request">
+  <entity name="ET\ETTicketBundle\Entity\Request" table="request" repository-class="ET\ETTicketBundle\Repository\RequestRepository">
     <indexes>
       <index name="request_prpid" columns="request_prpid"/>
       <index name="request_email" columns="request_email"/>

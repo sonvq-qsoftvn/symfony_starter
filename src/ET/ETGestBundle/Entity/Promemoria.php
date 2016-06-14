@@ -2,100 +2,144 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Promemoria
+ *
+ * @ORM\Table(name="promemoria", indexes={@ORM\Index(name="notifica_mail", columns={"notifica_mail"})})
+ * @ORM\Entity
  */
 class Promemoria
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataCreazione", type="datetime", nullable=false)
      */
     private $datacreazione = 'CURRENT_TIMESTAMP';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataInizio", type="datetime", nullable=false)
      */
     private $datainizio = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataFine", type="datetime", nullable=false)
      */
     private $datafine = '0000-00-00 00:00:00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=100, nullable=false)
      */
     private $titolo = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="testo", type="text", length=65535, nullable=false)
      */
     private $testo;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=false)
      */
     private $codpromotorecreazione = '0';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="tipoDocumento", type="integer", nullable=false)
      */
     private $tipodocumento = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
      */
     private $idViaggio = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer", nullable=false)
      */
     private $idModulo = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
      */
     private $idAnagrafica = '';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
      */
     private $status = '0';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="tipoPromemoria", type="integer", nullable=false)
      */
     private $tipopromemoria = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataTermine", type="datetime", nullable=true)
      */
     private $datatermine = '0000-00-00 00:00:00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="notifica_mail", type="boolean", nullable=false)
      */
     private $notificaMail = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pannello", type="string", length=50, nullable=false)
      */
     private $pannello = 'cliente';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=true)
      */
     private $datamodifica;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_promemoria", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idPromemoria;
+
 
 
     /**
@@ -269,7 +313,7 @@ class Promemoria
     /**
      * Set tipodocumento
      *
-     * @param boolean $tipodocumento
+     * @param integer $tipodocumento
      *
      * @return Promemoria
      */
@@ -283,7 +327,7 @@ class Promemoria
     /**
      * Get tipodocumento
      *
-     * @return boolean
+     * @return integer
      */
     public function getTipodocumento()
     {
@@ -365,7 +409,7 @@ class Promemoria
     /**
      * Set status
      *
-     * @param boolean $status
+     * @param integer $status
      *
      * @return Promemoria
      */
@@ -379,7 +423,7 @@ class Promemoria
     /**
      * Get status
      *
-     * @return boolean
+     * @return integer
      */
     public function getStatus()
     {
@@ -389,7 +433,7 @@ class Promemoria
     /**
      * Set tipopromemoria
      *
-     * @param boolean $tipopromemoria
+     * @param integer $tipopromemoria
      *
      * @return Promemoria
      */
@@ -403,7 +447,7 @@ class Promemoria
     /**
      * Get tipopromemoria
      *
-     * @return boolean
+     * @return integer
      */
     public function getTipopromemoria()
     {
@@ -516,4 +560,3 @@ class Promemoria
         return $this->idPromemoria;
     }
 }
-

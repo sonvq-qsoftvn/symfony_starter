@@ -2,170 +2,242 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ModuloServiziweb
+ *
+ * @ORM\Table(name="modulo_serviziweb", indexes={@ORM\Index(name="id_viaggio", columns={"id_viaggio"}), @ORM\Index(name="tipoDocumento", columns={"tipoDocumento"}), @ORM\Index(name="data", columns={"data"}), @ORM\Index(name="statusAves", columns={"statusAves"}), @ORM\Index(name="booking_stato", columns={"booking_stato"})})
+ * @ORM\Entity
  */
 class ModuloServiziweb
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
      */
     private $idViaggio = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=true)
      */
     private $data = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=false)
      */
     private $codpromotorecreazione = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=200, nullable=false)
      */
     private $titolo = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nota", type="text", length=65535, nullable=false)
      */
     private $nota;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="servizio", type="boolean", nullable=false)
      */
     private $servizio = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataIN", type="datetime", nullable=false)
      */
     private $datain = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataOUT", type="datetime", nullable=false)
      */
     private $dataout = '0000-00-00 00:00:00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="integer", nullable=false)
      */
     private $tipodocumento = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="localita", type="string", length=100, nullable=false)
      */
     private $localita = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="erroriViaggio", type="string", length=255, nullable=false)
      */
     private $erroriviaggio = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="totale", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $totale = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="scontoAgenzia", type="decimal", precision=6, scale=2, nullable=false)
      */
     private $scontoagenzia = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pagamento", type="string", length=20, nullable=false)
      */
     private $pagamento = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="statoPagamento", type="string", length=20, nullable=false)
      */
     private $statopagamento = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="noteModulo", type="text", length=65535, nullable=false)
      */
     private $notemodulo;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
      */
     private $datamodifica = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreModifica", type="integer", nullable=false)
      */
     private $codpromotoremodifica = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissioneLorda", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $commissionelorda = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissioneCarta", type="decimal", precision=6, scale=2, nullable=false)
      */
     private $commissionecarta = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissioneNetta", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $commissionenetta = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="iva", type="decimal", precision=6, scale=2, nullable=false)
      */
     private $iva = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codiceAves", type="string", length=20, nullable=false)
      */
     private $codiceaves = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="statusAves", type="boolean", nullable=false)
      */
     private $statusaves = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_stato", type="boolean", nullable=false)
      */
     private $bookingStato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreStato", type="integer", nullable=false)
      */
     private $bookingCodpromotorestato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreLavorazione", type="integer", nullable=false)
      */
     private $bookingCodpromotorelavorazione = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_letto", type="boolean", nullable=false)
      */
     private $bookingLetto = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataInvio", type="datetime", nullable=true)
      */
     private $datainvio;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="ec_letto", type="boolean", nullable=false)
      */
     private $ecLetto = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idModulo;
+
 
 
     /**
@@ -922,4 +994,3 @@ class ModuloServiziweb
         return $this->idModulo;
     }
 }
-

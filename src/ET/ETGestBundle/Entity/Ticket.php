@@ -226,4 +226,3 @@ class Ticket
         return $this->id;
     }
 }
-

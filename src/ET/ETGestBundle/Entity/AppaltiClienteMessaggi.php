@@ -2,35 +2,53 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * AppaltiClienteMessaggi
+ *
+ * @ORM\Table(name="appalti_cliente_messaggi")
+ * @ORM\Entity
  */
 class AppaltiClienteMessaggi
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_appalto", type="integer", nullable=false)
      */
     private $idAppalto = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="stato", type="string", length=20, nullable=false)
      */
     private $stato = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="messaggio", type="text", length=65535, nullable=false)
      */
     private $messaggio;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -139,4 +157,3 @@ class AppaltiClienteMessaggi
         return $this->id;
     }
 }
-

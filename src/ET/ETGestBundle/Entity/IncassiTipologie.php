@@ -2,50 +2,74 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncassiTipologie
+ *
+ * @ORM\Table(name="incassi_tipologie")
+ * @ORM\Entity
  */
 class IncassiTipologie
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="codice", type="string", length=10, nullable=true)
      */
     private $codice;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="agenzia", type="string", length=10, nullable=true)
      */
     private $agenzia;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=255, nullable=true)
      */
     private $descrizione;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="credenziali", type="text", length=65535, nullable=true)
      */
     private $credenziali;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="commissione", type="decimal", precision=5, scale=2, nullable=true)
      */
     private $commissione = '0.00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="allegatoRichiesto", type="boolean", nullable=false)
      */
     private $allegatorichiesto = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="esportabile", type="boolean", nullable=false)
      */
     private $esportabile = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -226,4 +250,3 @@ class IncassiTipologie
         return $this->id;
     }
 }
-

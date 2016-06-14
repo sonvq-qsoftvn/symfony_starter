@@ -2,30 +2,46 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziAssicurazione
+ *
+ * @ORM\Table(name="servizi_assicurazione")
+ * @ORM\Entity
  */
 class ServiziAssicurazione
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nropzione", type="string", length=20, nullable=true)
      */
     private $nropzione;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datain", type="date", nullable=true)
      */
     private $datain;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataout", type="date", nullable=true)
      */
     private $dataout;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -110,4 +126,3 @@ class ServiziAssicurazione
         return $this->id;
     }
 }
-

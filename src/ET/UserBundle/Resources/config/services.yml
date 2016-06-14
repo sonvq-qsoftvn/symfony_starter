@@ -1,0 +1,5 @@
+services:
+    et_user.registration_event:
+        class: ET\UserBundle\EventListener\RegistrationListener
+        tags:
+            - { name: kernel.event_subscriber }

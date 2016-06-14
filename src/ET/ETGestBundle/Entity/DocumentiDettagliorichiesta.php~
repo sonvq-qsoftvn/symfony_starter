@@ -1,0 +1,138 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DocumentiDettagliorichiesta
+ *
+ * @ORM\Table(name="documenti_dettagliorichiesta")
+ * @ORM\Entity
+ */
+class DocumentiDettagliorichiesta
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestacodice", type="string", length=10, nullable=true)
+     */
+    private $richiestacodice;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="richiestadatacreazione", type="datetime", nullable=true)
+     */
+    private $richiestadatacreazione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestapacchettodescrizione", type="string", length=255, nullable=true)
+     */
+    private $richiestapacchettodescrizione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestapacchettoid", type="string", length=20, nullable=true)
+     */
+    private $richiestapacchettoid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestapacchettocosto", type="string", length=255, nullable=true)
+     */
+    private $richiestapacchettocosto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestapartenzadal", type="string", length=50, nullable=true)
+     */
+    private $richiestapartenzadal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestapartenzaal", type="string", length=50, nullable=true)
+     */
+    private $richiestapartenzaal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="richiestaadultinumero", type="smallint", nullable=true)
+     */
+    private $richiestaadultinumero;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="richiestabambininumero", type="smallint", nullable=true)
+     */
+    private $richiestabambininumero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestabambinieta", type="string", length=100, nullable=true)
+     */
+    private $richiestabambinieta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestareperibileda", type="string", length=30, nullable=true)
+     */
+    private $richiestareperibileda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestareperibilea", type="string", length=30, nullable=true)
+     */
+    private $richiestareperibilea;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestarecapitoemail", type="string", length=255, nullable=false)
+     */
+    private $richiestarecapitoemail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestarecapitotelefonocasa", type="string", length=30, nullable=false)
+     */
+    private $richiestarecapitotelefonocasa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestarecapitotelefonoufficio", type="string", length=30, nullable=false)
+     */
+    private $richiestarecapitotelefonoufficio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="richiestarecapitotelefonocellulare", type="string", length=30, nullable=false)
+     */
+    private $richiestarecapitotelefonocellulare;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

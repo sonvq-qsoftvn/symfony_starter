@@ -385,4 +385,3 @@ class RatingProducts
         return $this->lingua;
     }
 }
-

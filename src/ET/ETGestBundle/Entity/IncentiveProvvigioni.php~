@@ -1,0 +1,110 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * IncentiveProvvigioni
+ *
+ * @ORM\Table(name="incentive_provvigioni", indexes={@ORM\Index(name="codPromotore", columns={"codPromotore"}), @ORM\Index(name="provigione", columns={"provvigione"}), @ORM\Index(name="id_viaggio", columns={"id_viaggio"}), @ORM\Index(name="id_modulo", columns={"id_modulo"}), @ORM\Index(name="data", columns={"data"}), @ORM\Index(name="agenzia", columns={"agenzia"})})
+ * @ORM\Entity
+ */
+class IncentiveProvvigioni
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
+     */
+    private $codpromotore = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="provvigione", type="string", length=50, nullable=false)
+     */
+    private $provvigione = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
+     */
+    private $idViaggio = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer", nullable=false)
+     */
+    private $idModulo = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="boolean", nullable=false)
+     */
+    private $tipodocumento = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="importo", type="decimal", precision=7, scale=2, nullable=false)
+     */
+    private $importo = '0.00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=true)
+     */
+    private $data = '0000-00-00 00:00:00';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="promotoreSaldato", type="integer", nullable=false)
+     */
+    private $promotoresaldato = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataSaldato", type="datetime", nullable=false)
+     */
+    private $datasaldato = '0000-00-00 00:00:00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=10, nullable=false)
+     */
+    private $status = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agenzia", type="string", length=20, nullable=false)
+     */
+    private $agenzia = 'ETIta';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="manuale", type="boolean", nullable=false)
+     */
+    private $manuale = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

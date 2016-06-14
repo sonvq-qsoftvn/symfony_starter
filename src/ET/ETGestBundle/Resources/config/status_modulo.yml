@@ -1,0 +1,132 @@
+parameters:
+    statusModuloBase:
+        id                          : 0
+        etichetta                   : ''
+        gruppo                      : ''
+        gruppo_etichetta            : FALSE
+        cambio_stato                : TRUE
+        allegati                    : TRUE
+        invio_documenti             : FALSE
+        contratto_viaggio           : FALSE
+        allega_estratto_conto       : FALSE
+        rifiuta_viaggio             : FALSE
+        visualizzato                : TRUE
+        modifica                    : 'tutto'
+    statusModulo:
+        nuova_pratica:
+            id                          : 0
+            etichetta                   : 'Nuova pratica'
+            gruppo                      : 'da_confermare'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : TRUE
+            visualizzato                : TRUE
+            modifica                    : 'tutto'            
+        da_confermare:
+            id                          : 1
+            etichetta                   : 'Da confermare'
+            gruppo                      : 'da_confermare'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : TRUE
+            visualizzato                : TRUE
+            modifica                    : 'tutto'               
+        attesa_promotore:
+            id                          : 2
+            etichetta                   : 'In attesa promotore'
+            gruppo                      : 'da_confermare'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : TRUE
+            visualizzato                : TRUE
+            modifica                    : 'tutto'
+        da_confermare_per_emettere:
+            id                          : 3
+            etichetta                   : 'Da confermare per emettere'
+            gruppo                      : 'da_confermare'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : TRUE
+            visualizzato                : TRUE
+            modifica                    : 'tutto' 
+        attesa_fornitore:
+            id                          : 4
+            etichetta                   : 'In attesa risposta fornitore'
+            gruppo                      : 'attesa_fornitore'
+            gruppo_etichetta            : 'In attesa risposta fornitore/estratto conto'
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : TRUE
+            allega_estratto_conto       : TRUE
+            rifiuta_viaggio             : FALSE
+            visualizzato                : TRUE
+            modifica                    : 'amministrazione'
+        attesa_ec:
+            id                          : 5
+            etichetta                   : 'In attesa estratto conto'
+            gruppo                      : 'attesa_fornitore'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : TRUE
+            allega_estratto_conto       : TRUE
+            rifiuta_viaggio             : FALSE
+            visualizzato                : TRUE
+            modifica                    : 'amministrazione'
+        attesa_invio_documenti:
+            id                          : 6
+            etichetta                   : 'In attesa invio documenti'
+            gruppo                      : 'attesa_invio_documenti'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : TRUE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : FALSE
+            visualizzato                : TRUE
+            modifica                    : 'amministrazione'
+        completa:
+            id                          : 7
+            etichetta                   : 'Spedito documenti viaggio'
+            gruppo                      : 'completa'
+            gruppo_etichetta            : FALSE
+            cambio_stato                : TRUE
+            allegati                    : TRUE
+            invio_documenti             : FALSE
+            contratto_viaggio           : FALSE
+            allega_estratto_conto       : FALSE
+            rifiuta_viaggio             : FALSE
+            visualizzato                : FALSE
+            modifica                    : 'tutto'
+
+
+
+
+            
+
+
+
+
+
+
+
+

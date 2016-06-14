@@ -66,4 +66,3 @@ class EtPortaliProdotti
         return $this->dominio;
     }
 }
-

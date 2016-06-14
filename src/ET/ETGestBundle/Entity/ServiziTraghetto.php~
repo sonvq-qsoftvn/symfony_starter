@@ -1,0 +1,173 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiziTraghetto
+ *
+ * @ORM\Table(name="servizi_traghetto", indexes={@ORM\Index(name="partenzanazione_idx", columns={"partenzaNazione"}), @ORM\Index(name="destinazionenazione_idx", columns={"destinazioneNazione"})})
+ * @ORM\Entity
+ */
+class ServiziTraghetto
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenzaNazione", type="string", length=4, nullable=true)
+     */
+    private $partenzanazione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinazioneNazione", type="string", length=4, nullable=true)
+     */
+    private $destinazionenazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataIN", type="date", nullable=true)
+     */
+    private $datain;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="andataLuogo", type="string", length=50, nullable=true)
+     */
+    private $andataluogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="andataOre", type="time", nullable=true)
+     */
+    private $andataore;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="andataArrivoLuogo", type="string", length=50, nullable=true)
+     */
+    private $andataarrivoluogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="andataArrivoOre", type="time", nullable=true)
+     */
+    private $andataarrivoore;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="andataSistemazioni", type="text", nullable=true)
+     */
+    private $andatasistemazioni;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="andataSistemazioniText", type="text", length=65535, nullable=false)
+     */
+    private $andatasistemazionitext;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataOUT", type="date", nullable=true)
+     */
+    private $dataout;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritornoLuogo", type="string", length=50, nullable=true)
+     */
+    private $ritornoluogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ritornoOre", type="time", nullable=true)
+     */
+    private $ritornoore;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritornoArrivoLuogo", type="string", length=50, nullable=true)
+     */
+    private $ritornoarrivoluogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ritornoArrivoOre", type="time", nullable=true)
+     */
+    private $ritornoarrivoore;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritornoSistemazioni", type="text", nullable=true)
+     */
+    private $ritornosistemazioni;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritornoSistemazioniText", type="text", length=65535, nullable=false)
+     */
+    private $ritornosistemazionitext;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzoTipo", type="string", length=255, nullable=true)
+     */
+    private $mezzotipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzoModello", type="string", length=255, nullable=true)
+     */
+    private $mezzomodello;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzoTarga", type="string", length=20, nullable=true)
+     */
+    private $mezzotarga;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mezzoDimensione", type="string", length=255, nullable=true)
+     */
+    private $mezzodimensione = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="confermaPrenotazione", type="boolean", nullable=true)
+     */
+    private $confermaprenotazione = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

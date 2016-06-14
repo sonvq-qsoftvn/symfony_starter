@@ -81,4 +81,3 @@ class Usertypestorights
         return $this->id;
     }
 }
-

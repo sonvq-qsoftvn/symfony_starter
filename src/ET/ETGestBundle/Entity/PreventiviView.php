@@ -2,30 +2,46 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PreventiviView
+ *
+ * @ORM\Table(name="preventivi_view", indexes={@ORM\Index(name="tipo", columns={"tipo"}), @ORM\Index(name="idPreventivo", columns={"idPreventivo"})})
+ * @ORM\Entity
  */
 class PreventiviView
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="idPreventivo", type="string", length=20, nullable=false)
      */
     private $idpreventivo = '';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataView", type="datetime", nullable=false)
      */
     private $dataview = '0000-00-00 00:00:00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipo", type="boolean", nullable=false)
      */
     private $tipo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -110,4 +126,3 @@ class PreventiviView
         return $this->id;
     }
 }
-

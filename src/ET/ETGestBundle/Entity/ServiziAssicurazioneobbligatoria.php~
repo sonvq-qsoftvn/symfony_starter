@@ -1,0 +1,47 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiziAssicurazioneobbligatoria
+ *
+ * @ORM\Table(name="servizi_assicurazioneobbligatoria")
+ * @ORM\Entity
+ */
+class ServiziAssicurazioneobbligatoria
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="accettazione", type="string", length=255, nullable=true)
+     */
+    private $accettazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datain", type="date", nullable=true)
+     */
+    private $datain;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataout", type="date", nullable=true)
+     */
+    private $dataout;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

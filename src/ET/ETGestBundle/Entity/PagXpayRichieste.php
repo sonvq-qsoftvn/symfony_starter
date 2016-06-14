@@ -2,125 +2,181 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * PagXpayRichieste
+ *
+ * @ORM\Table(name="pag_xpay_richieste", indexes={@ORM\Index(name="id_op", columns={"id_op"})})
+ * @ORM\Entity
  */
 class PagXpayRichieste
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="action_code", type="string", length=8, nullable=false)
      */
     private $actionCode;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=false)
      */
     private $amount;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="currency", type="string", length=3, nullable=false)
      */
     private $currency;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=3, nullable=false)
      */
     private $language;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
      */
     private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="desc_order", type="string", length=200, nullable=false)
      */
     private $descOrder;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="option_fields", type="text", length=16777215, nullable=false)
      */
     private $optionFields;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="message_type", type="string", length=3, nullable=false)
      */
     private $messageType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="response", type="string", length=15, nullable=false)
      */
     private $response;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="auth_code", type="string", length=10, nullable=false)
      */
     private $authCode;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="transaction_date", type="datetime", nullable=false)
      */
     private $transactionDate;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="card_type", type="string", length=10, nullable=false)
      */
     private $cardType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transaction_type", type="string", length=20, nullable=false)
      */
     private $transactionType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=50, nullable=false)
      */
     private $region;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=50, nullable=false)
      */
     private $country;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="product_type", type="string", length=50, nullable=false)
      */
     private $productType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="liability_shift", type="string", length=1, nullable=false)
      */
     private $liabilityShift;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="request_type", type="string", length=2, nullable=false)
      */
     private $requestType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type_op", type="string", length=1, nullable=false)
      */
     private $typeOp;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="amount_op", type="integer", nullable=false)
      */
     private $amountOp;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=20, nullable=false)
      */
     private $user;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transaction_id", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $transactionId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_op", type="string", length=10)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idOp;
+
 
 
     /**
@@ -675,4 +731,3 @@ class PagXpayRichieste
         return $this->idOp;
     }
 }
-

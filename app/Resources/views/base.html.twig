@@ -2,13 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}...: ETGEST :...{% endblock %}</title>
+        <title>{% block title %}{% trans %}...: ETGEST :...{% endtrans %}{% endblock %}</title>
 
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/slicknav/slicknav.min.css') }}">
         {% endblock %}
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -38,7 +38,8 @@
         {% block javascripts %}
             <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
             <script src="{{ asset('js/main.js') }}"></script>
-            <script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>            
+            <script src="{{ asset('vendor/slicknav/jquery.slicknav.min.js') }}"></script>   
+            <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>

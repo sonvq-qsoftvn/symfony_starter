@@ -1,0 +1,62 @@
+parameters:
+      basePath          : amministrazione
+      basePathIt        : http://agenzia.evolutiontravel.com/amministrazione/
+      basePathMalta     : http://agenziaeu.evolutiontravel.com/amministrazione/
+      etesp             : http://agencia.evolutiontravel.it
+      etusa             : http://agency.evolutiontravel.it
+      etit              : http://agenzia.evolutiontravel.it
+      etmalta           : http://agenziaeu.evolutiontravel.it
+      etservice         : http://etservice.info
+      agenti            : http://agenti.evolutiontravel.net
+      evolutiontravel   : http://www.evolutiontravel.it
+      etwiki            : http://etwiki.cogitoweb.it
+      vtiger            : http://master.evolutiontravel.it
+      posta             : http://posta.evolutiontravel.it
+      etespcom          : http://agencia.evolutiontravel.com
+      agentur           : http://agentur.evolutiontravel.it
+      etservice_agency  : http://agency.etservice.info
+      sms_gateway       : http://gate.sms.it/gate-http?
+      et_pay            : http://www.et-pay.net
+
+#      #agenti
+      etit_main         : http://agenzia.evolutiontravel.com
+      etmalta_main      : http://agenziaeu.evolutiontravel.com
+      agenti_it         : http://agenti.evolutiontravel.it
+      tuttotartufi      : http://www.tuttotartufi.com
+      89.251.180.3      : http://89.251.180.3
+      puglia            : http://puglia.evolutiontravel.net
+      tierra            : https://www.tierra.net/special/xmlapi
+#
+##      //backoffice
+      sms           : http://www.sms.it
+#      //etmarketplace
+      itwg                      : http://www.itwg.com
+      tway                      : http://tway.evolutiontravel.net
+      clientsection             : http://clientsection.contactlab.it
+      evolutiontravelnet        : http://evolutiontravel.net
+      cctravel                  : http://www.cctravel.it
+      googleadservices          : http://www.googleadservices.com
+      adobe_acrobat_readstep2   : http://www.adobe.com/it/products/acrobat/readstep2.html
+      etnstore_etraveler        : http://www.etnstore.com/it/etraveller.html
+      etraveler_privacy         : http://www.etraveller.it/privacy.html
+      rinnovo                   : http://it.evolutiontravelnetwork.com/it/etraveller.html
+      #promotore_foto            : http://agenzia.evolutiontravel.it/foto/  AA339-ET/TKS5649
+      default_promotore_foto    : http://default.evolutiontravel.it/img/promotore.jpg
+      iscrizione                : http://www.etraveller.it/lp/
+      etgest_webservice         : http://api.evolutiontravel.it/etgest
+#
+#  #    //et_service
+      evolutiontravelitalia     : http://www.evolutiontravelitalia.it
+      evolutiontravelspain      : http://www.evolutiontravelspain.com
+      evolutiontravelusa        : http://www.evolutiontravelusa.com
+      evolutiontravelruss       : http://www.evolutiontravel.ru
+      evolutiontravelbraz       : http://evolutiontravel.com.br
+      evolutiontravelger        : http://evolutiontravel.de
+      evolutiontravelamt        : http://amt.evolutiontravelnetwork.com
+      evolutiontravelitapi      : http://api.evolutiontravel.it
+#
+#    #  //portalXML
+      viaggi-scontati            : http://www.viaggi-scontati.com/
+#
+#    #  //etraveller
+      etraveler                 : http://www.etraveller.it

@@ -1,0 +1,93 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProvvigioniEtravelerPunti
+ *
+ * @ORM\Table(name="provvigioni_etraveler_punti")
+ * @ORM\Entity
+ */
+class ProvvigioniEtravelerPunti
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ticket", type="integer", nullable=false)
+     */
+    private $idTicket = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="punteggio", type="integer", nullable=false)
+     */
+    private $punteggio = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="saldato", type="boolean", nullable=false)
+     */
+    private $saldato = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataSaldato", type="datetime", nullable=true)
+     */
+    private $datasaldato;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="valorePunto", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $valorepunto = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_ticket", type="datetime", nullable=true)
+     */
+    private $dataTicket;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idViaggio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="provvigione", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $provvigione;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $codpromotore;
+
+
+}
+

@@ -1,0 +1,379 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/theme.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/formValidation/formValidation.min.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<div class="content">
+    <h2 class="content-main-title">{% trans %}CLIENT SEARCH{% endtrans %}</h2>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <form id="full-client-search" role="form" class="form-horizontal search-form" name="form1" method="get" action="{{ path('etgest_client_search') }}">
+                <div class="form-group form-group-md hasValidate message-error-container">
+                    <div class="col-md-10">
+                        <input type="hidden" name="hiddenValidate" />
+                    </div>
+                </div>
+                
+                <div class="form-group form-group-md">
+                    <label class="col-md-4 control-label">{% trans %}First Name{% endtrans %}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" name="name" type="text" id="name" value="{{ app.request.query.get("name") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md">
+                    <label class="col-md-4 control-label">{% trans %}Phone numbers{% endtrans %}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" name="phone" type="text" id="tel" value="{{ app.request.query.get("phone") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md">
+                    <label class="col-md-4 control-label">{% trans %}Last name{% endtrans %}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" name="lastname" type="text" id="lastname" value="{{ app.request.query.get("lastname") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md">
+                    <label class="col-md-4 control-label">{% trans %}Email{% endtrans %}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" name="email" type="text" id="email" value="{{ app.request.query.get("email") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md">
+                    <label class="col-md-4 control-label">{% trans %}Business name{% endtrans %}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" name="ragioneSociale" type="text" id="ragioneSociale" value="{{ app.request.query.get("ragioneSociale") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md">
+                    {% if promoters %}
+                        <label class="col-md-4 control-label">{% trans %}Promoter{% endtrans %}:</label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="ana_codPromotore" id="ana_codPromotore">
+                                <option value="">{% trans %}Select the promoter ... {% endtrans %}</option>
+                                {% for promoter in promoters %}
+                                    {% if( app.request.query.get("ana_codPromotore") == promoter.id ) %}
+                                        <option class="ciao" selected value="{{ promoter.id }}"> {{ promoter.contrattoCognome }} {{ promoter.contrattoNome }}</option>
+                                    {% else %}
+                                        <option class="ciao" value="{{ promoter.id }}"> {{ promoter.contrattoCognome }} {{ promoter.contrattoNome }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            <select>
+                        </div>
+                    {% endif %}
+
+                    {% if senderPromoters %}
+                        <label class="col-md-4 control-label">{% trans %}Proprietario{% endtrans %}:</label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="ana_codPromotoreProprietario" id="ana_codPromotoreProprietario">
+                                <option value="">{% trans %}Select the promoter ... {% endtrans %}</option>
+                                {% for key, promoter in senderPromoters %}
+                                    {% if( app.request.query.get("ana_codPromotoreProprietario") == key ) %}
+                                        <option class="ciao" selected value="{{ key }}"> {{ promoter.nominativo }}</option>
+                                    {% else %}
+                                        <option class="ciao" value="{{ key }}"> {{ promoter.nominativo }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            <select>
+                        </div>
+                    {% endif %}
+                </div>
+                
+
+                <div class="form-group form-group-md no-margin-bottom">
+                    <div class="col-md-6 col-md-offset-4">
+                        <input class="btn btn-primary" name="submitSearchClient" type="submit" id="submit1" value="{% trans %}Search{% endtrans %}">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form id="id-client-search" class="form-horizontal search-form" name="form2" method="get" action="{{ path('etgest_client_search') }}">
+                <div class="form-group form-group-md">
+                    <label class="col-md-3 control-label">{% trans %}Search by Id{% endtrans %}:</label>
+                    <div class="col-md-6 hasValidate">
+                        <input class="form-control" name="viaggi_id" type="text" id="viaggi_id" value="{{ app.request.query.get("viaggi_id") }}">
+                    </div>
+                </div>
+
+                <div class="form-group form-group-md no-margin-bottom">
+                    <div class="col-md-6 col-md-offset-3">
+                        <input class="btn btn-primary" name="submitSearchClient" type="submit" id="submit2" value="{% trans %}Search{% endtrans %}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if clients is defined and clients is not empty %}
+    <div class="risultato row">
+        <div class="content">
+            <div class="bootstrap_buttons reset-filter-btn">
+                Reset filter : <button type="button" class="reset btn btn-primary" data-column="0" data-filter=""><i class="icon-white icon-refresh glyphicon glyphicon-refresh"></i> Reset filters</button>        
+        </div>
+
+        <table> <!-- bootstrap classes added by the uitheme widget -->
+            <thead>
+                <tr align="left" class="titolo">
+                    <th>{% trans %}Nominativo{% endtrans %}</th>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <th>{% trans %}Assegnatario{% endtrans %}</th>
+                    <th>{% trans %}Proprietario{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>{% trans %}Nominativo{% endtrans %}</th>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <th>{% trans %}Assegnatario{% endtrans %}</th>
+                    <th>{% trans %}Proprietario{% endtrans %}</th>
+                </tr>
+                <tr>
+                    <th colspan="7" class="ts-pager form-horizontal">
+                        {% if pagination is defined %}
+                            {{ pagination|raw }}
+                        {% endif %}
+                    </th>
+                </tr>
+            </tfoot>
+            <tbody>
+            {% for client in clients %}
+                <tr class="hover-a nominativoTemporaneo">
+                    <td>
+                        <a href="cliente/{{ client.idAnagrafica }}" title="{% trans %}Apri scheda del cliente{% endtrans %}">
+                            {{ client.ragionesociale }} {{ client.cognome }} {{ client.nome }}
+                            {% if client.numViaggi and client.numViaggi > 0 %}
+                                {% if app.request.query.get("viaggi_id") %}
+                                    {% if (client.numViaggi - client.preventivi - client.cancellati)!=0 %}
+                                        {% set tipo = 'viaggio' %}
+                                    {% endif %} 
+
+                                    {% if client.preventivi %}
+                                        {% set tipo = 'preventivo' %}
+                                    {% endif %}
+
+                                    {% if client.cancellati %}
+                                        {% set tipo = 'viaggio cancellato' %}
+                                    {% endif %}
+                                 - <a href="cliente/{{ client.idAnagrafica }}/{{ app.request.query.get('viaggi_id') }}" title="{% trans %}Apri direttamente il{% endtrans %} {{tipo}} {% trans %}del cliente{% endtrans %}">{% trans %}Apri il{% endtrans %} {{tipo}}</a>
+
+                                {% else %}
+
+                                    {% if client.preventivi and client.preventivi > 0 %}
+                                        - <a href="cliente/{{ client.idAnagrafica }}#preventivi" title="{% trans %}Apri preventivi del cliente{% endtrans %}">{{client.preventivi}} {% trans %}preventivi{% endtrans %}</a>
+                                    {% endif %}
+
+                                    {% set t = (client.numViaggi - client.preventivi - client.cancellati) %}
+                                    {% if  t %}
+                                        - <a href="cliente/{{ client.idAnagrafica }}#viaggi" title="{% trans %}Apri viaggi del cliente{% endtrans %}">{{t}} {% trans %}viaggi{% endtrans %}</a>
+                                    {% endif %}
+
+                                    {% if client.cancellati and client.cancellati > 0 %}
+                                        - <a href="cliente/{{ client.idAnagrafica }}" title="{% trans %}Apri viaggi cancellati del cliente{% endtrans %}">{{client.cancellati}} {% trans %}viaggi cancellati{% endtrans %}</a>
+                                    {% endif %}
+
+                                {% endif %}
+
+                                {% if client.temporaneo %}
+                                    <span class="temporaneo">{% trans %}Preventivo non spedito{% endtrans %}</span>
+                                {% endif %}
+
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td>
+                        {% if client.email %}
+                        <a href="mailto{{ client.email }}">{{ client.email }}</a>
+                        {% elseif client.contatto is defined %}
+                        <a href="mailto{{ client.contatto }}">{{ client.contatto }}</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if client.assegnatario %}
+                            {{ client.assegnatario[1] }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if client.proprietario %}
+                            {{ client.proprietario[1] }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else  %}
+        {% if app.request.query.get("submitSearchClient") %}
+            <div style="margin-top:10px;" class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{% trans %}There are no clients in search result{% endtrans %}</div>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.js') }}"></script>
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.widgets.js') }}"></script>
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.js') }}"></script>
+    <script src="{{ asset('vendor/formValidation/formValidation.min.js') }}"></script>   
+    <script src="{{ asset('vendor/formValidation/bootstrap.min.js') }}"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+
+            // NOTE: $.tablesorter.theme.bootstrap is ALREADY INCLUDED in the jquery.tablesorter.widgets.js
+            // file; it is included here to show how you can modify the default classes
+            $.tablesorter.themes.bootstrap = {
+                // these classes are added to the table. To see other table classes available,
+                // look here: http://getbootstrap.com/css/#tables
+                table: 'table table-bordered table-striped',
+                caption: 'caption',
+                // header class names
+                header: 'bootstrap-header', // give the header a gradient background (theme.bootstrap_2.css)
+                sortNone: '',
+                sortAsc: '',
+                sortDesc: '',
+                active: '', // applied when column is sorted
+                hover: '', // custom css required - a defined bootstrap style may not override other classes
+                // icon class names
+                icons: '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+                iconSortNone: 'bootstrap-icon-unsorted', // class name added to icon when column is not sorted
+                iconSortAsc: 'glyphicon glyphicon-chevron-up', // class name added to icon when column has ascending sort
+                iconSortDesc: 'glyphicon glyphicon-chevron-down', // class name added to icon when column has descending sort
+                filterRow: '', // filter row class; use widgetOptions.filter_cssFilter for the input/select element
+                footerRow: '',
+                footerCells: '',
+                even: '', // even row zebra striping
+                odd: ''  // odd row zebra striping
+            };
+
+            // call the tablesorter plugin and apply the uitheme widget
+            $("table").tablesorter({
+                // this will apply the bootstrap theme if "uitheme" widget is included
+                // the widgetOptions.uitheme is no longer required to be set
+                theme: "bootstrap",
+                widthFixed: true,
+                headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!                
+                // widget code contained in the jquery.tablesorter.widgets.js file
+                // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                widgets: ["uitheme", "filter", "zebra"],
+                widgetOptions: {
+                    // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                    // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                    zebra: ["even", "odd"],
+                    // reset filters button
+                    filter_reset: ".reset",
+                    // extra css class name (string or array) added to the filter element (input or select)
+                    filter_cssFilter: "form-control",
+                    // set the uitheme widget to use the bootstrap theme class names
+                    // this is no longer required, if theme is set
+                    // ,uitheme : "bootstrap"
+
+                }
+            })
+        });
+
+        jQuery(document).ready(function(){
+            
+            $('#id-client-search').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    viaggi_id: {
+                        row: '.hasValidate',
+                        validators: {
+                            notEmpty: {
+                                message: 'id field is required'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            $('#full-client-search').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                    
+                    hiddenValidate: {
+                        row: '.hasValidate',
+                        excluded: false,    // Don't ignore me, please!
+                        validators: {
+                            notEmpty: {
+                                message: 'Please provide at least one criteria to search'
+                            }
+                        }
+                    }                    
+                }
+            })
+            .on('keyup', function(e) {
+                var firstname = $('#full-client-search').find('[name="name"]').val();
+                var phone = $('#full-client-search').find('[name="phone"]').val();
+                var lastname = $('#full-client-search').find('[name="lastname"]').val();               
+                var email = $('#full-client-search').find('[name="email"]').val();               
+                var ragioneSociale = $('#full-client-search').find('[name="ragioneSociale"]').val();     
+                var ana_codPromotore = $('#full-client-search').find('[name="ana_codPromotore"]').val();     
+                
+                $('#full-client-search')
+                    // Update the value for hidden field
+                    .find('[name="hiddenValidate"]')
+                    .val(firstname || phone || lastname || email || ragioneSociale || ana_codPromotore)
+                    .end()
+                    // Revalidate it
+                    .formValidation('revalidateField', 'hiddenValidate');
+                    
+            });
+            
+            $('#ana_codPromotore').on('change', function() {
+                var firstname = $('#full-client-search').find('[name="name"]').val();
+                var phone = $('#full-client-search').find('[name="phone"]').val();
+                var lastname = $('#full-client-search').find('[name="lastname"]').val();               
+                var email = $('#full-client-search').find('[name="email"]').val();               
+                var ragioneSociale = $('#full-client-search').find('[name="ragioneSociale"]').val();     
+                var ana_codPromotore = $('#full-client-search').find('[name="ana_codPromotore"]').val();     
+                
+                $('#full-client-search')
+                    // Update the value for hidden field
+                    .find('[name="hiddenValidate"]')
+                    .val(firstname || phone || lastname || email || ragioneSociale || ana_codPromotore)
+                    .end()
+                    // Revalidate it
+                    .formValidation('revalidateField', 'hiddenValidate');
+            });
+            
+            var currentUrl = window.location.href;
+            jQuery('#etn-pagination select#perpage').change(function(){
+                if(currentUrl.search('perpage') > 0) {
+                    currentUrl = currentUrl.replace(/perpage=[0-9]+/g, 'perpage=' + jQuery(this).val());
+                } else {
+                    currentUrl += '&perpage=' + jQuery(this).val();
+                }
+                window.location.href = currentUrl;
+            });
+        });
+    </script>
+{% endblock %}

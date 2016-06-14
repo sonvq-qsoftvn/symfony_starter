@@ -52,4 +52,3 @@ class Usertype
         return $this->usertypeId;
     }
 }
-

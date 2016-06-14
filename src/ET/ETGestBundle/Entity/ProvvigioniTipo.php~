@@ -1,0 +1,77 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProvvigioniTipo
+ *
+ * @ORM\Table(name="provvigioni_tipo", indexes={@ORM\Index(name="padre", columns={"padre"})})
+ * @ORM\Entity
+ */
+class ProvvigioniTipo
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="percentuale", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $percentuale = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ordine", type="boolean", nullable=false)
+     */
+    private $ordine = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="padre", type="string", length=20, nullable=false)
+     */
+    private $padre = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_variabile_id", type="string", length=20, nullable=false)
+     */
+    private $nomeVariabileId = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="callback", type="string", length=255, nullable=false)
+     */
+    private $callback = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etichetta", type="string", length=255, nullable=false)
+     */
+    private $etichetta = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=10)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $tipo;
+
+
+}
+

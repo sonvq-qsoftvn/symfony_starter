@@ -1,0 +1,103 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DocumentiContrattoviaggio
+ *
+ * @ORM\Table(name="documenti_contrattoviaggio")
+ * @ORM\Entity
+ */
+class DocumentiContrattoviaggio
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="acconto", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $acconto = '0.00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="accontoData", type="date", nullable=true)
+     */
+    private $accontodata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="saldo", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $saldo = '0.00';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="saldoData", type="date", nullable=true)
+     */
+    private $saldodata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="documenti_note", type="text", length=65535, nullable=true)
+     */
+    private $documentiNote;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="note", type="text", length=65535, nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenza_luogo", type="string", length=50, nullable=true)
+     */
+    private $partenzaLuogo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ritorno_luogo", type="string", length=50, nullable=true)
+     */
+    private $ritornoLuogo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominazione", type="string", length=255, nullable=true)
+     */
+    private $denominazione;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="saldato", type="boolean", nullable=false)
+     */
+    private $saldato = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regime", type="string", length=255, nullable=true)
+     */
+    private $regime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

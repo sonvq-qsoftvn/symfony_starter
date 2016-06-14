@@ -2,80 +2,116 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziPrenotazione
+ *
+ * @ORM\Table(name="servizi_prenotazione", indexes={@ORM\Index(name="portale_id_idx", columns={"portale_id"}), @ORM\Index(name="destinazione_idx", columns={"destinazione"}), @ORM\Index(name="codpromotorepromorif_idx", columns={"codpromotorepromorif"})})
+ * @ORM\Entity
  */
 class ServiziPrenotazione
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="portale_id", type="smallint", nullable=true)
      */
     private $portaleId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="idofferta", type="string", length=20, nullable=true)
      */
     private $idofferta;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nropzione", type="string", length=20, nullable=true)
      */
     private $nropzione;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datain", type="date", nullable=true)
      */
     private $datain;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataout", type="date", nullable=true)
      */
     private $dataout;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="destinazione", type="string", length=3, nullable=true)
      */
     private $destinazione;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="localita", type="string", length=255, nullable=true)
      */
     private $localita;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nomestruttura", type="string", length=255, nullable=true)
      */
     private $nomestruttura;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipostruttura", type="string", length=255, nullable=true)
      */
     private $tipostruttura;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sistemazioni", type="text", nullable=true)
      */
     private $sistemazioni;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="numprenotazione", type="string", length=20, nullable=true)
      */
     private $numprenotazione;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="notecontratto", type="string", length=255, nullable=true)
      */
     private $notecontratto;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotorepromorif", type="integer", nullable=true)
      */
     private $codpromotorepromorif = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -400,4 +436,3 @@ class ServiziPrenotazione
         return $this->id;
     }
 }
-

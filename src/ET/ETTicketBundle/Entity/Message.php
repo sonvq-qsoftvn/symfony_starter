@@ -168,4 +168,3 @@ class Message
         return $this->messageId;
     }
 }
-

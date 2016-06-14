@@ -1,0 +1,96 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * IncentiveVp
+ *
+ * @ORM\Table(name="incentive_vp", indexes={@ORM\Index(name="gruppo", columns={"gruppo"}), @ORM\Index(name="data", columns={"data"})})
+ * @ORM\Entity
+ */
+class IncentiveVp
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
+     */
+    private $codpromotore = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gruppo", type="integer", nullable=false)
+     */
+    private $gruppo = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tipo", type="integer", nullable=false)
+     */
+    private $tipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_personale", type="integer", nullable=false)
+     */
+    private $demeritoPersonale;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_gruppo", type="integer", nullable=false)
+     */
+    private $demeritoGruppo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="punti", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $punti = '0.00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fatturato", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $fatturato = '0.00';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="moduli", type="smallint", nullable=false)
+     */
+    private $moduli = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=6, nullable=false)
+     */
+    private $data = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="incentive_location", type="string", length=7, nullable=true)
+     */
+    private $incentiveLocation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

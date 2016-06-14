@@ -139,4 +139,3 @@ class RatingDetails
         return $this->ratingId;
     }
 }
-

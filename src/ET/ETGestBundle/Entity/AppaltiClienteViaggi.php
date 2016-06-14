@@ -2,20 +2,34 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * AppaltiClienteViaggi
+ *
+ * @ORM\Table(name="appalti_cliente_viaggi")
+ * @ORM\Entity
  */
 class AppaltiClienteViaggi
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_appalto", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idAppalto;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idViaggio;
+
 
 
     /**
@@ -66,4 +80,3 @@ class AppaltiClienteViaggi
         return $this->idViaggio;
     }
 }
-

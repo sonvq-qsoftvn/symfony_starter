@@ -1,0 +1,74 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PreventiviTemporanei
+ *
+ * @ORM\Table(name="preventivi_temporanei", indexes={@ORM\Index(name="codpromotore_idx", columns={"codpromotore"}), @ORM\Index(name="id_viaggio_idx", columns={"id_viaggio"})})
+ * @ORM\Entity
+ */
+class PreventiviTemporanei
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=false)
+     */
+    private $titolo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="corpo", type="text", nullable=false)
+     */
+    private $corpo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nota", type="text", nullable=true)
+     */
+    private $nota;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idAnagrafica;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idViaggio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codpromotore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $codpromotore;
+
+
+}
+

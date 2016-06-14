@@ -1,0 +1,818 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/override.css') }}"> 
+{% endblock %}
+
+{% block main_content %}
+	<div class="content">
+		<h2>{% trans %}GESTIONE INCASSI CLIENTI{% endtrans %}</h2>
+
+		<div id="main">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#tabs-remote-cognome" aria-controls="tabs-remote-cognome" role="tab" data-toggle="tab">{% trans %}Cognome nome (cliente) - ID viaggio#{% endtrans %}</a></li>
+				<li role="presentation"><a href="#tabs-remote-importo" aria-controls="tabs-remote-importo" role="tab" data-toggle="tab">{% trans %}Importo{% endtrans %}</a></li>
+				<li role="presentation"><a href="#tabs-remote-data" aria-controls="tabs-remote-data" role="tab" data-toggle="tab">{% trans %}Data{% endtrans %}</a></li>
+				<li role="presentation"><a id="tabs-remote-unimport-btn" href="#tabs-remote-unimport" aria-controls="tabs-remote-unimport" role="tab" data-toggle="tab">{% trans %}Non importati{% endtrans %}</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<h4>{% trans %}Ricerca viaggio-cliente{% endtrans %}</h4>
+
+				<div role="tabpanel" class="tab-pane active" id="tabs-remote-cognome">
+					<form role="form" class="form-horizontal" name="formA1" id="formA1">
+						<div class="form-group form-group-md">
+							<label class="col-md-2 text-left control-label">{% trans %}Cognome Nome cliente{% endtrans %} </label>
+							<div class="col-md-6 searchbox" style="position: relative;">
+								<input class="form-control" autocomplete="off" name="nominativo" type="text" id="nominativo" size="40"/>
+								<ul id="nominativo-dropdown" class="list-group ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" tabindex="0" style="display:none"></ul>
+							</div>
+							<div class="col-md-4">
+								<input type="submit" name="per_nominativo" id="per_nominativo" value="{% trans %}Cerca{% endtrans %}" disabled="disabled" class="btn btn-primary">
+							</div>
+						</div>
+					</form>
+
+					<form role="form" class="form-horizontal" name="formA2" id="formA2">
+						<div class="form-group form-group-md">
+							<label class="col-md-2 text-left control-label">{% trans %}ID viaggio{% endtrans %} # </label>
+							<div class="col-md-6 hasValidate">
+								<input class="form-control" type="text" name="idviaggio" id="idviaggio" size="40"/>
+							</div>
+							<div class="col-md-4">
+								<input type="submit" name="per_viaggio" id="per_viaggio" value="{% trans %}Cerca{% endtrans %}" class="btn btn-primary">
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="tabs-remote-importo">
+					<form role="form" class="form-horizontal" name="amount" id="amount">
+						<div class="form-group form-group-md">
+							<label class="col-md-2 text-left control-label">{% trans %}Importo{% endtrans %}</label>
+							<div class="col-md-6 searchbox" style="position: relative;">
+								<input class="form-control" type="text" name="acconto" id="acconto" size="40"/>
+								<ul id="amount-dropdown" class="list-group ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" tabindex="0" style="display:none"></ul>
+							</div>
+							<div class="col-md-4">
+								<input type="submit" name="per_acconto" id="per_acconto" value="{% trans %}Cerca{% endtrans %}" class="btn btn-primary" disabled="disabled">
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="tabs-remote-data">
+					<div class="row">
+						<div class="col-md-2">
+							<h5>{% trans %}Periodo{% endtrans %}</h5>
+						</div>
+						<div class="col-md-10">
+							<form class="form-inline" role="form" name="datesearch" id="datesearch">
+								<div class="form-group">
+									<label class="col-md-2 text-left control-label">{% trans %}Da{% endtrans %}</label>
+									<div class="col-md-6 hasValidate">
+										<input class="form-control datepicker" type="text" name="datefrom" id="datefrom" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-2 text-left control-label">{% trans %}A{% endtrans %}</label>
+									<div class="col-md-6 hasValidate">
+										<input class="form-control datepicker" type="text" name="dateto" id="dateto" />
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" name="per_data" id="per_data" value="{% trans %}Cerca{% endtrans %}" class="btn btn-primary">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="tabs-remote-unimport"></div>
+
+				<div class="listaViaggi" id="listaViaggi" style="margin-top:5px;"></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('vendor/formValidation/formValidation.min.js') }}"></script>
+	<script src="{{ asset('vendor/formValidation/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+	<script src="{{ asset('vendor/formValidation/formValidation.min.js') }}"></script>   
+    <script src="{{ asset('vendor/formValidation/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/etgest/functions.js') }}"></script>
+
+	<script type="text/javascript">
+	//validation
+	$('form#date').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            datefrom: {
+                row: '.hasValidate',
+                validators: {
+                    notEmpty: {
+                        message: 'da field is required'
+                    }
+                }
+            }
+        }
+    });
+
+	$('.datepicker').datepicker({ 
+		dateFormat: 'yy/mm/dd',
+		onSelect: function(selected) {
+			$('form#date').formValidation('revalidateField', $(this).attr('id'));
+		}
+	});
+
+	function delete_payment(vid, idpag, total) {
+		if(confirm('{% trans %}Confermi la cancellazione{% endtrans %}?')){
+			$.ajax({
+				url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+	    		type: "POST",
+				dataType: "json",
+				data: { vid: vid, idpag:idpag, total: total, action: 'delete' },
+				success: function( result ) {
+					if(result.success==true) {
+						$('tr#payment-'+idpag).remove();
+					}
+				}
+			});
+		}
+	}
+
+	function form_submit(url, data) {
+		var html = '<center><img src="{{ asset('images/spinner.gif') }}"></center>';
+		$("#listaViaggi").html(html);
+    	$.ajax({
+    		url: url,
+    		type: "POST",
+			dataType: "json",
+			data: data,
+			success: function( result ) {
+				if(result.success) {
+					html = '<table class="table">';
+
+					for(var i=0; i<result.travels.length; i++) {
+						html += '<tr>';
+						html += '<td colspan="5">{% trans %}Cliente{% endtrans %} <strong>' + result.travels[i].client.cognome + ' ' + result.travels[i].client.nome + '</strong></td>';
+						html += '</tr>';
+
+						html += '<tr>';
+
+						html += '<td>';
+						html += '<strong><a id="collapse-button" role="button" data-travel-id="' + result.travels[i].id_viaggio + '" data-toggle="collapse" href="#result" aria-expanded="false" aria-controls="result"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> {% trans %}Tipologia{% endtrans %}:</strong> ' + result.travels[i].tipologia;
+						if(result.travels[i].statusViaggioAves) {
+							html += ' - <span class="label label-danger">' + result.travels[i].statusViaggioAves + '</span>';
+						}
+						html += '</td>';
+
+						html += '<td>';
+						html += '<strong>{% trans %}Destinazione{% endtrans %}:</strong> ' + result.travels[i].descrizione;
+						html += '</td>';
+
+						html += '<td>';
+						html += '<strong>{% trans %}Data Inizio{% endtrans %}:</strong> ' + result.travels[i].dataInizioViaggio;
+						html += '</td>';
+
+						html += '<td>';
+						html += '<strong>{% trans %}Data Fine{% endtrans %}:</strong> ' + result.travels[i].dataFineViaggio;
+						html += '</td>';
+
+						html += '<td>';
+						html += '<a href="{{ app.request.getBaseURL() }}/{{ cliente_url }}' + result.travels[i].id_anagrafica + '/' + result.travels[i].id_viaggio + '" target="_blank"><i># ' + result.travels[i].id_viaggio + '</i></a>';
+						html += '</td>';
+
+						html += '</tr>';
+					}
+
+					html += '</table>';
+
+					html += '<div id="result" class="collapse"></div>';
+
+					$("#listaViaggi").html(html);
+
+					$('a#collapse-button').click(function() {
+						if($(this).find('i.fa').hasClass('fa-plus-square-o')) {
+							$(this).find('i.fa').removeClass('fa-plus-square-o');
+							$(this).find('i.fa').addClass('fa-minus-square-o');
+
+							if( $('#result').html() == '' ) {
+								html = '<center><img src="{{ asset('images/spinner.gif') }}"></center>';
+								$("div#result").html(html);
+
+								var vid = $(this).attr('data-travel-id');
+								$.ajax({
+									url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+						    		type: "POST",
+									dataType: "json",
+									data: { vid: vid },
+									success: function( result ) {
+										if(result.success==true) {
+											html = '';
+											$("div#result").html(html);
+
+											html += '<div class="row">';
+
+											html += '<div class="col-md-6">';
+											html += '<div class="panel panel-default">';
+											html += '<div class="panel-body">';
+											html += '<h3 class="clearfix"><span>{% trans %}Pagamenti{% endtrans %}</span> <span class="pull-right">{% trans %}Totale{% endtrans %} ' + result.travel.totale + '</span></h3>';
+
+											html += '<div id="dettagli-content">';
+
+											var travelTotal = result.travel.totale;
+											$.ajax({
+												url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+									    		type: "POST",
+												dataType: "json",
+												data: { vid: vid, total: travelTotal },
+												success: function( result ) {
+													if(result.success==true && result.payments) {
+														html  = '';
+
+														html += '<table id="dettagli" class="table">';
+														html += '<thead>';
+														html += '<tr>';
+														html += '<td></td>';
+														html += '<td>{% trans %}Data{% endtrans %}</td>';
+														html += '<td>{% trans %}Tipo pag.{% endtrans %}</td>';
+														html += '<td>{% trans %}Desc.{% endtrans %}</td>';
+														html += '<td>{% trans %}Rimborso.{% endtrans %}</td>';
+														html += '<td>{% trans %}Importi{% endtrans %}</td>';
+														html += '</tr>';
+														html += '</thead>';
+														html += '<tbody>';
+
+														var total = 0;
+														html += '<tbody>';
+														for(var i=0; i<result.payments.length; i++) {
+															total += result.payments[i].importo;
+
+															html += '<tr id="payment-' + result.payments[i].idpag + '">';
+															html += '<td><a id="del-' + result.payments[i].idpag + '" href="#" onclick="delete_payment('+vid+', '+result.payments[i].idpag+', '+result.travel.totale+'); return false;"><img src="{{ asset('images/b_drop.png') }}"></a></td>';
+															html += '<td>' + result.payments[i].dataeffettiva + '</td>';
+															html += '<td>' + result.pagMethods[result.payments[i].metodopag] + '</td>';
+															html += '<td>' + result.payments[i].descrizione + '</td>';
+															if(result.payments[i].rimborso)
+																html += '<td>' + 'R' + '</td>';
+															else
+																html += '<td>' + 'P' + '</td>';
+															html += '<td>' + result.payments[i].importo + '</td>';
+															html += '<tr>';
+														}
+														html += '</tbody>';
+
+														var remaining = parseFloat(result.total) - parseFloat(total);
+														remaining = remaining.toFixed(2);
+
+														html += '<tfoot>';
+														html += '<tr>';
+														html += '<td colspan="3" align="left"><h3><button class="btn btn-default" type="button" data-toggle="modal" data-target="#add-payment-form">{% trans %}Nuovo pagamento{% endtrans %}</button></h3></td>';
+														html += '<td colspan="3" align="right"><h3>{% trans %}Rimanente{% endtrans %} ' + remaining + '</h3></td>';
+														html += '</tr>';
+														html += '</tfoot>';
+
+														html += '</table>';
+
+														html += '<div class="modal fade" id="add-payment-form" tabindex="-1" role="dialog" aria-labelledby="add-payment-form">';
+														html += '<div class="modal-dialog" role="document">';
+														html += '<div class="modal-content">';
+
+														html += '<div class="modal-header">';
+														html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+														html += '<h4 class="modal-title" id="add-payment-form">{% trans %}Nuovo pagamento{% endtrans %}</h4>';
+														html += '</div>';
+
+														html += '<form class="form-horizontal" id="add-payment-form">';
+														html += '<div class="modal-body">';
+
+														html += '<div class="form-group hasValidate">';
+														html += '<label class="col-sm-2 control-label">{% trans %}Data{% endtrans %}</label>';
+														html += '<div class="col-sm-10"><input type="text" class="datepicker form-control" name="dataEffettiva" id="dataEffettiva"></div>';
+														html += '</div>';
+
+														html += '<div class="form-group">';
+														html += '<label class="col-sm-2 control-label">{% trans %}Metodo pagamento{% endtrans %}</label>';
+														html += '<div class="col-sm-10">';
+														html += '<select id="metodoPag" name="metodoPag" class="form-control">';
+														html += '<option value="">{% trans %}Selezionare il promotore{% endtrans %}... </option>';
+														var keys = arrayKeysSort(result.pagMethods).sort();
+														for(var i in keys) {
+															html += '<option value="'+keys[i]+'">'+result.pagMethods[keys[i]]+'</option>';
+														}
+														html += '</select>';
+														html += '</div>';
+														html += '</div>';
+
+														html += '<div class="form-group hasValidate">';
+														html += '<label class="col-sm-2 control-label">{% trans %}Descrizione{% endtrans %}</label>';
+														html += '<div class="col-sm-10"><textarea class="form-control" name="descrizione" id="descrizione"></textarea></div>';
+														html += '</div>';
+
+														html += '<div class="form-group">';
+														html += '<label class="col-sm-2">{% trans %}Rimborso{% endtrans %}</label>';
+														html += '<div class="col-sm-10"><input type="checkbox" name="rimborso" id="tipo-rimborso"></div>';
+														html += '</div>';
+														
+														html += '<div class="form-group hasValidate">';
+														html += '<label class="col-sm-2">{% trans %}Importo{% endtrans %}</label>';
+														html += '<div class="col-sm-10"><input type="text" class="form-control" name="importo" id="importo2" value="' + remaining + '"></div>';
+														html += '</div>';
+
+														html += '</div>';
+
+														html += '<div class="modal-footer">';
+														html += '<button type="submit" class="btn btn-primary">{% trans %}Salva{% endtrans %}</button>';
+														html += '<button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}Annulla{% endtrans %}</button>';
+														html += '</div>';
+														html += '</form>';
+
+														html += '</div>';
+														html += '</div>';
+														html += '</div>';
+
+													} else  {
+														html += '<p>{% trans %}Nessun pagamento{% endtrans %}</p>';
+													}
+
+													$("div#dettagli-content").html(html);
+
+													$('.datepicker').datepicker({ 
+														dateFormat: 'dd/mm/yy',
+														onSelect: function(selected) {
+															$('#add-payment-form').formValidation('revalidateField', 'dataEffettiva');
+														}
+													});
+													$('.datepicker').datepicker("setDate", new Date());
+
+													$('select#metodoPag').change(function(){
+														var descrizione = '';
+														switch( $("select#metodoPag").val() ){
+															case "A":
+																// Abbuoni
+																descrizione += "Abbuono Attivo ";
+																break;
+															case "A2":
+																// Abbuoni
+																descrizione += "Abbuono Passivo ";
+																break;
+															case "C":
+																// Pagamento cassa
+																descrizione += "Inc. contanti ";
+																break;
+															case "B":
+																// Pagamento banca 1
+																descrizione += "Inc. BB ";
+																break;
+															case "D":
+																// Pagamento banca 2
+																descrizione += "Inc. BB ";
+																break;
+															case "T":
+																// pagamento banca 3
+																descrizione += "Inc. vaglia ";
+																break;
+															case "R":
+																// pagamento carta di credito
+																descrizione += "Inc. CC ";
+																break;
+														} // switch
+
+														descrizione += '"'+result.clientName+'" pren. nr. "'+vid+'"';
+														$("textarea#descrizione").val(descrizione);
+
+														$('#add-payment-form').formValidation('revalidateField', 'descrizione');
+													});
+
+													var descrizione = '';
+													switch( $("select#metodoPag").val() ){
+														case "A":
+															// Abbuoni
+															descrizione += "Abbuono Attivo ";
+															break;
+														case "A2":
+															// Abbuoni
+															descrizione += "Abbuono Passivo ";
+															break;
+														case "C":
+															// Pagamento cassa
+															descrizione += "Inc. contanti ";
+															break;
+														case "B":
+															// Pagamento banca 1
+															descrizione += "Inc. BB ";
+															break;
+														case "D":
+															// Pagamento banca 2
+															descrizione += "Inc. BB ";
+															break;
+														case "T":
+															// pagamento banca 3
+															descrizione += "Inc. vaglia ";
+															break;
+														case "R":
+															// pagamento carta di credito
+															descrizione += "Inc. CC ";
+															break;
+													} // switch
+
+													descrizione += '"'+result.clientName+'" pren. nr. "'+vid+'"';
+													$("textarea#descrizione").val(descrizione);
+
+													//validation
+													$('#add-payment-form').formValidation({
+												        framework: 'bootstrap',
+												        icon: {
+												            valid: 'glyphicon glyphicon-ok',
+												            invalid: 'glyphicon glyphicon-remove',
+												            validating: 'glyphicon glyphicon-refresh'
+												        },
+												        fields: {
+												            dataEffettiva: {
+												                row: '.hasValidate',
+												                validators: {
+												                    notEmpty: {
+												                        message: 'data field is required'
+												                    }
+												                }
+												            },
+												            descrizione: {
+												                row: '.hasValidate',
+												                validators: {
+												                    notEmpty: {
+												                        message: 'descrizione field is required'
+												                    }
+												                }
+												            },
+												            importo: {
+												                row: '.hasValidate',
+												                validators: {
+												                    notEmpty: {
+												                        message: 'importo field is required'
+												                    }
+												                }
+												            }
+												        }
+												    });
+
+													$('form#add-payment-form').submit(function(e){
+														e.preventDefault();
+														$.ajax({
+															url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+												    		type: "POST",
+															dataType: "json",
+															data: { vid: vid, action: 'insert', dataEffettiva: $(this).find('#dataEffettiva').val(), metodoPag: $(this).find('#metodoPag').val(), descrizione: $(this).find('#descrizione').val(), importo: $(this).find('#importo2').val(), rimborso: ($(this).find('#tipo-rimborso').is(':checked')), total: travelTotal },
+															success: function( result ) {
+																if(result.success==true) {
+																	html = '<div class="alert alert-success alert-dismissible" role="alert">';
+																	html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+																	html += '<strong>{% trans %}Successo{% endtrans %}!</strong> {% trans %}L\'amministrazione ha appena registrato un nuovo pagamento per il viaggio{% endtrans %} ' + result.travelId;
+																	html += '</div>'
+																	$('div#add-payment-form').find('.modal-header').append(html);
+																}
+															}
+														});
+													});
+												}
+											});
+
+											html += '</div>';
+
+											html += '</div>';
+											html += '</div>';
+											html += '</div>';
+
+											if(result.travel.report) {
+												html += '<div class="col-md-6">';
+												html += '<div class="panel panel-default">';
+												html += '<div class="panel-body">';
+												html += '<h3 class="clearfix"><span class="pull-right">{% trans %}Importo Totale viaggio{% endtrans %}: <i class="fa fa-eur" aria-hidden="true"></i>' + result.travel.totale.toFixed(2) + '</span></h3>';
+
+												html += '<table class="table">';
+
+												html += '<thead>';
+												html += '<tr>';
+												html += '<td>{% trans %}Tipo Doc.{% endtrans %}</td>';
+												html += '<td>{% trans %}Pagam.{% endtrans %}</td>';
+												html += '<td>{% trans %}Totale{% endtrans %}</td>';
+												html += '<td>{% trans %}CodiceAves{% endtrans %}</td>';
+												html += '<td>{% trans %}DataInvio{% endtrans %}</td>';
+												html += '</tr>';
+												html += '</thead>';
+												html += '<tbody>';
+												html += '<tr>';
+												html += '<td>';
+												for(var i in result.travel.report.TipoDoc) {
+													html += (!result.travel.report.TipoDoc[i])?'-':result.travel.report.TipoDoc[i];
+												}
+												html += '</td>';
+												html += '<td>';
+												for(var i in result.travel.report.Pagam) {
+													if(result.travel.report.Pagam[i] == 'saldato') {
+														html += '<strong>{% trans %}saldato{% endtrans %}</strong>';
+													} else {
+
+													}
+												}
+												html += '</td>';
+												html += '<td>';
+												html += (!result.travel.totale)?'-':result.travel.totale;
+												html += '</td>';
+												html += '<td>';
+												for(var i in result.travel.report.codiceaves) {
+													html += (!result.travel.report.codiceaves[i])?'-':result.travel.report.codiceaves[i];
+												}
+												html += '</td>';
+												html += '<td>';
+												for(var i in result.travel.report.datainvio) {
+													html += (!result.travel.report.datainvio[i])?'-':result.travel.report.datainvio[i];
+												}
+												html += '</td>';
+												html += '</tr>';
+												html += '</tbody>';
+
+												html += '</table>';
+												html += '</div>';
+												html += '</div>';
+												html += '</div>';
+											}
+
+											html += '<div class="col-md-12">';
+											html += '<ul class="list-group">';
+											for(var i = 0; i < result.documentsList.length; i++) {
+												html += '<li class="list-group-item">';
+
+												html += '<div class="row">';
+												html += '<div class="col-md-6">';
+												html += '<div class="row">';
+												html += '<div class="col-md-4">';
+												var dataArr = result.documentsList[i].data.split('-');
+												html += '<strong>{% trans %}Data{% endtrans %}</strong>: ' + dataArr[0];
+												html += '</div>';
+												html += '<div class="col-md-4">';
+												html += '<strong>{% trans %}Utente{% endtrans %}</strong>: ' + result.documentsList[i].utenteNome;
+												html += '</div>';
+												if( result.documentsList[i].promotoremodifica ) {
+													html += '<div class="col-md-4">';
+													html += '<strong>{% trans %}Modificato da{% endtrans %}</strong>: ' + result.documentsList[i].promotoremodifica;
+													html += '</div>';
+												}
+												html += '</div>'; //end row
+												html += '<p style="margin-top: 20px"><strong>{% trans %}Oggetto{% endtrans %}: ' + result.documentsList[i].titolo + '</strong></p>';
+												html += '<p><strong>{% trans %}Dettaglio{% endtrans %}:</strong> ' + result.documentsList[i].nota + '</p>';
+												html += '</div>';
+												html += '<div class="col-md-6">';
+
+												if(result.documentsList[i].allegati) {
+													html += '<div class="dropdown" style="display: inline-block; float: right;">';
+													html += '<a href="#" id="attachments" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-module-id="' +  result.documentsList[i].idModulo + '" data-document-type="' + result.documentsList[i].tipodocumento + '">';
+													html += '<img align="right" src="{{ asset('images/attach.gif') }}">';
+													html += '</a>';
+													html += '<ul class="dropdown-menu" aria-labelledby="attachments" style="right:0; left:auto;">';
+													for(var j=0; j<result.documentsList[i].allegati.length; j++) {
+														html += '<li><a href="{{ asset('attachments') }}/' + result.documentsList[i].allegati[j].percorso + '/' + result.documentsList[i].allegati[j].nomefile + '">' + result.documentsList[i].allegati[j].nomefile + '</a></li>';
+													}
+													html += '</ul>';
+													html += '</div>';
+												}
+
+												html += '</div>';
+												html += '</div>';
+
+												html += '</li>';
+											}
+											html += '</ul>';
+											html += '</div>';
+												
+											html += '</div>';
+
+											$("div#result").html(html);
+										}
+									}
+								});
+							}
+						} else {
+							$(this).find('i.fa').removeClass('fa-minus-square-o');
+							$(this).find('i.fa').addClass('fa-plus-square-o');
+						}
+					});
+				} else {
+					html = '{% trans %}nessun risultato{% endtrans %}';
+					$("#listaViaggi").html(html);
+				}
+			}
+    	});
+	}
+
+	$(function() {
+		//validation
+		$( "form#formA2" ).formValidation({
+			framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                idviaggio: {
+                    row: '.hasValidate',
+                    validators: {
+                        notEmpty: {
+                            message: 'id field is required'
+                        }
+                    }
+                }
+            }
+		});
+
+		$( "input#nominativo" ).autocomplete({
+			search: function(event, ui) { 
+		       var html = '<img style="position: absolute; right:20px; top:5px;" src="{{ asset('images/indicator.gif') }}">';
+		       $(this).parents('form#formA1').find('div.searchbox').append(html);
+		   },
+	      source: function( request, response ) {
+	        $.ajax({
+	          url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+	          type: "POST",
+	          dataType: "json",
+	          data: { client_lastname: $("input#nominativo").val() },
+	          success: function( result ) {
+	          	if(result.success) {
+	          		$('div.searchbox').find('img').remove();
+
+	          		var name = [];
+	          		var string = '';
+	          		for(var i=0; i<result.clients.length; i++) {
+	          			string = '';
+	          			string += result.clients[i].cognome + ' ' + result.clients[i].nome + ' (' + result.clients[i].promoter + ')|' + result.clients[i].idAnagrafica;
+
+	          			if(i<(result.clients.length-1)) {
+	          				string += ', ';
+	          			}
+
+	          			name[result.clients[i].idAnagrafica] = string;
+	          		}
+
+	          		var html = '';
+
+	          		for(var index in name) {
+	          			html += '<li class="list-group-item ui-menu-item" tabindex="-1" data-idanagrafica="'+index+'">'+name[index]+'</li>';
+	          		}
+
+	          		$('ul#nominativo-dropdown').show().html(html);
+
+	          		$('ul#nominativo-dropdown li.list-group-item').hover(function(){
+	          			jQuery(this).addClass('ui-state-focus');
+	          		}, function(){
+	          			jQuery(this).removeClass('ui-state-focus');
+	          		});
+
+	          		$('ul#nominativo-dropdown li.list-group-item').click(function(e){
+	          			e.preventDefault();
+	          			$("input#nominativo").val( $(this).attr('data-idanagrafica') ).attr('disabled','disabled');
+	          			$('ul#nominativo-dropdown').hide().html('');
+	          			$('form#formA1').find('input#per_nominativo').removeAttr('disabled')
+	          		});
+	          	} else {
+	          		var html = '<li class="list-group-item ui-menu-item" tabindex="-1" data-idanagrafica="'+index+'">{% trans %}Nessun cliente trovato{% endtrans %}</li>';
+
+	          		$('ul#nominativo-dropdown').show().html(html);
+
+	          		$('ul#nominativo-dropdown li.list-group-item').hover(function(){
+	          			jQuery(this).addClass('ui-state-focus');
+	          		}, function(){
+	          			jQuery(this).removeClass('ui-state-focus');
+	          		});
+
+	          		$('ul#nominativo-dropdown li.list-group-item').click(function(e){
+	          			e.preventDefault();
+	          			$('ul#nominativo-dropdown').hide().html('');
+	          		});
+	          	}
+	          }
+	        });
+	      },
+	    });
+
+	    $("input#acconto").autocomplete({
+			search: function(event, ui) { 
+				var html = '<img style="position: absolute; right:20px; top:5px;" src="{{ asset('images/indicator.gif') }}">';
+				$(this).parents('form#amount').find('div.searchbox').append(html);
+			},
+			source: function( request, response ) {
+				$.ajax({
+					url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+					type: "POST",
+					dataType: "json",
+					data: { amount: $("input#acconto").val() },
+					success: function( result ) {
+						if(result.success) {
+	          				$('div.searchbox').find('img').remove();
+	          				html = '';
+
+	          				for(var i=0; i<result.clients.length; i++) {
+	          					html += '<li class="list-group-item ui-menu-item" tabindex="-1" data-text-search="' + result.clients[i].idViaggio + '-' + result.clients[i].cognome + ' ' + result.clients[i].nome + ' (' + result.clients[i].promoter + ')' + '">' + result.clients[i].cognome + ' ' + result.clients[i].nome + ' (' + result.clients[i].promoter + ')|' + result.clients[i].idViaggio + '</li>';
+	          				}
+
+	          				$('ul#amount-dropdown').show().html(html);
+
+			          		$('ul#amount-dropdown li.list-group-item').hover(function(){
+			          			jQuery(this).addClass('ui-state-focus');
+			          		}, function(){
+			          			jQuery(this).removeClass('ui-state-focus');
+			          		});
+
+			          		$('ul#amount-dropdown li.list-group-item').click(function(e){
+			          			e.preventDefault();
+			          			$("input#acconto").val( $(this).attr('data-text-search') ).attr('disabled','disabled');
+			          			$('ul#amount-dropdown').hide().html('');
+			          			$('form#amount').find('input#per_acconto').removeAttr('disabled')
+			          		});
+	          			} else {
+	          				var html = '<li class="list-group-item ui-menu-item" tabindex="-1">{% trans %}Nessun cliente trovato{% endtrans %}</li>';
+
+			          		$('ul#nominativo-dropdown').show().html(html);
+
+			          		$('ul#amount-dropdown li.list-group-item').hover(function(){
+			          			jQuery(this).addClass('ui-state-focus');
+			          		}, function(){
+			          			jQuery(this).removeClass('ui-state-focus');
+			          		});
+
+			          		$('ul#amount-dropdown li.list-group-item').click(function(e){
+			          			e.preventDefault();
+			          			$('ul#amount-dropdown').hide().html('');
+			          		});
+	          			}
+					}
+				});
+			}
+	    });
+
+	    $( "a#tabs-remote-unimport-btn" ).click(function(e){
+	    	if( $("#listaViaggi").find("div#unimport-tabs").length < 1 ) {
+	    		$.ajax({
+	    			url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+					type: "POST",
+					dataType: "json",
+					data: { unimport: "unimport" },
+					success: function( result ) {
+						if( result.success ) {
+							$("#listaViaggi").html(result.html);
+						}
+					}
+	    		});
+	    	}
+	    });
+
+	    $( "form#formA1" ).submit(function(e){
+	    	e.preventDefault();
+	    	form_submit("{{ url('etgest_manage_customer_receipts_ajax') }}", { nominativo: $("input#nominativo").val() });
+	    	$(this).find('#nominativo').removeAttr('disabled');
+	    	$(this).find('#per_nominativo').attr('disabled', 'disabled');
+	    });
+
+	    $( "form#formA2" ).submit(function(e){
+	    	e.preventDefault();
+	    	if($("input#idviaggio").val() !== '') {
+	    		form_submit("{{ url('etgest_manage_customer_receipts_ajax') }}", { idviaggio: $("input#idviaggio").val() });
+	    	}
+	    });
+
+	    $( "form#amount" ).submit(function(e){
+	    	e.preventDefault();
+	    	form_submit("{{ url('etgest_manage_customer_receipts_ajax') }}", { acconto: $("input#acconto").val() });
+	    	$(this).find('#acconto').removeAttr('disabled');
+	    	$(this).find('#per_acconto').attr('disabled', 'disabled');
+	    });
+
+	    $( "form#datesearch" ).submit(function(e){
+	    	e.preventDefault();
+	    	if($("input#datefrom").val()!=='' || $("input#dateto").val()!=='') {
+	    		$.ajax({
+		    		url: "{{ url('etgest_manage_customer_receipts_ajax') }}",
+					type: "POST",
+					dataType: "json",
+					data: { datefrom: $("input#datefrom").val(), dateto: $("input#dateto").val() },
+					success: function( result ) {
+						if(result.success) {
+							$("#listaViaggi").html(result.html);
+						}
+					}
+		    	});
+	    	}
+	    });
+    });
+	</script>
+{% endblock %}

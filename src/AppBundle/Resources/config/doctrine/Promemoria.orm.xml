@@ -95,5 +95,8 @@
       </options>
     </field>
     <field name="datamodifica" type="datetime" column="dataModifica" nullable="true"/>
+    <many-to-one field="viaggi" target-entity="Viaggi">
+        <join-column name="id_viaggio" referenced-column-name="id_viaggio" />
+    </many-to-one>
   </entity>
 </doctrine-mapping>

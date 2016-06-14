@@ -1,0 +1,124 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PreventiviAttesa
+ *
+ * @ORM\Table(name="preventivi_attesa", indexes={@ORM\Index(name="codpromotore_idx", columns={"codpromotore"}), @ORM\Index(name="codpromotorecreazione_idx", columns={"codpromotorecreazione"}), @ORM\Index(name="codpromotoremodifica_idx", columns={"codpromotoremodifica"}), @ORM\Index(name="id_viaggio_idx", columns={"id_viaggio"})})
+ * @ORM\Entity
+ */
+class PreventiviAttesa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="bigint", nullable=true)
+     */
+    private $idViaggio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codpromotore", type="integer", nullable=true)
+     */
+    private $codpromotore;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codpromotorecreazione", type="integer", nullable=true)
+     */
+    private $codpromotorecreazione;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codpromotoremodifica", type="integer", nullable=true)
+     */
+    private $codpromotoremodifica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinatari", type="text", nullable=true)
+     */
+    private $destinatari;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinataricopia", type="text", nullable=true)
+     */
+    private $destinataricopia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinatarinascosti", type="text", nullable=true)
+     */
+    private $destinatarinascosti;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prpRichiesta", type="string", length=255, nullable=false)
+     */
+    private $prprichiesta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=false)
+     */
+    private $titolo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="corpo", type="text", nullable=false)
+     */
+    private $corpo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datainvio", type="datetime", nullable=true)
+     */
+    private $datainvio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datapreventivo", type="datetime", nullable=true)
+     */
+    private $datapreventivo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
+     */
+    private $data;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datamodifica", type="datetime", nullable=false)
+     */
+    private $datamodifica;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

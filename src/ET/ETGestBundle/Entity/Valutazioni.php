@@ -2,20 +2,32 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Valutazioni
+ *
+ * @ORM\Table(name="valutazioni")
+ * @ORM\Entity
  */
 class Valutazioni
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=30, nullable=false)
      */
     private $descrizione = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="valutazione", type="boolean")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $valutazione;
+
 
 
     /**
@@ -52,4 +64,3 @@ class Valutazioni
         return $this->valutazione;
     }
 }
-

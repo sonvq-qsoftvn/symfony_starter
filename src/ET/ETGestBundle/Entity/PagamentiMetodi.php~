@@ -1,0 +1,47 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PagamentiMetodi
+ *
+ * @ORM\Table(name="pagamenti_metodi")
+ * @ORM\Entity
+ */
+class PagamentiMetodi
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=true)
+     */
+    private $titolo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=255, nullable=true)
+     */
+    private $descrizione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agenzia", type="string", length=10, nullable=true)
+     */
+    private $agenzia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codice", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codice;
+
+
+}
+

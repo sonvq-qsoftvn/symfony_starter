@@ -1,0 +1,74 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SalvataggioTemporanei
+ *
+ * @ORM\Table(name="salvataggio_temporanei")
+ * @ORM\Entity
+ */
+class SalvataggioTemporanei
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tipoModulo", type="boolean", nullable=false)
+     */
+    private $tipomodulo = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=false)
+     */
+    private $url = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenuto", type="text", length=65535, nullable=false)
+     */
+    private $contenuto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_cliente", type="string", length=18)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idCliente;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_promotore", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idPromotore;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idViaggio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idModulo;
+
+
+}
+

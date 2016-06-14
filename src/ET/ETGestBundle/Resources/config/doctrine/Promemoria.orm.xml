@@ -45,8 +45,9 @@
         <option name="default">0</option>
       </options>
     </field>
-    <field name="tipodocumento" type="boolean" column="tipoDocumento" nullable="false">
+    <field name="tipodocumento" type="integer" column="tipoDocumento" nullable="false">
       <options>
+        <option name="unsigned">1</option>
         <option name="default">0</option>
       </options>
     </field>
@@ -68,13 +69,15 @@
         <option name="default"/>
       </options>
     </field>
-    <field name="status" type="boolean" column="status" nullable="false">
+    <field name="status" type="integer" column="status" nullable="false">
       <options>
+        <option name="unsigned">1</option>
         <option name="default">0</option>
       </options>
     </field>
-    <field name="tipopromemoria" type="boolean" column="tipoPromemoria" nullable="false">
+    <field name="tipopromemoria" type="integer" column="tipoPromemoria" nullable="false">
       <options>
+        <option name="unsigned">1</option>
         <option name="default">0</option>
       </options>
     </field>

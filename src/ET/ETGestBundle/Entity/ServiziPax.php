@@ -2,45 +2,67 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziPax
+ *
+ * @ORM\Table(name="servizi_pax", indexes={@ORM\Index(name="id_anagrafica_idx", columns={"id_anagrafica"})})
+ * @ORM\Entity
  */
 class ServiziPax
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=50, nullable=true)
      */
     private $nome;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cognome", type="string", length=50, nullable=true)
      */
     private $cognome;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datanascita", type="date", nullable=true)
      */
     private $datanascita;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
      */
     private $idAnagrafica;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="tipo_passeggero_field", type="integer", nullable=true)
      */
     private $tipoPasseggeroField;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sesso_passeggero", type="string", length=1, nullable=true)
      */
     private $sessoPasseggero = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -197,4 +219,3 @@ class ServiziPax
         return $this->id;
     }
 }
-

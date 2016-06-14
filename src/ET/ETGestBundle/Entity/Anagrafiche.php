@@ -2,180 +2,256 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Anagrafiche
+ *
+ * @ORM\Table(name="anagrafiche", indexes={@ORM\Index(name="email", columns={"email"}), @ORM\Index(name="codPromotore", columns={"codPromotore"}), @ORM\Index(name="email2", columns={"email2"}), @ORM\Index(name="telCasa", columns={"telCasa"}), @ORM\Index(name="cell", columns={"cell"}), @ORM\Index(name="cognome", columns={"cognome"}), @ORM\Index(name="tellUff", columns={"tellUff"}), @ORM\Index(name="fax", columns={"fax"})})
+ * @ORM\Entity
  */
 class Anagrafiche
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataCreazione", type="datetime", nullable=false)
      */
     private $datacreazione = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataNascita", type="date", nullable=true)
      */
     private $datanascita = '0000-00-00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cognome", type="string", length=50, nullable=false)
      */
     private $cognome = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=30, nullable=false)
      */
     private $nome = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sesso", type="string", nullable=false)
      */
     private $sesso = 'M';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codFisc", type="string", length=16, nullable=false)
      */
     private $codfisc = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="telCasa", type="string", length=20, nullable=false)
      */
     private $telcasa = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cell", type="string", length=20, nullable=false)
      */
     private $cell = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tellUff", type="string", length=20, nullable=false)
      */
     private $telluff = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="fax", type="string", length=20, nullable=false)
      */
     private $fax = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
      */
     private $email = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email2", type="string", length=100, nullable=false)
      */
     private $email2 = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="indirizzo", type="string", length=100, nullable=false)
      */
     private $indirizzo = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="numCivico", type="string", length=10, nullable=false)
      */
     private $numcivico = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cap", type="string", length=5, nullable=false)
      */
     private $cap = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="comune", type="string", length=100, nullable=false)
      */
     private $comune = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="provincia", type="string", length=50, nullable=false)
      */
     private $provincia = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nazione", type="string", length=3, nullable=false)
      */
     private $nazione = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotorePrec", type="integer", nullable=false)
      */
     private $codpromotoreprec = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="note_cliente", type="text", length=65535, nullable=false)
      */
     private $noteCliente;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="temporaneo", type="boolean", nullable=false)
      */
     private $temporaneo = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipoAnagrafica", type="string", length=1, nullable=false)
      */
     private $tipoanagrafica = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ragioneSociale", type="string", length=100, nullable=false)
      */
     private $ragionesociale = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="partitaIva", type="string", length=13, nullable=false)
      */
     private $partitaiva = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="luogoNascita", type="string", length=100, nullable=false)
      */
     private $luogonascita = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="indirizzoAzienda", type="string", length=100, nullable=false)
      */
     private $indirizzoazienda = '';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreProprietario", type="integer", nullable=false)
      */
     private $codpromotoreproprietario = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="provvigioneAppaltoCliente", type="boolean", nullable=false)
      */
     private $provvigioneappaltocliente = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=true)
      */
     private $datamodifica;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="lingua", type="string", length=5, nullable=false)
      */
     private $lingua = 'it_IT';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="updated", type="boolean", nullable=false)
      */
     private $updated = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="codiceCliente", type="string", length=12, nullable=false)
      */
     private $codicecliente = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idAnagrafica;
+
 
 
     /**
@@ -980,4 +1056,3 @@ class Anagrafiche
         return $this->idAnagrafica;
     }
 }
-

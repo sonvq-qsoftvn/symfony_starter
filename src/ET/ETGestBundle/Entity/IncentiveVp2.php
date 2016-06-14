@@ -182,4 +182,3 @@ class IncentiveVp2
         return $this->codpromotore;
     }
 }
-

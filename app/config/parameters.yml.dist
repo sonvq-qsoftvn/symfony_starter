@@ -6,23 +6,28 @@ parameters:
     
     database_host_agenti: localhost
     database_name_agenti: vacanzev_agenti
-    database_user_agenti: aol-it
-    database_password_agenti: '8KOZ@o@XFfdf'
+    database_user_agenti: root
+    database_password_agenti: 'root'
     
     database_host_romano: localhost
     database_name_romano: vacanzev_romano1_eu
-    database_user_romano: aol-iteu
-    database_password_romano: '[6FC"Nnv.vI!'
+    database_user_romano: root
+    database_password_romano: 'root'
     
     database_host_idetus: localhost
     database_name_idetus: vacanzev_idetus_eu
-    database_user_idetus: idetuseu
-    database_password_idetus: '0Y{#3!XSlvGw'
+    database_user_idetus: root
+    database_password_idetus: 'root'
     
     database_host_etticket: localhost
     database_name_etticket: vacanzev_etticket
-    database_user_etticket: etticketeu
-    database_password_etticket: 'o0*JkI[AI.WT'
+    database_user_etticket: root
+    database_password_etticket: 'root'
+
+    database_host_listanozze: localhost
+    database_name_listanozze: listanozze_new
+    database_user_listanozze: root
+    database_password_etticket: root
 
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"

@@ -2,35 +2,55 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ModuliNotificheLettura
+ *
+ * @ORM\Table(name="moduli_notifiche_lettura", indexes={@ORM\Index(name="stato", columns={"stato"})})
+ * @ORM\Entity
  */
 class ModuliNotificheLettura
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataLettura", type="datetime", nullable=false)
      */
     private $datalettura = '0000-00-00 00:00:00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="stato", type="boolean", nullable=false)
      */
     private $stato = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idModulo;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="boolean")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $tipodocumento;
+
 
 
     /**
@@ -153,4 +173,3 @@ class ModuliNotificheLettura
         return $this->tipodocumento;
     }
 }
-

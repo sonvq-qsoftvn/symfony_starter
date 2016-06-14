@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="ET\ETGestBundle\Entity\Documenti" table="documenti">
+  <entity name="ET\ETGestBundle\Entity\Documenti" table="documenti" repository-class="ET\ETGestBundle\Repository\DocumentiRepository">
     <indexes>
       <index name="myindex_idx" columns="id,id_viaggio"/>
       <index name="documenti_tipo_idx" columns="tipo"/>

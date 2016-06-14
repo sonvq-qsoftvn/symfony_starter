@@ -2,20 +2,32 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ServiziAdeguamento
+ *
+ * @ORM\Table(name="servizi_adeguamento")
+ * @ORM\Entity
  */
 class ServiziAdeguamento
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipologia", type="string", length=255, nullable=true)
      */
     private $tipologia;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -52,4 +64,3 @@ class ServiziAdeguamento
         return $this->id;
     }
 }
-

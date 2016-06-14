@@ -1067,4 +1067,3 @@ class BkRequest
         return $this->requestId;
     }
 }
-

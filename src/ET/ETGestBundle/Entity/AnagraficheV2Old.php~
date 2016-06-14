@@ -1,0 +1,201 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AnagraficheV2Old
+ *
+ * @ORM\Table(name="anagrafiche_v2_old", indexes={@ORM\Index(name="codpromotore_idx", columns={"codPromotore"}), @ORM\Index(name="codpromotoreprec_idx", columns={"codPromotorePrec"}), @ORM\Index(name="codpromotoreproprietario_idx", columns={"codPromotoreProprietario"}), @ORM\Index(name="nazione_idx", columns={"nazione"})})
+ * @ORM\Entity
+ */
+class AnagraficheV2Old
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataNascita", type="date", nullable=true)
+     */
+    private $datanascita;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cognome", type="string", length=50, nullable=false)
+     */
+    private $cognome = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=30, nullable=false)
+     */
+    private $nome = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sesso", type="string", length=1, nullable=true)
+     */
+    private $sesso = 'M';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codFisc", type="string", length=16, nullable=false)
+     */
+    private $codfisc = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indirizzo", type="string", length=100, nullable=false)
+     */
+    private $indirizzo = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numCivico", type="string", length=10, nullable=false)
+     */
+    private $numcivico = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cap", type="string", length=5, nullable=false)
+     */
+    private $cap = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comune", type="string", length=100, nullable=false)
+     */
+    private $comune = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="provincia", type="string", length=50, nullable=false)
+     */
+    private $provincia = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nazione", type="string", length=3, nullable=false)
+     */
+    private $nazione = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
+     */
+    private $codpromotore = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotorePrec", type="integer", nullable=false)
+     */
+    private $codpromotoreprec = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="note_cliente", type="text", length=65535, nullable=false)
+     */
+    private $noteCliente;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="temporaneo", type="boolean", nullable=true)
+     */
+    private $temporaneo = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoAnagrafica", type="string", length=1, nullable=true)
+     */
+    private $tipoanagrafica = 'P';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ragioneSociale", type="string", length=100, nullable=false)
+     */
+    private $ragionesociale = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partitaIva", type="string", length=13, nullable=false)
+     */
+    private $partitaiva = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="luogoNascita", type="string", length=100, nullable=false)
+     */
+    private $luogonascita = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indirizzoAzienda", type="string", length=100, nullable=false)
+     */
+    private $indirizzoazienda = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codPromotoreProprietario", type="integer", nullable=false)
+     */
+    private $codpromotoreproprietario = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="provvigioneAppaltoCliente", type="integer", nullable=true)
+     */
+    private $provvigioneappaltocliente = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lingua", type="string", length=5, nullable=false)
+     */
+    private $lingua = 'it_IT';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCreazione", type="datetime", nullable=false)
+     */
+    private $datacreazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
+     */
+    private $datamodifica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAnagrafica;
+
+
+}
+

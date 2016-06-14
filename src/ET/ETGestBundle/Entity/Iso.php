@@ -2,50 +2,74 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Iso
+ *
+ * @ORM\Table(name="iso", uniqueConstraints={@ORM\UniqueConstraint(name="codice", columns={"codice"})})
+ * @ORM\Entity
  */
 class Iso
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="codice", type="string", length=4, nullable=false)
      */
     private $codice = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="stato", type="string", length=100, nullable=false)
      */
     private $stato = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="opzioni", type="text", length=65535, nullable=false)
      */
     private $opzioni;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="comunitaria", type="boolean", nullable=false)
      */
     private $comunitaria = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipologiaNazione", type="boolean", nullable=false)
      */
     private $tipologianazione = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="prefissoInternazionale", type="string", length=15, nullable=true)
      */
     private $prefissointernazionale;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="currency", type="string", length=4, nullable=true)
      */
     private $currency;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -226,4 +250,3 @@ class Iso
         return $this->id;
     }
 }
-

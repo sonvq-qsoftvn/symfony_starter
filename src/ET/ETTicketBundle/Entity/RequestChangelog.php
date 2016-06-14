@@ -43,7 +43,7 @@ class RequestChangelog
     private $newValue;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $assignmentReason = '0';
 
@@ -255,4 +255,3 @@ class RequestChangelog
         return $this->id;
     }
 }
-

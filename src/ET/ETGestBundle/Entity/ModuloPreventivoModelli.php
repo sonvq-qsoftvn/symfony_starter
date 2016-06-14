@@ -2,65 +2,95 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ModuloPreventivoModelli
+ *
+ * @ORM\Table(name="modulo_preventivo_modelli", indexes={@ORM\Index(name="id_promotore", columns={"id_promotore"}), @ORM\Index(name="descrizione", columns={"descrizione"})})
+ * @ORM\Entity
  */
 class ModuloPreventivoModelli
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_promotore", type="integer", nullable=false)
      */
     private $idPromotore = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="string", length=50, nullable=false)
      */
     private $descrizione = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="intestazione", type="text", length=65535, nullable=false)
      */
     private $intestazione;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="link", type="text", length=65535, nullable=false)
      */
     private $link;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="comprende", type="text", length=65535, nullable=false)
      */
     private $comprende;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="non_comprende", type="text", length=65535, nullable=false)
      */
     private $nonComprende;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="operativo_voli", type="text", length=65535, nullable=false)
      */
     private $operativoVoli;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="conclusioni", type="text", length=65535, nullable=false)
      */
     private $conclusioni;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="predefinito", type="boolean", nullable=false)
      */
     private $predefinito = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="pubblico", type="boolean", nullable=false)
      */
     private $pubblico = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -313,4 +343,3 @@ class ModuloPreventivoModelli
         return $this->id;
     }
 }
-

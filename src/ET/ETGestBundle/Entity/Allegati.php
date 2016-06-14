@@ -2,40 +2,60 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Allegati
+ *
+ * @ORM\Table(name="allegati", indexes={@ORM\Index(name="id_modulo", columns={"id_modulo", "tipoDocumento"})})
+ * @ORM\Entity
  */
 class Allegati
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data = '0000-00-00 00:00:00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="percorso", type="string", length=100, nullable=false)
      */
     private $percorso = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nomeFile", type="string", length=100, nullable=false)
      */
     private $nomefile = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="integer", nullable=false)
      */
     private $tipodocumento = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer", nullable=false)
      */
     private $idModulo = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idAllegato", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idallegato;
+
 
 
     /**
@@ -168,4 +188,3 @@ class Allegati
         return $this->idallegato;
     }
 }
-

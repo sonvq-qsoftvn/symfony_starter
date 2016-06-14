@@ -5,30 +5,78 @@ parameters:
     database_host_agenti: localhost
     database_name_agenti: vacanzev_agenti
     database_user_agenti: root
-    database_password_agenti: ''
+    database_password_agenti: 
     
     database_host_romano: localhost
     database_name_romano: vacanzev_romano1_eu
     database_user_romano: root
-    database_password_romano: ''
+    database_password_romano: 
     
     database_host_idetus: localhost
     database_name_idetus: vacanzev_idetus_eu
     database_user_idetus: root
-    database_password_idetus: ''
+    database_password_idetus: 
     
     database_host_etticket: localhost
     database_name_etticket: vacanzev_etticket
     database_user_etticket: root
-    database_password_etticket: ''
+    database_password_etticket: 
     
     database_host_listanozze: localhost
     database_name_listanozze: listanozze_new
     database_user_listanozze: root
-    database_password_listanozze: ''
+    database_password_listanozze: 
     
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: 1931596e546917c71ac5a1f06f1aae8db5281818
+
+    status_viaggio_aves:
+        da_completare       : 0
+        completo            : 1
+        in_elaborazione     : 2
+        importato           : 3
+        errore              : 4
+        da_non_importare    : 5
+        preventivo          : 6
+        cancellato          : 7
+
+    etichette_viaggio:
+        da_completare       : prenotazione
+        completo            : prenotazione
+        in_elaborazione     : prenotazione
+        importato           : prenotazione
+        errore              : prenotazione
+        da_non_importare    : prenotazione
+        preventivo          : preventivo
+        cancellato          : viaggio cancellato
+
+    status_modulo_estratto_conto_base:
+        id                  : 0
+        etichetta           : ''
+        gruppo              : ''
+        cambio_stato        : true
+        visualizzato        : true
+
+    status_modulo_estratto_conto:
+        non_in_carico       : 
+            base            : '%status_modulo_estratto_conto_base%'
+            id              : 1
+            etichetta       : Da prendere in carico
+            gruppo          : non_in_carico
+
+        in_carico           :
+            base            : '%status_modulo_estratto_conto_base%'
+            id              : 2
+            etichetta       : In carico
+            gruppo          : in_carico
+            visualizzato    : false
+
+    url.cliente             : etgest/cliente/
+    path_allegati           : /allegati/
+        
+imports:
+    - { resource: "@ETGestBundle/Resources/config/documents_list.yml" }
+    - { resource: "@ETGestBundle/Resources/config/status_modulo.yml" }

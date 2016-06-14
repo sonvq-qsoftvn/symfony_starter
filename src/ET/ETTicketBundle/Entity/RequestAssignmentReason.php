@@ -81,4 +81,3 @@ class RequestAssignmentReason
         return $this->assignmentReason;
     }
 }
-

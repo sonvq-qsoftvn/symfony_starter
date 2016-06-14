@@ -1,0 +1,187 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiziPacchetto
+ *
+ * @ORM\Table(name="servizi_pacchetto", indexes={@ORM\Index(name="portale_id_idx", columns={"portale_id"}), @ORM\Index(name="destinazione_idx", columns={"destinazione"}), @ORM\Index(name="codpromotorepromorif_idx", columns={"codpromotorepromorif"})})
+ * @ORM\Entity
+ */
+class ServiziPacchetto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="portale_id", type="smallint", nullable=true)
+     */
+    private $portaleId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="idofferta", type="string", length=20, nullable=true)
+     */
+    private $idofferta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nropzione", type="string", length=20, nullable=true)
+     */
+    private $nropzione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datain", type="date", nullable=true)
+     */
+    private $datain;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataout", type="date", nullable=true)
+     */
+    private $dataout;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinazione", type="string", length=3, nullable=true)
+     */
+    private $destinazione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="localita", type="string", length=255, nullable=true)
+     */
+    private $localita;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomestruttura", type="string", length=255, nullable=true)
+     */
+    private $nomestruttura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipostruttura", type="string", length=255, nullable=true)
+     */
+    private $tipostruttura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sistemazioni", type="text", nullable=true)
+     */
+    private $sistemazioni;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numprenotazione", type="string", length=20, nullable=true)
+     */
+    private $numprenotazione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notecontratto", type="string", length=255, nullable=true)
+     */
+    private $notecontratto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aeroportopartenza", type="string", length=255, nullable=true)
+     */
+    private $aeroportopartenza;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aeroportopartenzaarrivo", type="string", length=255, nullable=false)
+     */
+    private $aeroportopartenzaarrivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aeroportoarrivo", type="string", length=255, nullable=true)
+     */
+    private $aeroportoarrivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aeroportoarrivoarrivo", type="string", length=255, nullable=false)
+     */
+    private $aeroportoarrivoarrivo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codpromotorepromorif", type="integer", nullable=true)
+     */
+    private $codpromotorepromorif = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="accettazioneAssicurazione", type="string", length=255, nullable=true)
+     */
+    private $accettazioneassicurazione;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="startDepartureLocation", type="string", length=255, nullable=true)
+     */
+    private $startdeparturelocation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="startArrivalLocation", type="string", length=255, nullable=true)
+     */
+    private $startarrivallocation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="returnDepartureLocation", type="string", length=255, nullable=true)
+     */
+    private $returndeparturelocation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="returnArrivalLocation", type="string", length=255, nullable=true)
+     */
+    private $returnarrivallocation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="transportType", type="boolean", nullable=false)
+     */
+    private $transporttype = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

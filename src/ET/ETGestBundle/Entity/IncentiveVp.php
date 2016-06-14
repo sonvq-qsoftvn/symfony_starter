@@ -2,65 +2,95 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * IncentiveVp
+ *
+ * @ORM\Table(name="incentive_vp", indexes={@ORM\Index(name="gruppo", columns={"gruppo"}), @ORM\Index(name="data", columns={"data"})})
+ * @ORM\Entity
  */
 class IncentiveVp
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="gruppo", type="integer", nullable=false)
      */
     private $gruppo = '0';
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="tipo", type="integer", nullable=false)
      */
     private $tipo;
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_personale", type="integer", nullable=false)
      */
     private $demeritoPersonale;
 
     /**
-     * @var boolean
+     * @var integer
+     *
+     * @ORM\Column(name="demerito_gruppo", type="integer", nullable=false)
      */
     private $demeritoGruppo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="punti", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $punti = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="fatturato", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $fatturato = '0.00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="moduli", type="smallint", nullable=false)
      */
     private $moduli = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=6, nullable=false)
      */
     private $data = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="incentive_location", type="string", length=7, nullable=true)
      */
     private $incentiveLocation;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -114,7 +144,7 @@ class IncentiveVp
     /**
      * Set tipo
      *
-     * @param boolean $tipo
+     * @param integer $tipo
      *
      * @return IncentiveVp
      */
@@ -128,7 +158,7 @@ class IncentiveVp
     /**
      * Get tipo
      *
-     * @return boolean
+     * @return integer
      */
     public function getTipo()
     {
@@ -138,7 +168,7 @@ class IncentiveVp
     /**
      * Set demeritoPersonale
      *
-     * @param boolean $demeritoPersonale
+     * @param integer $demeritoPersonale
      *
      * @return IncentiveVp
      */
@@ -152,7 +182,7 @@ class IncentiveVp
     /**
      * Get demeritoPersonale
      *
-     * @return boolean
+     * @return integer
      */
     public function getDemeritoPersonale()
     {
@@ -162,7 +192,7 @@ class IncentiveVp
     /**
      * Set demeritoGruppo
      *
-     * @param boolean $demeritoGruppo
+     * @param integer $demeritoGruppo
      *
      * @return IncentiveVp
      */
@@ -176,7 +206,7 @@ class IncentiveVp
     /**
      * Get demeritoGruppo
      *
-     * @return boolean
+     * @return integer
      */
     public function getDemeritoGruppo()
     {
@@ -313,4 +343,3 @@ class IncentiveVp
         return $this->id;
     }
 }
-

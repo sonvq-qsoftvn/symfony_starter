@@ -168,4 +168,3 @@ class Tmpcronelab
         return $this->id;
     }
 }
-

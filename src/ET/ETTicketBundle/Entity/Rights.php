@@ -52,4 +52,3 @@ class Rights
         return $this->rightId;
     }
 }
-

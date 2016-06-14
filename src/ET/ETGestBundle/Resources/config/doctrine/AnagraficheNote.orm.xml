@@ -49,7 +49,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="tipodocumento" type="boolean" column="tipoDocumento" nullable="false">
+    <field name="tipodocumento" type="integer" column="tipoDocumento" nullable="false">
       <options>
         <option name="default">0</option>
       </options>

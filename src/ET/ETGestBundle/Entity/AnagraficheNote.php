@@ -2,65 +2,95 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * AnagraficheNote
+ *
+ * @ORM\Table(name="anagrafiche_note", indexes={@ORM\Index(name="id_viaggio", columns={"id_anagrafica"}), @ORM\Index(name="tipoDocumento", columns={"tipoDocumento"}), @ORM\Index(name="data", columns={"data"})})
+ * @ORM\Entity
  */
 class AnagraficheNote
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="integer", nullable=false)
      */
     private $idViaggio = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="id_anagrafica", type="string", length=18, nullable=false)
      */
     private $idAnagrafica = '';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=true)
      */
     private $data = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotore", type="integer", nullable=false)
      */
     private $codpromotore = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreCreazione", type="integer", nullable=false)
      */
     private $codpromotorecreazione = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=200, nullable=false)
      */
     private $titolo = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nota", type="text", length=65535, nullable=false)
      */
     private $nota;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="tipoDocumento", type="integer", nullable=false)
      */
     private $tipodocumento = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dataModifica", type="datetime", nullable=false)
      */
     private $datamodifica = '0000-00-00 00:00:00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codPromotoreModifica", type="integer", nullable=false)
      */
     private $codpromotoremodifica = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idModulo;
+
 
 
     /**
@@ -313,4 +343,3 @@ class AnagraficheNote
         return $this->idModulo;
     }
 }
-

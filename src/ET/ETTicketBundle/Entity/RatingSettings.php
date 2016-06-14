@@ -284,4 +284,3 @@ class RatingSettings
         return $this->portaleFcd;
     }
 }
-

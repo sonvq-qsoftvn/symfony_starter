@@ -2,130 +2,186 @@
 
 namespace ET\ETGestBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Documenti
+ *
+ * @ORM\Table(name="documenti", indexes={@ORM\Index(name="myindex_idx", columns={"id", "id_viaggio"}), @ORM\Index(name="documenti_tipo_idx", columns={"tipo"}), @ORM\Index(name="codpromotore_idx", columns={"codpromotore"}), @ORM\Index(name="codpromotorecreazione_idx", columns={"codpromotorecreazione"}), @ORM\Index(name="codpromotoremodifica_idx", columns={"codpromotoremodifica"}), @ORM\Index(name="id_viaggio_idx", columns={"id_viaggio"}), @ORM\Index(name="tipoInvio_idx", columns={"tipoInvio", "data"})})
+ * @ORM\Entity
  */
 class Documenti
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_viaggio", type="bigint", nullable=true)
      */
     private $idViaggio;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotore", type="integer", nullable=true)
      */
     private $codpromotore;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotorecreazione", type="integer", nullable=true)
      */
     private $codpromotorecreazione;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codpromotoremodifica", type="integer", nullable=true)
      */
     private $codpromotoremodifica;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
      */
     private $tipo = 'generico';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", length=255, nullable=true)
      */
     private $titolo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descrizione", type="text", length=65535, nullable=true)
      */
     private $descrizione;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datainvio", type="datetime", nullable=true)
      */
     private $datainvio;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_stato", type="bigint", nullable=true)
      */
     private $bookingStato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreStato", type="bigint", nullable=true)
      */
     private $bookingCodpromotorestato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="booking_codPromotoreLavorazione", type="bigint", nullable=true)
      */
     private $bookingCodpromotorelavorazione;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="booking_letto", type="boolean", nullable=true)
      */
     private $bookingLetto;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_stato", type="bigint", nullable=true)
      */
     private $ecStato = '1';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_codPromotoreStato", type="bigint", nullable=true)
      */
     private $ecCodpromotorestato;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ec_codPromotoreLavorazione", type="bigint", nullable=true)
      */
     private $ecCodpromotorelavorazione;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="ec_letto", type="boolean", nullable=true)
      */
     private $ecLetto;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="prenotazioni_letturaData", type="datetime", nullable=true)
      */
     private $prenotazioniLetturadata;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="prenotazioni_letturaCodPromotore", type="bigint", nullable=true)
      */
     private $prenotazioniLetturacodpromotore;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="prenotazioni_letturaStato", type="boolean", nullable=true)
      */
     private $prenotazioniLetturastato = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="datamodifica", type="datetime", nullable=false)
      */
     private $datamodifica;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tipoInvio", type="string", length=50, nullable=true)
      */
     private $tipoinvio;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="link_supplier", type="string", length=255, nullable=true)
      */
     private $linkSupplier;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -690,4 +746,3 @@ class Documenti
         return $this->id;
     }
 }
-

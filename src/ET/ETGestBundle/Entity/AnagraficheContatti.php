@@ -284,4 +284,3 @@ class AnagraficheContatti
         return $this->id;
     }
 }
-

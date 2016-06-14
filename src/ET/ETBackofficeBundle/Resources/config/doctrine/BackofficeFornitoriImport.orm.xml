@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\BackofficeFornitoriImport" table="backoffice_fornitori_import">
+    <id name="codRecord" type="integer" column="Cod record">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cortesia" type="string" column="Cortesia" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="ricerca" type="string" column="Ricerca" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nominativo" type="string" column="Nominativo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="estensione" type="string" column="Estensione" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="indirizzo" type="string" column="Indirizzo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="cap" type="string" column="Cap" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="citta" type="string" column="Citta" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prov" type="string" column="Prov" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codStatoEstero" type="string" column="Cod stato estero" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desStatoEstero" type="string" column="Des stato estero" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nazBlacklist" type="string" column="Naz Blacklist" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codZona" type="string" column="Cod zona" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desZona" type="string" column="Des zona" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codCategoria" type="string" column="Cod categoria" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desCategoria" type="string" column="Des categoria" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codAttivita" type="string" column="Cod attivita" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="desAttivita" type="string" column="Des attivita" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="gruppo" type="string" column="Gruppo" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desGruppo" type="string" column="Des gruppo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="prefisso" type="string" column="Prefisso" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="telefono1" type="string" column="Telefono 1" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="telefono2" type="string" column="Telefono 2" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="fax" type="string" column="Fax" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="telex" type="string" column="Telex" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="dataUltimoContatto" type="date" column="Data ultimo contatto" nullable="true"/>
+    <field name="partitaIva" type="string" column="Partita iva" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codFiscale" type="string" column="Cod fiscale" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="sesso" type="string" column="Sesso" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="luogoNascita" type="string" column="Luogo nascita" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provNascita" type="string" column="Prov nascita" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="dataNascita" type="date" column="Data nascita" nullable="true"/>
+    <field name="spedizione" type="string" column="Spedizione" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="esclusioneStampaReg" type="string" column="Esclusione stampa reg" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="esclusionePosta" type="string" column="Esclusione posta" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="accettazionePrivacy" type="string" column="Accettazione privacy" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="urlInternet" type="string" column="Url internet" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="eMailInternet" type="string" column="E-Mail internet" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codCatScontiCl" type="string" column="Cod cat sconti cl" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desCatScontiCl" type="string" column="Des cat sconti cl" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codCatScontiOp" type="string" column="Cod cat sconti op" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desCatScontiOp" type="string" column="Des cat sconti op" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codAnagPagOp" type="string" column="Cod anag pag OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desAnagPagOp" type="string" column="Des anag pag OP" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTipoVet" type="text" column="Cod tipo vet" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="desTipoVettore" type="text" column="Des tipo vettore" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cmp" type="text" column="Cmp" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cmpNum" type="text" column="Cmp num" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="assocBsp" type="text" column="Assoc BSP" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroCard" type="text" column="Numero Card" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="inviaCat" type="text" column="Invia Cat" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataTess" type="date" column="Data tess" nullable="true"/>
+    <field name="numTessera" type="text" column="Num Tessera" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="scadTessera" type="string" column="Scad Tessera" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTrib1" type="string" column="Cod trib 1" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTrib2" type="string" column="Cod trib 2" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTrib3" type="string" column="Cod trib 3" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTrib4" type="string" column="Cod trib 4" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codTrib5" type="string" column="Cod trib 5" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codPagPratCl" type="string" column="Cod pag prat CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desPagPratCl" type="string" column="Des pag prat CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codPagPratOp" type="string" column="Cod pag prat OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desPagPratOp" type="string" column="Des pag prat OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codPagFattCl" type="string" column="Cod pag fatt CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desPagFattCl" type="string" column="Des pag fatt CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codPagFattOp" type="string" column="Cod pag fatt OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desPagFattOp" type="string" column="Des pag fatt OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="bancaAppoggio" type="string" column="Banca appoggio" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="filialeBn" type="string" column="Filiale BN" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="localitaBn" type="string" column="Localita BN" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provBn" type="string" column="Prov BN" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="capBn" type="string" column="CAP BN" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="iban" type="string" column="IBAN" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="bban" type="string" column="BBAN" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="swift" type="string" column="SWIFT" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="valutaImporti" type="string" column="Valuta importi" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="fidoCl" type="string" column="Fido CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="insolutiCl" type="string" column="Insoluti CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipoDoc" type="string" column="Tipo doc" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="numDoc" type="string" column="Num doc" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="dataEmisDoc" type="date" column="Data emis doc" nullable="true"/>
+    <field name="luogoEmisDoc" type="string" column="Luogo emis doc" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="provvEmisDoc" type="string" column="Provv emis doc" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="scadDoc" type="string" column="Scad doc" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="lingua" type="string" column="Lingua" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipologiaCCCl" type="string" column="Tipologia c_c Cl" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroCCCl" type="string" column="Numero c_c Cl" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataScadenzaCCCl" type="date" column="Data scadenza c_c Cl" nullable="true"/>
+    <field name="tipoUtilizzoCCCl" type="string" column="Tipo utilizzo c_c Cl" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="desLinguaPerStampe" type="string" column="Des Lingua per stampe" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="Password" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="listinoPrz" type="string" column="Listino prz" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="listinoCst" type="string" column="Listino cst" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="listinoProvvPass" type="string" column="Listino provv pass" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="listinoProvvAtt" type="string" column="Listino provv att" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codFatCl" type="string" column="Cod fat CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desFatCl" type="string" column="Des fat CL" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codCollettoreCl" type="string" column="Cod Collettore CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desCollettoreCl" type="string" column="Des Collettore CL" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codPromotoreCl" type="string" column="Cod promotore CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desPromotoreCl" type="string" column="Des promotore CL" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codVoucherOp" type="string" column="Cod voucher OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desVoucherOp" type="string" column="Des voucher OP" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codOperatore" type="string" column="Cod operatore" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desOperatore" type="string" column="Des operatore" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codFatOp" type="string" column="Cod fat OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desFattOp" type="string" column="Des fatt OP" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="valOperaz" type="string" column="Val operaz" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipoRiscossione" type="string" column="Tipo riscossione" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desTipoRisc" type="string" column="Des tipo risc" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="mezzoRisc" type="string" column="Mezzo risc" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipoPagamento" type="string" column="Tipo pagamento" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desTipoPag" type="string" column="Des tipo pag" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="mezzoPag" type="string" column="Mezzo pag" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="bancaAltroOpeFin" type="string" column="Banca_altro ope fin" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rifPConti" type="string" column="Rif p_conti" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fileGenerRiscossioni" type="string" column="File gener_riscossioni" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codOperAltern" type="string" column="Cod oper altern" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="seFuoriTempo" type="string" column="Se fuori tempo" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codFiliale" type="string" column="Cod filiale" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="desFiliale" type="string" column="Des filiale" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="sequenzaCl" type="string" column="Sequenza CL" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="sequenzaOp" type="string" column="Sequenza OP" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="logo" type="string" column="Logo" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="flagBlacklist" type="string" column="Flag Blacklist" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="pcontiCM" type="string" column="PCONTI_C_M" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="pcontiCC" type="string" column="PCONTI_C_C" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="pcontiFM" type="string" column="PCONTI_F_M" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="pcontiFC" type="string" column="PCONTI_F_C" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="accettaCCAirplusOp" type="string" column="Accetta c_c airPlus Op" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="accettaCCAmericanExpressOp" type="string" column="Accetta c_c American express Op" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="accettaCCDinersClubOp" type="string" column="Accetta c_c Diners club Op" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dataCreazione" type="date" column="Data creazione" nullable="true"/>
+    <field name="dataUltimaModifica" type="date" column="Data ultima modifica" nullable="true"/>
+  </entity>
+</doctrine-mapping>

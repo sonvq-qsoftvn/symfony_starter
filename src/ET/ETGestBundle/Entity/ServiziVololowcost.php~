@@ -1,0 +1,110 @@
+<?php
+
+namespace ET\ETGestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiziVololowcost
+ *
+ * @ORM\Table(name="servizi_vololowcost")
+ * @ORM\Entity
+ */
+class ServiziVololowcost
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numPrenotazione", type="string", length=100, nullable=true)
+     */
+    private $numprenotazione;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataIN", type="date", nullable=true)
+     */
+    private $datain;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenza", type="string", length=3, nullable=true)
+     */
+    private $partenza;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenzaAereoporto", type="string", length=50, nullable=true)
+     */
+    private $partenzaaereoporto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenzaAereoportoArrivo", type="string", length=50, nullable=false)
+     */
+    private $partenzaaereoportoarrivo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataOUT", type="date", nullable=true)
+     */
+    private $dataout;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arrivo", type="string", length=3, nullable=true)
+     */
+    private $arrivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arrivoAereoporto", type="string", length=50, nullable=true)
+     */
+    private $arrivoaereoporto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arrivoAereoportoArrivo", type="string", length=50, nullable=false)
+     */
+    private $arrivoaereoportoarrivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nominativoCartaCC", type="string", length=100, nullable=true)
+     */
+    private $nominativocartacc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indirizzoBigliettoCartaceo", type="text", length=65535, nullable=true)
+     */
+    private $indirizzobigliettocartaceo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="note", type="text", length=65535, nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

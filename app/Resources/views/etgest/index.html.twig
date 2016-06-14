@@ -1,0 +1,199 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/theme.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.css') }}">
+{% endblock %}
+        
+{% block main_content %}
+    <div class="content">
+        <h2 class="content-main-title">{% trans %}CLIENT LIST{% endtrans %}</h2>
+        <br/>
+        <div class="bootstrap_buttons reset-filter-btn">
+            {% trans %}Reset filter{% endtrans %} : <button type="button" class="reset btn btn-primary" data-column="0" data-filter=""><i class="icon-white icon-refresh glyphicon glyphicon-refresh"></i> Reset filters</button>		
+	</div>
+        <table> <!-- bootstrap classes added by the uitheme widget -->
+            <thead>
+                <tr>
+                    <th>{% trans %}Business Name{% endtrans %}</th>
+                    <th>{% trans %}Lastname{% endtrans %}</th>
+                    <th>{% trans %}Firstname{% endtrans %}</th>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <th data-sorter="false">{% trans %}Assignee{% endtrans %}</th>
+                    <th data-sorter="false">{% trans %}Owner{% endtrans %}</th>                    
+                    <th class="filter-select filter-exact" data-placeholder="Pick a gender">{% trans %}Gender{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>{% trans %}Business Name{% endtrans %}</th>
+                    <th>{% trans %}Lastname{% endtrans %}</th>
+                    <th>{% trans %}Firstname{% endtrans %}</th>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <th>{% trans %}Assignee{% endtrans %}</th>
+                    <th>{% trans %}Owner{% endtrans %}</th> 
+                    <th>{% trans %}Gender{% endtrans %}</th>
+                </tr>
+                <tr>
+                    <th colspan="7" class="ts-pager form-horizontal">
+                        <button type="button" class="btn first"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
+                        <button type="button" class="btn prev"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
+                        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+                        <button type="button" class="btn next"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
+                        <button type="button" class="btn last"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
+                        <select class="pagesize input-mini" title="Select page size">
+                            <option selected="selected" value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <select class="pagenum input-mini" title="Select page number"></select>
+                    </th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {#{% if clients %}
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.cognome }} {{ client.nome }}</td>
+                            <td>{{ client.email }}</td>
+                            <td>
+                                {% if client.sesso == 'M' %}
+                                    Male
+                                {% else %}
+                                    Female
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}               
+                {% endif %}#}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.js') }}"></script>
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.widgets.js') }}"></script>
+    <script src="{{ asset('vendor/tablesorter/jquery.tablesorter.pager.js') }}"></script>
+    <script>
+        $(function () {
+
+            // NOTE: $.tablesorter.theme.bootstrap is ALREADY INCLUDED in the jquery.tablesorter.widgets.js
+            // file; it is included here to show how you can modify the default classes
+            $.tablesorter.themes.bootstrap = {
+                // these classes are added to the table. To see other table classes available,
+                // look here: http://getbootstrap.com/css/#tables
+                table: 'table table-bordered table-striped',
+                caption: 'caption',
+                // header class names
+                header: 'bootstrap-header', // give the header a gradient background (theme.bootstrap_2.css)
+                sortNone: '',
+                sortAsc: '',
+                sortDesc: '',
+                active: '', // applied when column is sorted
+                hover: '', // custom css required - a defined bootstrap style may not override other classes
+                // icon class names
+                icons: '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+                iconSortNone: 'bootstrap-icon-unsorted', // class name added to icon when column is not sorted
+                iconSortAsc: 'glyphicon glyphicon-chevron-up', // class name added to icon when column has ascending sort
+                iconSortDesc: 'glyphicon glyphicon-chevron-down', // class name added to icon when column has descending sort
+                filterRow: '', // filter row class; use widgetOptions.filter_cssFilter for the input/select element
+                footerRow: '',
+                footerCells: '',
+                even: '', // even row zebra striping
+                odd: ''  // odd row zebra striping
+            };
+
+            // call the tablesorter plugin and apply the uitheme widget
+            $("table").tablesorter({
+                // this will apply the bootstrap theme if "uitheme" widget is included
+                // the widgetOptions.uitheme is no longer required to be set
+                theme: "bootstrap",
+                widthFixed: true,
+                headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!                
+                // widget code contained in the jquery.tablesorter.widgets.js file
+                // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                widgets: ["uitheme", "filter", "zebra"],
+                widgetOptions: {
+                    // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                    // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                    zebra: ["even", "odd"],
+                    // reset filters button
+                    filter_reset: ".reset",
+                    // extra css class name (string or array) added to the filter element (input or select)
+                    filter_cssFilter: "form-control",
+                    // set the uitheme widget to use the bootstrap theme class names
+                    // this is no longer required, if theme is set
+                    // ,uitheme : "bootstrap"
+                    filter_functions : {
+
+                        // Add select menu to this column
+                        // set the column value to true, and/or add "filter-select" class name to header
+                        // '.first-name' : true,
+
+                        // Add these options to the select dropdown (regex example)
+                        6 : {
+                          "M" : function(e, n, f, i, $r, c, data) { return /^Male/.test(e); },
+                          "F" : function(e, n, f, i, $r, c, data) { return /^Female/.test(e); }
+                        }
+                    }
+                }
+            })
+            .tablesorterPager({
+                // target the pager markup - see the HTML block below
+                container: $(".ts-pager"),
+                // target the pager page select dropdown - choose a page
+                cssGoto: ".pagenum",
+                startPage: 0,
+                size: 50,
+                ajaxUrl: '{{ path('etgest_client_list_ajax') }}?page={page}&size={size}&{filterList:filter}&{sortList:column}',
+                processAjaxOnInit: true,
+                ajaxProcessing: function(data){
+                    if (data && data.hasOwnProperty('rows')) {
+                        var indx, r, row, c, d = data.rows,
+                        // total number of rows (required)
+                        total = data.total_rows,
+                        // array of header names (optional)
+                        headers = data.headers,
+                        // cross-reference to match JSON key within data (no spaces)
+                        headerXref = headers.join(',').replace(/\s+/g,'').split(','),
+                        // all rows: array of arrays; each internal array has the table cell data for that row
+                        rows = [],
+                        // len should match pager set size (c.size)
+                        len = d.length;
+                        // this will depend on how the json is set up - see City0.json
+                        // rows
+                        for ( r=0; r < len; r++ ) {
+                            row = []; // new row array
+                            // cells
+                            for ( c in d[r] ) {
+                                if (typeof(c) === "string") {
+                                    // match the key with the header to get the proper column index
+                                    indx = $.inArray( c, headerXref );
+                                    // add each table cell data to row array
+                                    if (indx >= 0) {
+                                        row[indx] = d[r][c];
+                                    }
+                                }
+                            }
+                            rows.push(row); // add new row array to rows array
+                        }
+                        // in version 2.10, you can optionally return $(rows) a set of table rows within a jQuery object
+                        return [ total, rows, headers ];
+                    }
+                },
+                // remove rows from the table to speed up the sort of large tables.
+                // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+                removeRows: false,
+                // output string - default is '{page}/{totalPages}';
+                // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+                output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ET\ETBackofficeBundle\Entity\TouroperatorPortale" table="touroperator_portale">
+    <indexes>
+      <index name="tpbi" columns="portale_id"/>
+      <index name="tourOperator_portale_touroperator_id_tourOperator_id" columns="tourOperator_id"/>
+    </indexes>
+    <id name="portaleId" type="integer" column="portale_id"/>
+    <id name="touroperatorId" type="integer" column="tourOperator_id"/>
+    <field name="consigliato" type="boolean" column="consigliato" nullable="false"/>
+    <field name="note" type="text" column="note" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
